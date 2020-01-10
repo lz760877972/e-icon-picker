@@ -1,0 +1,57 @@
+{
+  "name": "e-icon-picker",
+  "version": "0.0.4",
+  "description": "element-ui和font-awesome图标选择器",
+  "keywords": [
+    "vue",
+    "icon-picker",
+    "e-icon-picker",
+    "iconPicker",
+    "eiconPicker",
+    "icon picker",
+    "icon"
+  ],
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/cnovel/icon-picker.git"
+  },
+  "author": "cnovel.club",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitee.com/cnovel/icon-picker.git/issues"
+  },
+  "homepage": "https://gitee.com/cnovel/icon-picker.git",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^1.0.0",
+    "element-ui": "^2.9.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^5.0.2",
+    "font-awesome": "^4.7.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "browserify": {
+    "transform": [
+      "vueify"
+    ]
+  }
+}
