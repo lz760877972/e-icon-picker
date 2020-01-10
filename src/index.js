@@ -1,6 +1,5 @@
 import iconPicker from './e-icon-picker';
-import 'font-awesome/css/font-awesome.min.css';
-import './css/fontawesome.css';
+import './css/common.css';
 
 const install = function (Vue) {
     Vue.component(iconPicker.name, iconPicker);

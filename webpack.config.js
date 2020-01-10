@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 let extractTextPlugin = new ExtractTextPlugin({
     filename: "[name].css",
     allChunks: false
@@ -10,10 +11,13 @@ let extractTextPlugin = new ExtractTextPlugin({
 
 module.exports = {
     devtool: 'cheap-module-source-map',
-    entry: './src/index.js',
+    entry: {
+        index :'./src/index.js',
+        main:'./src/main.js'
+    },
     output: {
         path: path.resolve(__dirname, './dist/'),
-        filename: 'index.js',
+        filename: '[name].js',
         library: 'e-icon-picker',
         libraryTarget: 'umd',
         umdNamedDefine: true
@@ -30,7 +34,15 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: 'babel-loader'
+               /* loader: 'babel-loader',*/
+                use: {
+                    loader: 'babel-loader',
+                    /*options: {
+                        presets: ['@babel/preset-env'],
+                        cacheDirectory: true,
+                        plugins: ['@babel/transform-runtime']
+                    }*/
+                }
             },
            /* {
                 test: /\.css$/,
@@ -44,11 +56,21 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
+                   /* 'style-loader',*/
                     {
                         loader:  MiniCssExtractPlugin.loader,
                     }
                    ,
                     'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('postcss-import')(),
+                                require('autoprefixer')()
+                            ]
+                        }
+                    }
                 ],
             },
             {
@@ -75,53 +97,22 @@ module.exports = {
             }
         ]
     },
-/*    optimization: {
-        splitChunks: {
+    optimization: {
+       /* splitChunks: {
             cacheGroups: {
                 vendor: {
-                    test: /[\\/]node_modules[\\/]/,
+                    test: /font-awesome/,
                     name: 'vendor',
-                    chunks: 'all'
+                    chunks: 'all'//async all  initial
                 }
+                ,
+                default: false,
+                vendors: false
             }
-        },
-        runtimeChunk: true
-    },*/
-    optimization: {
-        splitChunks: {
-           // chunks: "all",// all async initial
-           // minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            // automaticNameDelimiter: "~",
-            // name: true,
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /[\\/]node_modules[\\/]font-awesome[\\/]css[\\/]/,
-                    chunks: 'async',
-                    enforce: true,
-                    priority: 10// 优先级
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                },
-                common: {
-                    name: "common",
-                    test: /\.js$/,
-                    chunks: "all",
-                    priority: 5
-                }
-              //  default: false
-            },
-
-        },
-        // runtimeChunk: false
+        },*/
+        runtimeChunk: false
     },
+
     mode: "production",
 
     plugins: [
@@ -133,5 +124,19 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
+        new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            // cssProcessorOptions: cssnanoOptions,
+            cssProcessorPluginOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    normalizeUnicode: false
+                }]
+            },
+            canPrint: true
+        })
     ]
 };
