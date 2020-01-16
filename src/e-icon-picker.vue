@@ -1,30 +1,31 @@
 <template>
     <div class="ui-fas">
         <el-input v-model="name" placeholder="请选择图标" ref="input" @focus="_popoverShowFun" v-popover:popover
-                  :clearable="true"
-                  readonly
-                  :disabled="disabled">
-            <template slot="prepend"><i :class="prefixIcon"/></template>
+                  clearable
+                  @input="_change"
+                  @clear="_initIcon(false)"
+        >
+            <template slot="prepend"><i :class="prefixIcon" style="max-width: 14px"/></template>
         </el-input>
         <!-- 弹出框 -->
         <el-popover :disabled="disabled" ref="popover" :placement="placement" popper-class="el-icon-popper"
                     :width="width" v-model="visible" trigger="click">
-
             <el-scrollbar tag="div" wrap-class="el-select-dropdown__wrap" view-class="el-select-dropdown__list"
                           class="is-empty">
-                <ul class="fas-icon-list">
-                    <li v-for="(item, index) in iconList" :key="index" @click="selectedIcon(item)">
+                <ul class="fas-icon-list" v-if="iconList&&iconList.length > 0">
+                    <li v-for="(item, index) in iconList" :key="index" @click="_selectedIcon(item)">
                         <i :class="item" :title="item"/>
                         <!-- <span>{{item}}</span>-->
                     </li>
                 </ul>
+                <span v-else class="fas-tips">暂无可选图标</span>
             </el-scrollbar>
         </el-popover>
     </div>
 </template>
 
 <script>
-    import fontawesome from './iconList';
+    import iconList, {elementUI, fontAwesome} from './iconList';
     import {off, on} from "./utils/dom";
 
     export default {
@@ -51,22 +52,51 @@
                 default() {
                     return ''
                 }
-            }
+            },
+            options: {}
         },
         data() {
             return {
-                iconList: fontawesome,
+                iconList: [],
                 visible: false, // popover v-model
                 width: 200,
                 prefixIcon: 'el-icon-edit',
-                name: ''
+                name: '',
+                icon: {}
             }
         },
         methods: {
-            selectedIcon(item) {
+            _change(val) {
+                this.iconList =  this.icon.list.filter(function (i) {
+                    return i.indexOf(val) !== -1;
+                });
+            },
+            _initIcon(type) {
+                this.prefixIcon = this.value && type && true === type ? this.value : 'el-icon-edit';
+                this.name = type === true ? this.value : '';
+                this.icon = Object.assign({}, iconList);//复制一个全局对象，避免全局对象污染
+                if (this.options) {
+                    this.icon.list = [];//重新给图标集合复制为空
+                    if (this.options.iconList !== undefined && this.options.iconList && this.options.iconList.length > 0) {
+                        this.icon.addIcon(this.options.IconList);
+                    }
+                    if (this.options.FontAwesome === true) {
+                        this.icon.addIcon(fontAwesome);
+                    }
+                    if (this.options.ElementUI === true) {
+                        this.icon.addIcon(elementUI);
+                    }
+                }
+                this.iconList = this.icon.list;
+                if (type === false) {
+                    this._emitFun('');
+                }
+            },
+            _selectedIcon(item) {
                 this.visible = false;
                 this.name = item;
-                this._emitFun();
+                this.prefixIcon = this.name;
+                this._emitFun(this.prefixIcon);
             },
             // 更新宽度
             _updateW() {
@@ -88,8 +118,8 @@
                 }
             },
             // 判断类型，抛出当前选中id
-            _emitFun() {
-                this.$emit('input', this.name);
+            _emitFun(val) {
+                this.$emit('input', val);
                 this._updatePopoverLocationFun();
             },
             // 更新popover位置
@@ -110,19 +140,14 @@
             off(document, 'mouseup', this._popoverHideFun);
         },
         created() {
-            this.prefixIcon = this.value ? this.value : 'el-icon-edit';
-            this.name = this.value;
+            this._initIcon(true);
         },
         watch: {
-            name: function (val) {
-                setTimeout(() => {
-                    this.prefixIcon = val ? val : 'el-icon-edit';
-                }, 200);
-            },
             value: function (val) {
                 setTimeout(() => {
                     this.name = val;
-                }, 200);
+                    this.prefixIcon = this.name ? this.name : 'el-icon-edit';
+                }, 50);
             }
         }
     }
@@ -174,5 +199,9 @@
 
     .el-icon-popper[x-placement^='bottom'] {
         margin-top: 5px;
+    }
+
+    .fas-tips {
+        display: block;
     }
 </style>

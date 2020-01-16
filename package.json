@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -25,8 +25,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",

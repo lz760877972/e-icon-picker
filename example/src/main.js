@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false;
 
 
-Vue.use(iconPicker);
+Vue.use(iconPicker,{FontAwesome: true, ElementUI: true, IconList: []});
 Vue.use(ElementUI);
 new Vue({
     render: h => h(App),
