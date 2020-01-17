@@ -1,24 +1,35 @@
 <template>
-    <div class="ui-fas">
-        <el-input v-model="name" placeholder="请选择图标" ref="input" @focus="_popoverShowFun" v-popover:popover
-                  clearable
-                  @input="_change"
-                  @clear="_initIcon(false)"
-        >
-            <template slot="prepend"><i :class="prefixIcon" style="max-width: 14px"/></template>
-        </el-input>
+    <div class="ui-fas" @click="_popoverShowFun">
         <!-- 弹出框 -->
-        <el-popover :disabled="disabled" ref="popover" :placement="placement" popper-class="el-icon-popper"
-                    :width="width" v-model="visible" trigger="click">
-            <el-scrollbar tag="div" wrap-class="el-select-dropdown__wrap" view-class="el-select-dropdown__list"
+        <el-popover :disabled="disabled" ref="popover" :placement="myPlacement" popper-class="el-icon-popper"
+                    :width="width" v-model="visible" trigger="manual">
+            <el-input v-model="name"
+                      placeholder="请选择图标"
+                      ref="input"
+                      v-popover:popover
+                      :style="styles"
+                      :clearable="clearable"
+                      :disabled="disabled"
+                      :readonly="readonly"
+                      @input="_change"
+                      @clear="_initIcon(false)"
+                      slot="reference"
+            >
+                <template slot="prepend"><i :class="prefixIcon" style="max-width: 14px"/></template>
+            </el-input>
+
+            <el-scrollbar ref="e-scrollbar"
+                          tag="div"
+                          wrap-class="el-select-dropdown__wrap"
+                          view-class="el-select-dropdown__list"
                           class="is-empty">
-                <ul class="fas-icon-list" v-if="iconList&&iconList.length > 0">
-                    <li v-for="(item, index) in iconList" :key="index" @click="_selectedIcon(item)">
+                <ul class="fas-icon-list" v-if="dataList&&dataList.length > 0">
+                    <li v-for="(item, index) in dataList" :key="index" @click="_selectedIcon(item)">
                         <i :class="item" :title="item"/>
                         <!-- <span>{{item}}</span>-->
                     </li>
                 </ul>
-                <span v-else class="fas-tips">暂无可选图标</span>
+                <span v-else class="fas-no-data">暂无可选图标</span>
             </el-scrollbar>
         </el-popover>
     </div>
@@ -37,6 +48,27 @@
                 // false
                 default() {
                     return false;
+                }
+            },
+            readonly: {
+                type: Boolean,
+                // false
+                default() {
+                    return false;
+                }
+            },
+            clearable: {
+                type: Boolean,
+                // true
+                default() {
+                    return true;
+                }
+            },
+            // e-icon-picker 样式
+            styles: {
+                type: Object,
+                default() {
+                    return {};
                 }
             },
             // 弹出框位置
@@ -62,12 +94,13 @@
                 width: 200,
                 prefixIcon: 'el-icon-edit',
                 name: '',
-                icon: {}
+                icon: {},
+                myPlacement: 'bottom'
             }
         },
         methods: {
             _change(val) {
-                this.iconList =  this.icon.list.filter(function (i) {
+                this.iconList = this.icon.list.filter(function (i) {
                     return i.indexOf(val) !== -1;
                 });
             },
@@ -77,8 +110,11 @@
                 this.icon = Object.assign({}, iconList);//复制一个全局对象，避免全局对象污染
                 if (this.options) {
                     this.icon.list = [];//重新给图标集合复制为空
-                    if (this.options.iconList !== undefined && this.options.iconList && this.options.iconList.length > 0) {
-                        this.icon.addIcon(this.options.IconList);
+                    if (this.options.addIconList !== undefined && this.options.addIconList && this.options.addIconList.length > 0) {
+                        this.icon.addIcon(this.options.addIconList);
+                    }
+                    if (this.options.removeIconList !== undefined && this.options.removeIconList && this.options.removeIconList.length > 0) {
+                        this.icon.removeIcon(this.options.removeIconList);
                     }
                     if (this.options.FontAwesome === true) {
                         this.icon.addIcon(fontAwesome);
@@ -88,8 +124,30 @@
                     }
                 }
                 this.iconList = this.icon.list;
+
+                if (this.placement && (this.placement === 'bottom' || this.placement === 'top')) {
+                    this.myPlacement = this.placement;
+                }
+
+                console.log("e-icon-picker", this.iconList);
                 if (type === false) {
                     this._emitFun('');
+                }
+            },
+
+            addIcon(item = []) {//组件内增加图标
+                //组件内添加图标
+                if (item !== undefined && item && item.length > 0) {
+                    this.icon.addIcon(item);
+                    this.iconList = this.icon.list;
+                    console.log('组件内添加图标后对象信息：', this.icon);
+                }
+            },
+            removeIcon(item = []) {//组件内删除图标
+                //组件内删除图标
+                if (item !== undefined && item && item.length > 0) {
+                    this.icon.removeIcon(item);
+                    this.iconList = this.icon.list;
                 }
             },
             _selectedIcon(item) {
@@ -102,10 +160,14 @@
             _updateW() {
                 this.$nextTick(() => {
                     this.width = this.$refs.input.$el.getBoundingClientRect().width - 26;
+                    this.$refs['e-scrollbar'].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height;
                 });
             },
             // 显示弹出框的时候容错，查看是否和el宽度一致
             _popoverShowFun() {
+                if (this.readonly !== true && this.disabled !== true) {
+                    this.visible = true;
+                }
                 this._updateW();
             },
             // 点击控件外，判断是否隐藏弹出框
@@ -130,6 +192,17 @@
                 }, 50);
             },
         },
+        computed: {
+            dataList: function () {   //去重
+                let arr1 = [];       // 新建一个数组来存放arr中的值
+                for (let i = 0, len = this.iconList.length; i < len; i++) {
+                    if (arr1.indexOf(this.iconList[i]) === -1) {
+                        arr1.push(this.iconList[i]);
+                    }
+                }
+                return arr1;
+            }
+        },
         mounted() {
             this._updateW();
             this.$nextTick(() => {
@@ -148,23 +221,21 @@
                     this.name = val;
                     this.prefixIcon = this.name ? this.name : 'el-icon-edit';
                 }, 50);
+            },
+            options: {
+                handler(newV, oldV) {
+                    let self = this;
+                    setTimeout(() => {
+                        self._initIcon(true);
+                    }, 50);
+                },
+                deep: true
             }
         }
     }
 </script>
 
-<style lang="css">
-
-
-    [class^="fa"] {
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .el-submenu [class^="fa"] {
-        margin-right: 5px;
-        width: 24px;
-    }
+<style lang="css" scoped>
 
     .fas-icon-list {
         list-style-type: none;
@@ -201,7 +272,7 @@
         margin-top: 5px;
     }
 
-    .fas-tips {
+    .fas-no-data {
         display: block;
     }
 </style>

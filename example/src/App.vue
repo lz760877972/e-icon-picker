@@ -1,27 +1,28 @@
 <template>
-  <div id="app">
-    <HelloWorld/>
-  </div>
+    <div id="app">
+        <example1/>
+        <example2/>
+        <example3/>
+        <iconList/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import example1 from './components/example1'
+    import example2 from './components/example2'
+    import example3 from './components/example3'
+    import iconList from './components/iconList'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            example1,
+            example2,
+            example3,
+            iconList
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

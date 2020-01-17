@@ -6,3 +6,4 @@ npm-debug.log
 package-lock.json
 example/
 src/
+_book/
