@@ -51,8 +51,8 @@ Vue.use(iconPicker);
 
 **另：**
 
-本人还有一个开源项目，在项目中的菜单管理使用了该图标组件，喜欢的可以去看看，帮忙点个star[novel](https://gitee.com/cnovel/Novel-api),非常感谢！
-
+本人还有一个开源项目，在项目中的菜单管理使用了该图标组件，喜欢的可以去看看，帮忙点个star,非常感谢！
+项目地址： [novel](https://gitee.com/cnovel/Novel-api)
 
 **演示图**
 

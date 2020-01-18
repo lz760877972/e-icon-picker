@@ -27,7 +27,8 @@
     "multipart",
     "back-to-top-button",
     "hide-element",
-    "-fontsettings"
+    "-fontsettings",
+    "baidu"
   ],
   "pluginsConfig": {
     "code": {
@@ -82,6 +83,9 @@
     "fontSettings": {
       "family": "serif",
       "size": 2
+    },
+    "baidu": {
+      "token": "35061267542e35bfa6546a053530fdaf"
     }
   },
   "styles": {
