@@ -14,14 +14,14 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/cnovel/e-icon-picker.git"
+    "url": "https://gitee.com/cnovel/e-icon-picker"
   },
   "author": "cnovel.club",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitee.com/cnovel/e-icon-picker.git/issues"
+    "url": "https://gitee.com/cnovel/e-icon-picker/issues"
   },
-  "homepage": "https://gitee.com/cnovel/e-icon-picker.git",
+  "homepage": "http://doc.icon.cnovel.club",
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
