@@ -7,8 +7,9 @@
 
 ## Demo
 
-在线测试
-在线API
+[在线测试](http://demo.icon.cnovel.club)
+
+[在线API](http://doc.icon.cnovel.club)
 
 ## 安装
 
