@@ -5,5 +5,5 @@ npm-debug.log
 .vscode/
 package-lock.json
 example/
-src/
 _book/
+SUMMARY.md

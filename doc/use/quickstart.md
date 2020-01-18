@@ -51,8 +51,8 @@ export default {
 <e-icon-picker v-model="icon" :options="options"/>
 ```
 
-完整示例请参考[example](https://gitee.com/cnovel/icon-picker/tree/master/example)项目
-简单使用请参考[example1.vie](https://gitee.com/cnovel/icon-picker/tree/master/example/src/components/example1.vue)文件
+完整示例请参考[example](https://gitee.com/cnovel/e-icon-picker/tree/master/example)项目
+简单使用请参考[example1.vie](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example1.vue)文件
 
 ### 高级
 
@@ -80,13 +80,13 @@ Vue.use(eIconPicker);
 iconList.addIcon(["el-icon-s-ticket", "el-icon-s-help", "el-icon-s-help"]);//添加图标
 iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 ```
-使用示例请参考[main.js](https://gitee.com/cnovel/icon-picker/tree/master/example/src/main.js)文件
+使用示例请参考[main.js](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/main.js)文件
 
 #### 局部添加图标或者删除图标
 使用时添加一个ref属性：
 
 ```vue
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
+<e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
 ```
 
 通过ref获取`e-icon-picker`组件，再调用组件方法：
@@ -102,9 +102,9 @@ mounted() {
     }
 ```
 
-使用示例请参考[example3.vue](https://gitee.com/cnovel/icon-picker/tree/master/example/src/components/example3.vue)文件
+使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example3.vue)文件
 
 #### 属性配置
-具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/icon-picker/tree/master/example/src/components/example2.vue)文件
+具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
 
 

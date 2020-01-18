@@ -1,0 +1,15 @@
+npm-debug.log
+.DS_Store
+.idea/
+.vscode/
+package-lock.json
+example/
+dist/
+src/
+.gitignore
+.npmignore
+LICENSE
+package.json
+webpack.config.js
+yarn.lock
+.bookignore

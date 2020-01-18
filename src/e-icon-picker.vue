@@ -129,7 +129,6 @@
                     this.myPlacement = this.placement;
                 }
 
-                console.log("e-icon-picker", this.iconList);
                 if (type === false) {
                     this._emitFun('');
                 }
@@ -140,7 +139,6 @@
                 if (item !== undefined && item && item.length > 0) {
                     this.icon.addIcon(item);
                     this.iconList = this.icon.list;
-                    console.log('组件内添加图标后对象信息：', this.icon);
                 }
             },
             removeIcon(item = []) {//组件内删除图标

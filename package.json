@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.0.0",
+  "version": "0.0.7",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -14,14 +14,14 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/cnovel/icon-picker.git"
+    "url": "https://gitee.com/cnovel/e-icon-picker.git"
   },
   "author": "cnovel.club",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitee.com/cnovel/icon-picker.git/issues"
+    "url": "https://gitee.com/cnovel/e-icon-picker.git/issues"
   },
-  "homepage": "https://gitee.com/cnovel/icon-picker.git",
+  "homepage": "https://gitee.com/cnovel/e-icon-picker.git",
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
