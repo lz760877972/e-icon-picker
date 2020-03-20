@@ -1,5 +1,6 @@
 import EIconPicker from './e-icon-picker';
 import './css/common.css';
+import './utils';
 import iconList, {elementUI, fontAwesome} from './iconList';
 
 const install = function (Vue, options = {FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}) {
@@ -31,7 +32,7 @@ export {
     fontAwesome
 }
 export default {
-    version: '0.0.5',
+    version: '1.0.2',
     install,
     EIconPicker
 }

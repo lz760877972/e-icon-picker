@@ -7,3 +7,4 @@ package-lock.json
 example/
 _book/
 SUMMARY.md
+dist/main.js

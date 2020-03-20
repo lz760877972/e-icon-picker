@@ -1,5 +1,5 @@
 <template>
-    <div class="ui-fas" @click="_popoverShowFun">
+    <div class="ui-fas"  @click="_popoverShowFun">
         <!-- 弹出框 -->
         <el-popover :disabled="disabled" ref="popover" :placement="myPlacement" popper-class="el-icon-popper"
                     :width="width" v-model="visible" trigger="manual">
@@ -23,7 +23,7 @@
                           wrap-class="el-select-dropdown__wrap"
                           view-class="el-select-dropdown__list"
                           class="is-empty">
-                <ul class="fas-icon-list" v-if="dataList&&dataList.length > 0">
+                <ul class="fas-icon-list" ref="fasIconList" v-if="dataList&&dataList.length > 0">
                     <li v-for="(item, index) in dataList" :key="index" @click="_selectedIcon(item)">
                         <i :class="item" :title="item"/>
                         <!-- <span>{{item}}</span>-->
@@ -165,14 +165,16 @@
             _popoverShowFun() {
                 if (this.readonly !== true && this.disabled !== true) {
                     this.visible = true;
+                    this._updateW();
                 }
-                this._updateW();
             },
             // 点击控件外，判断是否隐藏弹出框
             _popoverHideFun(e) {
-                let isInter = e.path.some(list => {
+                let path = e.path || (e.composedPath && e.composedPath());
+                let isInter = path.some(list => {
                     return list.className && list.className.indexOf('fas-icon-list') !== -1;
                 });
+
                 if (!isInter) {
                     this.visible = false;
                 }
@@ -203,9 +205,6 @@
         },
         mounted() {
             this._updateW();
-            this.$nextTick(() => {
-                on(document, 'mouseup', this._popoverHideFun);
-            });
         },
         beforeDestroy() {
             off(document, 'mouseup', this._popoverHideFun);
@@ -219,6 +218,17 @@
                     this.name = val;
                     this.prefixIcon = this.name ? this.name : 'el-icon-edit';
                 }, 50);
+            },
+            visible: function (val) {
+                if (val === false) {
+                    this.$nextTick(() => {
+                        off(document, 'mouseup', this._popoverHideFun);
+                    });
+                }else {
+                    this.$nextTick(() => {
+                        on(document, 'mouseup', this._popoverHideFun);
+                    });
+                }
             },
             options: {
                 handler(newV, oldV) {
