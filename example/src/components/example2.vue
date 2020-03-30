@@ -2,7 +2,7 @@
     <div style="margin: 0 auto;width: 500px">
         <h2>高级使用</h2>
         <e-icon-picker v-model="icon" :options="options" :disabled="disabled" :readonly="readonly"
-                       :placement="placement" :styles="style"/>
+                       :placement="placement" :styles="style" :width="width"/>
         {{icon}}
     </div>
 </template>
@@ -17,7 +17,8 @@
                 disabled: false,
                 readonly: false,
                 placement: 'bottom',
-                style: {}
+                style: {},
+                width: 800
             }
         },
     }

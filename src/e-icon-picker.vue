@@ -1,8 +1,8 @@
 <template>
-    <div class="ui-fas"  @click="_popoverShowFun">
+    <div class="ui-fas" @click="_popoverShowFun">
         <!-- 弹出框 -->
         <el-popover :disabled="disabled" ref="popover" :placement="myPlacement" popper-class="el-icon-popper"
-                    :width="width" v-model="visible" trigger="manual">
+                    :width="popoverWidth" v-model="visible" trigger="manual">
             <el-input v-model="name"
                       placeholder="请选择图标"
                       ref="input"
@@ -85,17 +85,23 @@
                     return ''
                 }
             },
-            options: {}
+            options: {},
+            width: {
+                type: Number,
+                default() {
+                    return -1
+                }
+            }
         },
         data() {
             return {
                 iconList: [],
                 visible: false, // popover v-model
-                width: 200,
                 prefixIcon: 'el-icon-edit',
                 name: '',
                 icon: {},
-                myPlacement: 'bottom'
+                myPlacement: 'bottom',
+                popoverWidth: 200
             }
         },
         methods: {
@@ -157,7 +163,11 @@
             // 更新宽度
             _updateW() {
                 this.$nextTick(() => {
-                    this.width = this.$refs.input.$el.getBoundingClientRect().width - 26;
+                    if (this.width === -1) {
+                        this.popoverWidth = this.$refs.input.$el.getBoundingClientRect().width - 26;
+                    } else {
+                        this.popoverWidth = this.width;
+                    }
                     this.$refs['e-scrollbar'].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height;
                 });
             },
@@ -224,7 +234,7 @@
                     this.$nextTick(() => {
                         off(document, 'mouseup', this._popoverHideFun);
                     });
-                }else {
+                } else {
                     this.$nextTick(() => {
                         on(document, 'mouseup', this._popoverHideFun);
                     });

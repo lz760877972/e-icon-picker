@@ -1,4 +1,7 @@
 # 更新日志
+#### v1.0.3
+1. 修复 [I1CSU0](https://gitee.com/cnovel/e-icon-picker/issues/I1CSU0) 问题。
+2. 更新项目依赖项。
 
 #### v1.0.2
 1. 修复ie浏览器下无法正常关闭问题。

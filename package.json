@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -25,27 +25,26 @@
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "autoprefixer": "^9.7.3",
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^1.0.0",
+    "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
-    "element-ui": "^2.9.1",
-    "file-loader": "^5.0.2",
+    "element-ui": "^2.13.0",
+    "file-loader": "^6.0.0",
     "font-awesome": "^4.7.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.4.2",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.3.10"
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   }
 }
