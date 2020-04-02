@@ -1,4 +1,7 @@
 # 更新日志
+#### v1.0.4
+1. 修复代码库存在es6浏览器不兼容的语法。
+
 #### v1.0.3
 1. 修复 [I1CSU0](https://gitee.com/cnovel/e-icon-picker/issues/I1CSU0) 问题。
 2. 更新项目依赖项。
