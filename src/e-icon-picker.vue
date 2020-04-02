@@ -37,7 +37,7 @@
 
 <script>
     import iconList, {elementUI, fontAwesome} from './iconList';
-    import {off, on} from "./utils/dom";
+    import {off, on} from "./utils";
 
     export default {
         name: "e-icon-picker",
@@ -168,7 +168,7 @@
                     } else {
                         this.popoverWidth = this.width;
                     }
-                    this.$refs['e-scrollbar'].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height;
+                    this.$refs['e-scrollbar'].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height - 35;
                 });
             },
             // 显示弹出框的时候容错，查看是否和el宽度一致

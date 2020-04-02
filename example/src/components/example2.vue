@@ -13,7 +13,7 @@
         data() {
             return {
                 icon: '',
-                options: {FontAwesome: false, ElementUI: true, addIconList: ['fa fa-slack'], removeIconList: []},
+                options: {FontAwesome: false, ElementUI: true, addIconList: [], removeIconList: []},
                 disabled: false,
                 readonly: false,
                 placement: 'bottom',

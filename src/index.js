@@ -1,7 +1,8 @@
 import EIconPicker from './e-icon-picker';
 import './css/common.css';
-import './utils';
 import iconList, {elementUI, fontAwesome} from './iconList';
+
+export * from './utils';
 
 const install = function (Vue, options = {FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}) {
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {

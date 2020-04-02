@@ -1,6 +1,6 @@
-(function(e, d, w) {
-    if(!e.composedPath) {
-        e.composedPath = function() {
+(function (e, d, w) {
+    if (!e.composedPath) {
+        e.composedPath = function () {
             if (this.path) {
                 return this.path;
             }
@@ -16,3 +16,6 @@
         }
     }
 })(Event.prototype, document, window);
+export * from "./util";
+export * from "./dom";
+export * from "./TypeUtil";

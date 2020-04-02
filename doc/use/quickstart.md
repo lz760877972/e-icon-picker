@@ -44,6 +44,8 @@ export default {
 }
 ```
 
+**注：options参数会是全局样式失效，请合理应用。**
+
 
 ### 使用
 
@@ -104,7 +106,28 @@ mounted() {
 
 使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example3.vue)文件
 
+#### 使用iconfont图标
+* 将图标导入到项目中（iconfont.json文件也要导入）
+* 删除iconfont.css中多余的css样式
+```css
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+```
+* 获取css的名称
+```js
+import {analyzingIconForIconfont} from 'e-icon-picker';//引入解析json的函数
+import iconfont from "./css/iconfont.json";//引入json文件
+import "./css/iconfont.css";//引入css
+
+let forIconfont = analyzingIconForIconfont(iconfont);//解析class
+//全局删除增加图标
+Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
+```
+
 #### 属性配置
 具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
-
-
