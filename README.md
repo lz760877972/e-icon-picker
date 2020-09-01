@@ -37,7 +37,7 @@ Vue.use(iconPicker);
 ```
 
 详细文档
-- [使用文档](./doc/use/README.md)
+- [使用文档](http://doc.icon.cnovel.club)
 
 ## 使用
 
