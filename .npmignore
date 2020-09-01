@@ -13,5 +13,3 @@ dist/main.js
 .babelrc
 .bookignore
 book.json
-webpack.config.js
-package.json
