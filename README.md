@@ -3,6 +3,8 @@
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
 
+![示例图片](https://oscimg.oschina.net/oscnet/up-c4ac227f3356ee405358e951450cdeffed5.png "示例图片")
+
 喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)
 
 ## Demo
