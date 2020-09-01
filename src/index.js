@@ -1,10 +1,29 @@
 import EIconPicker from './e-icon-picker';
+import EIcon from './e-icon';
 import './css/common.css';
-import iconList, {elementUI, fontAwesome} from './iconList';
+import './css/eiconfont.css';
+import './js/eiconfont.js';
+import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 
 export * from './utils';
 
-const install = function (Vue, options = {FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}) {
+const install = function (Vue, options = {
+    FontAwesome: false,
+    ElementUI: true,
+    eIcon: true,
+    eIconSymbol: true,
+    addIconList: [],
+    removeIconList: []
+}) {
+    options = Object.assign({
+        FontAwesome: false,
+        ElementUI: true,
+        eIcon: true,
+        eIconSymbol: true,
+        addIconList: [],
+        removeIconList: []
+    }, options);
+
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
         iconList.addIcon(options.addIconList);
     }
@@ -19,7 +38,18 @@ const install = function (Vue, options = {FontAwesome: true, ElementUI: true, ad
     if (options.ElementUI === true) {
         iconList.addIcon(elementUI);
     }
+    if (options.eIcon === true) {
+        if (options.eIconSymbol) {
+            let list = eIconList.map(item => {
+                return item.replace("eiconfont ", "#");
+            });
+            iconList.addIcon(list);
+        } else {
+            iconList.addIcon(eIconList);
+        }
+    }
     Vue.component(EIconPicker.name, EIconPicker);
+    Vue.component(EIcon.name, EIcon);
 };
 
 /* istanbul ignore if */
@@ -28,13 +58,16 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 export {
     EIconPicker,
+    EIcon,
     iconList,
     elementUI,
-    fontAwesome
+    fontAwesome,
+    eIconList
 }
 export default {
-    version: '1.0.4',
+    version: '1.0.5',
     install,
-    EIconPicker
+    EIconPicker,
+    EIcon
 }
 

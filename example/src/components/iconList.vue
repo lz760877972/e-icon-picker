@@ -2,9 +2,9 @@
     <div>
         <h2>全部列表</h2>
         <ul class="fas-icon-list" v-if="dataList&&dataList.length > 0">
-            <li v-for="(item, index) in dataList" :key="index">
-                <i :class="item" :title="item"/>
-                <span>{{item}}</span>
+            <li v-for="(item, index) in dataList" :key="index" title="复制">
+                <e-icon :icon-name="item" @click="copy"/>
+                <span class="text" :title="item">{{item}}</span>
             </li>
         </ul>
     </div>
@@ -20,8 +20,16 @@
                 dataList: iconList.list
             }
         },
-        mounted() {
-
+        methods: {
+            copy(className) {
+                let tag = document.createElement('input');
+                tag.setAttribute('id', 'cp_hgz_input');
+                tag.value = className;
+                document.getElementsByTagName('body')[0].appendChild(tag);
+                document.getElementById('cp_hgz_input').select();
+                document.execCommand('copy');
+                document.getElementById('cp_hgz_input').remove();
+            },
         }
     }
 </script>
@@ -34,7 +42,6 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
     }
 
     .fas-icon-list li {
@@ -50,10 +57,16 @@
         background-color: #9dbed8;
     }
 
-    .fas-icon-list li i {
+    .fas-icon-list li i, .fas-icon-list li svg {
         font-size: 20px;
         cursor: pointer;
         margin: 5px;
+    }
+
+    .text {
+        white-space: nowrap; /*一行显示*/
+        overflow: hidden; /*超出部分隐藏*/
+        text-overflow: ellipsis; /*用...代替超出部分*/
     }
 
 </style>

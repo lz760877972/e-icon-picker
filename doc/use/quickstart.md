@@ -1,7 +1,8 @@
 # 快速上手
 
 ### 全局注册
-在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`ElementUI`和`addIconList`，`FontAwesome`和`ElementUI`可选值有`true`和`false`，表示是否使用该组件图标。
+在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`ElementUI`、`eIcon`、`eIconSymbol`、`addIconList`和`removeIconList`，`FontAwesome`、`ElementUI`和`eIcon`可选值有`true`和`false`，表示是否使用该组件图标。
+`eIconSymbol`可选值有`true`和`false`，表示`eIcon`图标是否为彩色图标。
 `addIconList`是自定义新增图标名称的数组，`removeIconList`则是自定义删除图标名称的数组。
 
 在main.js中加入：
@@ -15,10 +16,8 @@ import 'e-icon-picker/dist/main.css'; //fontAwesome 图标库样式
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-
-Vue.use(iconPicker);//使用e-icon-picker
 Vue.use(ElementUI); //使用ElementUI
-
+Vue.use(iconPicker);//使用e-icon-picker
 ```
 
 ### 局部注册
@@ -40,14 +39,18 @@ export default {
     data() {
         return {
             icon: '',
-            options: {FontAwesome: false, ElementUI: true, addIconList: ['fa fa-slack'], removeIconList: []},
+            options: {
+                FontAwesome: false,
+                ElementUI: false,
+                eIcon: true,//自带的图标，来自阿里妈妈
+                eIconSymbol: true,//是否开启彩色图标
+                addIconList: [],
+                removeIconList: []
+            }
         }
     }
 }
 ```
-
-**注：options参数会是全局样式失效，请合理应用。**
-
 
 ### 使用
 
@@ -55,8 +58,13 @@ export default {
 <e-icon-picker v-model="icon" :options="options"/>
 ```
 
-完整示例请参考[example](https://gitee.com/cnovel/e-icon-picker/tree/master/example)项目
-简单使用请参考[example1.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example1.vue)文件
+### 显示图标
+```html
+<e-icon :icon-name="icon"/>
+```
+
+完整示例请参考 [example](https://gitee.com/cnovel/e-icon-picker/tree/master/example) 项目
+简单使用请参考 [example1.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example1.vue) 文件
 
 ### 高级
 
@@ -65,7 +73,7 @@ export default {
 在main.js中全局注册是可以加入以下参数：
 
 ```vue
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true});
+Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
 具体参数信息，请参考 [参数配置](configuration.md)
@@ -74,7 +82,7 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true});
 * 通过全局配置添加或者删除
 
 ```vue
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []});
+Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true, addIconList: [], removeIconList: []});
 ```
 
 * 通过提供的函数进行配置
@@ -134,6 +142,7 @@ import iconfont from "./css/iconfont.json";//引入json文件
 import "./css/iconfont.css";//引入css
 
 let forIconfont = analyzingIconForIconfont(iconfont);//解析class
+//let forIconfont = eIconSymbol(iconfont);//解析彩色图标
 //全局删除增加图标
 Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
 

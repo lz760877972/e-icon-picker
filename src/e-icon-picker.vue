@@ -15,7 +15,9 @@
                       @clear="_initIcon(false)"
                       slot="reference"
             >
-                <template slot="prepend"><i :class="prefixIcon" style="max-width: 14px"/></template>
+                <template slot="prepend">
+                    <e-icon :icon-name="prefixIcon" class="e-icon"/>
+                </template>
             </el-input>
 
             <el-scrollbar ref="e-scrollbar"
@@ -25,8 +27,7 @@
                           class="is-empty">
                 <ul class="fas-icon-list" ref="fasIconList" v-if="dataList&&dataList.length > 0">
                     <li v-for="(item, index) in dataList" :key="index" @click="_selectedIcon(item)">
-                        <i :class="item" :title="item"/>
-                        <!-- <span>{{item}}</span>-->
+                        <e-icon :icon-name="item" class="e-icon"/>
                     </li>
                 </ul>
                 <span v-else class="fas-no-data">暂无可选图标</span>
@@ -36,11 +37,13 @@
 </template>
 
 <script>
-    import iconList, {elementUI, fontAwesome} from './iconList';
+    import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
     import {off, on} from "./utils";
+    import EIcon from "./e-icon";
 
     export default {
         name: "e-icon-picker",
+        components: {EIcon},
         props: {
             // 是否禁用文本框
             disabled: {
@@ -128,6 +131,16 @@
                     if (this.options.ElementUI === true) {
                         this.icon.addIcon(elementUI);
                     }
+                    if (this.options.eIcon === true) {
+                        if (this.options.eIconSymbol) {
+                            let list = eIconList.map(item => {
+                                return item.replace("eiconfont ", "#");
+                            });
+                            this.icon.addIcon(list);
+                        } else {
+                            this.icon.addIcon(eIconList);
+                        }
+                    }
                 }
                 this.iconList = this.icon.list;
 
@@ -182,7 +195,7 @@
             _popoverHideFun(e) {
                 let path = e.path || (e.composedPath && e.composedPath());
                 let isInter = path.some(list => {
-                    return list.className && list.className.indexOf('fas-icon-list') !== -1;
+                    return list.className && list.className.toString().indexOf('fas-icon-list') !== -1;
                 });
 
                 if (!isInter) {
@@ -279,6 +292,11 @@
         cursor: pointer;
     }
 
+    .fas-icon-list li svg {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
     .el-icon-popper {
         max-height: 400px;
         overflow: auto;
@@ -292,5 +310,8 @@
 
     .fas-no-data {
         display: block;
+    }
+    .e-icon{
+        font-size: 16px;
     }
 </style>

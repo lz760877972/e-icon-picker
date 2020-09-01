@@ -3,7 +3,7 @@
         <h2>高级使用</h2>
         <e-icon-picker v-model="icon" :options="options" :disabled="disabled" :readonly="readonly"
                        :placement="placement" :styles="style" :width="width"/>
-        {{icon}}
+        名称： {{icon}}  <e-icon :icon-name="icon"/>
     </div>
 </template>
 

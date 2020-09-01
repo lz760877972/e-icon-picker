@@ -5,6 +5,13 @@ npm-debug.log
 .vscode/
 package-lock.json
 example/
+doc/
+src/
 _book/
 SUMMARY.md
 dist/main.js
+.babelrc
+.bookignore
+book.json
+webpack.config.js
+package.json

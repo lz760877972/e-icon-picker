@@ -12,7 +12,14 @@ import "./css/iconfont.css";
 Vue.config.productionTip = false;
 let forIconfont = analyzingIconForIconfont(iconfont);
 //全局删除增加图标
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});
+Vue.use(eIconPicker, {
+    FontAwesome: true,
+    ElementUI: true,
+    eIcon: true,//自带的图标，来自阿里妈妈
+    eIconSymbol:true,//是否开启彩色图标
+    addIconList: forIconfont.list,
+    removeIconList: []
+});
 
 // iconList.addIcon(["el-icon-s-ticket", "el-icon-s-help", "el-icon-s-help"]);
 iconList.removeIcon(["el-icon-s-ticket"]);
