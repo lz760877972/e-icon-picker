@@ -8,7 +8,7 @@ import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 export * from './utils';
 
 const install = function (Vue, options = {
-    FontAwesome: false,
+    FontAwesome: true,
     ElementUI: true,
     eIcon: true,
     eIconSymbol: true,
@@ -16,7 +16,7 @@ const install = function (Vue, options = {
     removeIconList: []
 }) {
     options = Object.assign({
-        FontAwesome: false,
+        FontAwesome: true,
         ElementUI: true,
         eIcon: true,
         eIconSymbol: true,

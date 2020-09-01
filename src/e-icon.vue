@@ -1,6 +1,6 @@
 <template>
     <i v-if="fontClass" :class="iconName" @click="click(iconName)"></i>
-    <svg v-else class="icon" aria-hidden="true" @click="click(iconName)">
+    <svg v-else-if="svg" class="icon" aria-hidden="true" @click="click(iconName)">
         <use :xlink:href="iconName"></use>
     </svg>
 </template>
@@ -16,7 +16,10 @@
         },
         computed: {
             fontClass() {
-                return !this.iconName.startsWith("#");
+                return this.iconName && this.iconName.trim().length > 2 && !this.iconName.startsWith("#");
+            },
+            svg() {
+                return this.iconName && this.iconName.trim().length > 2 && this.iconName.startsWith("#");
             }
         },
         methods: {
