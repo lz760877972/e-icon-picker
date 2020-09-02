@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "e-icon",
+        name: "eIcon",
         props: {
             iconName: {
                 type: String,

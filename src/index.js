@@ -65,7 +65,7 @@ export {
     eIconList
 }
 export default {
-    version: '1.0.5',
+    version: '1.0.7',
     install,
     EIconPicker,
     EIcon

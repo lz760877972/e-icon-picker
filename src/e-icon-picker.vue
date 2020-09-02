@@ -42,7 +42,7 @@
     import EIcon from "./e-icon";
 
     export default {
-        name: "e-icon-picker",
+        name: "eIconPicker",
         components: {EIcon},
         props: {
             // 是否禁用文本框
