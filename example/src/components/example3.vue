@@ -2,7 +2,8 @@
     <div style="margin: 0 auto;width: 500px">
         <h2>组件内动态设置以及方法展示</h2>
         <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
-        名称：{{icon}}  <e-icon :icon-name="icon"/>
+        名称：{{icon}}
+        <e-icon :icon-name="icon"/>
     </div>
 </template>
 
@@ -19,9 +20,9 @@
             this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
             this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
             setTimeout(() => {//通过修改参数进行重新设置组件
-               this.options.addIconList.push('el-icon-message-solid');
-               this.options.removeIconList.push('removeIconList');
-               console.log("定时任务触发")
+                this.options.addIconList.push('el-icon-message-solid');
+                this.options.removeIconList.push('removeIconList');
+                console.log("定时任务触发")
             }, 5000);
         }
     }

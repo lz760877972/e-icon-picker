@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -25,18 +25,20 @@
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
+    "babel-plugin-component": "^1.1.1",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
     "cssnano": "^4.1.10",
     "element-ui": "^2.13.2",
     "file-loader": "^6.0.0",
-    "font-awesome": "^4.7.0",
     "mini-css-extract-plugin": "^0.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-import": "^12.0.1",

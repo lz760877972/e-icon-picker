@@ -43,7 +43,9 @@
 
     export default {
         name: "eIconPicker",
-        components: {EIcon},
+        components: {
+            EIcon
+        },
         props: {
             // 是否禁用文本框
             disabled: {
@@ -100,7 +102,7 @@
             return {
                 iconList: [],
                 visible: false, // popover v-model
-                prefixIcon: 'el-icon-edit',
+                prefixIcon: 'eiconfont e-icon-bi',
                 name: '',
                 icon: {},
                 myPlacement: 'bottom',
@@ -114,7 +116,7 @@
                 });
             },
             _initIcon(type) {
-                this.prefixIcon = this.value && type && true === type ? this.value : 'el-icon-edit';
+                this.prefixIcon = this.value && type && true === type ? this.value : 'eiconfont e-icon-bi';
                 this.name = type === true ? this.value : '';
                 this.icon = Object.assign({}, iconList);//复制一个全局对象，避免全局对象污染
                 if (this.options) {
@@ -239,7 +241,7 @@
             value: function (val) {
                 setTimeout(() => {
                     this.name = val;
-                    this.prefixIcon = this.name ? this.name : 'el-icon-edit';
+                    this.prefixIcon = this.name ? this.name : 'eiconfont e-icon-bi';
                 }, 50);
             },
             visible: function (val) {
@@ -311,7 +313,8 @@
     .fas-no-data {
         display: block;
     }
-    .e-icon{
+
+    .e-icon {
         font-size: 16px;
     }
 </style>

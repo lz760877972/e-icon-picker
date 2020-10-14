@@ -1,4 +1,9 @@
 # 更新日志
+#### v1.0.8
+1. 将所需的 Element UI 组件全部打入到项目中，不在需要安装 Element UI 组件。
+2. 将 Element UI 和 font-awesome 图标库分离，可按需引用，减少组件库大小。
+3. 将iconfont彩色图标分离，减少组件库的基本大小，可按需引用。
+
 #### v1.0.5
 1. 更新 Element UI 版本以及 VUE 等版本。
 2. 添加iconfont彩色图标的支持。

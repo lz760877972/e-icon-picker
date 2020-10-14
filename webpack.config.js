@@ -9,8 +9,11 @@ module.exports = {
     devtool: false,
     mode: devMode,
     entry: {
-        'main': "./src/main.js",
-        'index': './src/index.js'
+        'index': './src/index.js',
+        'symbol': './src/js/eiconfont.js'
+    },
+    externals :{
+        'vue' :  'vue'
     },
     output: {
         path: path.resolve(__dirname, './dist/'),
@@ -32,7 +35,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+               /* exclude: /(node_modules)/,*/
                 use: {
                     loader: 'babel-loader'
                 }

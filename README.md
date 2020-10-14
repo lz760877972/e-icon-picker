@@ -1,5 +1,5 @@
 # e-icon-picker 图标选择组件
-简洁大方，专为`element-ui`和`font-awesome`图标库开发的图标选择组件，希望大家喜欢！
+简洁大方，专为`element-ui`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
 
@@ -15,8 +15,10 @@
 
 ## 安装
 
->因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。
->安装方式请参考element-ui官网的相关文档。[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)
+>~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
+>~~安装方式请参考element-ui官网的相关文档。~~[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。
+>
+>已经脱离element-ui，不需要再安装element-ui了。
 
 **npm 安装**
 
@@ -30,8 +32,10 @@ npm install e-icon-picker
 
 ```
 import iconPicker from 'e-icon-picker';
-import 'e-icon-picker/dist/index.css';//基础样式
-import 'e-icon-picker/dist/main.css'; //fontAwesome 图标库样式
+import "e-icon-picker/dist/symbol.js"; //基本彩色图标库
+import 'e-icon-picker/dist/index.css'; // 基本样式，包含基本图标
+import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
+import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
 Vue.use(iconPicker);
 ```

@@ -2,7 +2,17 @@ import EIconPicker from './e-icon-picker';
 import EIcon from './e-icon';
 import './css/common.css';
 import './css/eiconfont.css';
-import './js/eiconfont.js';
+
+import 'element-ui/lib/theme-chalk/reset.css'
+import 'element-ui/lib/theme-chalk/input.css';
+import 'element-ui/lib/theme-chalk/popover.css';
+import 'element-ui/lib/theme-chalk/scrollbar.css';
+import 'element-ui/lib/theme-chalk/select-dropdown.css'
+
+import ElInput from 'element-ui/lib/input';
+import ElPopover from 'element-ui/lib/popover';
+import ElScrollbar from 'element-ui/lib/scrollbar';
+
 import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 
 export * from './utils';
@@ -48,6 +58,10 @@ const install = function (Vue, options = {
             iconList.addIcon(eIconList);
         }
     }
+
+    Vue.use(ElInput);
+    Vue.use(ElPopover);
+    Vue.use(ElScrollbar);
     Vue.component(EIconPicker.name, EIconPicker);
     Vue.component(EIcon.name, EIcon);
 };
@@ -65,7 +79,7 @@ export {
     eIconList
 }
 export default {
-    version: '1.0.7',
+    version: '1.0.8',
     install,
     EIconPicker,
     EIcon

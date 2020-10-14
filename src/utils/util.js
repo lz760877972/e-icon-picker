@@ -26,6 +26,7 @@ export const analyzingIconForIconfont = function (json) {
         list
     }
 };
+
 /**
  * 将阿里妈妈的iconfont.json文件读成想用的彩色图标对象
  * @param json

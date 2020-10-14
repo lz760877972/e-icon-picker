@@ -9,14 +9,11 @@
 
 ```vue
 import iconPicker from 'e-icon-picker';
-import 'e-icon-picker/dist/index.css';//基础样式
-import 'e-icon-picker/dist/main.css'; //fontAwesome 图标库样式
+import "e-icon-picker/dist/symbol.js"; //基本彩色图标库
+import 'e-icon-picker/dist/index.css'; // 基本样式，包含基本图标
+import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
+import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-//使用时必须引用ElementUI相关的组件以及css
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-
-Vue.use(ElementUI); //使用ElementUI
 Vue.use(iconPicker);//使用e-icon-picker
 ```
 
@@ -26,8 +23,6 @@ Vue.use(iconPicker);//使用e-icon-picker
 
 ```vue
 import {EIconPicker} from 'e-icon-picker';
-import 'e-icon-picker/dist/index.css'; //基础样式
-import 'e-icon-picker/dist/main.css';  //fontAwesome 图标库样式
 ```
 
 在组件`components`中声明
@@ -50,6 +45,13 @@ export default {
         }
     }
 }
+```
+
+在全局样式中引入css
+```css
+@import 'e-icon-picker/dist/index.css'; //基础样式
+@import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
+@import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 ```
 
 ### 使用

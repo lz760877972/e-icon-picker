@@ -28,7 +28,9 @@
     "back-to-top-button",
     "hide-element",
     "-fontsettings",
-    "baidu"
+    "baidu",
+    "favicon-absolute",
+    "pageview-count"
   ],
   "pluginsConfig": {
     "code": {
@@ -86,6 +88,10 @@
     },
     "baidu": {
       "token": "35061267542e35bfa6546a053530fdaf"
+    },
+    "favicon-absolute":{
+      "favicon": "example/public/favicon.ico",
+      "appleTouchIconPrecomposed152":"example/public/favicon.ico"
     }
   },
   "styles": {

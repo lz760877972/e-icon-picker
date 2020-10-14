@@ -1,8 +1,10 @@
 # 安装
 
 
->因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。
->安装方式请参考element-ui官网的相关文档。[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)
+>~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
+>~~安装方式请参考element-ui官网的相关文档。~~[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。
+>
+>已经脱离element-ui，不需要再安装element-ui了。
 
 ### npm安装
 
