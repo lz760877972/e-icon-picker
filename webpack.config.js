@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyPlugin =require('copy-webpack-plugin');
 const devMode = 'production';//development  production
 
 module.exports = {
@@ -98,6 +99,11 @@ module.exports = {
                 }]
             },
             canPrint: true
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: './src/utils/getSvg.js', to: 'getSvg.js' },
+            ],
+        }),
     ]
 };
