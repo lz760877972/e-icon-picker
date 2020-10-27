@@ -8,11 +8,6 @@ import iconfont from "./css/iconfont.json"; //自己的图标信息
 import "./css/iconfont.css"; //自己的图标样式
 import eIconPicker, {analyzingIconForIconfont, iconList} from 'e-icon-picker';
 import svgIcons from 'e-icon-picker/dist/getSvg';
-import vueConfig from '../vue.config';
-
-console.log(vueConfig);
-
-console.log(process.env);
 
 Vue.config.productionTip = false;
 let forIconfont = analyzingIconForIconfont(iconfont);

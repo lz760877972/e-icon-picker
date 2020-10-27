@@ -150,5 +150,77 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfo
 
 ```
 
+#### 使用svg图标
+* 创建图标文件夹`src/icons/svg/`。
+* 在`vue.config.js`配置中加入以下代码。
+
+```json
+const path = require('path');
+
+function resolve(dir) {
+    return path.join(__dirname, dir)
+}
+
+module.exports = {
+    productionSourceMap: true,
+    configureWebpack: {
+        resolve: {
+            alias: {
+                '@': resolve('src')
+            }
+        }
+    },
+    chainWebpack(config) {
+        // set svg-sprite-loader
+        config.module
+            .rule('svg')
+            .exclude.add(resolve('src/icons')) //对应刚刚创建文件夹的位置，排除默认的svg图片处理规则
+            .end();
+        config.module
+            .rule('icons')
+            .test(/\.svg$/)
+            .include.add(resolve('src/icons')) //对应刚刚创建文件夹的位置
+            .end()
+            .use('svg-sprite-loader')  //处理svg使用的loader，默认自带，如果提示出错，请手动安装
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: '[name]'
+            })
+            .end()
+    }
+};
+```
+
+* 在项目的环境配置文件中加入以下配置
+
+系统会自动加载该目录下的所有svg文件，不支持扫描子文件夹，@对应src文件夹
+
+`.env.development` 文件
+
+```
+VUE_APP_SVG = '@/icons/svg' 
+```
+
+`.env.production` 文件
+
+```
+VUE_APP_SVG = '@/icons/svg' 
+```
+
+* 使用`svg`图标
+在`main.js`中引入
+```
+import eIconPicker from 'e-icon-picker';
+//svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
+import svgIcons from 'e-icon-picker/dist/getSvg';
+
+//全局删除增加图标
+Vue.use(eIconPicker, {
+    addIconList: svgIcons,
+});
+
+```
+
+
 #### 属性配置
 具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
