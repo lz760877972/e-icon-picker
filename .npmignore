@@ -8,7 +8,5 @@ example/
 doc/
 _book/
 SUMMARY.md
-dist/main.js
-.babelrc
 .bookignore
 book.json

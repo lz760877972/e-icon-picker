@@ -48,10 +48,10 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             esModule: false,
+                            publicPath: './',
                         },
                     },
                     'css-loader',
-
                     {
                         loader: 'postcss-loader',
                     }
