@@ -40,11 +40,6 @@ module.exports = {
             // 用cdn方式引入，则构建时要忽略相关资源
             if (isProduction && prodNeedCdn) config.externals = cdn.externals;
         }
-        // config.resolve = {
-        //     alias: {
-        //         '@': resolve('src')
-        //     }
-        // }
     },
     chainWebpack(config) {
         // ============注入cdn start============
