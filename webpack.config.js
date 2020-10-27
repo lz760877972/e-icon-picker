@@ -5,23 +5,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin =require('copy-webpack-plugin');
 const devMode = 'production';//development  production
+const config = require('./config');
 
 module.exports = {
     devtool: false,
     mode: devMode,
     entry: {
-        'index': './src/index.js',
-        'symbol': './src/js/eiconfont.js'
+        'index': './src/index.js'
     },
-    externals :{
-        'vue' :  'vue'
+    externals: {
+        vue: config.vue
     },
     output: {
         path: path.resolve(__dirname, './dist/'),
+        publicPath: '/dist/',
         filename: '[name].js',
         library: 'eIconPicker',
         libraryTarget: 'umd',
-        umdNamedDefine: true
+        libraryExport: 'default',
+        umdNamedDefine: true,
+        globalObject: 'typeof self !== \'undefined\' ? self : this'
     },
     resolve: {
         extensions: ['.js', '.vue'],
@@ -100,6 +103,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: './src/utils/getSvg.js', to: 'getSvg.js' },
+                { from: './src/js/eiconfont.js', to: 'symbol.js' },
             ],
         }),
     ]
