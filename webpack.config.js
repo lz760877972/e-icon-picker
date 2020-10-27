@@ -46,17 +46,14 @@ module.exports = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                    }
-                    ,
+                        options: {
+                            esModule: false,
+                        },
+                    },
                     'css-loader',
+
                     {
                         loader: 'postcss-loader',
-                        options: {
-                            plugins: [
-                                require('postcss-import')(),
-                                require('autoprefixer')()
-                            ]
-                        }
                     }
                 ],
             },
