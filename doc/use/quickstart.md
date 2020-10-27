@@ -209,6 +209,7 @@ VUE_APP_SVG = '@/icons/svg'
 
 * 使用`svg`图标
 在`main.js`中引入
+
 ```
 import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
