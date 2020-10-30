@@ -3,7 +3,6 @@ import EIcon from './e-icon';
 import './css/common.css';
 import './css/eiconfont.css';
 
-import 'element-ui/lib/theme-chalk/reset.css'
 import 'element-ui/lib/theme-chalk/input.css';
 import 'element-ui/lib/theme-chalk/popover.css';
 import 'element-ui/lib/theme-chalk/scrollbar.css';
@@ -63,7 +62,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '1.0.12',
+    version: '1.0.13',
     install,
     EIconPicker,
     EIcon,
