@@ -22,6 +22,7 @@ const install = function (Vue, options = {}) {
         FontAwesome: options.FontAwesome || false,
         ElementUI: options.ElementUI || false,
         eIcon: options.eIcon || false,
+        eIconSymbol: options.eIconSymbol || false,
     };
 
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
