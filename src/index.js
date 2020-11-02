@@ -1,5 +1,5 @@
-import EIconPicker from './e-icon-picker';
-import EIcon from './e-icon';
+import EIconPicker from './eIconPicker';
+import EIcon from './eIcon';
 import './css/common.css';
 import './css/eiconfont.css';
 
@@ -63,7 +63,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '1.0.13',
+    version: '1.0.14',
     install,
     EIconPicker,
     EIcon,

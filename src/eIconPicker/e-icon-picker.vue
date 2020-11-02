@@ -37,9 +37,9 @@
 </template>
 
 <script>
-    import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
-    import {off, on} from "./utils";
-    import EIcon from "./e-icon";
+    import iconList, {eIconList, elementUI, fontAwesome} from '../iconList';
+    import {off, on} from "../utils";
+    import EIcon from "../eIcon/e-icon";
 
     export default {
         name: "eIconPicker",
@@ -191,6 +191,9 @@
                 if (this.readonly !== true && this.disabled !== true) {
                     this.visible = true;
                     this._updateW();
+                    setTimeout(() => {
+                        this.$refs.popover.updatePopper();
+                    }, 100);
                 }
             },
             // 点击控件外，判断是否隐藏弹出框

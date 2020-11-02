@@ -19,10 +19,12 @@
         mounted() {
             this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
             this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
+
+            let self = this;
             setTimeout(() => {//通过修改参数进行重新设置组件
-                this.options.addIconList.push('el-icon-message-solid');
-                this.options.removeIconList.push('removeIconList');
-                console.log("定时任务触发")
+                self.options.addIconList.push('el-icon-message-solid');
+                self.options.removeIconList.push('removeIconList');
+                console.log("定时任务触发");
             }, 5000);
         }
     }
