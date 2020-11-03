@@ -1,5 +1,6 @@
 const path = require('path');
-
+// 设置了extract：true，所以还需要在plugins中引入，否则会报错
+const SvgSpriteLoader = require('svg-sprite-loader/plugin');
 // 是否为生产环境
 const isProduction = process.env.NODE_ENV !== 'development';
 
@@ -30,6 +31,9 @@ function resolve(dir) {
 }
 
 module.exports = {
+    publicPath: '/',
+    outputDir: 'dist',
+    assetsDir: 'static',
     //vue 中文配置文档地址
     //https://cli.vuejs.org/zh/config/#css-loaderoptions
     // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
@@ -40,6 +44,12 @@ module.exports = {
             // 用cdn方式引入，则构建时要忽略相关资源
             if (isProduction && prodNeedCdn) config.externals = cdn.externals;
         }
+
+        config.plugins.push(
+            new SvgSpriteLoader({
+                plainSprite: true
+            })
+        );
     },
     chainWebpack(config) {
         // ============注入cdn start============
@@ -62,8 +72,15 @@ module.exports = {
             .use('svg-sprite-loader')
             .loader('svg-sprite-loader')
             .options({
-                symbolId: '[name]'
+                symbolId: '[name]',
+                // extract: true,
+                // publicPath:'/static/',
+                // spriteFilename: 'sprite-[hash:6].svg',
+                // outputPath: "/static/img/"
             })
-            .end()
+            .end() .use('svgo-loader').loader('svgo-loader')
+            .tap(options => ({...options, plugins: [{removeAttrs: {attrs: 'fill'}}]})).end();
+
+
     }
 };

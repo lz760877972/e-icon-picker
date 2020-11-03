@@ -22,6 +22,14 @@
     "url": "https://gitee.com/cnovel/e-icon-picker/issues"
   },
   "homepage": "http://doc.icon.cnovel.club",
+  "files": [
+    "dist/**",
+    "src/**",
+    "types/**",
+    "webpack.config.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
