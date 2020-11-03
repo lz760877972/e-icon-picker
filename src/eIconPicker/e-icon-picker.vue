@@ -11,6 +11,7 @@
                       :clearable="clearable"
                       :disabled="disabled"
                       :readonly="readonly"
+                      :size="size"
                       @input="_change"
                       @clear="_initIcon(false)"
                       slot="reference"
@@ -95,6 +96,12 @@
                 type: Number,
                 default() {
                     return -1
+                }
+            },
+            size:{
+                type: String,
+                default() {
+                    return 'medium'
                 }
             }
         },

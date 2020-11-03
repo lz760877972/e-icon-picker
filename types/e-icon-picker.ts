@@ -38,5 +38,8 @@ export declare class EIconPicker extends Vue {
     options: EIconPickerOptions;
 
     /** 宽度 */
-    width: number
+    width: number;
+
+    /** 输入框尺寸 */
+    size: string
 }
