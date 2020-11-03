@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
-
+export type ComponentSize = 'large' | 'medium' | 'small' | 'mini'
 export interface EIconPickerOptions {
     addIconList: string[],
     removeIconList: string[],
@@ -41,5 +41,11 @@ export declare class EIconPicker extends Vue {
     width: number;
 
     /** 输入框尺寸 */
-    size: string
+    size: ComponentSize;
+
+    /** 提示文字 */
+    placeholder: string;
+
+    /** 默认显示图标 */
+    defaultIcon: string
 }

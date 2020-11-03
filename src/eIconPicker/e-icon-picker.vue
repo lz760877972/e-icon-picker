@@ -4,7 +4,7 @@
         <el-popover :disabled="disabled" ref="popover" :placement="myPlacement" popper-class="el-icon-popper"
                     :width="popoverWidth" v-model="visible" trigger="manual">
             <el-input v-model="name"
-                      placeholder="请选择图标"
+                      :placeholder="placeholder"
                       ref="input"
                       v-popover:popover
                       :style="styles"
@@ -98,10 +98,22 @@
                     return -1
                 }
             },
-            size:{
+            size: {
                 type: String,
                 default() {
                     return 'medium'
+                }
+            },
+            placeholder: {
+                type: String,
+                default() {
+                    return '请选择图标'
+                }
+            },
+            defaultIcon: {
+                type: String,
+                default() {
+                    return 'eiconfont e-icon-bi'
                 }
             }
         },
@@ -123,7 +135,7 @@
                 });
             },
             _initIcon(type) {
-                this.prefixIcon = this.value && type && true === type ? this.value : 'eiconfont e-icon-bi';
+                this.prefixIcon = this.value && type && true === type ? this.value : this.defaultIcon;
                 this.name = type === true ? this.value : '';
                 this.icon = Object.assign({}, iconList);//复制一个全局对象，避免全局对象污染
                 if (this.options) {
@@ -251,7 +263,7 @@
             value: function (val) {
                 setTimeout(() => {
                     this.name = val;
-                    this.prefixIcon = this.name ? this.name : 'eiconfont e-icon-bi';
+                    this.prefixIcon = this.name ? this.name : this.defaultIcon;
                 }, 50);
             },
             visible: function (val) {
