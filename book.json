@@ -5,7 +5,7 @@
   "language": "zh-hans",
   "gitbook": "3.2.3",
   "root": ".",
-  "output.name": "./example/dist/doc",
+  "output.name": "e-icon-picker",
   "links": {
     "sidebar": {
       "首页": "http://doc.icon.cnovel.club/"

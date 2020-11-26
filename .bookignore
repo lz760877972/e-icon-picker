@@ -5,6 +5,7 @@ npm-debug.log
 package-lock.json
 example/
 dist/
+types/
 src/
 .gitignore
 .npmignore
