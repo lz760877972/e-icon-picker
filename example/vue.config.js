@@ -31,7 +31,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-    publicPath: '/',
+    publicPath: './',
     outputDir: 'dist',
     assetsDir: 'static',
     //vue 中文配置文档地址
@@ -52,6 +52,13 @@ module.exports = {
         );
     },
     chainWebpack(config) {
+        config.optimization.minimizer('terser').tap((args) => {
+            args[0].terserOptions.compress.drop_console = true;
+            args[0].terserOptions.compress.warnings = false;
+            args[0].terserOptions.compress.drop_debugger = true;
+            args[0].terserOptions.compress.pure_funcs = ['console.*'];
+            return args
+        });
         // ============注入cdn start============
         config.plugin('html').tap(args => {
             // 生产环境或本地需要cdn时，才注入cdn
@@ -80,7 +87,5 @@ module.exports = {
             })
             .end() .use('svgo-loader').loader('svgo-loader')
             .tap(options => ({...options, plugins: [{removeAttrs: {attrs: 'fill'}}]})).end();
-
-
     }
 };
