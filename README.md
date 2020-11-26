@@ -9,9 +9,9 @@
 
 ## Demo
 
-[在线测试](http://demo.icon.cnovel.club)
+[在线测试](https://e-icon-picker.cnovel.club/)
 
-[在线API](http://doc.icon.cnovel.club)
+[在线API](https://e-icon-picker.cnovel.club/doc/)
 
 ## 安装
 
@@ -41,7 +41,7 @@ Vue.use(iconPicker);
 ```
 
 详细文档
-- [使用文档](http://doc.icon.cnovel.club)
+- [使用文档](https://e-icon-picker.cnovel.club/doc/)
 
 ## 使用
 
