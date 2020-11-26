@@ -150,11 +150,14 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfo
 
 ```
 
+#### 属性配置
+具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
+
 #### 使用svg图标
 * 创建图标文件夹`src/icons/svg/`。
 * 在`vue.config.js`配置中加入以下代码。
 
-```json
+```js
 const path = require('path');
 
 function resolve(dir) {
@@ -221,7 +224,4 @@ Vue.use(eIconPicker, {
 });
 
 ```
-
-
-#### 属性配置
-具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
+如有疑问请参考：[example](https://gitee.com/cnovel/e-icon-picker/tree/master/example)
