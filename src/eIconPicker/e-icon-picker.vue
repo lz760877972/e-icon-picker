@@ -28,7 +28,7 @@
                           class="is-empty">
                 <ul class="fas-icon-list" ref="fasIconList" v-if="dataList&&dataList.length > 0">
                     <li v-for="(item, index) in dataList" :key="index" @click="_selectedIcon(item)">
-                        <e-icon :icon-name="item" class="e-icon"/>
+                        <e-icon :icon-name="item" :title="item" class="e-icon"/>
                     </li>
                 </ul>
                 <span v-else class="fas-no-data">暂无可选图标</span>
