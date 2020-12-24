@@ -1,4 +1,10 @@
 # 更新日志
+#### v1.0.16
+1. 感谢[gyy](https://gitee.com/guyangyang) PR [icon增加title，提高辨识度](https://gitee.com/cnovel/e-icon-picker/commit/19eeee1e6efcc0771f78ed124ff81888357acbdd)。
+2. 更新文档
+
+#### v1.0.15
+1. 细节优化。
 
 #### v1.0.11
 1. 新增针对svg图标的支持。
