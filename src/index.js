@@ -63,7 +63,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '1.0.16',
+    version: '1.0.17',
     install,
     EIconPicker,
     EIcon,
