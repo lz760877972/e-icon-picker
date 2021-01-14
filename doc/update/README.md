@@ -1,6 +1,8 @@
 # 更新日志
 #### v1.0.17
 1. 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)。
+2. 修改为国内cdn地址
+3. 更新文档
 
 #### v1.0.16
 1. 感谢[gyy](https://gitee.com/guyangyang) PR [icon增加title，提高辨识度](https://gitee.com/cnovel/e-icon-picker/commit/19eeee1e6efcc0771f78ed124ff81888357acbdd)。
