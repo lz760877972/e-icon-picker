@@ -48,7 +48,7 @@ export default {
 ```
 
 在全局样式中引入css
-```css
+```
 @import 'e-icon-picker/dist/index.css'; //基础样式
 @import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 @import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
@@ -56,7 +56,7 @@ export default {
 
 ### 使用
 
-```html
+```vue
 <e-icon-picker v-model="icon" :options="options"/>
 ```
 
@@ -200,20 +200,20 @@ module.exports = {
 
 `.env.development` 文件
 
-```
+```js
 VUE_APP_SVG = '@/icons/svg' 
 ```
 
 `.env.production` 文件
 
-```
+```js
 VUE_APP_SVG = '@/icons/svg' 
 ```
 
 * 使用`svg`图标
 在`main.js`中引入
 
-```
+```vue
 import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 import svgIcons from 'e-icon-picker/dist/getSvg';
@@ -225,3 +225,26 @@ Vue.use(eIconPicker, {
 
 ```
 如有疑问请参考：[example](https://gitee.com/cnovel/e-icon-picker/tree/master/example)
+
+#### 使用其他icon组件替换eIcon
+使用方法（svg-icon为admin-element-vue的icon组件）
+
+```vue
+<EIconPicker v-model="form.icon" :options="iconOptions">
+   <template v-slot:prepend>
+     <svg-icon
+      :name="prefixIcon"
+      class="disabled"
+    />
+  </template>
+
+   <template v-slot:icon="slotProps">
+      <svg-icon
+      :name="slotProps.icon"
+      class="disabled"
+    />
+  </template>
+
+</EIconPicker>
+```
+感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)

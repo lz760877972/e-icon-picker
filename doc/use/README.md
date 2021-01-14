@@ -18,17 +18,17 @@ npm install e-icon-picker -S
 ### cdn 引入
 ```
 <!-- 引入组件库 -->
-https://unpkg.com/e-icon-picker/dist/index.js
+https://unpkg.zhimg.com/e-icon-picker/dist/index.js
 <!-- 引入样式 -->
-https://unpkg.com/e-icon-picker/dist/index.css
+https://unpkg.zhimg.com/e-icon-picker/dist/index.css
 
 <!-- font-awesome图标样式 -->
-https://unpkg.com/font-awesome/css/font-awesome.min.css
+https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
 
 <!-- element-ui图标样式 -->
 https://unpkg.com/element-ui/lib/theme-chalk/icon.css
 
 <!-- 默认彩色图标样式 -->
-https://unpkg.com/e-icon-picker/dist/symbol.js
+https://unpkg.zhimg.com/e-icon-picker/dist/symbol.js
 
 ```
