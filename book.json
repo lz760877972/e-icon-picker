@@ -51,8 +51,8 @@
       ]
     },
     "donate": {
-      "wechat": "https://eiconpicker-1257254698.cos.ap-chengdu.myqcloud.com/pay/wxpay.jpg",
-      "alipay": "https://eiconpicker-1257254698.cos.ap-chengdu.myqcloud.com/pay/alipay.jpg",
+      "wechat": "https://qiniu.cnovel.club/pay/wxpay.jpg",
+      "alipay": "https://qiniu.cnovel.club/pay/alipay.jpg",
       "title": "",
       "button": "赏",
       "alipayText": "支付宝打赏",
