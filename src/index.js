@@ -11,7 +11,7 @@ import 'element-ui/lib/theme-chalk/select-dropdown.css'
 import ElInput from 'element-ui/lib/input';
 import ElPopover from 'element-ui/lib/popover';
 import ElScrollbar from 'element-ui/lib/scrollbar';
-
+import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
 
@@ -63,7 +63,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '1.0.17',
+    version: version,
     install,
     EIconPicker,
     EIcon,
