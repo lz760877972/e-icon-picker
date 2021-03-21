@@ -105,10 +105,7 @@ export default {
       default: ""
     },
     options: {
-      type: Object,
-      default() {
-        return {};
-      },
+      type: Object
     },
     width: {
       type: Number,
@@ -190,9 +187,11 @@ export default {
     }
 
     const initIcon = (type) => {
+      console.log("state", state);
       state.prefixIcon = props.modelValue && type && true === type ? props.modelValue : props.defaultIcon;
       state.name = type === true ? props.modelValue : "";
       state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
+      console.log(state.icon)
       if (props.options) {
         state.icon.list = []; //重新给图标集合复制为空
         if (props.options.addIconList !== undefined && props.options.addIconList && props.options.addIconList.length > 0) {
@@ -217,7 +216,7 @@ export default {
         }
       }
       state.iconList = state.icon.list;
-
+      console.log("state.iconList", state.iconList);
       if (props.placement && (props.placement === "bottom" || props.placement === "top")) {
         state.myPlacement = props.placement;
       }
@@ -297,6 +296,7 @@ export default {
     }
     //初始化
     initIcon(true);
+    console.log("initIcon");
     return {
       popoverShowFun,
       change,
