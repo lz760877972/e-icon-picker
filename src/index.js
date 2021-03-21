@@ -1,16 +1,17 @@
-import EIconPicker from './eIconPicker';
-import EIcon from './eIcon';
+import EIconPicker from './eIconPicker/index.js';
+import EIcon from './eIcon/index.js';
 import './css/common.css';
 import './css/eiconfont.css';
 
-import 'element-ui/lib/theme-chalk/input.css';
-import 'element-ui/lib/theme-chalk/popover.css';
-import 'element-ui/lib/theme-chalk/scrollbar.css';
-import 'element-ui/lib/theme-chalk/select-dropdown.css'
+import 'element-plus/lib/theme-chalk/el-input.css';
+import 'element-plus/lib/theme-chalk/el-popover.css';
+import 'element-plus/lib/theme-chalk/el-scrollbar.css';
+import 'element-plus/lib/theme-chalk/el-select-dropdown.css'
 
-import ElInput from 'element-ui/lib/input';
-import ElPopover from 'element-ui/lib/popover';
-import ElScrollbar from 'element-ui/lib/scrollbar';
+// import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
+import ElInput from 'element-plus/lib/el-input';
+import ElPopover from 'element-plus/lib/el-popover';
+import ElScrollbar from 'element-plus/lib/el-scrollbar';
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
@@ -62,9 +63,8 @@ if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue);
 }
 
-export default {
-    version: version,
-    install,
+export {
+    version,
     EIconPicker,
     EIcon,
     iconList,
@@ -73,5 +73,8 @@ export default {
     eIconList,
     analyzingIconForIconfont,
     eIconSymbol
+}
+export default {
+    install
 }
 

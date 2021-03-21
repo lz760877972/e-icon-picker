@@ -1,55 +1,55 @@
 <template>
-  <div class="ui-fas" @click="_popoverShowFun">
+  <div class="ui-fas" @click="popoverShowFun">
     <!-- 弹出框 -->
     <el-popover
-      :disabled="disabled"
-      ref="popover"
-      :placement="myPlacement"
-      popper-class="el-icon-popper"
-      :width="popoverWidth"
-      v-model="visible"
-      trigger="manual"
-    >
-      <el-input
-        v-model="name"
-        :placeholder="placeholder"
-        ref="input"
-        v-popover:popover
-        :style="styles"
-        :clearable="clearable"
         :disabled="disabled"
-        :readonly="readonly"
-        :size="size"
-        @input="_change"
-        @clear="_initIcon(false)"
-        slot="reference"
-      >
-        <template slot="prepend">
-          <slot name="prepend">
-            <e-icon :icon-name="prefixIcon" class="e-icon" />
-          </slot>
-        </template>
-      </el-input>
+        ref="popover"
+        :placement="state.myPlacement"
+        popper-class="el-icon-popper"
+        :width="state.popoverWidth"
+        v-model:visible="state.visible"
+        trigger="manual"
+    >
+      <template #reference>
+        <el-input
+            v-model="state.name"
+            :placeholder="placeholder"
+            ref="input"
+            :style="styles"
+            :clearable="clearable"
+            :disabled="disabled"
+            :readonly="readonly"
+            :size="size"
+            @input="change"
+            @clear="initIcon(false)"
+        >
+          <template #prepend slot="prepend">
+            <slot name="prepend">
+              <e-icon :icon-name="state.prefixIcon" class="e-icon"/>
+            </slot>
+          </template>
+        </el-input>
+      </template>
 
       <el-scrollbar
-        ref="e-scrollbar"
-        tag="div"
-        wrap-class="el-select-dropdown__wrap"
-        view-class="el-select-dropdown__list"
-        class="is-empty"
+          ref="eScrollbar"
+          tag="div"
+          wrap-class="el-select-dropdown__wrap"
+          view-class="el-select-dropdown__list"
+          class="is-empty"
       >
         <ul
-          class="fas-icon-list"
-          ref="fasIconList"
-          v-if="dataList && dataList.length > 0"
+            class="fas-icon-list"
+            ref="fasIconList"
+            v-if="state.dataList &&state.dataList.length > 0"
         >
           <li
-            v-for="(item, index) in dataList"
-            :key="index"
-            @click="_selectedIcon(item)"
+              v-for="(item, index) in state.dataList"
+              :key="index"
+              @click="selectedIcon(item)"
           >
             <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon" />
+              <e-icon :icon-name="item" :title="item" class="e-icon"/>
             </slot>
           </li>
         </ul>
@@ -60,37 +60,32 @@
 </template>
 
 <script>
-import iconList, { eIconList, elementUI, fontAwesome } from "../iconList";
-import { off, on } from "../utils";
-import EIcon from "../eIcon/e-icon";
+import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
+import {off, on} from "../utils";
+import eIcon from "../eIcon/e-icon.vue";
+import {computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
 
 export default {
   name: "eIconPicker",
   components: {
-    EIcon,
+    "eIcon": eIcon
   },
   props: {
     // 是否禁用文本框
     disabled: {
       type: Boolean,
       // false
-      default() {
-        return false;
-      },
+      default: false
     },
     readonly: {
       type: Boolean,
       // false
-      default() {
-        return false;
-      },
+      default: false
     },
     clearable: {
       type: Boolean,
       // true
-      default() {
-        return true;
-      },
+      default: false
     },
     // e-icon-picker 样式
     styles: {
@@ -103,44 +98,57 @@ export default {
     placement: {
       type: String,
       //  bottom
-      default() {
-        return "bottom";
-      },
+      default: 'bottom'
     },
-    value: {
+    modelValue: {
       type: String,
+      default: ""
+    },
+    options: {
+      type: Object,
       default() {
-        return "";
+        return {};
       },
     },
-    options: {},
     width: {
       type: Number,
-      default() {
-        return -1;
-      },
+      default: -1
     },
     size: {
       type: String,
-      default() {
-        return "medium";
-      },
+      default: "medium"
     },
     placeholder: {
       type: String,
-      default() {
-        return "请选择图标";
-      },
+      default: "请选择图标"
     },
     defaultIcon: {
       type: String,
-      default() {
-        return "eiconfont e-icon-bi";
-      },
+      default: "eiconfont e-icon-bi"
     },
   },
-  data() {
-    return {
+  setup(props, context) {
+    //绑定时检查宽度
+    onMounted(() => {
+      updateW();
+    })
+
+    onBeforeUnmount(() => {
+      off(document, "mouseup", popoverHideFun);
+    })
+    watch(() => props.modelValue, (val) => {
+      setTimeout(() => {
+        state.name = val;
+        state.prefixIcon = state.name ? state.name : props.defaultIcon;
+      }, 50);
+    })
+
+    watch(() => props.options, (val) => {
+      setTimeout(() => {
+        initIcon(true);
+      }, 50);
+    })
+    const state = reactive({
       iconList: [],
       visible: false, // popover v-model
       prefixIcon: "eiconfont e-icon-bi",
@@ -148,187 +156,160 @@ export default {
       icon: {},
       myPlacement: "bottom",
       popoverWidth: 200,
-    };
-  },
-  methods: {
-    _change(val) {
-      this.iconList = this.icon.list.filter(function (i) {
+      dataList: computed(() => {
+        //去重
+        let arr1 = []; // 新建一个数组来存放arr中的值
+        for (let i = 0, len = state.iconList.length; i < len; i++) {
+          if (arr1.indexOf(state.iconList[i]) === -1) {
+            arr1.push(state.iconList[i]);
+          }
+        }
+        return arr1;
+      })
+    })
+
+    watch(() => state.visible, (newValue) => {
+      console.log(newValue);
+      if (newValue === false) {
+        nextTick(() => {
+          off(document, "mouseup", popoverHideFun);
+        });
+      } else {
+        nextTick(() => {
+          on(document, "mouseup", popoverHideFun);
+        });
+      }
+    })
+    let input = ref(null);
+    let eScrollbar = ref(null);
+    let popover = ref(null);
+    const change = (val) => {
+      state.iconList = state.icon.list.filter(function (i) {
         return i.indexOf(val) !== -1;
       });
-    },
-    _initIcon(type) {
-      this.prefixIcon =
-        this.value && type && true === type ? this.value : this.defaultIcon;
-      this.name = type === true ? this.value : "";
-      this.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
-      if (this.options) {
-        this.icon.list = []; //重新给图标集合复制为空
-        if (
-          this.options.addIconList !== undefined &&
-          this.options.addIconList &&
-          this.options.addIconList.length > 0
-        ) {
-          this.icon.addIcon(this.options.addIconList);
+    }
+
+    const initIcon = (type) => {
+      state.prefixIcon = props.modelValue && type && true === type ? props.modelValue : props.defaultIcon;
+      state.name = type === true ? props.modelValue : "";
+      state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
+      if (props.options) {
+        state.icon.list = []; //重新给图标集合复制为空
+        if (props.options.addIconList !== undefined && props.options.addIconList && props.options.addIconList.length > 0) {
+          state.icon.addIcon(this.options.addIconList);
         }
-        if (
-          this.options.removeIconList !== undefined &&
-          this.options.removeIconList &&
-          this.options.removeIconList.length > 0
-        ) {
-          this.icon.removeIcon(this.options.removeIconList);
+        if (props.options.removeIconList !== undefined && props.options.removeIconList && props.options.removeIconList.length > 0) {
+          state.icon.removeIcon(this.options.removeIconList);
         }
-        if (this.options.FontAwesome === true) {
-          this.icon.addIcon(fontAwesome);
+        if (props.options.FontAwesome === true) {
+          state.icon.addIcon(fontAwesome);
         }
-        if (this.options.ElementUI === true) {
-          this.icon.addIcon(elementUI);
+        if (props.options.ElementUI === true) {
+          state.icon.addIcon(elementUI);
         }
-        if (this.options.eIcon === true) {
-          if (this.options.eIconSymbol) {
-            let list = eIconList.map((item) => {
-              return item.replace("eiconfont ", "#");
-            });
-            this.icon.addIcon(list);
+        if (props.options.eIcon === true) {
+          if (props.options.eIconSymbol) {
+            let list = eIconList.map((item) => item.replace("eiconfont ", "#"));
+            state.icon.addIcon(list);
           } else {
-            this.icon.addIcon(eIconList);
+            state.icon.addIcon(eIconList);
           }
         }
       }
-      this.iconList = this.icon.list;
+      state.iconList = state.icon.list;
 
-      if (
-        this.placement &&
-        (this.placement === "bottom" || this.placement === "top")
-      ) {
-        this.myPlacement = this.placement;
+      if (props.placement && (props.placement === "bottom" || props.placement === "top")) {
+        state.myPlacement = props.placement;
       }
 
       if (type === false) {
-        this._emitFun("");
+        emitFun("");
       }
-    },
+    }
 
-    addIcon(item = []) {
-      //组件内增加图标
+    const addIcon = (item = []) => {
       //组件内添加图标
       if (item !== undefined && item && item.length > 0) {
-        this.icon.addIcon(item);
-        this.iconList = this.icon.list;
+        state.icon.addIcon(item);
+        state.iconList = state.icon.list;
       }
-    },
-    removeIcon(item = []) {
-      //组件内删除图标
+    }
+    const removeIcon = (item = []) => {
       //组件内删除图标
       if (item !== undefined && item && item.length > 0) {
-        this.icon.removeIcon(item);
-        this.iconList = this.icon.list;
+        state.icon.removeIcon(item);
+        state.iconList = state.icon.list;
       }
-    },
-    _selectedIcon(item) {
-      this.visible = false;
-      this.name = item;
-      this.prefixIcon = this.name;
-      this._emitFun(this.prefixIcon);
-    },
+    }
+    const selectedIcon = (item) => {
+      console.log("selectedIcon");
+      state.visible = false;
+      state.name = item;
+      state.prefixIcon = state.name;
+      emitFun(state.prefixIcon);
+    }
     // 更新宽度
-    _updateW() {
-      this.$nextTick(() => {
-        if (this.width === -1) {
-          this.popoverWidth =
-            this.$refs.input.$el.getBoundingClientRect().width - 26;
+    const updateW = () => {
+      console.log(input.value.$el);
+      nextTick(() => {
+        if (props.width === -1) {
+          state.popoverWidth = input.value.$el.getBoundingClientRect().width - 26;
         } else {
-          this.popoverWidth = this.width;
+          state.popoverWidth = props.width;
         }
-        this.$refs["e-scrollbar"].wrap.scrollTop =
-          this.$refs.input.$el.getBoundingClientRect().height - 35;
+        eScrollbar.value.wrap.scrollTop = input.value.$el.getBoundingClientRect().height - 35;
       });
-    },
+    }
     // 显示弹出框的时候容错，查看是否和el宽度一致
-    _popoverShowFun() {
-      if (this.readonly !== true && this.disabled !== true) {
-        this.visible = true;
-        this._updateW();
+    const popoverShowFun = () => {
+      console.log("popoverShowFun");
+      if (props.readonly !== true && props.disabled !== true) {
+        state.visible = true;
+        updateW();
         setTimeout(() => {
-          this.$refs.popover.updatePopper();
+          popover.value.update();
         }, 100);
       }
-    },
+    }
     // 点击控件外，判断是否隐藏弹出框
-    _popoverHideFun(e) {
+    const popoverHideFun = (e) => {
       let path = e.path || (e.composedPath && e.composedPath());
-      let isInter = path.some((list) => {
-        return (
-          list.className &&
-          list.className.toString().indexOf("fas-icon-list") !== -1
-        );
-      });
-
+      let isInter = path.some((list) => list.className && list.className.toString().indexOf("fas-icon-list") !== -1);
       if (!isInter) {
-        this.visible = false;
+        console.log("popoverHideFun");
+        setTimeout(() => {
+          state.visible = false;
+        }, 10)
       }
-    },
+    }
     // 判断类型，抛出当前选中id
-    _emitFun(val) {
-      this.$emit("input", val);
-      this._updatePopoverLocationFun();
-    },
+    const emitFun = (val) => {
+      console.log(val);
+      context.emit("update:modelValue", val);
+      updatePopoverLocationFun();
+    }
     // 更新popover位置
-    _updatePopoverLocationFun() {
+    const updatePopoverLocationFun = () => {
       // dom高度还没有更新，做一个延迟
       setTimeout(() => {
-        this.$refs.popover.updatePopper();
+        popover.value.update();
       }, 50);
-    },
-  },
-  computed: {
-    dataList: function () {
-      //去重
-      let arr1 = []; // 新建一个数组来存放arr中的值
-      for (let i = 0, len = this.iconList.length; i < len; i++) {
-        if (arr1.indexOf(this.iconList[i]) === -1) {
-          arr1.push(this.iconList[i]);
-        }
-      }
-      return arr1;
-    },
-  },
-  mounted() {
-    this._updateW();
-  },
-  beforeDestroy() {
-    off(document, "mouseup", this._popoverHideFun);
-  },
-  created() {
-    this._initIcon(true);
-  },
-  watch: {
-    value: function (val) {
-      setTimeout(() => {
-        this.name = val;
-        this.prefixIcon = this.name ? this.name : this.defaultIcon;
-      }, 50);
-    },
-    visible: function (val) {
-      if (val === false) {
-        this.$nextTick(() => {
-          off(document, "mouseup", this._popoverHideFun);
-        });
-      } else {
-        this.$nextTick(() => {
-          on(document, "mouseup", this._popoverHideFun);
-        });
-      }
-    },
-    options: {
-      handler(newV, oldV) {
-        let self = this;
-        setTimeout(() => {
-          self._initIcon(true);
-        }, 50);
-      },
-      deep: true,
-    },
-  },
+    }
+    //初始化
+    initIcon(true);
+    return {
+      popoverShowFun,
+      change,
+      initIcon,
+      selectedIcon,
+      addIcon,
+      removeIcon,
+      state,
+      input,
+      eScrollbar,
+      popover
+    }
+  }
 };
 </script>
 
