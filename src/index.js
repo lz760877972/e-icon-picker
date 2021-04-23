@@ -1,10 +1,10 @@
 import EIconPicker from './eIconPicker/index.js';
 import EIcon from './eIcon/index.js';
 
-// import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
-import ElInput from 'element-plus/lib/el-input';
-import ElPopover from 'element-plus/lib/el-popover';
-import ElScrollbar from 'element-plus/lib/el-scrollbar';
+import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
+// import ElInput from 'element-plus/lib/el-input';
+// import ElPopover from 'element-plus/lib/el-popover';
+// import ElScrollbar from 'element-plus/lib/el-scrollbar';
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";

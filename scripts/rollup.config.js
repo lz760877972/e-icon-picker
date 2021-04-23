@@ -80,13 +80,13 @@ const esBundleConfig = {
         }),
         copy({
             targets: [
-                {src: ['src/utils/getSvg.js', 'src/js/eiconfont.js'], dest: 'lib'}
+                {src: ['src/utils/getSvg.js', 'src/js/symbol.js'], dest: 'lib'}
             ]
         })
     ],
     output: {
         file: createFileName('esm-bundler'),
-        format: 'esm'
+        format: 'es'
     }
 }
 
