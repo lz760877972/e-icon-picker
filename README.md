@@ -1,4 +1,6 @@
 # e-icon-picker 图标选择组件
+> vue 3测试版本已经发布，请运行 `npm install install e-icon-picker@2.0.0-alpha.4` 安装，使用方式和1.xx一致
+
 简洁大方，专为`element-ui`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
