@@ -63,9 +63,9 @@
 import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
 import {off, on} from "../utils";
 import eIcon from "../eIcon/e-icon.vue";
-import {computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
+import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
 
-export default {
+export default defineComponent({
   name: "eIconPicker",
   components: {
     "eIcon": eIcon
@@ -310,55 +310,5 @@ export default {
       popover
     }
   }
-};
+});
 </script>
-
-<style lang="css" scoped>
-.fas-icon-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.ui-fas .el-input__inner {
-  cursor: pointer;
-}
-
-.fas-icon-list li {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-}
-
-.fas-icon-list li i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.fas-icon-list li svg {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.el-icon-popper {
-  max-height: 400px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.el-icon-popper[x-placement^="bottom"] {
-  margin-top: 5px;
-}
-
-.fas-no-data {
-  display: block;
-}
-
-.e-icon {
-  font-size: 16px;
-}
-</style>

@@ -1,12 +1,5 @@
 import EIconPicker from './eIconPicker/index.js';
 import EIcon from './eIcon/index.js';
-import './css/common.css';
-import './css/eiconfont.css';
-
-import 'element-plus/lib/theme-chalk/el-input.css';
-import 'element-plus/lib/theme-chalk/el-popover.css';
-import 'element-plus/lib/theme-chalk/el-scrollbar.css';
-import 'element-plus/lib/theme-chalk/el-select-dropdown.css'
 
 // import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
 import ElInput from 'element-plus/lib/el-input';

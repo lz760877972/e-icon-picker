@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import {reactive} from 'vue'
+import {reactive, defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
   name: "e-icon",
   props: {
     iconName: {
@@ -46,15 +46,6 @@ export default {
       }
     },
   }
-}
+})
 </script>
 
-<style scoped>
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
-</style>
