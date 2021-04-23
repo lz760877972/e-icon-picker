@@ -1,4 +1,10 @@
 # 更新日志
+#### v2.0.0-alpha.4
+1. vue3版本测试
+
+#### v1.0.18
+1. 更新依赖
+
 #### v1.0.17
 1. 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)。
 2. 修改为国内cdn地址
