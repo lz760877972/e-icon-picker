@@ -1,7 +1,7 @@
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const devMode = 'production';//development  production
 
 module.exports = {
@@ -28,6 +28,18 @@ module.exports = {
                     },
                     "css-loader",
                     {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "autoprefixer"
+                                    ],
+                                ],
+                            }
+                        },
+                    },
+                    {
                         loader: "sass-loader",
                         options: {
                             // Prefer `dart-sass`
@@ -52,7 +64,25 @@ module.exports = {
         ]
     },
     optimization: {
-        runtimeChunk: false
+        runtimeChunk: false,
+        minimize: true,
+        minimizer: [
+            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+            new CssMinimizerPlugin({
+                parallel: true,
+                minify: [
+                    CssMinimizerPlugin.cssnanoMinify
+                ],
+                minimizerOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: {removeAll: true},
+                        },
+                    ],
+                },
+            }),
+        ],
     },
 
     plugins: [
@@ -60,19 +90,6 @@ module.exports = {
         //参数是一个数组，数组中是需要删除的目录名
         new MiniCssExtractPlugin({
             filename: '[name].css'
-        }),
-        new OptimizeCSSAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {
-                    discardComments: {
-                        removeAll: true,
-                    },
-                    normalizeUnicode: false
-                }]
-            },
-            canPrint: true
         })
     ]
 };

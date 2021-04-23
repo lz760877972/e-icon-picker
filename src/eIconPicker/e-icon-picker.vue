@@ -166,7 +166,6 @@ export default defineComponent({
     })
 
     watch(() => state.visible, (newValue) => {
-      console.log(newValue);
       if (newValue === false) {
         nextTick(() => {
           off(document, "mouseup", popoverHideFun);
@@ -187,11 +186,9 @@ export default defineComponent({
     }
 
     const initIcon = (type) => {
-      console.log("state", state);
       state.prefixIcon = props.modelValue && type && true === type ? props.modelValue : props.defaultIcon;
       state.name = type === true ? props.modelValue : "";
       state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
-      console.log(state.icon)
       if (props.options) {
         state.icon.list = []; //重新给图标集合复制为空
         if (props.options.addIconList !== undefined && props.options.addIconList && props.options.addIconList.length > 0) {
@@ -216,7 +213,6 @@ export default defineComponent({
         }
       }
       state.iconList = state.icon.list;
-      console.log("state.iconList", state.iconList);
       if (props.placement && (props.placement === "bottom" || props.placement === "top")) {
         state.myPlacement = props.placement;
       }
@@ -241,7 +237,6 @@ export default defineComponent({
       }
     }
     const selectedIcon = (item) => {
-      console.log("selectedIcon");
       state.visible = false;
       state.name = item;
       state.prefixIcon = state.name;
@@ -249,7 +244,6 @@ export default defineComponent({
     }
     // 更新宽度
     const updateW = () => {
-      console.log(input.value.$el);
       nextTick(() => {
         if (props.width === -1) {
           state.popoverWidth = input.value.$el.getBoundingClientRect().width - 26;
@@ -261,7 +255,6 @@ export default defineComponent({
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = () => {
-      console.log("popoverShowFun");
       if (props.readonly !== true && props.disabled !== true) {
         state.visible = true;
         updateW();
@@ -275,7 +268,6 @@ export default defineComponent({
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => list.className && list.className.toString().indexOf("fas-icon-list") !== -1);
       if (!isInter) {
-        console.log("popoverHideFun");
         setTimeout(() => {
           state.visible = false;
         }, 10)
@@ -283,7 +275,6 @@ export default defineComponent({
     }
     // 判断类型，抛出当前选中id
     const emitFun = (val) => {
-      console.log(val);
       context.emit("update:modelValue", val);
       updatePopoverLocationFun();
     }
@@ -296,7 +287,6 @@ export default defineComponent({
     }
     //初始化
     initIcon(true);
-    console.log("initIcon");
     return {
       popoverShowFun,
       change,
