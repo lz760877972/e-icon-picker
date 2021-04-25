@@ -1,4 +1,4 @@
-import {TypeUtil} from "./utils";
+import {TypeUtil} from "../utils";
 import eIconList from "./eIconList";
 import elementUI from "./elementUI";
 import fontAwesome from "./fontAwesome";

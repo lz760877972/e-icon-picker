@@ -1,7 +1,7 @@
-@import 'eIcon/index.scss';
-@import 'eIconPicker/index.scss';
-@import 'css/common.css';
-@import 'css/eiconfont.css';
+@import '../eIcon/index';
+@import '../eIconPicker/index';
+@import 'common.css';
+@import 'eiconfont.css';
 @import '~element-plus/lib/theme-chalk/el-input.css';
 @import '~element-plus/lib/theme-chalk/el-popover.css';
 @import '~element-plus/lib/theme-chalk/el-scrollbar.css';

@@ -6,7 +6,7 @@ import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
 import {version} from "../package.json";
-import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
+import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
 
 const install = function (Vue, options = {}) {

@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
+import iconList, {eIconList, elementUI, fontAwesome} from "../js/iconList";
 import {off, on} from "../utils";
 import eIcon from "../eIcon/e-icon.vue";
 import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
