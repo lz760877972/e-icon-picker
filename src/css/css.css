@@ -1,0 +1,50 @@
+
+.icon[data-v-5714aceb] {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.fas-icon-list[data-v-9aa9c464] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+.ui-fas .el-input__inner[data-v-9aa9c464] {
+  cursor: pointer;
+}
+.fas-icon-list li[data-v-9aa9c464] {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+.fas-icon-list li i[data-v-9aa9c464] {
+  font-size: 20px;
+  cursor: pointer;
+}
+.fas-icon-list li svg[data-v-9aa9c464] {
+  font-size: 20px;
+  cursor: pointer;
+}
+.el-icon-popper[data-v-9aa9c464] {
+  max-height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.el-icon-popper[x-placement^="bottom"][data-v-9aa9c464] {
+  margin-top: 5px;
+}
+.fas-no-data[data-v-9aa9c464] {
+  display: block;
+}
+.e-icon[data-v-9aa9c464] {
+  font-size: 16px;
+}
+

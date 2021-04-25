@@ -6,7 +6,9 @@ import {terser} from 'rollup-plugin-terser'
 import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
 import copy from 'rollup-plugin-copy'
+import css from 'rollup-plugin-css-only' // 提取css
 import pkg from '../package.json'
+import {writeFileSync} from "fs";
 
 const extensions = ['.js'];
 
@@ -38,6 +40,9 @@ const createBaseConfig = () => {
             resolve({
                 extensions: ['.vue', '.js']
             }),
+            css({ output(style) {
+                    writeFileSync('./src/css/css.css', style)
+                } }),
             commonjs(),
             json()
         ],
