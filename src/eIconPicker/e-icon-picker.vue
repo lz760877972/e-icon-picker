@@ -2,12 +2,13 @@
   <div class="ui-fas" @click="popoverShowFun">
     <!-- 弹出框 -->
     <el-popover
-        :disabled="disabled"
         ref="popover"
         :placement="state.myPlacement"
+        :disabled="disabled"
         popper-class="el-icon-popper"
         :width="state.popoverWidth"
         v-model:visible="state.visible"
+        show-arrow
         trigger="manual"
     >
       <template #reference>
@@ -245,8 +246,10 @@ export default defineComponent({
     // 更新宽度
     const updateW = () => {
       nextTick(() => {
+        // let rect = state.popoverWidth = input.value.$el.getBoundingClientRect();
         if (props.width === -1) {
-          state.popoverWidth = input.value.$el.getBoundingClientRect().width - 26;
+          // debugger;
+          state.popoverWidth = input.value.$el.getBoundingClientRect().width - 36;
         } else {
           state.popoverWidth = props.width;
         }
