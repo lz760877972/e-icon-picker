@@ -7,7 +7,7 @@
 
 在main.js中加入：
 
-```vue
+```js
 import iconPicker from 'e-icon-picker';
 import "e-icon-picker/dist/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/dist/index.css'; // 基本样式，包含基本图标
@@ -21,7 +21,7 @@ Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbo
 
 引入`e-icon-picker`组件
 
-```vue
+```js
 import {EIconPicker} from 'e-icon-picker';
 ```
 
@@ -48,7 +48,7 @@ export default {
 ```
 
 在全局样式中引入css
-```
+```css
 @import 'e-icon-picker/dist/index.css'; //基础样式
 @import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 @import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
@@ -61,7 +61,7 @@ export default {
 ```
 
 ### 显示图标
-```html
+```vue
 <e-icon :icon-name="icon"/>
 ```
 
@@ -74,7 +74,7 @@ export default {
 
 在main.js中全局注册是可以加入以下参数：
 
-```vue
+```js
 Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
@@ -83,13 +83,13 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymb
 #### 全局添加图标或者删除图标
 * 通过全局配置添加或者删除
 
-```vue
+```js
 Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true, addIconList: [], removeIconList: []});
 ```
 
 * 通过提供的函数进行配置
 
-```vue
+```js
 import eIconPicker, {iconList} from 'e-icon-picker';
 Vue.use(eIconPicker);
 
@@ -102,7 +102,7 @@ iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 #### 局部添加图标或者删除图标
 使用时添加一个ref属性：
 
-```html
+```vue
 <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
 ```
 
@@ -213,7 +213,7 @@ VUE_APP_SVG = '@/icons/svg'
 * 使用`svg`图标
 在`main.js`中引入
 
-```vue
+```js
 import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 import svgIcons from 'e-icon-picker/dist/getSvg';
