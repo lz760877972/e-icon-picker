@@ -24,7 +24,7 @@ npm install e-icon-picker@next
 
 ## 快速使用
 
-```
+```js
 import {createApp} from 'vue';
 import App from './App.vue';
 import iconPicker from 'e-icon-picker';
