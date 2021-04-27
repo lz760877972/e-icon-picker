@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.0-alpha.6",
+  "version": "2.0.0-beta.3",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -48,13 +48,13 @@
     "clean:lib": "rimraf lib && rimraf scripts/dist && yarn clean:font-css"
   },
   "dependencies": {
-    "element-plus": "^1.0.2-beta.40",
+    "element-plus": "^1.0.2-beta.41",
     "font-awesome": "^4.7.0",
     "svg-sprite-loader": "^6.0.5",
     "vue": "^3.0.11"
   },
   "peerDependencies": {
-    "element-plus": "^1.0.2-beta.40",
+    "element-plus": "^1.0.2-beta.41",
     "font-awesome": "^4.7.0",
     "svg-sprite-loader": "^6.0.5",
     "vue": "^3.0.11"
