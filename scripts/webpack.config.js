@@ -2,8 +2,9 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const devMode = 'production';//development  production
 const config = require('./config');
 
@@ -11,14 +12,14 @@ module.exports = {
     devtool: false,
     mode: devMode,
     entry: {
-        'index':  path.resolve(__dirname, '../src/index.js'),
+        'index': path.resolve(__dirname, '../src/index.js'),
     },
     externals: {
         vue: config.vue
     },
     output: {
-        path: path.resolve(__dirname, '../lib/'),
-        publicPath: '../lib/',
+        path: path.resolve(__dirname, './lib/'),
+        publicPath: './lib/',
         filename: '[name].js',
         library: 'eIconPicker',
         libraryTarget: 'umd',
@@ -88,21 +89,18 @@ module.exports = {
         runtimeChunk: false,
         minimize: true,
         minimizer: [
-            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-            new CssMinimizerPlugin({
-                parallel: true,
-                minify: [
-                    CssMinimizerPlugin.cssnanoMinify
-                ],
-                minimizerOptions: {
-                    preset: [
-                        'default',
-                        {
-                            discardComments: {removeAll: true},
-                        },
-                    ],
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    warnings: false,
+                    //生产环境自动删除console
+                    compress: {
+                        drop_debugger: true,
+                        drop_console: true,
+                    }
                 },
-            }),
+                sourceMap: false,
+                parallel: true
+            })
         ],
     },
 
@@ -113,6 +111,18 @@ module.exports = {
         //参数是一个数组，数组中是需要删除的目录名
         new MiniCssExtractPlugin({
             filename: '[name].css'
+        }),
+        new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessorPluginOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    normalizeUnicode: false
+                }]
+            },
+            canPrint: true
         }),
         new CopyPlugin({
             patterns: [
