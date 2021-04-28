@@ -3,9 +3,9 @@ module.exports = {
     collapsable: false,
     children: [
         {
-            title: "UI组件",
+            title: "在线示例",
             collapsable: false,
-            path: "/components/ui/test",
+            path: "/example/",
             children: [
             ]
         },

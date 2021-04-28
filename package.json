@@ -50,6 +50,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "ant-design-vue": "^1.7.4",
     "font-awesome": "^4.7.0",
     "svg-sprite-loader": "^5.0.0"
   },
