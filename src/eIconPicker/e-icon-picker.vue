@@ -8,6 +8,7 @@
       popper-class="el-icon-popper"
       :width="popoverWidth"
       v-model="visible"
+      show-arrow
       trigger="manual"
     >
       <el-input
@@ -235,7 +236,7 @@ export default {
       this.$nextTick(() => {
         if (this.width === -1) {
           this.popoverWidth =
-            this.$refs.input.$el.getBoundingClientRect().width - 26;
+            this.$refs.input.$el.getBoundingClientRect().width - 36;
         } else {
           this.popoverWidth = this.width;
         }

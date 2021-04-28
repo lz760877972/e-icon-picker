@@ -2,8 +2,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyPlugin =require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const devMode = 'production';//development  production
 const config = require('./config');
 
@@ -11,14 +11,14 @@ module.exports = {
     devtool: false,
     mode: devMode,
     entry: {
-        'index': './src/index.js'
+        'index':  path.resolve(__dirname, '../src/index.js'),
     },
     externals: {
         vue: config.vue
     },
     output: {
-        path: path.resolve(__dirname, './dist/'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, '../lib/'),
+        publicPath: '../lib/',
         filename: '[name].js',
         library: 'eIconPicker',
         libraryTarget: 'umd',
@@ -39,7 +39,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-               /* exclude: /(node_modules)/,*/
+                /* exclude: /(node_modules)/,*/
                 use: {
                     loader: 'babel-loader'
                 }
@@ -56,8 +56,17 @@ module.exports = {
                     },
                     'css-loader',
                     {
-                        loader: 'postcss-loader',
-                    }
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "autoprefixer"
+                                    ],
+                                ],
+                            }
+                        },
+                    },
                 ],
             },
             {
@@ -76,7 +85,25 @@ module.exports = {
         ]
     },
     optimization: {
-        runtimeChunk: false
+        runtimeChunk: false,
+        minimize: true,
+        minimizer: [
+            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+            new CssMinimizerPlugin({
+                parallel: true,
+                minify: [
+                    CssMinimizerPlugin.cssnanoMinify
+                ],
+                minimizerOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: {removeAll: true},
+                        },
+                    ],
+                },
+            }),
+        ],
     },
 
     plugins: [
@@ -87,23 +114,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
-        new OptimizeCSSAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {
-                    discardComments: {
-                        removeAll: true,
-                    },
-                    normalizeUnicode: false
-                }]
-            },
-            canPrint: true
-        }),
         new CopyPlugin({
             patterns: [
-                { from: './src/utils/getSvg.js', to: 'getSvg.js' },
-                { from: './src/js/eiconfont.js', to: 'symbol.js' },
+                {from: 'src/utils/getSvg.js', to: 'getSvg.js'},
+                {from: 'src/js/eiconfont.js', to: 'symbol.js'},
             ],
         }),
     ]
