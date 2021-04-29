@@ -8,7 +8,7 @@ module.exports = {
     // 注入到当前页面的 HTML <head> 中的标签
     head: [
         ['link', {rel: 'icon', href: '/img/favicon.ico'}],  //浏览器的标签栏的网页图标
-        ['link', {rel: 'stylesheet', href: 'https://unpkg.zhimg.com/e-icon-picker@1.0.19/dist/index.css'}],
+        ['link', {rel: 'stylesheet', href: 'https://unpkg.zhimg.com/e-icon-picker@1.1.0-alpha.0/lib/index.css'}],
         ['link', {rel: 'stylesheet', href: 'https://unpkg.com/element-ui/lib/theme-chalk/icon.css'}],
         ['link', {rel: 'stylesheet', href: 'https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css'}],
         ['link', {rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css'}],
@@ -16,7 +16,7 @@ module.exports = {
         ['link', {rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/v4-shims.min.css'}],
         ['link', {rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css'}],
         ['link', {rel: 'stylesheet', href: '/css/iconfont.css'}],
-        ['script', {type: 'text/javascript', src: 'https://unpkg.zhimg.com/e-icon-picker@1.0.19/dist/symbol.js'}],
+        ['script', {type: 'text/javascript', src: 'https://unpkg.zhimg.com/e-icon-picker@1.1.0-alpha.0/lib/symbol.js'}],
     ],
     markdown: {
         lineNumbers: true
