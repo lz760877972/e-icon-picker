@@ -6,8 +6,15 @@
 // import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 // import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-export default ({Vue}) => {
+export default ({
+                    Vue,
+                    options,
+                    router,
+                    siteData,
+                    isServer
+                }) => {
     import('../../lib/index.js').then(function (m) {
-        Vue.use(m.default,{FontAwesome: false, ElementUI: false, eIcon: true, eIconSymbol: false})
+        Vue.use(m.default, {FontAwesome: false, ElementUI: false, eIcon: true, eIconSymbol: false})
     });
+
 }
