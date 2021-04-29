@@ -5,31 +5,30 @@ module.exports = {
         {
             title: "介绍",
             collapsable: false,
-            path: "/guide/",
+            path: "/v1/",
             children: [
             ]
         },
         {
             title: "入门",
             collapsable: false,
-            path: "/guide/use/",
+            path: "/v1/use/",
             children: [
-                {title: "安装", path: "/guide/use/"},
-                {title: "快速上手", path: "/guide/use/quickstart"},
-                {title: "参数配置", path: "/guide/use/configuration"},
+                {title: "安装", path: "/v1/use/"},
+                {title: "快速上手", path: "/v1/use/quickstart"},
+                {title: "参数配置", path: "/v1/use/configuration"},
             ]
         },
         {
             title: "更新日志",
             collapsable: false,
-            path: "/guide/update/"
+            path: "/v1/update/"
         },
         {
             title: "二次开发",
             collapsable: false,
-            path: "/guide/dev/"
+            path: "/v1/dev/"
         },
-
     ],
 }
 

@@ -1,5 +1,5 @@
 # e-icon-picker 图标选择组件
-简洁大方，专为`element-plus`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
+简洁大方，专为`element-ui`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
 
@@ -7,36 +7,24 @@
 
 喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)
 
-## 安装
-
->~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
->~~安装方式请参考element-ui官网的相关文档。~~[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。
->
->已经脱离element-ui，不需要再单独安装element-ui了。
-
-**npm 安装**
-
-推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。
-
-```bash
-npm install e-icon-picker@next
-```
-
 ## 快速使用
 
 ```
-import {createApp} from 'vue';
-import App from './App.vue';
 import iconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-import 'element-plus/lib/theme-chalk/icon.css'; //element-ui 图标库
+import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-let app = createApp(App);
-app.use(iconPicker);
-
-app.mount('#app');
+//全局删除增加图标
+Vue.use(eIconPicker, {
+    FontAwesome: true,
+    ElementUI: true,
+    eIcon: true,//自带的图标，来自阿里妈妈
+    eIconSymbol: true,//是否开启彩色图标
+    addIconList: [],
+    removeIconList: []
+});
 ```
 
 详细文档

@@ -3,7 +3,7 @@ home: true
 heroImage: /img/favicon.ico
 actionText: 快速开始 →
 heroText: e-icon-picker
-actionLink: /guide/
+actionLink: /v1/
 features:
 - title: 简洁至上
   details: 使用简单，界面美观。

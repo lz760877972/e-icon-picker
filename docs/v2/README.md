@@ -1,5 +1,5 @@
 # e-icon-picker 图标选择组件
-简洁大方，专为`element-plus`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
+简洁大方，专为`element-plus`（已经脱离element-plus独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
 
@@ -16,7 +16,7 @@ import iconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-import 'element-plus/lib/theme-chalk/icon.css'; //element-ui 图标库
+import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
 
 let app = createApp(App);
 app.use(iconPicker);

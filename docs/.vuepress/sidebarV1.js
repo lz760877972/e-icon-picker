@@ -1,4 +1,4 @@
 module.exports = [
-    require('../guide/sidebar'),
+    require('../v1/sidebar'),
     require('../example/sidebar'),
 ]

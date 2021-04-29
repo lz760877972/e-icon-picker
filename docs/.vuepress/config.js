@@ -21,12 +21,39 @@ module.exports = {
     markdown: {
         lineNumbers: true
     },
+    locales: {
+        '/': {
+            lang: 'en-US',
+            title: 'Demo Container',
+            description: '用于编写 vue 组件示例的 vuepress 插件'
+        },
+        '/v2/': {
+            lang: 'zh-CN',
+            title: 'Demo Container',
+            description: '用于编写 vue 组件示例的 vuepress 插件'
+        }
+    },
     serviceWorker: true,
     themeConfig: {
         logo: '/img/favicon.ico',
         lastUpdated: 'lastUpdate', // string | boolean
         nav: require("./nav.js"),
-        sidebar: require("./sidebar.js"),
+        locales: {
+            '/': {
+                label: 'v1',
+                selectText: '版本',
+                sidebar: {
+                    '/': require("./sidebarV1.js"),
+                }
+            },
+            '/v2/': {
+                label: 'v2',
+                selectText: '版本',
+                sidebar: {
+                    '/v2/': require("./sidebarV2.js"),
+                }
+            }
+        }
     },
     configureWebpack: {
         resolve: {

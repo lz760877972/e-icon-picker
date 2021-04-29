@@ -1,20 +1,29 @@
 # 快速上手
 
 ### 全局注册
-在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`ElementUI`、`eIcon`、`eIconSymbol`、`addIconList`和`removeIconList`，`FontAwesome`、`ElementUI`和`eIcon`可选值有`true`和`false`，表示是否使用该组件图标。
+在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`element-plus`、`eIcon`、`eIconSymbol`、`addIconList`和`removeIconList`，`FontAwesome`、`ElementUI`和`eIcon`可选值有`true`和`false`，表示是否使用该组件图标。
 `eIconSymbol`可选值有`true`和`false`，表示`eIcon`图标是否为彩色图标。
 `addIconList`是自定义新增图标名称的数组，`removeIconList`则是自定义删除图标名称的数组。
 
 在main.js中加入：
 
 ```js
+import {createApp} from 'vue'
+import App from './App.vue'
 import iconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
+import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
 
-Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});//使用e-icon-picker
+let app = createApp(App);
+app.use(eIconPicker, {
+    FontAwesome: false,
+    ElementUI: false,
+    eIcon: false,//自带的图标，来自阿里妈妈
+    eIconSymbol: false//是否开启彩色图标
+});
+app.mount('#app');
 ```
 
 ### 局部注册
@@ -51,7 +60,7 @@ export default {
 ```css
 @import 'e-icon-picker/lib/index.css'; //基础样式
 @import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-@import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
+@import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
 ```
 
 ### 使用
@@ -75,7 +84,7 @@ export default {
 在main.js中全局注册是可以加入以下参数：
 
 ```js
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
+app.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
 具体参数信息，请参考 [参数配置](configuration.md)
@@ -84,14 +93,14 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymb
 * 通过全局配置添加或者删除
 
 ```js
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true, addIconList: [], removeIconList: []});
+app.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true, addIconList: [], removeIconList: []});
 ```
 
 * 通过提供的函数进行配置
 
 ```js
 import eIconPicker, {iconList} from 'e-icon-picker';
-Vue.use(eIconPicker);
+app.use(eIconPicker);
 
 iconList.addIcon(["el-icon-s-ticket", "el-icon-s-help", "el-icon-s-help"]);//添加图标
 iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
@@ -110,14 +119,14 @@ iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 
 ```vue
 mounted() {
-        this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
-        this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
-        setTimeout(() => {//通过修改参数进行重新设置组件
-           this.options.addIconList.push('el-icon-message-solid');
-           this.options.removeIconList.push('removeIconList');
-           console.log("定时任务触发")
-        }, 5000);
-    }
+    this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
+    this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
+    setTimeout(() => {//通过修改参数进行重新设置组件
+       this.options.addIconList.push('el-icon-message-solid');
+       this.options.removeIconList.push('removeIconList');
+       console.log("定时任务触发")
+    }, 5000);
+}
 ```
 
 使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example3.vue)文件
@@ -146,8 +155,7 @@ import "./css/iconfont.css";//引入css
 let forIconfont = analyzingIconForIconfont(iconfont);//解析class
 //let forIconfont = eIconSymbol(iconfont);//解析彩色图标
 //全局删除增加图标
-Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
-
+app.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
 ```
 
 #### 属性配置
@@ -219,7 +227,7 @@ import eIconPicker from 'e-icon-picker';
 import svgIcons from 'e-icon-picker/lib/getSvg';
 
 //全局删除增加图标
-Vue.use(eIconPicker, {
+app.use(eIconPicker, {
     addIconList: svgIcons,
 });
 
