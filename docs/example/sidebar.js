@@ -9,6 +9,19 @@ module.exports = {
             children: [
             ]
         },
+        {
+            title: "默认图标列表",
+            collapsable: false,
+            path: "/example/iconList",
+            children: [
+            ]
+        }, {
+            title: "高级图标列表",
+            collapsable: false,
+            path: "/example/iconListPlus",
+            children: [
+            ]
+        },
     ],
 }
 
