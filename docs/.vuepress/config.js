@@ -23,14 +23,10 @@ module.exports = {
     },
     locales: {
         '/': {
-            lang: 'en-US',
-            title: 'Demo Container',
-            description: '用于编写 vue 组件示例的 vuepress 插件'
+            lang: 'en-US'
         },
         '/v2/': {
-            lang: 'zh-CN',
-            title: 'Demo Container',
-            description: '用于编写 vue 组件示例的 vuepress 插件'
+            lang: 'zh-CN'
         }
     },
     serviceWorker: true,
@@ -42,6 +38,7 @@ module.exports = {
             '/': {
                 label: 'v1',
                 selectText: '版本',
+                lastUpdated: '上次更新',
                 sidebar: {
                     '/': require("./sidebarV1.js"),
                 }
@@ -49,6 +46,7 @@ module.exports = {
             '/v2/': {
                 label: 'v2',
                 selectText: '版本',
+                lastUpdated: '上次更新',
                 sidebar: {
                     '/v2/': require("./sidebarV2.js"),
                 }
