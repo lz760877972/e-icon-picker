@@ -47,7 +47,7 @@
     "clean:lib": "rimraf scripts/lib",
     "clean:all": "rimraf lib && yarn clean:lib && yarn clean:font-css",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "rimraf dist && vuepress build docs && cp-cli docs/.vuepress/dist dist"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
