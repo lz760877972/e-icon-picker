@@ -9,8 +9,8 @@
 
 ```js
 import iconPicker from 'e-icon-picker';
-import "e-icon-picker/dist/symbol.js"; //基本彩色图标库
-import 'e-icon-picker/dist/index.css'; // 基本样式，包含基本图标
+import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
+import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
@@ -49,7 +49,7 @@ export default {
 
 在全局样式中引入css
 ```css
-@import 'e-icon-picker/dist/index.css'; //基础样式
+@import 'e-icon-picker/lib/index.css'; //基础样式
 @import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 @import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 ```
@@ -216,7 +216,7 @@ VUE_APP_SVG = '@/icons/svg'
 ```js
 import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
-import svgIcons from 'e-icon-picker/dist/getSvg';
+import svgIcons from 'e-icon-picker/lib/getSvg';
 
 //全局删除增加图标
 Vue.use(eIconPicker, {
@@ -244,7 +244,6 @@ Vue.use(eIconPicker, {
       class="disabled"
     />
   </template>
-
 </EIconPicker>
 ```
 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)

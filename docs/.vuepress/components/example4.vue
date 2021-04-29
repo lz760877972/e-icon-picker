@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import "../public/js/iconfont.js";
-import {eIconSymbol} from '../../../lib/index.js';
-import iconfont from "../public/css/iconfont.json";
+import "../public/js/iconfont.js"; //首先引入iconfont.js文件
+import {eIconSymbol} from '../../../lib/index.js'; //引入彩色图标处理函数
+import iconfont from "../public/css/iconfont.json"; //引入彩色图标名称json
 
 export default {
   name: "example4",
@@ -31,8 +31,8 @@ export default {
   },
   methods: {
     addIcon() {
-      let icon = eIconSymbol(iconfont);
-      this.options.addIconList = icon.list;
+      let icon = eIconSymbol(iconfont);//处理彩色图标
+      this.options.addIconList = icon.list;//将彩色图标列表加入到图标选择器
     }
   }
 }
