@@ -2,54 +2,55 @@
   <div class="ui-fas" @click="_popoverShowFun">
     <!-- 弹出框 -->
     <el-popover
-      :disabled="disabled"
-      ref="popover"
-      :placement="myPlacement"
-      popper-class="el-icon-popper"
-      :width="popoverWidth"
-      v-model="visible"
-      trigger="manual"
+        :disabled="disabled"
+        ref="popover"
+        :placement="myPlacement"
+        popper-class="el-icon-popper"
+        :width="popoverWidth"
+        v-model="visible"
+        show-arrow
+        trigger="manual"
     >
       <el-input
-        v-model="name"
-        :placeholder="placeholder"
-        ref="input"
-        v-popover:popover
-        :style="styles"
-        :clearable="clearable"
-        :disabled="disabled"
-        :readonly="readonly"
-        :size="size"
-        @input="_change"
-        @clear="_initIcon(false)"
-        slot="reference"
+          v-model="name"
+          :placeholder="placeholder"
+          ref="input"
+          v-popover:popover
+          :style="styles"
+          :clearable="clearable"
+          :disabled="disabled"
+          :readonly="readonly"
+          :size="size"
+          @input="_change"
+          @clear="_initIcon(false)"
+          slot="reference"
       >
         <template slot="prepend">
-          <slot name="prepend">
-            <e-icon :icon-name="prefixIcon" class="e-icon" />
+          <slot name="prepend" v-bind:icon="prefixIcon">
+            <e-icon :icon-name="prefixIcon" class="e-icon"/>
           </slot>
         </template>
       </el-input>
 
       <el-scrollbar
-        ref="e-scrollbar"
-        tag="div"
-        wrap-class="el-select-dropdown__wrap"
-        view-class="el-select-dropdown__list"
-        class="is-empty"
+          ref="e-scrollbar"
+          tag="div"
+          wrap-class="el-select-dropdown__wrap"
+          view-class="el-select-dropdown__list"
+          class="is-empty"
       >
         <ul
-          class="fas-icon-list"
-          ref="fasIconList"
-          v-if="dataList && dataList.length > 0"
+            class="fas-icon-list"
+            ref="fasIconList"
+            v-if="dataList && dataList.length > 0"
         >
           <li
-            v-for="(item, index) in dataList"
-            :key="index"
-            @click="_selectedIcon(item)"
+              v-for="(item, index) in dataList"
+              :key="index"
+              @click="_selectedIcon(item)"
           >
             <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon" />
+              <e-icon :icon-name="item" :title="item" class="e-icon"/>
             </slot>
           </li>
         </ul>
@@ -60,8 +61,8 @@
 </template>
 
 <script>
-import iconList, { eIconList, elementUI, fontAwesome } from "../iconList";
-import { off, on } from "../utils";
+import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
+import {off, on} from "../utils";
 import EIcon from "../eIcon/e-icon";
 
 export default {
@@ -158,22 +159,22 @@ export default {
     },
     _initIcon(type) {
       this.prefixIcon =
-        this.value && type && true === type ? this.value : this.defaultIcon;
+          this.value && type && true === type ? this.value : this.defaultIcon;
       this.name = type === true ? this.value : "";
       this.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
       if (this.options) {
         this.icon.list = []; //重新给图标集合复制为空
         if (
-          this.options.addIconList !== undefined &&
-          this.options.addIconList &&
-          this.options.addIconList.length > 0
+            this.options.addIconList !== undefined &&
+            this.options.addIconList &&
+            this.options.addIconList.length > 0
         ) {
           this.icon.addIcon(this.options.addIconList);
         }
         if (
-          this.options.removeIconList !== undefined &&
-          this.options.removeIconList &&
-          this.options.removeIconList.length > 0
+            this.options.removeIconList !== undefined &&
+            this.options.removeIconList &&
+            this.options.removeIconList.length > 0
         ) {
           this.icon.removeIcon(this.options.removeIconList);
         }
@@ -197,8 +198,8 @@ export default {
       this.iconList = this.icon.list;
 
       if (
-        this.placement &&
-        (this.placement === "bottom" || this.placement === "top")
+          this.placement &&
+          (this.placement === "bottom" || this.placement === "top")
       ) {
         this.myPlacement = this.placement;
       }
@@ -235,12 +236,12 @@ export default {
       this.$nextTick(() => {
         if (this.width === -1) {
           this.popoverWidth =
-            this.$refs.input.$el.getBoundingClientRect().width - 26;
+              this.$refs.input.$el.getBoundingClientRect().width - 36;
         } else {
           this.popoverWidth = this.width;
         }
         this.$refs["e-scrollbar"].wrap.scrollTop =
-          this.$refs.input.$el.getBoundingClientRect().height - 35;
+            this.$refs.input.$el.getBoundingClientRect().height - 35;
       });
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
@@ -258,8 +259,8 @@ export default {
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
         return (
-          list.className &&
-          list.className.toString().indexOf("fas-icon-list") !== -1
+            list.className &&
+            list.className.toString().indexOf("fas-icon-list") !== -1
         );
       });
 

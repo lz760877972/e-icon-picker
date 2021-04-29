@@ -1,6 +1,4 @@
-# e-icon-picker 图标选择组件
-> vue 3测试版本已经发布，请运行 `npm install install e-icon-picker@2.0.0-alpha.4` 安装，使用方式和1.xx一致
-
+# 图标选择组件
 简洁大方，专为`element-ui`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
@@ -8,27 +6,6 @@
 ![示例图片](https://oscimg.oschina.net/oscnet/up-c4ac227f3356ee405358e951450cdeffed5.png "示例图片")
 
 喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)
-
-## Demo
-
-[在线测试](https://e-icon-picker.cnovel.club/)
-
-[在线API](https://e-icon-picker.cnovel.club/doc/)
-
-## 安装
-
->~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
->~~安装方式请参考element-ui官网的相关文档。~~[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。
->
->已经脱离element-ui，不需要再安装element-ui了。
-
-**npm 安装**
-
-推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。
-
-```bash
-npm install e-icon-picker
-```
 
 ## 快速使用
 
@@ -39,7 +16,15 @@ import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
+//全局删除增加图标
+Vue.use(eIconPicker, {
+    FontAwesome: true,
+    ElementUI: true,
+    eIcon: true,//自带的图标，来自阿里妈妈
+    eIconSymbol: true,//是否开启彩色图标
+    addIconList: [],
+    removeIconList: []
+});
 ```
 
 详细文档
@@ -55,7 +40,7 @@ Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbo
 
 开源项目不易，若此项目能得到你的青睐，可以捐赠支持作者持续开发与维护。喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)。
 
- ![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
+![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
 
 **另：**
 
