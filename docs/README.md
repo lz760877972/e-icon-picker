@@ -1,8 +1,9 @@
 ---
 home: true
 heroImage: /img/favicon.ico
-actionText: 快速开始 →
 heroText: e-icon-picker
+tagline: null
+actionText: 快速开始 →
 actionLink: /v1/
 features:
 - title: 简洁至上
@@ -13,3 +14,4 @@ features:
   details: 专为vue而设计，兼容多种浏览器。 
 footer: MIT Licensed | Copyright © 2020-2021 cnovel.club
 ---
+&nbsp;

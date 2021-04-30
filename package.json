@@ -74,6 +74,7 @@
     "postcss-import": "^13.0.0",
     "postcss-loader": "^4.0.4",
     "rimraf": "^3.0.2",
+    "svgo-loader": "^2.2.1",
     "tslib": "^2.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.12",
@@ -81,7 +82,6 @@
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-container": "^0.2.0",
-    "svgo-loader": "^2.2.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^4.6.0"
   },

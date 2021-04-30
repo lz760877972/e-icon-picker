@@ -1,5 +1,6 @@
 <template>
   <div style="margin: 0 auto;width: 500px">
+    <h2>组件内使用svg图标展示</h2>
     <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
     名称：{{ icon }}
     <e-icon :icon-name="icon"/>
