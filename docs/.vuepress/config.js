@@ -67,5 +67,32 @@ module.exports = {
                 '@public': path.resolve(__dirname, './public')
             }
         }
+    },
+    chainWebpack(config) {
+        // set svg-sprite-loader
+        config.module
+            .rule('svg')
+            .exclude.add(resolve('../../example/src/icons'))
+            .end();
+        config.module
+            .rule('icons')
+            .test(/\.svg$/)
+            .include.add(resolve('../../example/src/icons'))
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: '[name]',
+                // extract: true,
+                // publicPath:'/static/',
+                // spriteFilename: 'sprite-[hash:6].svg',
+                // outputPath: "/static/img/"
+            })
+            .end().use('svgo-loader').loader('svgo-loader')
+            .tap(options => ({...options, plugins: [{removeAttrs: {attrs: 'fill'}}]})).end();
     }
+}
+
+function resolve(dir) {
+    return path.join(__dirname, dir)
 }

@@ -16,8 +16,7 @@ import fontAwesomeV470 from "../../../lib/fontawesome/font-awesome.v4.7.0.data";
 import fontawesome from "../../../lib/fontawesome/fontawesome.data";
 import pro from "../../../lib/fontawesome/pro.data";
 import shims from "../../../lib/fontawesome/v4-shims.data";
-// import iconfont from "../public/css/iconfont.json";//引入json文件
-// let forIconfont = eIconSymbol(iconfont);//解析彩色图标
+
 export default {
   name: "iconList",
   props: {

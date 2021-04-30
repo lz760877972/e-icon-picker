@@ -74,8 +74,8 @@ export default {
 <e-icon :icon-name="icon"/>
 ```
 
-完整示例请参考 [example](https://gitee.com/cnovel/e-icon-picker/tree/master/example) 项目
-简单使用请参考 [example1.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example1.vue) 文件
+完整示例请参考 [example](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example) 项目
+简单使用请参考 [example1.vue](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example/src/components/example1.vue) 文件
 
 ### 高级
 
@@ -104,7 +104,7 @@ iconList.addIcon(["el-icon-s-ticket", "el-icon-s-help", "el-icon-s-help"]);//添
 iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 ```
 
-使用示例请参考[main.js](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/main.js)文件
+使用示例请参考[main.js](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example/src/main.js)文件
 
 #### 局部添加图标或者删除图标
 使用时添加一个ref属性：
@@ -127,7 +127,7 @@ mounted() {
 }
 ```
 
-使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example3.vue)文件
+使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example/src/components/example3.vue)文件
 
 #### 使用iconfont图标
 * 将图标导入到项目中（iconfont.json文件也要导入）
@@ -227,7 +227,7 @@ app.use(eIconPicker, {
 });
 
 ```
-如有疑问请参考：[example](https://gitee.com/cnovel/e-icon-picker/tree/master/example)
+如有疑问请参考：[example](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example)
 
 #### 使用其他icon组件替换eIcon
 使用方法（svg-icon为admin-element-vue的icon组件）

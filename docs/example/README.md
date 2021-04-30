@@ -113,16 +113,25 @@ export default {
 <example5 slot="demo"></example5>
 </RecoDemo>
 
+### 组件内使用svg图标展示
+<RecoDemo>
+<template slot="code-vue">
+    <<< @/example/src/components/example6.vue
+</template>
+<example6 slot="demo"></example6>
+</RecoDemo>
+
 
 ### 属性
 
 参数 | 说明 | 默认值 | 可选值
 ---|---|---|---
-value / v-model|	绑定值	|boolean / string / number|	—
+value / v-model|	绑定值	| 空 |	—
 disabled | 是否禁用|false|true/false
 readonly | 原生属性，是否只读|false|true/false
 clearable | 是否可清空|true|true/false
 placement | 弹窗位置|bottom|top/bottom
+placeholder | 输入框提示信息 |请选择图标|任意
 styles | 组件自定义样式 |空|无
 options | 图标参数|{FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}|无
 options.FontAwesome |是否使用FontAwesome图标|true|true/false

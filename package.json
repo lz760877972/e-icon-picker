@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.1.0-alpha.0",
+  "version": "1.1.0-alpha.1",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -47,7 +47,8 @@
     "clean:lib": "rimraf scripts/lib",
     "clean:all": "rimraf lib && yarn clean:lib && yarn clean:font-css",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "rimraf dist && vuepress build docs && cp-cli docs/.vuepress/dist dist"
+    "docs:build": "rimraf dist && vuepress build docs && cp-cli docs/.vuepress/dist dist",
+    "publish": "npm publish --tag alpha"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
@@ -80,6 +81,7 @@
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-container": "^0.2.0",
+    "svgo-loader": "^2.2.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^4.6.0"
   },
