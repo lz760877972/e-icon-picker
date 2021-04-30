@@ -1,6 +1,9 @@
 # 更新日志
-#### v2.0.0-alpha.4
-1. vue3版本测试
+#### v1.1.0-alpha.0
+1. 调整目录以及添加自动更新新字体的功能
+2. 修复因body的边距为`0`时出现的横向滚动条问题
+3. 新增 `fontawesome-5.x.x` 图标的支持 [I3BBKC](https://gitee.com/cnovel/e-icon-picker/issues/I3BBKC)
+4. 更新新文档
 
 #### v1.0.18
 1. 更新依赖

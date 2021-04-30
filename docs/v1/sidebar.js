@@ -15,8 +15,7 @@ module.exports = {
             path: "/v1/use/",
             children: [
                 {title: "安装", path: "/v1/use/"},
-                {title: "快速上手", path: "/v1/use/quickstart"},
-                {title: "参数配置", path: "/v1/use/configuration"},
+                {title: "快速上手", path: "/v1/use/quickstart"}
             ]
         },
         {

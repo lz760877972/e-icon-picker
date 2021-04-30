@@ -86,8 +86,6 @@ export default {
 Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
-具体参数信息，请参考 [参数配置](configuration.md)
-
 #### 全局添加图标或者删除图标
 * 通过全局配置添加或者删除
 
@@ -157,9 +155,6 @@ let forIconfont = analyzingIconForIconfont(iconfont);//解析class
 Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
 
 ```
-
-#### 属性配置
-具体配置项请参考 [参数配置](configuration.md)，对应的示例请参考[example2.vue](https://gitee.com/cnovel/e-icon-picker/tree/master/example/src/components/example2.vue)文件
 
 #### 使用svg图标
 * 创建图标文件夹`src/icons/svg/`。

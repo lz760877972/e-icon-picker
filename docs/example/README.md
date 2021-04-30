@@ -114,10 +114,11 @@ export default {
 </RecoDemo>
 
 
-### `e-icon-picker`参数配置
+### 属性
 
-名称 | 功能 | 默认值 | 可选值
+参数 | 说明 | 默认值 | 可选值
 ---|---|---|---
+value / v-model|	绑定值	|boolean / string / number|	—
 disabled | 是否禁用|false|true/false
 readonly | 原生属性，是否只读|false|true/false
 clearable | 是否可清空|true|true/false
@@ -130,3 +131,23 @@ options.eIcon |自带彩色图标|true|true/false
 options.eIconSymbol |是否使用彩色图标（false：则eIcon图标为单色）|true|true/false
 options.addIconList |自定义新增图标列表|[]|无
 options.removeIconList |自定义删除图标列表|[]|无
+
+### 事件
+
+事件名称 | 说明 | 回调参数 
+---|---|---
+change | 数值发生改变时回调 | 新状态的值
+
+### 方法
+
+方法名 | 说明 | 参数 
+---|---|---
+addIcon | 添加一个或多个图标 | String / Array
+removeIcon | 删除一个或多个图标 | String / Array
+
+### 插槽
+
+名称 | 说明 | 参数 
+---|---|---
+prepend | input 输入框前缀组件 | icon 参数为图标名称
+icon | 图标列表显示组件 | icon 参数为图标名称

@@ -28,7 +28,7 @@ Vue.use(eIconPicker, {
 ```
 
 详细文档
-- [使用文档](https://e-icon-picker.cnovel.club/doc/)
+- [使用文档](https://e-icon-picker.cnovel.club)
 
 ## 使用
 

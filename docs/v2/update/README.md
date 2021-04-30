@@ -1,4 +1,16 @@
 # 更新日志
+#### v2.0.0-beta.3
+1. 调整目录以及添加自动更新新字体的功能
+2. 修复因body的边距为`0`时出现的横向滚动条问题
+3. 新增 `fontawesome-5.x.x` 图标的支持 [I3BBKC](https://gitee.com/cnovel/e-icon-picker/issues/I3BBKC)
+4. 更新新文档
+
+#### v2.0.0-alpha.4
+1. vue3版本测试 [I2DWA0](https://gitee.com/cnovel/e-icon-picker/issues/I2DWA0)
+
+#### v1.0.18
+1. 更新依赖
+
 #### v1.0.17
 1. 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)。
 2. 修改为国内cdn地址
@@ -59,5 +71,5 @@
 7. 其他优化。
 
 
-#### v0.0.1             
+#### v0.0.1
 1. 初始化项目
