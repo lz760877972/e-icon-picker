@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 0 auto;width: 500px">
-    <h2>组件内使用彩色图标展示</h2>
+    <h2>组件内使用svg图标展示</h2>
     <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
     名称：{{ icon }}
     <e-icon :icon-name="icon"/>
@@ -8,26 +8,22 @@
 </template>
 
 <script>
-import "@/js/iconfont.js";
-import {eIconSymbol} from 'e-icon-picker';
-import iconfont from "@/css/iconfont.json";
+
 import {onMounted, ref} from "vue";
+//svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
+import svgIcons from 'e-icon-picker/lib/getSvg';
 
 export default {
-  name: "example4",
+  name: "example6",
   setup() {
     let icon = ref("");
     let options = ref({FontAwesome: false, ElementUI: false, addIconList: [], removeIconList: []});
     let iconPicker = ref(null);
-    const addIcon = () => {
-      let icon = eIconSymbol(iconfont);
-      options.value.addIconList = icon.list;
-    }
 
     onMounted(() => {
-      addIcon();
-    })
 
+    })
+    options.value.addIconList = svgIcons;
     return {
       icon,
       options,
@@ -36,7 +32,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 
 </style>

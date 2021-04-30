@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.6",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -36,16 +36,16 @@
   "scripts": {
     "build:font-css": "yarn all && cp-cli scripts/fontawesome lib/fontawesome && cp-cli scripts/ele lib/ele && yarn clean:font-css",
     "clean:font-css": "rimraf scripts/fontawesome && rimraf scripts/ele",
-    "all": "yarn fontawesome-5.x.x && yarn fontawesome-5.x.x-pro && yarn fontawesome-4.7.0 && yarn ele-plus && yarn ele-ui",
+    "all": "yarn fontawesome-5.x.x && yarn fontawesome-5.x.x-pro && yarn fontawesome-4.7.0 && yarn ele-plus",
     "fontawesome-5.x.x": "node scripts/fontawesome-5.x.x.js",
     "fontawesome-5.x.x-pro": "node scripts/fontawesome-5.x.x-pro.js",
     "fontawesome-4.7.0": "node scripts/font-awesome.v4.7.0.js",
     "ele-plus": "node scripts/element-plus.js",
-    "ele-ui": "node scripts/element-ui.js",
     "build": "yarn clean:lib && yarn build:lib && yarn build:theme && yarn build:font-css",
     "build:lib": "rollup --config ./scripts/rollup.config.js",
     "build:theme": "webpack --config ./scripts/webapck.config.js && cp-cli scripts/dist/index.css lib/index.css && cp-cli scripts/dist/fonts lib/fonts && rimraf scripts/dist",
-    "clean:lib": "rimraf lib && rimraf scripts/dist && yarn clean:font-css"
+    "clean:lib": "rimraf lib && rimraf scripts/dist && yarn clean:font-css",
+    "publish": "npm publish --tag beta"
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.41",

@@ -1,30 +1,32 @@
 <template>
-  <i v-if="fontClass" :class="iconName" @click="click(iconName)"></i>
-  <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName)">
+  <i v-if="fontClass" :class="iconName" @click="click(iconName,$event)"></i>
+  <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
 </template>
 
 <script>
-import {reactive, defineComponent} from 'vue'
+import {defineComponent, reactive} from 'vue'
 
 export default defineComponent({
   name: "e-icon",
   props: {
-    iconName: {
+    iconName: {//图标名称
       type: String,
       required: true
     },
-    className: {
+    className: {//自定义的图标前缀，例如 fa fa-xxx中的fa
       type: String,
       default: ''
     }
   },
-  setup(props, {emit}) {
+  emits: ['click'],
+  setup(props, context) {
     const state = reactive({})
 
-    const click = (iconName) => {
-      emit('click', iconName)
+    const click = (iconName, event) => {
+      if (event) event.preventDefault();
+      context.emit('click', iconName)
     }
     return {
       click,

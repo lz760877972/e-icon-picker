@@ -85,7 +85,7 @@ module.exports = {
                 // spriteFilename: 'sprite-[hash:6].svg',
                 // outputPath: "/static/img/"
             })
-            .end() .use('svgo-loader').loader('svgo-loader')
+            .end().use('svgo-loader').loader('svgo-loader')
             .tap(options => ({...options, plugins: [{removeAttrs: {attrs: 'fill'}}]})).end();
     }
 };

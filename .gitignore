@@ -4,5 +4,5 @@ npm-debug.log
 .idea/
 .vscode/
 package-lock.json
-/dist
+/lib
 /node_modules/

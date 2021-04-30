@@ -125,6 +125,7 @@ export default defineComponent({
       default: "eiconfont e-icon-bi"
     },
   },
+  emits: ['change'],
   setup(props, context) {
     //绑定时检查宽度
     onMounted(() => {
@@ -139,13 +140,13 @@ export default defineComponent({
         state.name = val;
         state.prefixIcon = state.name ? state.name : props.defaultIcon;
       }, 50);
-    })
+    }, {deep: true})
 
     watch(() => props.options, (val) => {
       setTimeout(() => {
         initIcon(true);
       }, 50);
-    })
+    }, {deep: true})
     const state = reactive({
       iconList: [],
       visible: false, // popover v-model
@@ -176,7 +177,7 @@ export default defineComponent({
           on(document, "mouseup", popoverHideFun);
         });
       }
-    })
+    }, {deep: true})
     let input = ref(null);
     let eScrollbar = ref(null);
     let popover = ref(null);
@@ -193,10 +194,10 @@ export default defineComponent({
       if (props.options) {
         state.icon.list = []; //重新给图标集合复制为空
         if (props.options.addIconList !== undefined && props.options.addIconList && props.options.addIconList.length > 0) {
-          state.icon.addIcon(this.options.addIconList);
+          state.icon.addIcon(props.options.addIconList);
         }
         if (props.options.removeIconList !== undefined && props.options.removeIconList && props.options.removeIconList.length > 0) {
-          state.icon.removeIcon(this.options.removeIconList);
+          state.icon.removeIcon(props.options.removeIconList);
         }
         if (props.options.FontAwesome === true) {
           state.icon.addIcon(fontAwesome);
@@ -279,6 +280,7 @@ export default defineComponent({
     // 判断类型，抛出当前选中id
     const emitFun = (val) => {
       context.emit("update:modelValue", val);
+      context.emit("change", val);
       updatePopoverLocationFun();
     }
     // 更新popover位置
