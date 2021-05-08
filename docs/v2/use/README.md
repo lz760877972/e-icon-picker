@@ -17,7 +17,7 @@ npm install e-icon-picker@beta -S
 ### cdn 引入
 ```
 <!-- 引入组件库 -->
-https://unpkg.zhimg.com/e-icon-picker@beta/lib/index.js
+https://unpkg.zhimg.com/e-icon-picker@beta
 <!-- 引入样式 -->
 https://unpkg.zhimg.com/e-icon-picker@beta/lib/index.css
 
