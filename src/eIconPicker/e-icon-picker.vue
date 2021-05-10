@@ -158,24 +158,19 @@ export default {
       });
     },
     _initIcon(type) {
-      this.prefixIcon =
-          this.value && type && true === type ? this.value : this.defaultIcon;
+      this.prefixIcon = this.value && type && true === type ? this.value : this.defaultIcon;
       this.name = type === true ? this.value : "";
       this.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
       if (this.options) {
         this.icon.list = []; //重新给图标集合复制为空
-        if (
-            this.options.addIconList !== undefined &&
+        if (this.options.addIconList !== undefined &&
             this.options.addIconList &&
-            this.options.addIconList.length > 0
-        ) {
+            this.options.addIconList.length > 0) {
           this.icon.addIcon(this.options.addIconList);
         }
-        if (
-            this.options.removeIconList !== undefined &&
+        if (this.options.removeIconList !== undefined &&
             this.options.removeIconList &&
-            this.options.removeIconList.length > 0
-        ) {
+            this.options.removeIconList.length > 0) {
           this.icon.removeIcon(this.options.removeIconList);
         }
         if (this.options.FontAwesome === true) {
@@ -197,10 +192,7 @@ export default {
       }
       this.iconList = this.icon.list;
 
-      if (
-          this.placement &&
-          (this.placement === "bottom" || this.placement === "top")
-      ) {
+      if (this.placement && (this.placement === "bottom" || this.placement === "top")) {
         this.myPlacement = this.placement;
       }
 
@@ -235,13 +227,11 @@ export default {
     _updateW() {
       this.$nextTick(() => {
         if (this.width === -1) {
-          this.popoverWidth =
-              this.$refs.input.$el.getBoundingClientRect().width - 36;
+          this.popoverWidth = this.$refs.input.$el.getBoundingClientRect().width - 36;
         } else {
           this.popoverWidth = this.width;
         }
-        this.$refs["e-scrollbar"].wrap.scrollTop =
-            this.$refs.input.$el.getBoundingClientRect().height - 35;
+        this.$refs["e-scrollbar"].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height - 35;
       });
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
@@ -258,10 +248,7 @@ export default {
     _popoverHideFun(e) {
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
-        return (
-            list.className &&
-            list.className.toString().indexOf("fas-icon-list") !== -1
-        );
+        return list.className && list.className.toString().indexOf("fas-icon-list") !== -1;
       });
 
       if (!isInter) {
@@ -271,6 +258,7 @@ export default {
     // 判断类型，抛出当前选中id
     _emitFun(val) {
       this.$emit("input", val);
+      this.$emit("change", val);
       this._updatePopoverLocationFun();
     },
     // 更新popover位置

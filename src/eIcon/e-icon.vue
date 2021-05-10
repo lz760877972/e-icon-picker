@@ -1,6 +1,6 @@
 <template>
   <i v-if="fontClass" :class="iconName" @click="click(iconName)"></i>
-  <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName)">
+  <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
 </template>
@@ -34,7 +34,8 @@ export default {
     },
   },
   methods: {
-    click(iconName) {
+    click(iconName, event) {
+      if (event) event.preventDefault();
       this.$emit('click', iconName)
     }
   }

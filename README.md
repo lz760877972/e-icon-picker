@@ -37,7 +37,7 @@ Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbo
 ```
 
 详细文档
-- [使用文档](https://e-icon-picker.cnovel.club/doc/)
+- [使用文档](https://e-icon-picker.cnovel.club)
 
 ## 使用
 

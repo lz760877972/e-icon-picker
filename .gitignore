@@ -5,3 +5,7 @@ npm-debug.log
 .vscode/
 package-lock.json
 /docs/.vuepress/dist/
+scripts/ele/
+scripts/lib/
+scripts/fontawesome/
+/lib/
