@@ -40,17 +40,13 @@ import {EIconPicker} from 'e-icon-picker';
 export default {
     name: 'app',
     components: { EIconPicker},
-    data() {
+    setup() {
+        let icon = ref("");
+        let options = ref({FontAwesome: false, ElementUI: true, addIconList: [], removeIconList: []});
+    
         return {
-            icon: '',
-            options: {
-                FontAwesome: false,
-                ElementUI: false,
-                eIcon: true,//自带的图标，来自阿里妈妈
-                eIconSymbol: true,//是否开启彩色图标
-                addIconList: [],
-                removeIconList: []
-            }
+            icon,
+            options
         }
     }
 }
@@ -116,15 +112,16 @@ iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 通过ref获取`e-icon-picker`组件，再调用组件方法：
 
 ```vue
-mounted() {
-    this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
-    this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
+onMounted(() => {
+    iconPicker.value.addIcon("fa fa-slack");//组件内动态添加图标
+    iconPicker.value.removeIcon("fa fa-slack");//组件内动态删除图标
+    
     setTimeout(() => {//通过修改参数进行重新设置组件
-       this.options.addIconList.push('el-icon-message-solid');
-       this.options.removeIconList.push('removeIconList');
-       console.log("定时任务触发")
+        options.value.addIconList.push('el-icon-message-solid');
+        options.value.removeIconList.push('removeIconList');
+        console.log("定时任务触发");
     }, 5000);
-}
+})
 ```
 
 使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example/src/components/example3.vue)文件
@@ -233,18 +230,16 @@ app.use(eIconPicker, {
 使用方法（svg-icon为admin-element-vue的icon组件）
 
 ```vue
-<EIconPicker v-model="form.icon" :options="iconOptions">
-   <template v-slot:prepend>
+<EIconPicker>
+   <template v-slot:prepend="icon">
      <svg-icon
-      :name="prefixIcon"
-      class="disabled"
+      :name="icon"
     />
   </template>
 
-   <template v-slot:icon="slotProps">
+   <template v-slot:icon="icon">
       <svg-icon
-      :name="slotProps.icon"
-      class="disabled"
+      :name="icon"
     />
   </template>
 </EIconPicker>

@@ -233,20 +233,18 @@ Vue.use(eIconPicker, {
 使用方法（svg-icon为admin-element-vue的icon组件）
 
 ```vue
-<EIconPicker v-model="form.icon" :options="iconOptions">
-   <template v-slot:prepend>
-     <svg-icon
-      :name="prefixIcon"
-      class="disabled"
-    />
-  </template>
-
-   <template v-slot:icon="slotProps">
+<EIconPicker>
+    <template v-slot:prepend="icon">
       <svg-icon
-      :name="slotProps.icon"
-      class="disabled"
-    />
-  </template>
+          :name="icon"
+      />
+    </template>
+    
+    <template v-slot:icon="icon">
+      <svg-icon
+          :name="icon"
+      />
+    </template>
 </EIconPicker>
 ```
 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)
