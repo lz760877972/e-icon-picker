@@ -1,4 +1,12 @@
 
+.icon[data-v-5714aceb] {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 .fas-icon-list[data-v-9aa9c464] {
   list-style-type: none;
   margin: 0;
@@ -40,11 +48,3 @@
   font-size: 16px;
 }
 
-
-.icon[data-v-5714aceb] {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}

@@ -25,7 +25,7 @@
             @clear="initIcon(false)"
         >
           <template #prepend slot="prepend">
-            <slot name="prepend">
+            <slot name="prepend" v-bind:icon="state.prefixIcon">
               <e-icon :icon-name="state.prefixIcon" class="e-icon"/>
             </slot>
           </template>
@@ -42,7 +42,7 @@
         <ul
             class="fas-icon-list"
             ref="fasIconList"
-            v-if="state.dataList &&state.dataList.length > 0"
+            v-if="state.dataList && state.dataList.length > 0"
         >
           <li
               v-for="(item, index) in state.dataList"
