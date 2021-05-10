@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.1.0-alpha.1",
+  "version": "1.1.0",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -46,13 +46,19 @@
     "build:lib": "webpack --config scripts/webpack.config.js && cp-cli scripts/lib lib",
     "clean:lib": "rimraf scripts/lib",
     "clean:all": "rimraf lib && yarn clean:lib && yarn clean:font-css",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "rimraf dist && vuepress build docs && cp-cli docs/.vuepress/dist dist",
-    "publish": "npm publish --tag alpha"
+    "publish": "npm publish --tag latest"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "svg-sprite-loader": "^5.0.0"
+    "svg-sprite-loader": "^5.0.0",
+    "vue": "^2.6.12",
+    "element-ui": "^2.15.1"
+  },
+  "peerDependencies": {
+    "font-awesome": "^4.7.0",
+    "svg-sprite-loader": "^5.0.0",
+    "vue": "^2.6.12",
+    "element-ui": "^2.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -65,7 +71,6 @@
     "copy-webpack-plugin": "^6.2.1",
     "cp-cli": "^2.0.0",
     "css-loader": "^5.2.4",
-    "element-ui": "^2.15.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.2.0",
@@ -77,7 +82,6 @@
     "svgo-loader": "^2.2.1",
     "tslib": "^2.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "vue": "^2.6.12",
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2",
@@ -87,6 +91,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }
