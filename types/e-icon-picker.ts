@@ -1,3 +1,4 @@
+// @ts-ignore
 import Vue from 'vue'
 
 export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
@@ -48,4 +49,10 @@ export declare class EIconPicker extends Vue {
 
     /** 默认显示图标 */
     defaultIcon: string
+
+    /** 图标列表为空时默认显示的文本 */
+    emptyText: string;
+
+    /** 图标高亮 #FF0000 */
+    highLightColor: string;
 }

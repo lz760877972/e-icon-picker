@@ -48,13 +48,14 @@
               v-for="(item, index) in state.dataList"
               :key="index"
               @click="selectedIcon(item)"
+              :style="state.name === item && highLightColor!=='' ? {'color': highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
               <e-icon :icon-name="item" :title="item" class="e-icon"/>
             </slot>
           </li>
         </ul>
-        <span v-else class="fas-no-data">暂无可选图标</span>
+        <span v-else class="fas-no-data" v-text="emptyText"></span>
       </el-scrollbar>
     </el-popover>
   </div>
@@ -124,8 +125,20 @@ export default defineComponent({
       type: String,
       default: "eiconfont e-icon-bi"
     },
+    emptyText: {
+      type: String,
+      default() {
+        return "暂无可选图标";
+      },
+    },
+    highLightColor: {
+      type: String,
+      default() {
+        return "";
+      },
+    }
   },
-  emits: ['change'],
+  emits: ['change', 'update:modelValue', 'input'],
   setup(props, context) {
     //绑定时检查宽度
     onMounted(() => {
@@ -281,6 +294,7 @@ export default defineComponent({
     const emitFun = (val) => {
       context.emit("update:modelValue", val);
       context.emit("change", val);
+      context.emit('input', val)
       updatePopoverLocationFun();
     }
     // 更新popover位置
