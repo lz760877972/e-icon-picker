@@ -48,13 +48,14 @@
               v-for="(item, index) in dataList"
               :key="index"
               @click="_selectedIcon(item)"
+              :style="name === item && highLightColor!=='' ? {color: highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
               <e-icon :icon-name="item" :title="item" class="e-icon"/>
             </slot>
           </li>
         </ul>
-        <span v-else class="fas-no-data">暂无可选图标</span>
+        <span v-else class="fas-no-data" v-text="emptyText"></span>
       </el-scrollbar>
     </el-popover>
   </div>
@@ -139,6 +140,18 @@ export default {
         return "eiconfont e-icon-bi";
       },
     },
+    emptyText: {
+      type: String,
+      default() {
+        return "暂无可选图标";
+      },
+    },
+    highLightColor: {
+      type: String,
+      default() {
+        return "";
+      },
+    }
   },
   data() {
     return {
@@ -221,7 +234,7 @@ export default {
       this.visible = false;
       this.name = item;
       this.prefixIcon = this.name;
-      this._emitFun(this.prefixIcon);
+      this._emitFun(this.name);
     },
     // 更新宽度
     _updateW() {

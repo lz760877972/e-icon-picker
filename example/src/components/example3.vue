@@ -2,7 +2,7 @@
   <div style="margin: 0 auto;width: 500px">
     <h2>组件内动态设置以及方法展示</h2>
     <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="el-icon-edit" placeholder="请选择"
-                   size="medium"/>
+                   size="medium" :emptyText="emptyText"/>
     名称：{{ icon }}
     <e-icon :icon-name="icon"/>
   </div>
@@ -15,6 +15,7 @@ export default {
     return {
       icon: '',
       options: {FontAwesome: false, ElementUI: false, addIconList: [], removeIconList: []},
+      emptyText: 'No icon available'
     }
   },
   mounted() {
