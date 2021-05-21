@@ -1,4 +1,8 @@
 # 更新日志
+#### v2.0.2
+1. 新增图标选中高亮状态 [I3S4AC](https://gitee.com/cnovel/e-icon-picker/issues/I3S4AC)
+2. 新增图标为空显示的内容，可以通过prop传入[I3S07X](https://gitee.com/cnovel/e-icon-picker/issues/I3S07X)
+
 #### v2.0.0
 1. `2.0.0` 对应 `vue3.0` 正式发布
 2. 更新新文档

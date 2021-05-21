@@ -133,6 +133,8 @@ clearable | 是否可清空|true|true/false
 placement | 弹窗位置|bottom|top/bottom
 placeholder | 输入框提示信息 |请选择图标|任意
 styles | 组件自定义样式 |空|无
+emptyText | 图标列表为空时默认显示的文本 |暂无可选图标|任意
+highLightColor | 图标选中高亮（对svg图标无效） |空|任意（16进制）
 options | 图标参数|{FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}|无
 options.FontAwesome |是否使用FontAwesome图标|true|true/false
 options.ElementUI |是否使用ElementUI图标|true|true/false

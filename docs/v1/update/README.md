@@ -1,5 +1,9 @@
 # 更新日志
-#### v1.1.0-alpha.1
+#### v1.1.1
+1. 新增图标选中高亮状态 [I3S4AC](https://gitee.com/cnovel/e-icon-picker/issues/I3S4AC)
+2. 新增图标为空显示的内容，可以通过prop传入[I3S07X](https://gitee.com/cnovel/e-icon-picker/issues/I3S07X)
+
+#### v1.1.0
 1. `1.1.0` 正式发布
 2. 更新新文档
 
