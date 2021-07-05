@@ -1,4 +1,9 @@
 # 更新日志
+#### v1.1.2
+1. 修复当组件局部使用时，不能正常使用问题 [I3YD2K](https://gitee.com/cnovel/e-icon-picker/issues/I3YD2K)
+2. 修改文档中存在的一些错误问题 [I3YD2K](https://gitee.com/cnovel/e-icon-picker/issues/I3YD2K)
+3. 更新文档
+
 #### v1.1.1
 1. 新增图标选中高亮状态 [I3S4AC](https://gitee.com/cnovel/e-icon-picker/issues/I3S4AC)
 2. 新增图标为空显示的内容，可以通过prop传入[I3S07X](https://gitee.com/cnovel/e-icon-picker/issues/I3S07X)

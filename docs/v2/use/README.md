@@ -17,9 +17,9 @@ npm install e-icon-picker@next -S
 ### cdn 引入
 ```
 <!-- 引入组件库 -->
-https://unpkg.zhimg.com/e-icon-picker@next
+https://unpkg.com/e-icon-picker@next
 <!-- 引入样式 -->
-https://unpkg.zhimg.com/e-icon-picker@next/lib/index.css
+https://unpkg.com/e-icon-picker@next/lib/index.css
 
 <!-- font-awesome图标样式 -->
 https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
@@ -28,6 +28,6 @@ https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
 https://unpkg.com/element-plus@beta/lib/theme-chalk/icon.css
 
 <!-- 默认彩色图标样式 -->
-https://unpkg.zhimg.com/e-icon-picker@next/lib/symbol.js
+https://unpkg.com/e-icon-picker@next/lib/symbol.js
 
 ```

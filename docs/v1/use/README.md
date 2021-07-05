@@ -28,6 +28,6 @@ https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
 https://unpkg.com/element-ui/lib/theme-chalk/icon.css
 
 <!-- 默认彩色图标样式 -->
-https://unpkg.zhimg.com/e-icon-picker@latest/lib/symbol.js
+https://unpkg.com/e-icon-picker@latest/lib/symbol.js
 
 ```

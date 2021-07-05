@@ -30,10 +30,8 @@ app.mount('#app');
 
 引入`e-icon-picker`组件
 
-> 因组件使用了element-ui二次开发，所以会全局注册一些element-ui的组件，不建议自己局部声明组件
-
 ```js
-import {EIconPicker,ElInput,ElPopover,ElScrollbar} from 'e-icon-picker';
+import {EIconPicker} from 'e-icon-picker';
 ```
 
 在组件`components`中声明
@@ -41,11 +39,10 @@ import {EIconPicker,ElInput,ElPopover,ElScrollbar} from 'e-icon-picker';
 ```vue
 export default {
     name: 'app',
-    components: {EIconPicker,ElInput,ElPopover,ElScrollbar},
+    components: {EIconPicker},
     setup() {
         let icon = ref("");
         let options = ref({FontAwesome: false, ElementUI: true, addIconList: [], removeIconList: []});
-    
         return {
             icon,
             options
@@ -54,9 +51,18 @@ export default {
 }
 ```
 
-> **使用`EIconPicker`时因为组件中已经注册了`EIcon`，所以使用时不需要单独注册，但在别的地方显示图标时需要手动进行注册`EIcon`组件**
+在全局样式中引入css
+```html
+<style lang="css" scoped>
+@import '~e-icon-picker/lib/index.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~element-plus/lib/theme-chalk/el-icon.css';
+</style>
+```
 
-引入`e-icon`组件
+> **因为EIconPicker中已经局部注册EIcon了，所以使用时不用再特别注册，但如果在EIconPicker组件外使用EIcon，则需要另外注册**
+
+引入`e-icon-picker`组件
 
 ```js
 import {EIcon} from 'e-icon-picker';
@@ -67,17 +73,8 @@ import {EIcon} from 'e-icon-picker';
 ```vue
 export default {
     name: 'app',
-    components: {EIcon},
-    data() {
-    }
+    components: {EIcon}
 }
-```
-
-在局部样式中引入css
-```css
-@import 'e-icon-picker/lib/index.css'; //基础样式
-@import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-@import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
 ```
 
 ### 使用
@@ -133,16 +130,15 @@ iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 通过ref获取`e-icon-picker`组件，再调用组件方法：
 
 ```vue
-onMounted(() => {
-    iconPicker.value.addIcon("fa fa-slack");//组件内动态添加图标
-    iconPicker.value.removeIcon("fa fa-slack");//组件内动态删除图标
-    
+mounted() {
+    this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
+    this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
     setTimeout(() => {//通过修改参数进行重新设置组件
-        options.value.addIconList.push('el-icon-message-solid');
-        options.value.removeIconList.push('removeIconList');
-        console.log("定时任务触发");
+       this.options.addIconList.push('el-icon-message-solid');
+       this.options.removeIconList.push('removeIconList');
+       console.log("定时任务触发")
     }, 5000);
-})
+}
 ```
 
 使用示例请参考[example3.vue](https://gitee.com/cnovel/e-icon-picker/tree/3.0/example/src/components/example3.vue)文件
@@ -164,7 +160,7 @@ onMounted(() => {
 * 获取css的名称
 
 ```js
-import eIconPicker,{analyzingIconForIconfont} from 'e-icon-picker';//引入解析json的函数
+import {analyzingIconForIconfont} from 'e-icon-picker';//引入解析json的函数
 import iconfont from "./css/iconfont.json";//引入json文件
 import "./css/iconfont.css";//引入css
 
@@ -231,6 +227,8 @@ VUE_APP_SVG = '@/icons/svg'
 VUE_APP_SVG = '@/icons/svg' 
 ```
 
+> VUE_APP_SVG 只在webpack中使用，如果你使用的是vite，那么可以对`getSvg.js`代码进行修改，写死或者其他方式来获取svg的id
+
 * 使用`svg`图标
 在`main.js`中引入
 
@@ -251,16 +249,18 @@ app.use(eIconPicker, {
 使用方法（svg-icon为admin-element-vue的icon组件）
 
 ```vue
-<EIconPicker>
-   <template v-slot:prepend="icon">
+<EIconPicker v-model="form.icon" :options="iconOptions">
+   <template v-slot:prepend>
      <svg-icon
-      :name="icon"
+      :name="prefixIcon"
+      class="disabled"
     />
   </template>
 
-   <template v-slot:icon="icon">
+   <template v-slot:icon="slotProps">
       <svg-icon
-      :name="icon"
+      :name="slotProps.icon"
+      class="disabled"
     />
   </template>
 </EIconPicker>
