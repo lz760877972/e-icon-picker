@@ -27,13 +27,13 @@ npm install e-icon-picker -S
 ## 快速使用
 
 ```
-import iconPicker from 'e-icon-picker';
+import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
+Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
 详细文档

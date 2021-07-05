@@ -10,7 +10,7 @@
 ```js
 import {createApp} from 'vue'
 import App from './App.vue'
-import iconPicker from 'e-icon-picker';
+import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
@@ -30,8 +30,10 @@ app.mount('#app');
 
 引入`e-icon-picker`组件
 
+> 因组件使用了element-ui二次开发，所以会全局注册一些element-ui的组件，不建议自己局部声明组件
+
 ```js
-import {EIconPicker} from 'e-icon-picker';
+import {EIconPicker,ElInput,ElPopover,ElScrollbar} from 'e-icon-picker';
 ```
 
 在组件`components`中声明
@@ -39,7 +41,7 @@ import {EIconPicker} from 'e-icon-picker';
 ```vue
 export default {
     name: 'app',
-    components: { EIconPicker},
+    components: {EIconPicker,ElInput,ElPopover,ElScrollbar},
     setup() {
         let icon = ref("");
         let options = ref({FontAwesome: false, ElementUI: true, addIconList: [], removeIconList: []});
@@ -52,7 +54,26 @@ export default {
 }
 ```
 
-在全局样式中引入css
+> **使用`EIconPicker`时因为组件中已经注册了`EIcon`，所以使用时不需要单独注册，但在别的地方显示图标时需要手动进行注册`EIcon`组件**
+
+引入`e-icon`组件
+
+```js
+import {EIcon} from 'e-icon-picker';
+```
+
+在组件`components`中声明
+
+```vue
+export default {
+    name: 'app',
+    components: {EIcon},
+    data() {
+    }
+}
+```
+
+在局部样式中引入css
 ```css
 @import 'e-icon-picker/lib/index.css'; //基础样式
 @import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
@@ -143,7 +164,7 @@ onMounted(() => {
 * 获取css的名称
 
 ```js
-import {analyzingIconForIconfont} from 'e-icon-picker';//引入解析json的函数
+import eIconPicker,{analyzingIconForIconfont} from 'e-icon-picker';//引入解析json的函数
 import iconfont from "./css/iconfont.json";//引入json文件
 import "./css/iconfont.css";//引入css
 
