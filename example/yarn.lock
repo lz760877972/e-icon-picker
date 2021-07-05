@@ -3653,10 +3653,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-e-icon-picker@1.1.2-alpha.4:
-  version "1.1.2-alpha.4"
-  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-1.1.2-alpha.4.tgz#127918d3f285709cf19f343bcf5f1e3598dbce08"
-  integrity sha512-De8xYx5b9PgR1QRFGSD3E7eLiclbOxuRBxuVyv2oBpD8gjy1nvQnjxLVweawoZaI2/LoEQb2NHkXB/4ufapdow==
+e-icon-picker@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-1.1.2.tgz#340ce56462b85bc9d75239402304c6d05e1a371b"
+  integrity sha512-CmHuzSk5UPdLPsfD5SUEigjhWsMdeb9+G+3au0AQDMijKnXOP9OiOpicVLdqqve4al4lheM19Y4tPU8FiOXHzg==
   dependencies:
     element-ui "^2.15.3"
     font-awesome "^4.7.0"

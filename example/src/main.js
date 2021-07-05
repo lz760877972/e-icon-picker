@@ -10,7 +10,6 @@ import "./css/iconfont.css"; //自己的图标样式
 import eIconPicker, {analyzingIconForIconfont, iconList} from 'e-icon-picker';
 import svgIcons from 'e-icon-picker/lib/getSvg';
 
-Vue.config.productionTip = false;
 let forIconfont = analyzingIconForIconfont(iconfont);
 //全局删除增加图标
 Vue.use(eIconPicker, {
@@ -25,7 +24,7 @@ Vue.use(eIconPicker, {
 iconList.addIcon(svgIcons);
 iconList.removeIcon(["el-icon-s-ticket"]);
 
-
+Vue.config.productionTip = false;
 new Vue({
     components: {},
     render: h => h(App),

@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "1.1.2-alpha.4",
+  "version": "1.1.2",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -46,7 +46,7 @@
     "build:lib": "webpack --config scripts/webpack.config.js && cp-cli scripts/lib lib",
     "clean:lib": "rimraf scripts/lib",
     "clean:all": "rimraf lib && yarn clean:lib && yarn clean:font-css",
-    "publish": "npm publish --tag alpha"
+    "publish": "npm publish --tag latest"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
