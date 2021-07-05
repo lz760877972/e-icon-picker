@@ -48,13 +48,14 @@
               v-for="(item, index) in dataList"
               :key="index"
               @click="_selectedIcon(item)"
+              :style="name === item && highLightColor!=='' ? {color: highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
               <e-icon :icon-name="item" :title="item" class="e-icon"/>
             </slot>
           </li>
         </ul>
-        <span v-else class="fas-no-data">暂无可选图标</span>
+        <span v-else class="fas-no-data" v-text="emptyText"></span>
       </el-scrollbar>
     </el-popover>
   </div>
@@ -64,11 +65,14 @@
 import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
 import {off, on} from "../utils";
 import EIcon from "../eIcon/e-icon";
+import ElInput from 'element-ui/lib/input';
+import ElPopover from 'element-ui/lib/popover';
+import ElScrollbar from 'element-ui/lib/scrollbar';
 
 export default {
   name: "eIconPicker",
   components: {
-    EIcon,
+    EIcon, ElInput, ElPopover, ElScrollbar
   },
   props: {
     // 是否禁用文本框
@@ -139,6 +143,18 @@ export default {
         return "eiconfont e-icon-bi";
       },
     },
+    emptyText: {
+      type: String,
+      default() {
+        return "暂无可选图标";
+      },
+    },
+    highLightColor: {
+      type: String,
+      default() {
+        return "";
+      },
+    }
   },
   data() {
     return {
@@ -221,7 +237,7 @@ export default {
       this.visible = false;
       this.name = item;
       this.prefixIcon = this.name;
-      this._emitFun(this.prefixIcon);
+      this._emitFun(this.name);
     },
     // 更新宽度
     _updateW() {
@@ -322,6 +338,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import '~element-ui/lib/theme-chalk/input.css';
+@import '~element-ui/lib/theme-chalk/popover.css';
+@import '~element-ui/lib/theme-chalk/scrollbar.css';
+@import '~element-ui/lib/theme-chalk/select-dropdown.css';
+
 .fas-icon-list {
   list-style-type: none;
   margin: 0;

@@ -47,5 +47,11 @@ export declare class EIconPicker extends Vue {
     placeholder: string;
 
     /** 默认显示图标 */
-    defaultIcon: string
+    defaultIcon: string;
+
+    /** 图标列表为空时默认显示的文本 */
+    emptyText: string;
+
+    /** 图标高亮 #FF0000 */
+    highLightColor: string;
 }
