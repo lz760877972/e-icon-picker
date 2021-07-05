@@ -338,10 +338,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import 'element-ui/lib/theme-chalk/input.css';
-@import 'element-ui/lib/theme-chalk/popover.css';
-@import 'element-ui/lib/theme-chalk/scrollbar.css';
-@import 'element-ui/lib/theme-chalk/select-dropdown.css';
+@import '~element-ui/lib/theme-chalk/input.css';
+@import '~element-ui/lib/theme-chalk/popover.css';
+@import '~element-ui/lib/theme-chalk/scrollbar.css';
+@import '~element-ui/lib/theme-chalk/select-dropdown.css';
 
 .fas-icon-list {
   list-style-type: none;
