@@ -15,14 +15,15 @@ const cdn = {
     },
     // cdn的css链接
     css: [
-        'https://unpkg.zhimg.com/e-icon-picker/dist/index.css',
+        'https://unpkg.zhimg.com/e-icon-picker@next/lib/index.css',
         'https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css',
-        'https://unpkg.zhimg.com/element-ui/lib/theme-chalk/icon.css'
+        'https://unpkg.com/element-plus@beta/lib/theme-chalk/icon.css'
     ],
     // cdn的js链接
     js: [
-        'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js',
-        'https://unpkg.zhimg.com/e-icon-picker/dist/index.js',
+        'https://cdn.jsdelivr.net/npm/vue@3.1.4/dist/vue.global.prod.js',
+        'https://unpkg.zhimg.com/e-icon-picker@next',
+        'https://unpkg.zhimg.com/e-icon-picker@next/lib/symbol.js'
     ]
 };
 

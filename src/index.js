@@ -1,7 +1,7 @@
 import EIconPicker from './eIconPicker/index.js';
 import EIcon from './eIcon/index.js';
 
-import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
+// import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
 // import ElInput from 'element-plus/lib/el-input';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
@@ -44,9 +44,9 @@ const install = function (Vue, options = {}) {
         }
     }
 
-    Vue.use(ElInput);
-    Vue.use(ElPopover);
-    Vue.use(ElScrollbar);
+    // Vue.use(ElInput);
+    // Vue.use(ElPopover);
+    // Vue.use(ElScrollbar);
     Vue.component(EIconPicker.name, EIconPicker);
     Vue.component(EIcon.name, EIcon);
 };

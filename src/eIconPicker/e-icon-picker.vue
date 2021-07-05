@@ -66,11 +66,15 @@ import iconList, {eIconList, elementUI, fontAwesome} from "../js/iconList";
 import {off, on} from "../utils";
 import eIcon from "../eIcon/e-icon.vue";
 import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
+import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
 
 export default defineComponent({
   name: "eIconPicker",
   components: {
-    "eIcon": eIcon
+    "eIcon": eIcon,
+    "ElInput": ElInput,
+    "ElPopover": ElPopover,
+    "ElScrollbar": ElScrollbar,
   },
   props: {
     // 是否禁用文本框

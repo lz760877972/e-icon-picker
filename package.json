@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.2",
+  "version": "2.0.3-beta.2",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -45,7 +45,7 @@
     "build:lib": "rollup --config ./scripts/rollup.config.js",
     "build:theme": "webpack --config ./scripts/webapck.config.js && cp-cli scripts/dist/index.css lib/index.css && cp-cli scripts/dist/fonts lib/fonts && rimraf scripts/dist",
     "clean:lib": "rimraf lib && rimraf scripts/dist && yarn clean:font-css",
-    "publish": "npm publish --tag next"
+    "publish": "npm publish --tag beta"
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.42",
