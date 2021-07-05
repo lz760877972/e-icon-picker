@@ -3,14 +3,14 @@ import EIcon from './eIcon';
 import './css/common.css';
 import './css/eiconfont.css';
 
-import 'element-ui/lib/theme-chalk/input.css';
-import 'element-ui/lib/theme-chalk/popover.css';
-import 'element-ui/lib/theme-chalk/scrollbar.css';
-import 'element-ui/lib/theme-chalk/select-dropdown.css'
-
-import ElInput from 'element-ui/lib/input';
-import ElPopover from 'element-ui/lib/popover';
-import ElScrollbar from 'element-ui/lib/scrollbar';
+// import 'element-ui/lib/theme-chalk/input.css';
+// import 'element-ui/lib/theme-chalk/popover.css';
+// import 'element-ui/lib/theme-chalk/scrollbar.css';
+// import 'element-ui/lib/theme-chalk/select-dropdown.css'
+//
+// import ElInput from 'element-ui/lib/input';
+// import ElPopover from 'element-ui/lib/popover';
+// import ElScrollbar from 'element-ui/lib/scrollbar';
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
@@ -54,9 +54,9 @@ const install = function (Vue, options = {}) {
         }
     }
 
-    Vue.use(ElInput);
-    Vue.use(ElPopover);
-    Vue.use(ElScrollbar);
+    // Vue.use(ElInput);
+    // Vue.use(ElPopover);
+    // Vue.use(ElScrollbar);
     Vue.component(EIconPicker.name, EIconPicker);
     Vue.component(EIcon.name, EIcon);
     install.installed = true;

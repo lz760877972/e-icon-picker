@@ -65,11 +65,14 @@
 import iconList, {eIconList, elementUI, fontAwesome} from "../iconList";
 import {off, on} from "../utils";
 import EIcon from "../eIcon/e-icon";
+import ElInput from 'element-ui/lib/input';
+import ElPopover from 'element-ui/lib/popover';
+import ElScrollbar from 'element-ui/lib/scrollbar';
 
 export default {
   name: "eIconPicker",
   components: {
-    EIcon,
+    EIcon, ElInput, ElPopover, ElScrollbar
   },
   props: {
     // 是否禁用文本框
@@ -335,6 +338,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import 'element-ui/lib/theme-chalk/input.css';
+@import 'element-ui/lib/theme-chalk/popover.css';
+@import 'element-ui/lib/theme-chalk/scrollbar.css';
+@import 'element-ui/lib/theme-chalk/select-dropdown.css';
+
 .fas-icon-list {
   list-style-type: none;
   margin: 0;

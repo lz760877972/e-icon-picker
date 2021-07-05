@@ -12,7 +12,7 @@
 ## 安装
 
 >~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
->~~安装方式请参考element-ui官网的相关文档。~~[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。
+>~~安装方式请参考element-ui官网的相关文档。[element-ui官网](https://element.eleme.cn/#/zh-CN/component/installation)。~~
 >
 >已经脱离element-ui，不需要再安装element-ui了。
 
@@ -27,13 +27,13 @@ npm install e-icon-picker -S
 ## 快速使用
 
 ```
-import iconPicker from 'e-icon-picker';
+import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 import 'element-ui/lib/theme-chalk/icon.css'; //element-ui 图标库
 
-Vue.use(iconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
+Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
 ```
 
 详细文档
