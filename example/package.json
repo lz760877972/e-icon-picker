@@ -9,14 +9,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.11.0",
-    "e-icon-picker": "2.0.3-beta.2",
-    "vue": "^3.0.11"
+    "core-js": "^3.15.2",
+    "e-icon-picker": "2.0.3",
+    "vue": "^3.1.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.12",
-    "@vue/cli-service": "~4.5.12",
-    "@vue/compiler-sfc": "^3.0.11",
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
+    "@vue/compiler-sfc": "^3.1.4",
     "svgo-loader": "^2.2.1"
   },
   "browserslist": [
