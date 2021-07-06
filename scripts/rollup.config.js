@@ -40,9 +40,11 @@ const createBaseConfig = () => {
             resolve({
                 extensions: ['.vue', '.js']
             }),
-            css({ output(style) {
+            css({
+                output(style) {
                     writeFileSync('./src/css/css.css', style)
-                } }),
+                }
+            }),
             commonjs(),
             json()
         ],
@@ -81,7 +83,8 @@ const esBundleConfig = {
     plugins: [
         replace({
             __DEV__: `(process.env.NODE_ENV !== 'production')`,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         }),
         copy({
             targets: [
@@ -101,7 +104,8 @@ const esBrowserConfig = {
     plugins: [
         replace({
             __DEV__: true,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -116,7 +120,8 @@ const esBrowserProdConfig = {
         terser(),
         replace({
             __DEV__: false,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -130,7 +135,8 @@ const cjsConfig = {
     plugins: [
         replace({
             __DEV__: true,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -144,7 +150,8 @@ const cjsProdConfig = {
         terser(),
         replace({
             __DEV__: false,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -160,7 +167,8 @@ const globalConfig = {
         replace({
             __DEV__: true,
             'process.env.NODE_ENV': true,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -176,7 +184,8 @@ const globalProdConfig = {
         replace({
             __DEV__: false,
             'process.env.NODE_ENV': true,
-            preventAssignment: true
+            preventAssignment: true,
+            ELEMENT: "EICON"
         })
     ],
     output: {

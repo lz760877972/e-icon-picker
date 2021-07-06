@@ -274,14 +274,17 @@ export default defineComponent({
         eScrollbar.value.wrap.scrollTop = input.value.$el.getBoundingClientRect().height - 35;
       });
     }
+    const updatePopper = () => {
+      this.popoverShowFun();
+    }
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = () => {
       if (props.readonly !== true && props.disabled !== true) {
         state.visible = true;
         updateW();
-        setTimeout(() => {
-          popover.value.update();
-        }, 100);
+        // setTimeout(() => {
+        //   popover.value.update();
+        // }, 100);
       }
     }
     // 点击控件外，判断是否隐藏弹出框
@@ -299,15 +302,15 @@ export default defineComponent({
       context.emit("update:modelValue", val);
       context.emit("change", val);
       context.emit('input', val)
-      updatePopoverLocationFun();
+      // updatePopoverLocationFun();
     }
     // 更新popover位置
-    const updatePopoverLocationFun = () => {
-      // dom高度还没有更新，做一个延迟
-      setTimeout(() => {
-        popover.value.update();
-      }, 50);
-    }
+    // const updatePopoverLocationFun = () => {
+    //   // dom高度还没有更新，做一个延迟
+    //   setTimeout(() => {
+    //     popover.value.update();
+    //   }, 50);
+    // }
     //初始化
     initIcon(true);
     return {
@@ -320,7 +323,8 @@ export default defineComponent({
       state,
       input,
       eScrollbar,
-      popover
+      popover,
+      updatePopper
     }
   }
 });

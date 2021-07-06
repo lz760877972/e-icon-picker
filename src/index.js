@@ -5,11 +5,16 @@ import EIcon from './eIcon/index.js';
 // import ElInput from 'element-plus/lib/el-input';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
+import {setConfig} from "element-plus/lib/utils/config";
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
 
 const install = function (Vue, options = {}) {
+    if (install.installed) {
+        console.warn("e-icon-picker 已经安装")
+        return;
+    }
     options = {
         addIconList: options.addIconList || [],
         removeIconList: options.removeIconList || [],
@@ -17,6 +22,7 @@ const install = function (Vue, options = {}) {
         ElementUI: options.ElementUI || false,
         eIcon: options.eIcon || false,
         eIconSymbol: options.eIconSymbol || false,
+        zIndex: options.zIndex || 3000,
     };
 
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
@@ -49,6 +55,16 @@ const install = function (Vue, options = {}) {
     // Vue.use(ElScrollbar);
     Vue.component(EIconPicker.name, EIconPicker);
     Vue.component(EIcon.name, EIcon);
+    // Vue.prototype.$EICON = {
+    //     zIndex: options.zIndex
+    // };
+    Vue.config.globalProperties.$EICON = {
+        zIndex: options.zIndex
+    };
+    setConfig({
+        zIndex: options.zIndex
+    });
+    install.installed = true;
 };
 
 /* istanbul ignore if */

@@ -3565,15 +3565,15 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-e-icon-picker@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-2.0.3.tgz#9780af2896b5a2632258f50ab1399c77e3dda650"
-  integrity sha512-9OaGwBrHWcKbqzLQE9KdRyk/qWITPV/AM/nGjvcw440YI6vnZOY08W3fZejhaxbLH8dpGTls2mgBbJxrGXJpCQ==
+e-icon-picker@2.0.4-beta.2:
+  version "2.0.4-beta.2"
+  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-2.0.4-beta.2.tgz#1b8577ff321daa3bf9ca39ecd8f9417079c052d9"
+  integrity sha512-whIDD0RHTozTjvGO07UnNyi6GmUEfwK424EKwERSSqh0IC9l9SiLdlW4K9seVEsFWwFZc7VClXenoZ5w39AmqQ==
   dependencies:
-    element-plus "^1.0.2-beta.54"
+    element-plus "^1.0.2-beta.42"
     font-awesome "^4.7.0"
-    svg-sprite-loader "^6.0.9"
-    vue "^3.1.4"
+    svg-sprite-loader "^6.0.5"
+    vue "^3.0.0"
 
 easy-stack@^1.0.0:
   version "1.0.0"
@@ -3613,7 +3613,7 @@ electron-to-chromium@^1.3.523:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.555.tgz"
   integrity sha512-/55x3nF2feXFZ5tdGUOr00TxnUjUgdxhrn+eCJ1FAcoAt+cKQTjQkUC5XF4frMWE1R5sjHk+JueuBalimfe5Pg==
 
-element-plus@^1.0.2-beta.54:
+element-plus@^1.0.2-beta.42:
   version "1.0.2-beta.54"
   resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.0.2-beta.54.tgz#70eda3fc0ef4c28a1cdc6bffec8f9c34ef83cc16"
   integrity sha512-XXgZMnVt2ECtLyxJLVMq+faTxcYKNy9ZTaQ4cgbITgR/iGF5iXPHHjn1J1DWNLIKJ0XQRo8atAM1fyOpJsyJzw==
@@ -7847,7 +7847,7 @@ svg-baker@^1.5.0, svg-baker@^1.7.0:
     query-string "^4.3.2"
     traverse "^0.6.6"
 
-svg-sprite-loader@^6.0.9:
+svg-sprite-loader@^6.0.5:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/svg-sprite-loader/-/svg-sprite-loader-6.0.9.tgz#f1a1089c38600ebd5fb8d09dfa3c83aa4434a2b4"
   integrity sha512-V/F3iI1J/xWeO0cRXkEFvhujvBQ3deAPFlhip+AW00Hs+9gighu619mblucIWdRPmDMfcSWJD/ZuXf6HldIskw==
@@ -8370,7 +8370,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^3.1.4:
+vue@^3.0.0, vue@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.1.4.tgz#120d6818c51eaa35d0879e5bc1cff60135bc69fd"
   integrity sha512-p8dcdyeCgmaAiZsbLyDkmOLcFGZb/jEVdCLW65V68LRCXTNX8jKsgah2F7OZ/v/Ai2V0Fb1MNO0vz/GFqsPVMA==
