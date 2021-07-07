@@ -23,7 +23,8 @@ Vue.use(eIconPicker, {
     eIcon: true,//自带的图标，来自阿里妈妈
     eIconSymbol: true,//是否开启彩色图标
     addIconList: [],
-    removeIconList: []
+    removeIconList: [],
+    zIndex: 3100//选择器弹层的最低层,全局配置，不支持局部参数
 });
 ```
 

@@ -1,4 +1,9 @@
 # 更新日志
+#### v1.1.3
+1. 修复当`element ui`的`dialog`使用时，出现弹层被遮挡问题
+2. 添加弹层`zIndex`设置参数
+3. 更新文档
+
 #### v1.1.2
 1. 修复当组件局部使用时，不能正常使用问题 [I3YD2K](https://gitee.com/cnovel/e-icon-picker/issues/I3YD2K)
 2. 修改文档中存在的一些错误问题 [I3YD2K](https://gitee.com/cnovel/e-icon-picker/issues/I3YD2K)

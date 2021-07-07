@@ -27,6 +27,7 @@ const install = function (Vue, options = {}) {
         ElementUI: options.ElementUI || false,
         eIcon: options.eIcon || false,
         eIconSymbol: options.eIconSymbol || false,
+        zIndex: options.zIndex || 3000,
     };
 
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
@@ -59,6 +60,9 @@ const install = function (Vue, options = {}) {
     // Vue.use(ElScrollbar);
     Vue.component(EIconPicker.name, EIconPicker);
     Vue.component(EIcon.name, EIcon);
+    Vue.prototype.$EICON = {
+        zIndex: options.zIndex
+    };
     install.installed = true;
 };
 

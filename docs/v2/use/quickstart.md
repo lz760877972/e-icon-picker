@@ -18,10 +18,13 @@ import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
 
 let app = createApp(App);
 app.use(eIconPicker, {
-    FontAwesome: false,
-    ElementUI: false,
-    eIcon: false,//自带的图标，来自阿里妈妈
-    eIconSymbol: false//是否开启彩色图标
+    FontAwesome: true,
+    ElementUI: true,
+    eIcon: true,//自带的图标，来自阿里妈妈
+    eIconSymbol: true,//是否开启彩色图标
+    addIconList: [],
+    removeIconList: [],
+    zIndex: 3100//选择器弹层的最低层,全局配置，不支持局部参数
 });
 app.mount('#app');
 ```
@@ -98,14 +101,32 @@ export default {
 在main.js中全局注册是可以加入以下参数：
 
 ```js
-app.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true});
+app.use(eIconPicker, 
+    {
+        FontAwesome: true,
+        ElementUI: true,
+        eIcon: true,
+        eIconSymbol: true,
+        zIndex: 3100
+    }
+);
 ```
 
 #### 全局添加图标或者删除图标
 * 通过全局配置添加或者删除
 
 ```js
-app.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymbol: true, addIconList: [], removeIconList: []});
+app.use(eIconPicker, 
+    {
+        FontAwesome: true,
+        ElementUI: true,
+        eIcon: true,
+        eIconSymbol: true,
+        addIconList: [],
+        removeIconList: [],
+        zIndex: 3100
+    }
+);
 ```
 
 * 通过提供的函数进行配置
@@ -167,7 +188,15 @@ import "./css/iconfont.css";//引入css
 let forIconfont = analyzingIconForIconfont(iconfont);//解析class
 //let forIconfont = eIconSymbol(iconfont);//解析彩色图标
 //全局删除增加图标
-app.use(eIconPicker, {FontAwesome: true, ElementUI: true, addIconList: forIconfont.list, removeIconList: []});//全局注册图标
+app.use(eIconPicker, 
+    {
+        FontAwesome: true,
+        ElementUI: true,
+        addIconList: forIconfont.list,
+        removeIconList: [], 
+        zIndex: 3100
+    }
+);//全局注册图标
 ```
 
 #### 使用svg图标

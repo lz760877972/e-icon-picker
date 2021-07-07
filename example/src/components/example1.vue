@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {EIcon, EIconPicker} from 'e-icon-picker';
+import {EIcon, EIconPicker,} from 'e-icon-picker';
 
 export default {
   name: "example1",

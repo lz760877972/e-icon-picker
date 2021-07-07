@@ -121,6 +121,14 @@ export default {
 <example6 slot="demo"></example6>
 </RecoDemo>
 
+### 在dialog中使用
+<RecoDemo>
+<template slot="code-vue">
+    <<< @/example/src/components/example7.vue
+</template>
+<example7 slot="demo"></example7>
+</RecoDemo>
+
 
 ### 属性
 
