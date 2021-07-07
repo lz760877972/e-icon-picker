@@ -211,7 +211,6 @@ export default {
       if (this.placement && (this.placement === "bottom" || this.placement === "top")) {
         this.myPlacement = this.placement;
       }
-
       if (type === false) {
         this._emitFun("");
       }
@@ -232,6 +231,9 @@ export default {
         this.icon.removeIcon(item);
         this.iconList = this.icon.list;
       }
+    },
+    updatePopper() {
+      this._popoverShowFun();
     },
     _selectedIcon(item) {
       this.visible = false;
@@ -255,9 +257,9 @@ export default {
       if (this.readonly !== true && this.disabled !== true) {
         this.visible = true;
         this._updateW();
-        setTimeout(() => {
-          this.$refs.popover.updatePopper();
-        }, 100);
+        // setTimeout(() => {
+        //   this.$refs.popover.updatePopper();
+        // }, 100);
       }
     },
     // 点击控件外，判断是否隐藏弹出框
@@ -275,15 +277,15 @@ export default {
     _emitFun(val) {
       this.$emit("input", val);
       this.$emit("change", val);
-      this._updatePopoverLocationFun();
+      // this._updatePopoverLocationFun();
     },
     // 更新popover位置
-    _updatePopoverLocationFun() {
-      // dom高度还没有更新，做一个延迟
-      setTimeout(() => {
-        this.$refs.popover.updatePopper();
-      }, 50);
-    },
+    // _updatePopoverLocationFun() {
+    //   // dom高度还没有更新，做一个延迟
+    //   setTimeout(() => {
+    //     this.$refs.popover.updatePopper();
+    //   }, 50);
+    // },
   },
   computed: {
     dataList: function () {

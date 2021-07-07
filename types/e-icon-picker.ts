@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
 export type ComponentSize = 'large' | 'medium' | 'small' | 'mini'
+
 export interface EIconPickerOptions {
     addIconList: string[],
     removeIconList: string[],
@@ -9,6 +10,8 @@ export interface EIconPickerOptions {
     ElementUI: boolean,
     eIcon: boolean,
     eIconSymbol: boolean,
+    /**zIndex 只能在全局设置，不支持组件参数*/
+    zIndex: number
 }
 
 /** EIconPicker Component */
