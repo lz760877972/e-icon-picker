@@ -5,7 +5,7 @@ import EIcon from './eIcon/index.js';
 // import ElInput from 'element-plus/lib/el-input';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
-import {setConfig} from "element-plus/lib/utils/config";
+import {setConfig} from "element-plus/es/utils/config.js";
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
@@ -58,9 +58,9 @@ const install = function (Vue, options = {}) {
     // Vue.prototype.$EICON = {
     //     zIndex: options.zIndex
     // };
-    Vue.config.globalProperties.$EICON = {
-        zIndex: options.zIndex
-    };
+    // Vue.config.globalProperties.$EICON = {
+    //     zIndex: options.zIndex
+    // };
     setConfig({
         zIndex: options.zIndex
     });

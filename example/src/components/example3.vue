@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import {onMounted, ref} from "vue";
+import {defineComponent, onMounted, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "example3",
   setup() {
     let icon = ref("");
@@ -37,7 +37,7 @@ export default {
       emptyText
     }
   }
-}
+})
 </script>
 
 <style scoped>

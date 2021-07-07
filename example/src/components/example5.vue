@@ -11,9 +11,9 @@
 
 import {analyzingIconForIconfont} from 'e-icon-picker';
 import iconfont from "../css/iconfont.json";
-import {onMounted, ref} from "vue";
+import {defineComponent, onMounted, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "example5",
   setup() {
     let icon = ref("");
@@ -34,7 +34,7 @@ export default {
       iconPicker
     }
   }
-}
+})
 </script>
 <style scoped>
 @import "../css/iconfont.css";

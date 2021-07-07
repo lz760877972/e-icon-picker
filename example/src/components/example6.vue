@@ -9,20 +9,17 @@
 
 <script>
 
-import {onMounted, ref} from "vue";
+import {defineComponent, ref} from "vue";
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 import svgIcons from 'e-icon-picker/lib/getSvg';
 
-export default {
+export default defineComponent({
   name: "example6",
   setup() {
     let icon = ref("");
     let options = ref({FontAwesome: false, ElementUI: false, addIconList: [], removeIconList: []});
     let iconPicker = ref(null);
 
-    onMounted(() => {
-
-    })
     options.value.addIconList = svgIcons;
     return {
       icon,
@@ -30,7 +27,7 @@ export default {
       iconPicker
     }
   }
-}
+})
 </script>
 <style scoped>
 

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {defineComponent, ref} from 'vue'
 import {EIcon, EIconPicker} from 'e-icon-picker';
 
-export default {
+export default defineComponent({
   name: "example1",
   components: {
     EIconPicker, EIcon
@@ -26,7 +26,7 @@ export default {
       options
     }
   }
-}
+})
 </script>
 <style lang="css" scoped>
 @import '~e-icon-picker/lib/index.css';

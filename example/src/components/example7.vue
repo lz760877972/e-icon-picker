@@ -8,8 +8,7 @@
     <el-dialog
         title="在dialog中使用"
         v-model="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
+        width="30%">
       <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
       <template #footer>
       <span class="dialog-footer">
@@ -23,38 +22,27 @@
 
 <script>
 
-import {onMounted, ref} from "vue";
+import {defineComponent, ref} from "vue";
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 import svgIcons from 'e-icon-picker/lib/getSvg';
 
-export default {
+export default defineComponent({
   name: "example6",
   setup() {
     let icon = ref("");
     let dialogVisible = ref(false);
     let options = ref({FontAwesome: false, ElementUI: false, addIconList: [], removeIconList: []});
     let iconPicker = ref(null);
-    const handleClose = (done) => {
-      this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {
-          });
-    }
-    onMounted(() => {
 
-    })
     options.value.addIconList = svgIcons;
     return {
       icon,
       options,
       iconPicker,
-      handleClose,
       dialogVisible
     }
   }
-}
+})
 </script>
 <style scoped>
 

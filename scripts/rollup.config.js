@@ -84,7 +84,6 @@ const esBundleConfig = {
         replace({
             __DEV__: `(process.env.NODE_ENV !== 'production')`,
             preventAssignment: true,
-            ELEMENT: "EICON"
         }),
         copy({
             targets: [
@@ -105,7 +104,6 @@ const esBrowserConfig = {
         replace({
             __DEV__: true,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -121,7 +119,6 @@ const esBrowserProdConfig = {
         replace({
             __DEV__: false,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -136,7 +133,6 @@ const cjsConfig = {
         replace({
             __DEV__: true,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -151,7 +147,6 @@ const cjsProdConfig = {
         replace({
             __DEV__: false,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -168,7 +163,6 @@ const globalConfig = {
             __DEV__: true,
             'process.env.NODE_ENV': true,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {
@@ -185,7 +179,6 @@ const globalProdConfig = {
             __DEV__: false,
             'process.env.NODE_ENV': true,
             preventAssignment: true,
-            ELEMENT: "EICON"
         })
     ],
     output: {

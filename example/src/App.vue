@@ -20,8 +20,9 @@ import example5 from './components/example5'
 import example6 from './components/example6'
 import example7 from './components/example7'
 import iconList from './components/iconList'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: 'app',
   components: {
     example1,
@@ -33,5 +34,5 @@ export default {
     example7,
     iconList
   }
-}
+})
 </script>

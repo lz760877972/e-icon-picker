@@ -66,7 +66,9 @@ import iconList, {eIconList, elementUI, fontAwesome} from "../js/iconList";
 import {off, on} from "../utils";
 import eIcon from "../eIcon/e-icon.vue";
 import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
-import {ElInput, ElPopover, ElScrollbar} from 'element-plus';
+import ElInput from 'element-plus/es/el-input/index.js';
+import ElPopover from 'element-plus/es/el-popover/index.js';
+import ElScrollbar from 'element-plus/es/el-scrollbar/index.js';
 
 export default defineComponent({
   name: "eIconPicker",
@@ -276,6 +278,9 @@ export default defineComponent({
     }
     const updatePopper = () => {
       this.popoverShowFun();
+      setTimeout(() => {
+        popover.value.update();
+      }, 100);
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = () => {

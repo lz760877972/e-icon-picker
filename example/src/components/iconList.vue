@@ -12,9 +12,10 @@
 
 <script>
 import {iconList} from 'e-icon-picker';
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
+import {ElMessage} from "element-plus";
 
-export default {
+export default defineComponent({
   name: "iconList",
   setup() {
     let dataList = ref(iconList.list);
@@ -26,6 +27,10 @@ export default {
       document.getElementById('cp_hgz_input').select();
       document.execCommand('copy');
       document.getElementById('cp_hgz_input').remove();
+      ElMessage.success({
+        message: '复制成功',
+        type: 'success'
+      });
     }
 
     return {
@@ -33,7 +38,7 @@ export default {
       copy
     }
   }
-}
+})
 </script>
 
 <style scoped>
