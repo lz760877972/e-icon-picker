@@ -29,6 +29,10 @@ export default {
       document.getElementById('cp_hgz_input').select();
       document.execCommand('copy');
       document.getElementById('cp_hgz_input').remove();
+      this.$message({
+        message: '复制成功',
+        type: 'success'
+      });
     },
   }
 }
