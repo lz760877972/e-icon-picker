@@ -1,4 +1,16 @@
 # 图标显示组件
+> 默认图标列表的图标只要通过参数配置就能使用
+
+例如：
+```js
+Vue.use(eIconPicker, {
+    FontAwesome: true,//fontAwesome 4.7 整理后的图标集
+    ElementUI: true,//elementUI 整理后的图标集
+    eIcon: true,//自带的图标，来自阿里妈妈
+    eIconSymbol: true//是否开启彩色图标
+});
+```
+
 ## eIcon 默认图标
 <iconList :type="'eIcon'"/>
 
