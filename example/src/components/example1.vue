@@ -1,7 +1,7 @@
 <template>
   <div style="margin: 0 auto;width: 500px">
     <h2>基础用法</h2>
-    <e-icon-picker v-model="icon" :highLightColor="highLightColor" :options="options"/>
+    <e-icon-picker v-model="icon" :highLightColor="highLightColor" :options="options" :zIndex="zIndex" />
     名称： {{ icon }}
     <e-icon :icon-name="icon"/>
   </div>
@@ -20,6 +20,7 @@ export default {
       icon: '',
       highLightColor: "#fc1944",
       options: {FontAwesome: true, ElementUI: true},
+      zIndex:3500
     }
   },
 }

@@ -3,9 +3,13 @@
   <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
+  <div v-else-if="isExternal" :style="styleExternalIcon" :class="className" class="icon external-icon"
+       @click="click(iconName,$event)"/>
 </template>
 
 <script>
+import {isExternal} from "../utils";
+
 export default {
   name: "eIcon",
   props: {
@@ -20,10 +24,13 @@ export default {
   },
   computed: {
     fontClass() {
-      return this.iconName && this.iconName.trim().length > 2 && !this.iconName.startsWith("#");
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && !this.iconName.startsWith("#"));
     },
     svg() {
-      return this.iconName && this.iconName.trim().length > 2 && this.iconName.startsWith("#");
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.startsWith("#"));
+    },
+    isExternal() {
+      return isExternal(this.iconName)
     },
     svgClass() {
       if (this.className) {
@@ -32,6 +39,14 @@ export default {
         return 'icon'
       }
     },
+    styleExternalIcon() {
+      return {
+        'background-image': `url(${this.iconName})`,
+        'background-repeat': 'no-repeat',
+        'background-size': '100% 100%',
+        '-moz-background-size': '100% 100%'
+      }
+    }
   },
   methods: {
     click(iconName, event) {
@@ -49,5 +64,9 @@ export default {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+.external-icon {
+  display: inline-block;
 }
 </style>

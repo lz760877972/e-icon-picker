@@ -31,6 +31,7 @@ console.log(
         'background:transparent'
       )
 iconList.addIcon(svgIcons);
+iconList.addIcon("http://www.icosky.com/images/wj/baidu.gif");
 iconList.removeIcon(["el-icon-s-ticket"]);
 
 Vue.use(ElementUI);

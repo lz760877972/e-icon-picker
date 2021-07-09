@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-fas" @click="_popoverShowFun">
+  <div class="ui-fas" @click="_popoverShowFun(false)">
     <!-- 弹出框 -->
     <el-popover
         :disabled="disabled"
@@ -68,11 +68,15 @@ import EIcon from "../eIcon/e-icon";
 import ElInput from 'element-ui/lib/input';
 import ElPopover from 'element-ui/lib/popover';
 import ElScrollbar from 'element-ui/lib/scrollbar';
+import {PopupManager} from "element-ui/lib/utils/popup";
 
 export default {
   name: "eIconPicker",
   components: {
-    EIcon, ElInput, ElPopover, ElScrollbar
+    EIcon,
+    ElInput,
+    ElPopover,
+    ElScrollbar
   },
   props: {
     // 是否禁用文本框
@@ -154,6 +158,12 @@ export default {
       default() {
         return "";
       },
+    },
+    zIndex: {
+      type: Number,
+      default() {
+        return null;
+      },
     }
   },
   data() {
@@ -232,8 +242,14 @@ export default {
         this.iconList = this.icon.list;
       }
     },
-    updatePopper() {
-      this._popoverShowFun();
+    updatePopper(zIndex) {
+      if (zIndex) {
+        PopupManager.zIndex = zIndex
+      }
+      this._popoverShowFun(true);
+      setTimeout(() => {
+        this.$refs.popover.updatePopper();
+      }, 100);
     },
     _selectedIcon(item) {
       this.visible = false;
@@ -253,8 +269,11 @@ export default {
       });
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
-    _popoverShowFun() {
+    _popoverShowFun(flag) {
       if (this.readonly !== true && this.disabled !== true) {
+        if (!flag && this.zIndex) {
+          PopupManager.zIndex = this.zIndex
+        }
         this.visible = true;
         this._updateW();
         // setTimeout(() => {
@@ -266,7 +285,7 @@ export default {
     _popoverHideFun(e) {
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
-        return list.className && list.className.toString().indexOf("fas-icon-list") !== -1;
+        return list.className && list.className.toString().indexOf("is-empty") !== -1;
       });
 
       if (!isInter) {
@@ -364,7 +383,7 @@ export default {
   margin: 5px;
 }
 
-.fas-icon-list li i,.fas-icon-list li svg {
+.fas-icon-list li i, .fas-icon-list li svg {
   font-size: 20px;
   cursor: pointer;
 }
