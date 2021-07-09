@@ -364,12 +364,7 @@ export default {
   margin: 5px;
 }
 
-.fas-icon-list li i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.fas-icon-list li svg {
+.fas-icon-list li i,.fas-icon-list li svg {
   font-size: 20px;
   cursor: pointer;
 }
