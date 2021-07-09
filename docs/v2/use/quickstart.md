@@ -278,20 +278,32 @@ app.use(eIconPicker, {
 使用方法（svg-icon为admin-element-vue的icon组件）
 
 ```vue
-<EIconPicker v-model="form.icon" :options="iconOptions">
-   <template v-slot:prepend>
-     <svg-icon
-      :name="prefixIcon"
-      class="disabled"
-    />
-  </template>
-
-   <template v-slot:icon="slotProps">
+<e-icon-picker v-model="icon">
+    <template #prepend="{icon}">
       <svg-icon
-      :name="slotProps.icon"
-      class="disabled"
-    />
-  </template>
-</EIconPicker>
+          :iconClass="icon"
+          class="disabled"
+      />
+    </template>
+    <template #icon="{icon}">
+      <svg-icon
+          :iconClass="icon"
+          class="disabled"
+      />
+    </template>
+</e-icon-picker>
 ```
+
+```vue
+<e-icon-picker v-model="icon">
+  <template #prepend="{icon}">
+    <i :class="icon"></i>
+  </template>
+  <template #icon="{icon}">
+    <i :class="icon"></i>
+  </template>
+</e-icon-picker>
+```
+>以`#`开头的为`svg`图标，如果自行替换时，可以根据这个进行判断，添加`svg`图标时也要注意这个问题
+
 感谢[元谷](https://gitee.com/yuangu) PR [可自定义的icon](https://gitee.com/cnovel/e-icon-picker/pulls/3/commits)
