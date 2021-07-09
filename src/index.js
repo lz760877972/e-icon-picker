@@ -58,8 +58,8 @@ const install = function (Vue, options = {}) {
     // Vue.use(ElInput);
     // Vue.use(ElPopover);
     // Vue.use(ElScrollbar);
-    Vue.component(EIconPicker.name, EIconPicker);
-    Vue.component(EIcon.name, EIcon);
+    Vue.use(EIconPicker);
+    Vue.use(EIcon);
     Vue.prototype.$EICON = {
         zIndex: options.zIndex
     };

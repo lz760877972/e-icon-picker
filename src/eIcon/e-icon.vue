@@ -1,5 +1,5 @@
 <template>
-  <i v-if="fontClass" :class="iconName" @click="click(iconName)"></i>
+  <i v-if="fontClass" :class="iconName" @click="click(iconName,$event)"></i>
   <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
