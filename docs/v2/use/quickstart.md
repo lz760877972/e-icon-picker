@@ -24,7 +24,7 @@ app.use(eIconPicker, {
     eIconSymbol: true,//是否开启彩色图标
     addIconList: [],
     removeIconList: [],
-    zIndex: 3100//选择器弹层的最低层,全局配置，不支持局部参数
+    zIndex: 3100//选择器弹层的最低层,全局配置
 });
 app.mount('#app');
 ```
@@ -294,6 +294,7 @@ app.use(eIconPicker, {
 </e-icon-picker>
 ```
 
+自己实现
 ```vue
 <e-icon-picker v-model="icon">
   <template #prepend="{icon}">

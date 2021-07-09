@@ -88,6 +88,7 @@ export default {
     setTimeout(() => {//通过修改参数进行重新设置组件
       self.options.addIconList.push('el-icon-message-solid');
       self.options.removeIconList.push('removeIconList');
+      self.options.addIconList.push('http://www.icosky.com/images/wj/baidu.gif');
       console.log("定时任务触发");
     }, 5000);
   }
@@ -143,6 +144,7 @@ placeholder | 输入框提示信息 |请选择图标|任意
 styles | 组件自定义样式 |空|无
 emptyText | 图标列表为空时默认显示的文本 |暂无可选图标|任意
 highLightColor | 图标选中高亮（对svg图标无效） |空|任意（16进制）
+zIndex | 显示的弹窗层数（会全局影响） |空|数字
 options | 图标参数|{FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}|无
 options.FontAwesome |是否使用FontAwesome图标|true|true/false
 options.ElementUI |是否使用ElementUI图标|true|true/false

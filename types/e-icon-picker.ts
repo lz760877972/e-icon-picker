@@ -10,7 +10,7 @@ export interface EIconPickerOptions {
     ElementUI: boolean,
     eIcon: boolean,
     eIconSymbol: boolean,
-    /**zIndex 只能在全局设置，不支持组件参数*/
+    /**zIndex 只能在全局设置*/
     zIndex: number
 }
 

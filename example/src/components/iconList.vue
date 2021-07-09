@@ -61,7 +61,7 @@ export default {
   background-color: #9dbed8;
 }
 
-.fas-icon-list li i, .fas-icon-list li svg {
+.fas-icon-list li i, .fas-icon-list li svg, .fas-icon-list li div {
   font-size: 20px;
   cursor: pointer;
   margin: 5px;
@@ -71,6 +71,7 @@ export default {
   white-space: nowrap; /*一行显示*/
   overflow: hidden; /*超出部分隐藏*/
   text-overflow: ellipsis; /*用...代替超出部分*/
+  flex: 1;
 }
 
 </style>

@@ -111,6 +111,7 @@ export default {
   white-space: nowrap; /*一行显示*/
   overflow: hidden; /*超出部分隐藏*/
   text-overflow: ellipsis; /*用...代替超出部分*/
+  flex: 1;
 }
 
 </style>
