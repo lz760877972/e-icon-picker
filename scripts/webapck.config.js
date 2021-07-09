@@ -3,6 +3,18 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const devMode = 'production';//development  production
+const pkg = require('../package.json');
+
+const webpack = require('webpack')
+
+const createBanner = () => {
+    console.log("createBanner");
+    return `
+   ${pkg.name} v${pkg.version}
+   (c) ${new Date().getFullYear()} ${pkg.author}
+   @license ${pkg.license}
+  `
+}
 
 module.exports = {
     devtool: false,
@@ -77,10 +89,15 @@ module.exports = {
                     preset: [
                         'default',
                         {
-                            discardComments: {removeAll: true},
+                            discardComments: {removeAll: false},
                         },
                     ],
                 },
+            }),
+            // 注意位置，必须放在 TerserPlugin 后面，否则生成的注释描述会被 TerserPlugin 或其它压缩插件清掉
+            new webpack.BannerPlugin({
+                entryOnly: true, // 是否仅在入口包中输出 banner 信息
+                banner: createBanner()
             }),
         ],
     },
