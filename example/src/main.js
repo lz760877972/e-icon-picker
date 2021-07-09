@@ -35,7 +35,7 @@ console.log(
 
 iconList.addIcon(svgIcons);
 iconList.removeIcon(["el-icon-s-ticket"]);
-
+iconList.addIcon("http://www.icosky.com/images/wj/baidu.gif");
 app.use(ElementUI);
 
 app.mount('#app');

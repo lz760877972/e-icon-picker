@@ -25,6 +25,7 @@ export default defineComponent({
 
       setTimeout(() => {//通过修改参数进行重新设置组件
         options.value.addIconList.push('el-icon-message-solid');
+        options.value.addIconList.push('http://www.icosky.com/images/wj/baidu.gif');
         options.value.removeIconList.push('removeIconList');
         console.log("定时任务触发");
       }, 5000);

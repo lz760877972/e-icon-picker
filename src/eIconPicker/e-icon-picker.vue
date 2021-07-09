@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-fas" @click="popoverShowFun">
+  <div class="ui-fas" @click="popoverShowFun(false)">
     <!-- 弹出框 -->
     <el-popover
         ref="popover"
@@ -69,6 +69,7 @@ import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactiv
 import ElInput from 'element-plus/es/el-input/index.js';
 import ElPopover from 'element-plus/es/el-popover/index.js';
 import ElScrollbar from 'element-plus/es/el-scrollbar/index.js';
+import PopupManager from "element-plus/es/utils/popup-manager";
 
 export default defineComponent({
   name: "eIconPicker",
@@ -141,6 +142,12 @@ export default defineComponent({
       type: String,
       default() {
         return "";
+      },
+    },
+    zIndex: {
+      type: Number,
+      default() {
+        return null;
       },
     }
   },
@@ -276,15 +283,21 @@ export default defineComponent({
         eScrollbar.value.wrap.scrollTop = input.value.$el.getBoundingClientRect().height - 35;
       });
     }
-    const updatePopper = () => {
-      this.popoverShowFun();
+    const updatePopper = (zIndex) => {
+      if (zIndex) {
+        PopupManager.zIndex = zIndex
+      }
+      this.popoverShowFun(true);
       setTimeout(() => {
         popover.value.update();
       }, 100);
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
-    const popoverShowFun = () => {
+    const popoverShowFun = (flag) => {
       if (props.readonly !== true && props.disabled !== true) {
+        if (!flag && props.zIndex) {
+          PopupManager.zIndex = props.zIndex
+        }
         state.visible = true;
         updateW();
         // setTimeout(() => {
@@ -295,7 +308,7 @@ export default defineComponent({
     // 点击控件外，判断是否隐藏弹出框
     const popoverHideFun = (e) => {
       let path = e.path || (e.composedPath && e.composedPath());
-      let isInter = path.some((list) => list.className && list.className.toString().indexOf("fas-icon-list") !== -1);
+      let isInter = path.some((list) => list.className && list.className.toString().indexOf("is-empty") !== -1);
       if (!isInter) {
         setTimeout(() => {
           state.visible = false;
@@ -356,12 +369,7 @@ export default defineComponent({
   margin: 5px;
 }
 
-.fas-icon-list li i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.fas-icon-list li svg {
+.fas-icon-list li i,.fas-icon-list li svg {
   font-size: 20px;
   cursor: pointer;
 }

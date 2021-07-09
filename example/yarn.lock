@@ -3565,10 +3565,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-e-icon-picker@2.0.4-beta.7:
-  version "2.0.4-beta.7"
-  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-2.0.4-beta.7.tgz#427ba05a1c16ffc94db578600a71dc6d388a6148"
-  integrity sha512-dDFzVELIhcTaPf7csgxNOeZS+UZ1WSUy7EeISzJu2gsUKzJFcse1FqQ88mj2XOkkNs3LAwEDO2fh9KFRHvGJBw==
+e-icon-picker@2.0.5-beta.1:
+  version "2.0.5-beta.1"
+  resolved "https://registry.yarnpkg.com/e-icon-picker/-/e-icon-picker-2.0.5-beta.1.tgz#929ac49c8c7951694e961dc3a0a7ec2db1a0b1cf"
+  integrity sha512-FJqEh2K1NB0hFvI33L6hQI/fFwJhX9DQi3JT9Lzb8SDCeQZKL7tf+JAnyDSPPcvHMkeKNb69a8XZTDZ9Vd8aMA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     element-plus "^1.0.2-beta.42"

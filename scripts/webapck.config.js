@@ -2,6 +2,7 @@ const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const devMode = 'production';//development  production
 const pkg = require('../package.json');
 
@@ -103,6 +104,7 @@ module.exports = {
     },
 
     plugins: [
+        new ProgressBarPlugin(),
         new CleanWebpackPlugin(),
         //参数是一个数组，数组中是需要删除的目录名
         new MiniCssExtractPlugin({

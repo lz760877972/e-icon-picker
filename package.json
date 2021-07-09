@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.4",
+  "version": "2.0.5-beta.1",
   "description": "element-ui和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -83,6 +83,7 @@
     "normalize-wheel": "^1.0.1",
     "postcss": "^8.3.5",
     "postcss-loader": "^6.1.1",
+    "progress-bar-webpack-plugin": "^1.11.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.52.7",
     "rollup-plugin-copy": "^3.4.0",

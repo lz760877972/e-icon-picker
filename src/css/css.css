@@ -1,12 +1,4 @@
 
-.icon[data-v-5714aceb] {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
-
 .fas-icon-list[data-v-9aa9c464] {
   list-style-type: none;
   margin: 0;
@@ -24,11 +16,7 @@
   height: 30px;
   margin: 5px;
 }
-.fas-icon-list li i[data-v-9aa9c464] {
-  font-size: 20px;
-  cursor: pointer;
-}
-.fas-icon-list li svg[data-v-9aa9c464] {
+.fas-icon-list li i[data-v-9aa9c464],.fas-icon-list li svg[data-v-9aa9c464] {
   font-size: 20px;
   cursor: pointer;
 }
@@ -48,3 +36,14 @@
   font-size: 16px;
 }
 
+
+.icon[data-v-5714aceb] {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.external-icon[data-v-5714aceb] {
+  display: inline-block;
+}
