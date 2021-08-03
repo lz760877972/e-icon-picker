@@ -16,10 +16,6 @@ import iconList, {eIconList, elementUI, fontAwesome} from './iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
 
 const install = function (Vue, options = {}) {
-    if (install.installed) {
-        console.warn("e-icon-picker 已经安装")
-        return;
-    }
     options = {
         addIconList: options.addIconList || [],
         removeIconList: options.removeIconList || [],
@@ -63,7 +59,6 @@ const install = function (Vue, options = {}) {
     Vue.prototype.$EICON = {
         zIndex: options.zIndex
     };
-    install.installed = true;
 };
 
 /* istanbul ignore if */

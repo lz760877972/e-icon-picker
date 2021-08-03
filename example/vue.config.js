@@ -21,7 +21,7 @@ const cdn = {
     ],
     // cdn的js链接
     js: [
-        'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js',
+        'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js',
         'https://unpkg.com/e-icon-picker',
     ]
 };
