@@ -18,8 +18,12 @@ export default {
     }
   },
   mounted() {
-    this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
-    this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
+    this.$nextTick(() => {
+      if (this.$refs['iconPicker']&&this.$refs['iconPicker'].addIcon){
+        this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
+        this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
+      }
+    })
 
     let self = this;
     setTimeout(() => {//通过修改参数进行重新设置组件

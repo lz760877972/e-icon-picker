@@ -137,13 +137,16 @@ export default {
 ---|---|---|---
 value / v-model|	绑定值	| 空 |	—
 disabled | 是否禁用|false|true/false
+size | 组件大小 |medium|large/medium/small/mini
+width | 组件宽度 |-1|number
 readonly | 原生属性，是否只读|false|true/false
+defaultIcon | 默认图标 |eiconfont e-icon-bi|图标名
 clearable | 是否可清空|true|true/false
 placement | 弹窗位置|bottom|top/bottom
 placeholder | 输入框提示信息 |请选择图标|任意
 styles | 组件自定义样式 |空|无
 emptyText | 图标列表为空时默认显示的文本 |暂无可选图标|任意
-highLightColor | 图标选中高亮（对svg图标无效） |空|任意（16进制）
+highLightColor | 图标选中高亮（对svg图标无效） |空|任意（hex）
 zIndex | 显示的弹窗层数（会全局影响） |空|数字
 options | 图标参数|{FontAwesome: true, ElementUI: true, addIconList: [], removeIconList: []}|无
 options.FontAwesome |是否使用FontAwesome图标|true|true/false

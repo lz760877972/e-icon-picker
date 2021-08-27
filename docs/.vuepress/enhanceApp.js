@@ -7,17 +7,11 @@
 import 'element-ui/lib/theme-chalk/index.css'; //element-ui 图标库
 import Element from 'element-ui';
 
-export default ({
-                    Vue,
-                    options,
-                    router,
-                    siteData,
-                    isServer
-                }) => {
+export default ({Vue, options, router, siteData, isServer}) => {
     import('../../lib/index.js').then(function (m) {
         Vue.use(m.default, {FontAwesome: false, ElementUI: false, eIcon: true, eIconSymbol: false});
         console.log(
-            `%c e-icon-picker %c v${m.version} %c`,
+            `%c e-icon-picker %c v${m.version||'1.1.5'} %c`,
             'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
             'background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
             'background:transparent'
