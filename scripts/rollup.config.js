@@ -4,15 +4,17 @@ import vuePlugin from 'rollup-plugin-vue'
 import commonjs from "@rollup/plugin-commonjs"
 import {terser} from 'rollup-plugin-terser'
 import json from '@rollup/plugin-json'
-import replace from '@rollup/plugin-replace'
 import copy from 'rollup-plugin-copy'
 import css from 'rollup-plugin-css-only' // 提取css
+import filesize from 'rollup-plugin-filesize'
+import esbuild from 'rollup-plugin-esbuild'
+import replace from '@rollup/plugin-replace'
 import pkg from '../package.json'
 import {writeFileSync} from "fs";
 
 const extensions = ['.js'];
 
-const name = 'eIconPicker'
+const name = 'eIconPicker'//外部引用的模块名
 
 const createBanner = () => {
     return `/**
@@ -22,15 +24,20 @@ const createBanner = () => {
   */`
 }
 
-const createBaseConfig = () => {
+const createBaseConfig = (minify) => {
     return {
         input: 'src/index.js',
-        external: ["vue"],
+        external: ["vue"],//排除列表
         plugins: [
             vuePlugin({
                 target: 'browser',
                 css: false,
                 exposeFilename: false,
+            }),
+            esbuild({
+                minify,
+                sourceMap: minify,
+                target: 'es2018',
             }),
             babel({
                 exclude: 'node_modules/**',
@@ -46,14 +53,21 @@ const createBaseConfig = () => {
                 }
             }),
             commonjs(),
-            json()
+            json(),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production'),
+
+                // options
+                preventAssignment: true,
+            }),
+            filesize()
         ],
         output: {
             sourcemap: false,
             exports: "named", // 输出多个文件
             banner: createBanner(),
             externalLiveBindings: false,
-            globals: {
+            globals: {//外部依赖
                 vue: 'Vue'
             }
         }
@@ -81,10 +95,6 @@ function createFileName(formatName) {
 // es-bundler
 const esBundleConfig = {
     plugins: [
-        replace({
-            __DEV__: `(process.env.NODE_ENV !== 'production')`,
-            preventAssignment: true,
-        }),
         copy({
             targets: [
                 {src: ['src/utils/getSvg.js', 'src/js/symbol.js'], dest: 'lib'}
@@ -93,48 +103,50 @@ const esBundleConfig = {
     ],
     output: {
         file: createFileName('esm-bundler'),
-        format: 'es'
+        format: 'esm'//输出的文件类型 (amd, cjs, esm, iife, umd)
     }
 }
 
-
-// es-browser
-const esBrowserConfig = {
+const umdConfig = {
+    output: {
+        file: createFileName('umd'),
+        format: 'umd',
+        name: name
+    },
+}
+const umdProdConfig = {
     plugins: [
-        replace({
-            __DEV__: true,
-            preventAssignment: true,
-        })
+        terser()
     ],
     output: {
+        file: createFileName('umd.prod'),
+        format: 'umd',
+        name: name
+    },
+}
+// es-browser
+const esBrowserConfig = {
+    plugins: [],
+    output: {
         file: createFileName('esm-browser'),
-        format: 'es'
+        format: 'esm'
     }
 }
 
 // es-browser.prod
 const esBrowserProdConfig = {
     plugins: [
-        terser(),
-        replace({
-            __DEV__: false,
-            preventAssignment: true,
-        })
+        terser()
     ],
     output: {
         file: createFileName('esm-browser.prod'),
-        format: 'es'
+        format: 'esm'
     }
 }
 
 // cjs
 const cjsConfig = {
-    plugins: [
-        replace({
-            __DEV__: true,
-            preventAssignment: true,
-        })
-    ],
+    plugins: [],
     output: {
         file: createFileName('cjs'),
         format: 'cjs'
@@ -143,11 +155,7 @@ const cjsConfig = {
 // cjs.prod
 const cjsProdConfig = {
     plugins: [
-        terser(),
-        replace({
-            __DEV__: false,
-            preventAssignment: true,
-        })
+        terser()
     ],
     output: {
         file: createFileName('cjs.prod'),
@@ -158,37 +166,28 @@ const cjsProdConfig = {
 
 // global
 const globalConfig = {
-    plugins: [
-        replace({
-            __DEV__: true,
-            'process.env.NODE_ENV': true,
-            preventAssignment: true,
-        })
-    ],
+    plugins: [],
     output: {
         file: createFileName('global'),
         format: 'iife',
-        name
+        name: name
     }
 }
 // global.prod
 const globalProdConfig = {
     plugins: [
-        terser(),
-        replace({
-            __DEV__: false,
-            'process.env.NODE_ENV': true,
-            preventAssignment: true,
-        })
+        terser()
     ],
     output: {
         file: createFileName('global.prod'),
         format: 'iife',
-        name
+        name: name
     }
 }
 
 const prodFormatConfigs = [
+    umdConfig,
+    umdProdConfig,
     esBundleConfig,
     esBrowserProdConfig,
     esBrowserConfig,
@@ -208,7 +207,7 @@ function getFormatConfigs() {
 
 function createPackageConfigs() {
     return getFormatConfigs().map((formatConfig) => {
-        return mergeConfig(createBaseConfig(), formatConfig)
+        return mergeConfig(createBaseConfig(false), formatConfig)
     })
 }
 

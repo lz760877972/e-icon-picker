@@ -26,7 +26,7 @@
         >
           <template #prepend slot="prepend">
             <slot name="prepend" v-bind:icon="state.prefixIcon">
-              <e-icon :icon-name="state.prefixIcon" class="e-icon"/>
+              <e-icon :icon-name="state.prefixIcon" class="e-icon" />
             </slot>
           </template>
         </el-input>
@@ -38,6 +38,7 @@
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
           class="is-empty"
+          v-if="!state.destroy"
       >
         <ul
             class="fas-icon-list"
@@ -48,10 +49,10 @@
               v-for="(item, index) in state.dataList"
               :key="index"
               @click="selectedIcon(item)"
-              :style="state.name === item && highLightColor!=='' ? {'color': highLightColor} : ''"
+              :style="state.name === item && highLightColor !== '' ? {'color': highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon"/>
+              <e-icon :icon-name="item" :title="item" class="e-icon" />
             </slot>
           </li>
         </ul>
@@ -65,11 +66,22 @@
 import iconList, {eIconList, elementUI, fontAwesome} from "../js/iconList";
 import {off, on} from "../utils";
 import eIcon from "../eIcon/e-icon.vue";
-import {computed, defineComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
-import ElInput from 'element-plus/es/el-input/index.js';
-import ElPopover from 'element-plus/es/el-popover/index.js';
-import ElScrollbar from 'element-plus/es/el-scrollbar/index.js';
-import PopupManager from "element-plus/es/utils/popup-manager";
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  onBeforeMount,
+  onBeforeUnmount,
+  onMounted,
+  reactive,
+  ref,
+  watch
+} from "vue";
+// import ElInput from 'element-plus/lib/components/input/index.js';
+// import ElPopover from 'element-plus/lib/components/popover/index.js';
+// import ElScrollbar from 'element-plus/lib/components/scrollbar/index.js';
+import PopupManager from "element-plus/lib/utils/popup-manager.js";
+import {ElInput, ElPopover, ElScrollbar} from 'element-plus'
 
 export default defineComponent({
   name: "eIconPicker",
@@ -158,8 +170,15 @@ export default defineComponent({
       updateW();
     })
 
+    onBeforeMount(() => {
+      //初始化
+      createIconList()
+      initIcon(true);
+    })
+
     onBeforeUnmount(() => {
       off(document, "mouseup", popoverHideFun);
+      destroyIconList()
     })
     watch(() => props.modelValue, (val) => {
       setTimeout(() => {
@@ -190,7 +209,8 @@ export default defineComponent({
           }
         }
         return arr1;
-      })
+      }),
+      destroy: false
     })
 
     watch(() => state.visible, (newValue) => {
@@ -200,6 +220,7 @@ export default defineComponent({
         });
       } else {
         nextTick(() => {
+          createIconList();
           on(document, "mouseup", popoverHideFun);
         });
       }
@@ -207,6 +228,7 @@ export default defineComponent({
     let input = ref(null);
     let eScrollbar = ref(null);
     let popover = ref(null);
+    let fasIconList = ref(null);
     const change = (val) => {
       state.iconList = state.icon.list.filter(function (i) {
         return i.indexOf(val) !== -1;
@@ -280,14 +302,17 @@ export default defineComponent({
         } else {
           state.popoverWidth = props.width;
         }
-        eScrollbar.value.wrap.scrollTop = input.value.$el.getBoundingClientRect().height - 35;
+        if (eScrollbar && eScrollbar.value && eScrollbar.value.setScrollTop) {
+          eScrollbar.value.setScrollTop(0);
+          eScrollbar.value.update();
+        }
       });
     }
     const updatePopper = (zIndex) => {
       if (zIndex) {
         PopupManager.zIndex = zIndex
       }
-      this.popoverShowFun(true);
+      popoverShowFun(true);
       setTimeout(() => {
         popover.value.update();
       }, 100);
@@ -329,8 +354,19 @@ export default defineComponent({
     //     popover.value.update();
     //   }, 50);
     // }
-    //初始化
-    initIcon(true);
+    /**
+     * 销毁图标列表，不销毁输入框等
+     */
+    const destroyIconList = () => {
+      state.destroy = true;
+    }
+    /**
+     * 重新创建图标列表
+     */
+    const createIconList = () => {
+      state.destroy = false;
+    }
+
     return {
       popoverShowFun,
       change,
@@ -342,7 +378,10 @@ export default defineComponent({
       input,
       eScrollbar,
       popover,
-      updatePopper
+      fasIconList,
+      updatePopper,
+      createIconList,
+      destroyIconList
     }
   }
 });
@@ -369,7 +408,7 @@ export default defineComponent({
   margin: 5px;
 }
 
-.fas-icon-list li i,.fas-icon-list li svg {
+.fas-icon-list li i, .fas-icon-list li svg {
   font-size: 20px;
   cursor: pointer;
 }

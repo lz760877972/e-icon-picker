@@ -33,6 +33,6 @@ export default defineComponent({
 <style lang="css" scoped>
 @import '~e-icon-picker/lib/index.css';
 @import '~font-awesome/css/font-awesome.min.css';
-@import '~element-plus/lib/theme-chalk/el-icon.css';
+@import '~element-plus/theme-chalk/el-icon.css';
 </style>
 

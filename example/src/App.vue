@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <example1/>
-    <example2/>
-    <example3/>
-    <example4/>
-    <example5/>
-    <example6/>
-    <example7/>
-    <iconList/>
+   <example1 />
+    <example2 />
+    <example3 />
+    <example4 />
+    <example5 />
+    <example6 />
+    <example7 />
+    <iconList />
   </div>
 </template>
 

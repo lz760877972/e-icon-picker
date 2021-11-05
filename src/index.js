@@ -5,12 +5,12 @@ import EIcon from './eIcon/index.js';
 // import ElInput from 'element-plus/lib/el-input';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
-import {setConfig} from "element-plus/es/utils/config.js";
+import {setConfig} from "element-plus/lib/utils/config.js";
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";
 
-const install = function (Vue, options = {}) {
+const install = function (app, options = {}) {
     options = {
         addIconList: options.addIconList || [],
         removeIconList: options.removeIconList || [],
@@ -49,8 +49,8 @@ const install = function (Vue, options = {}) {
     // Vue.use(ElInput);
     // Vue.use(ElPopover);
     // Vue.use(ElScrollbar);
-    Vue.component(EIconPicker.name, EIconPicker);
-    Vue.component(EIcon.name, EIcon);
+    app.use(EIconPicker);
+    app.use(EIcon);
     // Vue.prototype.$EICON = {
     //     zIndex: options.zIndex
     // };
@@ -63,9 +63,9 @@ const install = function (Vue, options = {}) {
 };
 
 /* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
+/*if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue);
-}
+}*/
 
 export {
     version,
@@ -76,7 +76,8 @@ export {
     fontAwesome,
     eIconList,
     analyzingIconForIconfont,
-    eIconSymbol
+    eIconSymbol,
+    install
 }
 export default {
     install
