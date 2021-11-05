@@ -9,6 +9,7 @@
 
 ## 快速使用
 
+**因element-plus的更新，所以以前的图标不能正常使用，组件做了以下调整**
 ```
 import {createApp} from 'vue';
 import App from './App.vue';
@@ -16,7 +17,7 @@ import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
+import 'e-icon-picker/lib/ele/icon.css'; //element-plus 图标库
 
 let app = createApp(App);
 app.use(eIconPicker, {

@@ -1,5 +1,34 @@
 # 快速上手
 
+### 浏览器直接使用
+```html
+<body>
+<div id="app">
+    <div>
+        <e-icon-picker v-model="icon" clearable />
+        <e-icon :icon-name="icon" />
+    </div>
+</div>
+<script>
+    const App = {
+        data() {
+            return {icon: ""};
+        },
+    };
+    const app = Vue.createApp(App);
+    app.use(eIconPicker, {
+        FontAwesome: false,
+        ElementUI: false,
+        eIcon: true,//自带的图标，来自阿里妈妈
+        eIconSymbol: false,//是否开启彩色图标
+        zIndex: 3100
+    });
+
+    app.mount("#app");
+</script>
+</body>
+```
+
 ### 全局注册
 在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`element-plus`、`eIcon`、`eIconSymbol`、`addIconList`和`removeIconList`，`FontAwesome`、`ElementUI`和`eIcon`可选值有`true`和`false`，表示是否使用该组件图标。
 `eIconSymbol`可选值有`true`和`false`，表示`eIcon`图标是否为彩色图标。
@@ -7,6 +36,7 @@
 
 在main.js中加入：
 
+**因element-plus的更新，所以以前的图标不能正常使用，组件做了以下调整**
 ```js
 import {createApp} from 'vue'
 import App from './App.vue'
@@ -14,7 +44,7 @@ import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
+import 'e-icon-picker/lib/ele/icon.css'; //element-plus 图标库
 
 let app = createApp(App);
 app.use(eIconPicker, {
@@ -59,7 +89,7 @@ export default {
 <style lang="css" scoped>
 @import '~e-icon-picker/lib/index.css';
 @import '~font-awesome/css/font-awesome.min.css';
-@import '~element-plus/lib/theme-chalk/el-icon.css';
+@import '~e-icon-picker/lib/ele/icon.css';
 </style>
 ```
 

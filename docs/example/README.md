@@ -89,6 +89,7 @@ export default {
       self.options.addIconList.push('el-icon-message-solid');
       self.options.removeIconList.push('removeIconList');
       self.options.addIconList.push('http://www.icosky.com/images/wj/baidu.gif');
+      self.options.addIconList.push(require("../.vuepress/assets/img/img.png"));//名称会是文件的base64内容，所有会很长
       console.log("定时任务触发");
     }, 5000);
   }
@@ -168,6 +169,8 @@ change | 数值发生改变时回调 | 新状态的值
 ---|---|---
 addIcon | 添加一个或多个图标 | String / Array
 removeIcon | 删除一个或多个图标 | String / Array
+destroyIconList | 销毁图标列表，不销毁输入框 | -
+createIconList | 重新创建图标列表 | -
 
 ### 插槽
 

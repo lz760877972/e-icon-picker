@@ -30,6 +30,7 @@ export default {
       self.options.addIconList.push('el-icon-message-solid');
       self.options.removeIconList.push('removeIconList');
       self.options.addIconList.push('http://www.icosky.com/images/wj/baidu.gif');
+      self.options.addIconList.push(require("../assets/img/img.png"));//名称会是文件的base64内容，所有会很长
       console.log("定时任务触发");
     }, 5000);
   }

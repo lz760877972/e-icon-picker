@@ -10,7 +10,7 @@ export interface EIconPickerOptions {
     ElementUI: boolean,
     eIcon: boolean,
     eIconSymbol: boolean,
-    /**zIndex 只能在全局设置*/
+    /**zIndex 只能在全局设置，不支持组件参数*/
     zIndex: number
 }
 
@@ -57,4 +57,13 @@ export declare class EIconPicker extends Vue {
 
     /** 图标高亮 #FF0000 */
     highLightColor: string;
+
+    /**
+     * 销毁图标列表，不销毁输入框
+     */
+    destroyIconList: Function;
+    /**
+     * 重新创建图标列表
+     */
+    createIconList: Function;
 }

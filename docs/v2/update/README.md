@@ -1,4 +1,11 @@
 # 更新日志
+
+#### v2.0.7
+1. 新增`destroyIconList`和`createIconList`函数，可以销毁和重新创建列表。
+2. 新增支持图片方式的图标 [ReloM](https://gitee.com/ReloM) 提供思路。
+3. 修复已知bug。
+4. 更新依赖。
+
 #### v2.0.6
 1. 修复当使用cdn时，组件图标列表没有问题。
 

@@ -7,7 +7,7 @@
         title="在dialog中使用"
         :visible.sync="dialogVisible"
         width="30%">
-      <e-icon-picker v-model="icon"/>
+      <e-icon-picker ref="eIconPicker" v-model="icon"/>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -24,6 +24,13 @@ export default {
     return {
       icon: '',
       dialogVisible: false
+    }
+  },
+  watch: {
+    dialogVisible(val) {
+      if (!val && this.$refs.eIconPicker) {
+        this.$refs.eIconPicker.destroyIconList()//销毁图标列表，防止页面节点太多
+      }
     }
   }
 }

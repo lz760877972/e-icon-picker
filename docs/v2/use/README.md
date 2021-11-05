@@ -13,7 +13,7 @@
 npm install e-icon-picker@next -S
 ```
 
-
+**因element-plus的更新，所以以前的图标不能正常使用，组件做了以下调整**
 ### cdn 引入
 ```
 <!-- 引入组件库 -->
@@ -25,7 +25,7 @@ https://unpkg.com/e-icon-picker@next/lib/index.css
 https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
 
 <!-- element-plus图标样式 -->
-https://unpkg.com/element-plus@beta/lib/theme-chalk/icon.css
+https://unpkg.com/element-plus@1.0.2-beta.42/lib/theme-chalk/el-icon.css
 
 <!-- 默认彩色图标样式 -->
 https://unpkg.com/e-icon-picker@next/lib/symbol.js

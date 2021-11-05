@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example</title>
+</head>
+
+<!-- 导入 Vue 2 -->
+<script src="//cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://unpkg.com/e-icon-picker@1.1.6"></script>
+<link href="https://unpkg.com/e-icon-picker@1.1.6/lib/index.css" rel="stylesheet">
+<body>
+<div id="app">
+    <e-icon-picker v-model="icon" clearable />
+    <e-icon :icon-name="icon" />
+</div>
+<script>
+
+    Vue.use(eIconPicker, {
+        FontAwesome: false,
+        ElementUI: false,
+        eIcon: true,//自带的图标，来自阿里妈妈
+        eIconSymbol: false,//是否开启彩色图标
+        addIconList: [],
+        removeIconList: [],
+        zIndex: 3100//选择器弹层的最低层,全局配置
+    });
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                icon: ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

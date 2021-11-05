@@ -5,8 +5,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const devMode = 'production';//development  production
 const config = require('./config');
+const pkg = require('../package.json');
+
+const webpack = require('webpack')
+
+const createBanner = () => {
+    return `
+   ${pkg.name} v${pkg.version}
+   (c) ${new Date().getFullYear()} ${pkg.author}
+   @license ${pkg.license}
+  `
+}
 
 module.exports = {
     devtool: false,
@@ -105,11 +117,17 @@ module.exports = {
                 },
                 sourceMap: false,
                 parallel: true
-            })
+            }),
+            // 注意位置，必须放在 TerserPlugin 后面，否则生成的注释描述会被 TerserPlugin 或其它压缩插件清掉
+            new webpack.BannerPlugin({
+                entryOnly: true, // 是否仅在入口包中输出 banner 信息
+                banner: createBanner()
+            }),
         ],
     },
 
     plugins: [
+        new ProgressBarPlugin(),
         new CleanWebpackPlugin(),
         // 请确保引入这个插件！
         new VueLoaderPlugin(),

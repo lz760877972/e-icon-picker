@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-fas" @click="_popoverShowFun">
+  <div class="ui-fas" @click="_popoverShowFun(false)">
     <!-- 弹出框 -->
     <el-popover
         :disabled="disabled"
@@ -15,7 +15,6 @@
           v-model="name"
           :placeholder="placeholder"
           ref="input"
-          v-popover:popover
           :style="styles"
           :clearable="clearable"
           :disabled="disabled"
@@ -27,7 +26,7 @@
       >
         <template slot="prepend">
           <slot name="prepend" v-bind:icon="prefixIcon">
-            <e-icon :icon-name="prefixIcon" class="e-icon"/>
+            <e-icon :icon-name="prefixIcon" class="e-icon" />
           </slot>
         </template>
       </el-input>
@@ -38,6 +37,7 @@
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
           class="is-empty"
+          v-if="!destroy"
       >
         <ul
             class="fas-icon-list"
@@ -48,10 +48,10 @@
               v-for="(item, index) in dataList"
               :key="index"
               @click="_selectedIcon(item)"
-              :style="name === item && highLightColor!=='' ? {color: highLightColor} : ''"
+              :style="name === item && highLightColor !== '' ? {color: highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon"/>
+              <e-icon :icon-name="item" :title="item" class="e-icon" />
             </slot>
           </li>
         </ul>
@@ -68,11 +68,15 @@ import EIcon from "../eIcon/e-icon";
 import ElInput from 'element-ui/lib/input';
 import ElPopover from 'element-ui/lib/popover';
 import ElScrollbar from 'element-ui/lib/scrollbar';
+import {PopupManager} from "element-ui/lib/utils/popup";
 
 export default {
   name: "eIconPicker",
   components: {
-    EIcon, ElInput, ElPopover, ElScrollbar
+    EIcon,
+    ElInput,
+    ElPopover,
+    ElScrollbar
   },
   props: {
     // 是否禁用文本框
@@ -154,6 +158,12 @@ export default {
       default() {
         return "";
       },
+    },
+    zIndex: {
+      type: Number,
+      default() {
+        return null;
+      },
     }
   },
   data() {
@@ -165,6 +175,7 @@ export default {
       icon: {},
       myPlacement: "bottom",
       popoverWidth: 200,
+      destroy: false
     };
   },
   methods: {
@@ -232,8 +243,14 @@ export default {
         this.iconList = this.icon.list;
       }
     },
-    updatePopper() {
-      this._popoverShowFun();
+    updatePopper(zIndex) {
+      if (zIndex) {
+        PopupManager.zIndex = zIndex
+      }
+      this._popoverShowFun(true);
+      setTimeout(() => {
+        this.$refs.popover.updatePopper();
+      }, 100);
     },
     _selectedIcon(item) {
       this.visible = false;
@@ -249,12 +266,17 @@ export default {
         } else {
           this.popoverWidth = this.width;
         }
-        this.$refs["e-scrollbar"].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height - 35;
+        if (this.$refs["e-scrollbar"] && this.$refs["e-scrollbar"].wrap && this.$refs["e-scrollbar"].wrap.scrollTop) {
+          this.$refs["e-scrollbar"].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height - 35;
+        }
       });
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
-    _popoverShowFun() {
+    _popoverShowFun(flag) {
       if (this.readonly !== true && this.disabled !== true) {
+        if (!flag && this.zIndex) {
+          PopupManager.zIndex = this.zIndex
+        }
         this.visible = true;
         this._updateW();
         // setTimeout(() => {
@@ -266,7 +288,7 @@ export default {
     _popoverHideFun(e) {
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
-        return list.className && list.className.toString().indexOf("fas-icon-list") !== -1;
+        return list.className && list.className.toString().indexOf("is-empty") !== -1;
       });
 
       if (!isInter) {
@@ -286,6 +308,18 @@ export default {
     //     this.$refs.popover.updatePopper();
     //   }, 50);
     // },
+    /**
+     * 销毁图标列表，不销毁输入框等
+     */
+    destroyIconList() {
+      this.destroy = true
+    },
+    /**
+     * 重新创建图标列表
+     */
+    createIconList() {
+      this.destroy = false
+    }
   },
   computed: {
     dataList: function () {
@@ -304,8 +338,10 @@ export default {
   },
   beforeDestroy() {
     off(document, "mouseup", this._popoverHideFun);
+    this.destroyIconList();
   },
   created() {
+    this.createIconList();
     this._initIcon(true);
   },
   watch: {
@@ -322,6 +358,7 @@ export default {
         });
       } else {
         this.$nextTick(() => {
+          this.createIconList();
           on(document, "mouseup", this._popoverHideFun);
         });
       }
@@ -364,12 +401,7 @@ export default {
   margin: 5px;
 }
 
-.fas-icon-list li i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.fas-icon-list li svg {
+.fas-icon-list li i, .fas-icon-list li svg {
   font-size: 20px;
   cursor: pointer;
 }

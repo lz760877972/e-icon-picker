@@ -56,3 +56,12 @@ export const eIconSymbol = function (json) {
     }
 };
 
+/**
+ * 校验是否是外部链接
+ * @param {string} path
+ * @returns {Boolean}
+ */
+export function isExternal(path) {
+    return /^(https?:|data:|\/\/?)/.test(path)
+}
+export const isServer = typeof window === 'undefined';

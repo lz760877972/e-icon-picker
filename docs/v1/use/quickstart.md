@@ -1,5 +1,32 @@
 # 快速上手
 
+### 浏览器直接使用
+```html
+<body>
+<div id="app">
+    <e-icon-picker v-model="icon" clearable/>
+    <e-icon :icon-name="icon" />
+</div>
+<script>
+    Vue.use(eIconPicker, {
+        FontAwesome: false,
+        ElementUI: false,
+        eIcon: true,//自带的图标，来自阿里妈妈
+        eIconSymbol: false,//是否开启彩色图标
+        addIconList: [],
+        removeIconList: [],
+        zIndex: 3100//选择器弹层的最低层,全局配置
+    });
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { icon: "" }
+        }
+    })
+</script>
+</body>
+```
+
 ### 全局注册
 在引入组件时，可以传入一个全局配置对象，该配置对象目前支持`FontAwesome`、`ElementUI`、`eIcon`、`eIconSymbol`、`addIconList`和`removeIconList`，`FontAwesome`、`ElementUI`和`eIcon`可选值有`true`和`false`，表示是否使用该组件图标。
 `eIconSymbol`可选值有`true`和`false`，表示`eIcon`图标是否为彩色图标。
@@ -158,9 +185,11 @@ mounted() {
     this.$refs['iconPicker'].addIcon("fa fa-slack");//组件内动态添加图标
     this.$refs['iconPicker'].removeIcon("fa fa-slack");//组件内动态删除图标
     setTimeout(() => {//通过修改参数进行重新设置组件
-       this.options.addIconList.push('el-icon-message-solid');
-       this.options.removeIconList.push('removeIconList');
-       console.log("定时任务触发")
+        self.options.addIconList.push('el-icon-message-solid');
+        self.options.addIconList.push('http://www.icosky.com/images/wj/baidu.gif');//网络图标链接
+        self.options.addIconList.push(require("../assets/img/img.png"));//本地图片，名称会是文件的base64内容，所有会很长
+        self.options.removeIconList.push('removeIconList');
+        console.log("定时任务触发")
     }, 5000);
 }
 ```
