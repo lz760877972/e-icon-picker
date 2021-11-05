@@ -62,5 +62,6 @@ export const eIconSymbol = function (json) {
  * @returns {Boolean}
  */
 export function isExternal(path) {
-    return /^(https?:|mailto:|tel:)/.test(path)
+    return /^(https?:|data:|\/\/?)/.test(path)
 }
+export const isServer = typeof window === 'undefined';

@@ -57,4 +57,13 @@ export declare class EIconPicker extends Vue {
 
     /** 图标高亮 #FF0000 */
     highLightColor: string;
+
+    /**
+     * 销毁图标列表，不销毁输入框等
+     */
+    destroyIconList: Function;
+    /**
+     * 重新创建图标列表
+     */
+    createIconList: Function;
 }

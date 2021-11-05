@@ -3,12 +3,12 @@
     <h2>在dialog中使用</h2>
     <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
     名称：{{ icon }}
-    <e-icon :icon-name="icon"/>
+    <e-icon :icon-name="icon" />
     <el-dialog
         title="在dialog中使用"
         :visible.sync="dialogVisible"
         width="30%">
-      <e-icon-picker v-model="icon"/>
+      <e-icon-picker ref="eIconPicker" v-model="icon" />
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -25,6 +25,13 @@ export default {
     return {
       icon: '',
       dialogVisible: false
+    }
+  },
+  watch: {
+    dialogVisible(val) {
+      if (!val && this.$refs.eIconPicker) {
+        this.$refs.eIconPicker.destroyIconList()
+      }
     }
   }
 }

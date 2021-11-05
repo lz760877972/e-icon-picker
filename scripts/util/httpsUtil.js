@@ -1,6 +1,7 @@
 const fs = require("fs");
- fetch = (options) => new Promise((resolve, reject) => {
-    require("https").get(options, function (response) {
+const http = require("https")
+fetch = (options) => new Promise((resolve, reject) => {
+    let req = http.get(options, function (response) {
         let body = "";
         if (response.statusCode !== 200) {
             reject(new Error("Request failed. Status code: " + response.statusCode));
@@ -11,9 +12,14 @@ const fs = require("fs");
         response.on("data", chunk => body += chunk);
         response.on("end", () => resolve(body));
     });
+    req.on('error', function (e) {
+        console.log('problem with request: ' + e.message);
+    });
+
+    req.end();
 });
 
- async function getVersion(host, path) {
+async function getVersion(host, path) {
     let changelog = await fetch({
         host: host,
         path: path
@@ -28,7 +34,7 @@ const fs = require("fs");
     return version;
 }
 
- function parse(source, callback) {
+function parse(source, callback) {
     let main = source.match(/(fa-[a-z0-9\-]+(?:(:before|:after),\.fa-[a-z0-9\-]+)*)(:before|:after)\{content:"\\([0-9a-f]+)"|(fa[a-z]?)\.(fa-[a-z0-9\-]+(?:(:before|:after),\.fa-[a-z0-9\-]+)*)(:before|:after)\{content:"\\([0-9a-f]+)"/g);
     if (!main) {
         console.log("Couldn't parse icons");
@@ -40,7 +46,8 @@ const fs = require("fs");
         callback(f);
     })
 }
- function parseEl(source, callback) {
+
+function parseEl(source, callback) {
     let main = source.match(/(el-[a-z0-9\-]+(?:(:before|:after),\.el-[a-z0-9\-]+)*)(:before|:after)/g);
     if (!main) {
         console.log("Couldn't parse icons");
@@ -52,7 +59,7 @@ const fs = require("fs");
     })
 }
 
- async function getCss(host, path, headers) {
+async function getCss(host, path, headers) {
     return fetch({
         host: host,
         path: path,
@@ -67,7 +74,8 @@ async function writeFile(path, name, data) {
     console.log(path + name + ".data.js")
     fs.writeFileSync(path + name + ".data.js", 'export default ' + JSON.stringify(data));
 }
-module.exports ={
+
+module.exports = {
     fetch,
     getVersion,
     parse,

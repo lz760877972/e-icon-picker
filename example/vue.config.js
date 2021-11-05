@@ -6,6 +6,14 @@ const isProduction = process.env.NODE_ENV !== 'development';
 
 // 生产环境是否需要使用cdn
 const prodNeedCdn = true;
+function getVersion(name) {
+    const dependencies = require("./package.json").dependencies;
+    let version = dependencies[name];
+    if (version) {
+        version = version.replace("^", "");
+    }
+    return version;
+}
 // cdn链接
 const cdn = {
     // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
@@ -15,14 +23,14 @@ const cdn = {
     },
     // cdn的css链接
     css: [
-        'https://unpkg.com/e-icon-picker/lib/index.css',
-        'https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css',
-        'https://unpkg.zhimg.com/element-ui/lib/theme-chalk/icon.css'
+        `https://unpkg.com/e-icon-picker@${getVersion("e-icon-picker")}/lib/index.css`,
+        `https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css`,
+        `https://unpkg.zhimg.com/element-ui@${getVersion("element-ui")}/lib/theme-chalk/icon.css`
     ],
     // cdn的js链接
     js: [
-        'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js',
-        'https://unpkg.com/e-icon-picker',
+        `https://cdn.jsdelivr.net/npm/vue@${getVersion("vue")}/dist/vue.min.js`,
+        `https://unpkg.com/e-icon-picker@${getVersion("e-icon-picker")}/lib/index.js`,
     ]
 };
 

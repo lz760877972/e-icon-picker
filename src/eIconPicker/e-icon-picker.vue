@@ -15,7 +15,6 @@
           v-model="name"
           :placeholder="placeholder"
           ref="input"
-          v-popover:popover
           :style="styles"
           :clearable="clearable"
           :disabled="disabled"
@@ -27,17 +26,18 @@
       >
         <template slot="prepend">
           <slot name="prepend" v-bind:icon="prefixIcon">
-            <e-icon :icon-name="prefixIcon" class="e-icon"/>
+            <e-icon :icon-name="prefixIcon" class="e-icon" />
           </slot>
         </template>
       </el-input>
 
       <el-scrollbar
-          ref="e-scrollbar"
+          ref="eScrollbar"
           tag="div"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
           class="is-empty"
+          v-if="!destroy"
       >
         <ul
             class="fas-icon-list"
@@ -48,10 +48,10 @@
               v-for="(item, index) in dataList"
               :key="index"
               @click="_selectedIcon(item)"
-              :style="name === item && highLightColor!=='' ? {color: highLightColor} : ''"
+              :style="name === item && highLightColor !== '' ? {color: highLightColor} : ''"
           >
             <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon"/>
+              <e-icon :icon-name="item" :title="item" class="e-icon" />
             </slot>
           </li>
         </ul>
@@ -175,6 +175,7 @@ export default {
       icon: {},
       myPlacement: "bottom",
       popoverWidth: 200,
+      destroy: false
     };
   },
   methods: {
@@ -265,7 +266,11 @@ export default {
         } else {
           this.popoverWidth = this.width;
         }
-        this.$refs["e-scrollbar"].wrap.scrollTop = this.$refs.input.$el.getBoundingClientRect().height - 35;
+        if (this.$refs.eScrollbar && this.$refs.eScrollbar.wrap) {
+          this.$refs.eScrollbar.wrap.scrollTop = 0;
+          this.$refs.eScrollbar.handleScroll();
+          this.$refs.eScrollbar.update();
+        }
       });
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
@@ -305,6 +310,18 @@ export default {
     //     this.$refs.popover.updatePopper();
     //   }, 50);
     // },
+    /**
+     * 销毁图标列表，不销毁输入框等
+     */
+    destroyIconList() {
+      this.destroy = true
+    },
+    /**
+     * 重新创建图标列表
+     */
+    createIconList() {
+      this.destroy = false
+    }
   },
   computed: {
     dataList: function () {
@@ -323,8 +340,10 @@ export default {
   },
   beforeDestroy() {
     off(document, "mouseup", this._popoverHideFun);
+    this.destroyIconList();
   },
   created() {
+    this.createIconList();
     this._initIcon(true);
   },
   watch: {
@@ -341,6 +360,7 @@ export default {
         });
       } else {
         this.$nextTick(() => {
+          this.createIconList();
           on(document, "mouseup", this._popoverHideFun);
         });
       }
