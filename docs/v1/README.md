@@ -1,7 +1,4 @@
 # 图标选择组件
-
-> 最近发现版本`v1.1.2`和`v1.1.3`两个版本出现了图标不显示问题，此问题出现原因为编译时使用的`vue`版本为`v2.6.14`版，出现和前面版本不兼容问题，如果碰到问题，可以降级`e-icon-picker`到`v1.1.1`或者升级`vue`到`v2.6.14`。
-
 简洁大方，专为`element-ui`（已经脱离element-ui独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
 ![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")

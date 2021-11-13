@@ -19,6 +19,11 @@ module.exports = {
             ]
         },
         {
+            title: "常见问题",
+            collapsable: false,
+            path: "/v1/bug/"
+        },
+        {
             title: "更新日志",
             collapsable: false,
             path: "/v1/update/"
