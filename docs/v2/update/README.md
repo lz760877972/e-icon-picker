@@ -1,7 +1,7 @@
 # 更新日志
 #### v2.0.8
-1. 修复zIndex失效问题 [I4N001](https://gitee.com/cnovel/e-icon-picker/issues/I4N001)。
-2. 修复已知bug。
+1. 修复`zIndex`失效问题 [I4N001](https://gitee.com/cnovel/e-icon-picker/issues/I4N001)。
+2. 修复已知`bug`。
 3. 更新依赖。
 
 #### v2.0.7
