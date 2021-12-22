@@ -22,12 +22,12 @@
 
 <script>
 
-import {defineComponent, ref, watch} from "vue";
+import {defineComponent, onMounted, ref, watch} from "vue";
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 import svgIcons from 'e-icon-picker/lib/getSvg';
 
 export default defineComponent({
-  name: "example6",
+  name: "example7",
   setup() {
     let icon = ref("");
     let dialogVisible = ref(false);

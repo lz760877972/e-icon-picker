@@ -5,7 +5,7 @@ import EIcon from './eIcon/index.js';
 // import ElInput from 'element-plus/lib/el-input';
 // import ElPopover from 'element-plus/lib/el-popover';
 // import ElScrollbar from 'element-plus/lib/el-scrollbar';
-import {setConfig} from "element-plus/lib/utils/config.js";
+import {setConfig} from "element-plus/es/utils/config.mjs";
 import {version} from "../package.json";
 import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
 import {analyzingIconForIconfont, eIconSymbol} from "./utils";

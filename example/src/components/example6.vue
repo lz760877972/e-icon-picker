@@ -4,6 +4,7 @@
     <e-icon-picker ref="iconPicker" v-model="icon" :options="options"/>
     名称：{{ icon }}
     <e-icon :icon-name="icon"/>
+    <el-button type="text" @click="setZIndex">设置 zIndex</el-button>
   </div>
 </template>
 
@@ -21,10 +22,16 @@ export default defineComponent({
     let iconPicker = ref(null);
 
     options.value.addIconList = svgIcons;
+    const setZIndex = () => {
+      //注意实例是否存在
+      iconPicker.value.updatePopper(5000);
+    }
+
     return {
       icon,
       options,
-      iconPicker
+      iconPicker,
+      setZIndex
     }
   }
 })

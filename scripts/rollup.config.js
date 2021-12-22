@@ -56,7 +56,7 @@ const createBaseConfig = (minify) => {
             json(),
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production'),
-
+                '$ELEMENT': "$EICON",
                 // options
                 preventAssignment: true,
             }),

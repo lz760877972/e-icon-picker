@@ -80,7 +80,7 @@ import {
 // import ElInput from 'element-plus/lib/components/input/index.js';
 // import ElPopover from 'element-plus/lib/components/popover/index.js';
 // import ElScrollbar from 'element-plus/lib/components/scrollbar/index.js';
-import PopupManager from "element-plus/lib/utils/popup-manager.js";
+import PopupManager from "element-plus/es/utils/popup-manager.mjs";
 import {ElInput, ElPopover, ElScrollbar} from 'element-plus'
 
 export default defineComponent({
