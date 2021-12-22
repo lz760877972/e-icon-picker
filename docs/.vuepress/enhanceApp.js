@@ -5,7 +5,7 @@
 // import '../../lib/index.css'; // 基本样式，包含基本图标
 // import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
 import 'element-ui/lib/theme-chalk/index.css'; //element-ui 图标库
-import Element from 'element-ui';
+// import Element from 'element-ui';
 
 export default ({Vue, options, router, siteData, isServer}) => {
     if (!isServer){
@@ -20,5 +20,12 @@ export default ({Vue, options, router, siteData, isServer}) => {
 
         });
     }
-    Vue.use(Element);
+    Vue.mixin({
+        mounted() {
+            import('element-ui').then(function (m) {
+                Vue.use(m.default)
+            })
+        },
+    })
+    // Vue.use(Element);
 }

@@ -1,4 +1,8 @@
 # 更新日志
+#### v2.0.8
+1. 修复zIndex失效问题 [I4N001](https://gitee.com/cnovel/e-icon-picker/issues/I4N001)。
+2. 修复已知bug。
+3. 更新依赖。
 
 #### v2.0.7
 1. 新增`destroyIconList`和`createIconList`函数，可以销毁和重新创建列表。
