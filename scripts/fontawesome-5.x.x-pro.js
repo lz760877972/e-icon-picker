@@ -2,7 +2,7 @@ const util = require("./util/httpsUtil")
 
 async function generate() {
     //https://www.bootcdn.cn/font-awesome/
-    let version = await util.getVersion("www.bootcdn.cn", "/font-awesome/");
+    let version = await util.getVersion("www.bootcdn.cn", "/font-awesome/5.15.4/");
     console.log("Font Awesome v" + version);
     let source = await util.getCss("pro.fontawesome.com", "/releases/v" + version + "/css/all.css", {"Referer": "https://mo-mar.de"})
     let namecount = 0;
@@ -14,7 +14,7 @@ async function generate() {
         }
     });
     console.log(__dirname + "/data/")
-    await util.writeFile(__dirname + "/fontawesome/", "pro", fa);
+    await util.writeFile(__dirname + "/fontawesome/", "pro" + "-" + version, fa);
     console.log("parsed (" + namecount + " names)")
 }
 

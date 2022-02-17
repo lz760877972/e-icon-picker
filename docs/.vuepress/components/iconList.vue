@@ -11,11 +11,11 @@
 
 <script>
 import {eIconList, elementUI, fontAwesome} from "../../../lib/index";
-import ele from "../../../lib/ele/element-ui.data";
+import ele from "../../../lib/ele/element-ui-2.15.7.data";
 import fontAwesomeV470 from "../../../lib/fontawesome/font-awesome.v4.7.0.data";
-import fontawesome from "../../../lib/fontawesome/fontawesome.data";
-import pro from "../../../lib/fontawesome/pro.data";
-import shims from "../../../lib/fontawesome/v4-shims.data";
+import fontawesome from "../../../lib/fontawesome/fontawesome-5.15.4.data";
+import pro from "../../../lib/fontawesome/pro-5.15.4.data";
+import shims from "../../../lib/fontawesome/v4-shims-5.15.4.data";
 
 export default {
   name: "iconList",

@@ -14,13 +14,13 @@ module.exports = {
         ['link', {rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css'}],
         ['link', {
             rel: 'stylesheet',
-            href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css'
+            href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css'
         }],
         ['link', {
             rel: 'stylesheet',
-            href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/v4-shims.min.css'
+            href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css'
         }],
-        ['link', {rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css'}],
+        ['link', {rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.4/css/all.css'}],
         ['link', {rel: 'stylesheet', href: '/css/iconfont.css'}],
         ['script', {type: 'text/javascript', src: 'https://unpkg.com/e-icon-picker@latest/lib/symbol.js'}],
     ],

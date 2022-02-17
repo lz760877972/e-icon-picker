@@ -7,6 +7,7 @@
     <example5/>
     <example6/>
     <example7/>
+    <example8/>
     <iconList/>
   </div>
 </template>
@@ -19,6 +20,7 @@ import example4 from './components/example4'
 import example5 from './components/example5'
 import example6 from './components/example6'
 import example7 from './components/example7'
+import example8 from './components/example8'
 import iconList from './components/iconList'
 
 export default {
@@ -31,6 +33,7 @@ export default {
     example5,
     example6,
     example7,
+    example8,
     iconList
   }
 }

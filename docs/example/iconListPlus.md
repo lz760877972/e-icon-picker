@@ -25,11 +25,16 @@ iconList.addIcon(el);
 
 对应的js列表：
 ```js
-import el from "e-icon-picker/lib/ele/element-ui.data";//element-ui的图标
+import el from "e-icon-picker/lib/ele/element-ui-2.15.7.data";//element-ui的图标
 import fontAwesome470 from "e-icon-picker/lib/fontawesome/font-awesome.v4.7.0.data";//fontAwesome470的图标
-import fontAwesome5 from "e-icon-picker/lib/fontawesome/fontawesome.data";//fontAwesome5.x.x的图标
-import fontAwesome5shims from "e-icon-picker/lib/fontawesome/v4-shims.data"//fontAwesome5.x.x shims的图标
-import fontAwesome5pro from "e-icon-picker/lib/fontawesome/pro.data"//fontAwesome5.x.x pro的图标
+import fontAwesome5 from "e-icon-picker/lib/fontawesome/fontawesome-5.15.4.data";//fontAwesome5.x.x的图标
+import fontAwesome5shims from "e-icon-picker/lib/fontawesome/v4-shims-5.15.4.data"//fontAwesome5.x.x shims的图标
+import fontAwesome5pro from "e-icon-picker/lib/fontawesome/pro-5.15.4.data"//fontAwesome5.x.x pro的图标
+import all5 from "e-icon-picker/lib/fontawesome/all-5.15.4.data"//fontAwesome5.x.x all的图标
+import all6 from "e-icon-picker/lib/fontawesome/all-6.0.0.data"//fontAwesome6.x.x all的图标
+import brands6 from "e-icon-picker/lib/fontawesome/brands-6.0.0.data"//fontAwesome6.x.x brands的图标
+import fontawesome6 from "e-icon-picker/lib/fontawesome/fontawesome-6.0.0.data"//fontAwesome6.x.x fontawesome的图标
+import fontAwesome6shims from "e-icon-picker/lib/fontawesome/v4-shims-6.0.0.data"//fontAwesome6.x.x shims的图标
 ```
 ## element-ui 全图标
 <iconList :type="'ele'"/>

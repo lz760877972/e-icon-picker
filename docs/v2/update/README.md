@@ -1,4 +1,9 @@
 # 更新日志
+#### v2.0.9
+1. 新增自定义触发组件插槽 [I4U0MJ](https://gitee.com/cnovel/e-icon-picker/issues/I4U0MJ)。
+2. 新增`fontawesome-6.x.x`图标库。
+3. 更改图标库名称，使用时需要注意。
+
 #### v2.0.8
 1. 修复`zIndex`失效问题 [I4N001](https://gitee.com/cnovel/e-icon-picker/issues/I4N001)。
 2. 修复已知`bug`。

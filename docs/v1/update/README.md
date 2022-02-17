@@ -1,4 +1,8 @@
 # 更新日志
+#### v1.1.7
+1. 新增自定义触发组件插槽 [I4U0MJ](https://gitee.com/cnovel/e-icon-picker/issues/I4U0MJ)。
+2. 新增`fontawesome-6.x.x`图标库。
+3. 更改图标库名称，使用时需要注意。
 
 #### v1.1.6
 1. 新增`destroyIconList`和`createIconList`函数，可以销毁和重新创建列表。

@@ -131,6 +131,14 @@ export default {
 <example7 slot="demo"></example7>
 </RecoDemo>
 
+### 自定义触发器
+<RecoDemo>
+<template slot="code-vue">
+    <<< @/example/src/components/example8.vue
+</template>
+<example8 slot="demo"></example8>
+</RecoDemo>
+
 
 ### 属性
 
@@ -171,10 +179,13 @@ addIcon | 添加一个或多个图标 | String / Array
 removeIcon | 删除一个或多个图标 | String / Array
 destroyIconList | 销毁图标列表，不销毁输入框 | -
 createIconList | 重新创建图标列表 | -
+show | 触发选择器 | -
+hide | 隐藏选择器 | -
 
 ### 插槽
 
 名称 | 说明 | 参数 
 ---|---|---
+- | 触发器插槽 | data 为触发器相关参数
 prepend | input 输入框前缀组件 | icon 参数为图标名称
 icon | 图标列表显示组件 | icon 参数为图标名称
