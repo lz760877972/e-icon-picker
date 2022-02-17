@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-fas" @click="_popoverShowFun(false)">
+  <div class="ui-fas">
     <!-- 弹出框 -->
     <el-popover
         :disabled="disabled"
@@ -11,32 +11,35 @@
         show-arrow
         trigger="manual"
     >
-      <el-input
-          v-model="name"
-          :placeholder="placeholder"
-          ref="input"
-          :style="styles"
-          :clearable="clearable"
-          :disabled="disabled"
-          :readonly="readonly"
-          :size="size"
-          @input="_change"
-          @clear="_initIcon(false)"
-          slot="reference"
-      >
-        <template slot="prepend">
-          <slot name="prepend" v-bind:icon="prefixIcon">
-            <e-icon :icon-name="prefixIcon" class="e-icon" />
-          </slot>
-        </template>
-      </el-input>
-
+      <template slot="reference">
+        <slot name="default" v-bind:data="{prefixIcon,visible,placeholder,disabled,clearable,readonly,size}">
+          <el-input
+              v-model="name"
+              :placeholder="placeholder"
+              ref="input"
+              :style="styles"
+              :clearable="clearable"
+              :disabled="disabled"
+              :readonly="readonly"
+              :size="size"
+              @input="_change"
+              @clear="_initIcon(false)"
+              @focus="_popoverShowFun(false)"
+          >
+            <template slot="prepend">
+              <slot name="prepend" v-bind:icon="prefixIcon">
+                <e-icon :icon-name="prefixIcon" class="e-icon" />
+              </slot>
+            </template>
+          </el-input>
+        </slot>
+      </template>
       <el-scrollbar
           ref="eScrollbar"
           tag="div"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
-          class="is-empty"
+          :class="'is-empty-'+id"
           v-if="!destroy"
       >
         <ul
@@ -175,7 +178,8 @@ export default {
       icon: {},
       myPlacement: "bottom",
       popoverWidth: 200,
-      destroy: false
+      destroy: false,
+      id: new Date().getTime()
     };
   },
   methods: {
@@ -229,14 +233,12 @@ export default {
 
     addIcon(item = []) {
       //组件内增加图标
-      //组件内添加图标
       if (item !== undefined && item && item.length > 0) {
         this.icon.addIcon(item);
         this.iconList = this.icon.list;
       }
     },
     removeIcon(item = []) {
-      //组件内删除图标
       //组件内删除图标
       if (item !== undefined && item && item.length > 0) {
         this.icon.removeIcon(item);
@@ -261,7 +263,7 @@ export default {
     // 更新宽度
     _updateW() {
       this.$nextTick(() => {
-        if (this.width === -1) {
+        if (this.width === -1 && this.$refs.input && this.$refs.input.$el) {
           this.popoverWidth = this.$refs.input.$el.getBoundingClientRect().width - 36;
         } else {
           this.popoverWidth = this.width;
@@ -275,12 +277,13 @@ export default {
     },
     // 显示弹出框的时候容错，查看是否和el宽度一致
     _popoverShowFun(flag) {
-      if (this.readonly !== true && this.disabled !== true) {
-        if (!flag && this.zIndex) {
+      let _this = this;
+      if (_this.readonly !== true && _this.disabled !== true) {
+        if (!flag && _this.zIndex) {
           PopupManager.zIndex = this.zIndex
         }
-        this.visible = true;
-        this._updateW();
+        _this.visible = true;
+        _this._updateW();
         // setTimeout(() => {
         //   this.$refs.popover.updatePopper();
         // }, 100);
@@ -288,9 +291,12 @@ export default {
     },
     // 点击控件外，判断是否隐藏弹出框
     _popoverHideFun(e) {
+      let _this = this;
+      let popperId = _this.$refs.popover.tooltipId;
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
-        return list.className && list.className.toString().indexOf("is-empty") !== -1;
+        return list.className && (list.className.toString().indexOf("is-empty-" + _this.id) !== -1 ||
+            (list.getAttribute('aria-describedby') && list.getAttribute('aria-describedby').indexOf(popperId) !== -1));
       });
 
       if (!isInter) {
@@ -321,6 +327,12 @@ export default {
      */
     createIconList() {
       this.destroy = false
+    },
+    show() {
+      this._popoverShowFun(false)
+    },
+    hide() {
+      this.visible = false
     }
   },
   computed: {

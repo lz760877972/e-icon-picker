@@ -66,4 +66,12 @@ export declare class EIconPicker extends Vue {
      * 重新创建图标列表
      */
     createIconList: Function;
+    /**
+     * 触发选择器
+     */
+    show: Function;
+    /**
+     * 隐藏选择器
+     */
+    hide: Function;
 }

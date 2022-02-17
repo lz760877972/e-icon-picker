@@ -3,7 +3,7 @@ const util = require("./util/httpsUtil")
 async function generate() {
     let changelog = await fetch({
         host: "www.bootcdn.cn",
-        path: "/font-awesome/5.15.4/"
+        path: "/font-awesome/"
     });
     let version = (changelog.match(/(\d+\.\d+\.\d+)/g))[0];
     let names = changelog.match(/\/ajax\/libs\/font-awesome\/.*\/css\/(.*?).min.css/g).slice(0);
@@ -15,9 +15,9 @@ async function generate() {
     console.log("Font Awesome v" + version);
 
     for (const name of names) {
-        /*if (name === "/ajax/libs/font-awesome/5.15.4/css/all.min.css") {
-            continue;
-        }*/
+        /* if (name === "/ajax/libs/font-awesome/5.15.4/css/all.min.css") {
+             continue;
+         }*/
         console.log(name)
 
         let source = await util.getCss("cdn.bootcdn.net", name)
@@ -40,7 +40,7 @@ async function generate() {
         let name2 = name.split("/");
         name2 = name2[name2.length - 1];
         name2 = name2.replace(".min.css", "");
-        await util.writeFile(__dirname + "/fontawesome/", name2 +"-"+  version, fa);
+        await util.writeFile(__dirname + "/fontawesome/", name2 +"-"+ version, fa);
         console.log("parsed (" + namecount + " names)")
     }
 }
