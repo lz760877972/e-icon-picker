@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-fas" @click="popoverShowFun(false)">
+  <div class="ui-fas">
     <!-- 弹出框 -->
     <el-popover
         ref="popover"
@@ -12,24 +12,28 @@
         trigger="manual"
     >
       <template #reference>
-        <el-input
-            v-model="state.name"
-            :placeholder="placeholder"
-            ref="input"
-            :style="styles"
-            :clearable="clearable"
-            :disabled="disabled"
-            :readonly="readonly"
-            :size="size"
-            @input="change"
-            @clear="initIcon(false)"
-        >
-          <template #prepend slot="prepend">
-            <slot name="prepend" v-bind:icon="state.prefixIcon">
-              <e-icon :icon-name="state.prefixIcon" class="e-icon" />
-            </slot>
-          </template>
-        </el-input>
+        <slot name="default"
+              v-bind:data="{prefixIcon:state.prefixIcon,visible:state.visible,placeholder,disabled,clearable,readonly,size}">
+          <el-input
+              v-model="state.name"
+              :placeholder="placeholder"
+              ref="input"
+              :style="styles"
+              :clearable="clearable"
+              :disabled="disabled"
+              :readonly="readonly"
+              :size="size"
+              @input="change"
+              @clear="initIcon(false)"
+              @focus="popoverShowFun(false)"
+          >
+            <template #prepend slot="prepend">
+              <slot name="prepend" v-bind:icon="state.prefixIcon">
+                <e-icon :icon-name="state.prefixIcon" class="e-icon" />
+              </slot>
+            </template>
+          </el-input>
+        </slot>
       </template>
 
       <el-scrollbar
@@ -37,7 +41,7 @@
           tag="div"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
-          class="is-empty"
+          :class="'is-empty-'+state.id"
           v-if="!state.destroy"
       >
         <ul
@@ -210,7 +214,8 @@ export default defineComponent({
         }
         return arr1;
       }),
-      destroy: false
+      destroy: false,
+      id: new Date().getTime()
     })
 
     watch(() => state.visible, (newValue) => {
@@ -296,7 +301,7 @@ export default defineComponent({
     const updateW = () => {
       nextTick(() => {
         // let rect = state.popoverWidth = input.value.$el.getBoundingClientRect();
-        if (props.width === -1) {
+        if (props.width === -1 && input.value && input.value.$el) {
           // debugger;
           state.popoverWidth = input.value.$el.getBoundingClientRect().width - 36;
         } else {
@@ -332,8 +337,16 @@ export default defineComponent({
     }
     // 点击控件外，判断是否隐藏弹出框
     const popoverHideFun = (e) => {
+      let popperId = popover.value.popperId;
       let path = e.path || (e.composedPath && e.composedPath());
-      let isInter = path.some((list) => list.className && list.className.toString().indexOf("is-empty") !== -1);
+      // let isInter = path.some((list) => list.className && list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
+      //     (list.getAttribute('aria-describedby') && list.getAttribute('aria-describedby').indexOf(popperId) !== -1));
+      console.log("popperId:",popperId)
+      let isInter = path.some((list) => {
+        console.log(list.getAttribute('ariadescribedby'))
+        return list.className && (list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
+            (list.getAttribute('ariadescribedby') && list.getAttribute('ariadescribedby').indexOf(popperId) !== -1));
+      });
       if (!isInter) {
         setTimeout(() => {
           state.visible = false;
@@ -367,6 +380,12 @@ export default defineComponent({
       state.destroy = false;
     }
 
+    const show = () => {
+      popoverShowFun(false)
+    }
+    const hide = () => {
+      state.visible = false
+    }
     return {
       popoverShowFun,
       change,
@@ -381,7 +400,9 @@ export default defineComponent({
       fasIconList,
       updatePopper,
       createIconList,
-      destroyIconList
+      destroyIconList,
+      show,
+      hide
     }
   }
 });

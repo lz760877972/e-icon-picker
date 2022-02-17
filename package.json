@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "element-plus和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -36,8 +36,9 @@
   "scripts": {
     "build:font-css": "yarn all && cp-cli scripts/fontawesome lib/fontawesome && cp-cli scripts/ele lib/ele && yarn clean:font-css",
     "clean:font-css": "rimraf scripts/fontawesome && rimraf scripts/ele",
-    "all": "yarn fontawesome-5.x.x && yarn fontawesome-5.x.x-pro && yarn fontawesome-4.7.0 && yarn ele-plus",
+    "all": "yarn fontawesome-5.x.x && yarn fontawesome-6.x.x && yarn fontawesome-5.x.x-pro && yarn fontawesome-4.7.0 && yarn ele-plus",
     "fontawesome-5.x.x": "node scripts/fontawesome-5.x.x.js",
+    "fontawesome-6.x.x": "node scripts/fontawesome-6.x.x.js",
     "fontawesome-5.x.x-pro": "node scripts/fontawesome-5.x.x-pro.js",
     "fontawesome-4.7.0": "node scripts/font-awesome.v4.7.0.js",
     "ele-plus": "node scripts/element-plus.js",
