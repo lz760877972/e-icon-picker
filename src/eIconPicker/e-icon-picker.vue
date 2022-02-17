@@ -339,11 +339,7 @@ export default defineComponent({
     const popoverHideFun = (e) => {
       let popperId = popover.value.popperId;
       let path = e.path || (e.composedPath && e.composedPath());
-      // let isInter = path.some((list) => list.className && list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
-      //     (list.getAttribute('aria-describedby') && list.getAttribute('aria-describedby').indexOf(popperId) !== -1));
-      console.log("popperId:",popperId)
       let isInter = path.some((list) => {
-        console.log(list.getAttribute('ariadescribedby'))
         return list.className && (list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
             (list.getAttribute('ariadescribedby') && list.getAttribute('ariadescribedby').indexOf(popperId) !== -1));
       });
