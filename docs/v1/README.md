@@ -40,6 +40,10 @@ Vue.use(eIconPicker, {
 
 ![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
 
+**捐赠名单**
+
+*莹
+
 **另：**
 
 本人还有一个开源项目，在项目中的菜单管理使用了该图标组件，喜欢的可以去看看，帮忙点个star,非常感谢！
