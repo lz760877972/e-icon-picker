@@ -55,6 +55,7 @@ app.mount('#app');
  ![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
 
 **捐赠名单**
+
 *莹
 
 **另：**
