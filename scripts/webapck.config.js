@@ -12,7 +12,7 @@ const createBanner = () => {
     console.log("createBanner");
     return `
    ${pkg.name} v${pkg.version}
-   (c) ${new Date().getFullYear()} ${pkg.author}
+   * (c) 2019 - ${new Date().getFullYear()} ${pkg.author}
    @license ${pkg.license}
   `
 }

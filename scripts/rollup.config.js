@@ -19,7 +19,7 @@ const name = 'eIconPicker'//外部引用的模块名
 const createBanner = () => {
     return `/**
   * ${pkg.name} v${pkg.version}
-  * (c) ${new Date().getFullYear()} ${pkg.author}
+  * (c) 2019 - ${new Date().getFullYear()} ${pkg.author}
   * @license ${pkg.license}
   */`
 }
