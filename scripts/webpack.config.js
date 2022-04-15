@@ -6,6 +6,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 const devMode = 'production';//development  production
 const config = require('./config');
 const pkg = require('../package.json');
@@ -25,6 +26,7 @@ module.exports = {
     mode: devMode,
     entry: {
         'index': path.resolve(__dirname, '../src/index.js'),
+        'index.min': path.resolve(__dirname, '../src/index.js'),
     },
     externals: {
         vue: config.vue
@@ -107,6 +109,7 @@ module.exports = {
         minimize: true,
         minimizer: [
             new UglifyJsPlugin({
+                include: /min/,
                 uglifyOptions: {
                     warnings: false,
                     //生产环境自动删除console
@@ -116,7 +119,8 @@ module.exports = {
                     }
                 },
                 sourceMap: false,
-                parallel: true
+                parallel: true,
+                extractComments: true,
             }),
             // 注意位置，必须放在 TerserPlugin 后面，否则生成的注释描述会被 TerserPlugin 或其它压缩插件清掉
             new webpack.BannerPlugin({
