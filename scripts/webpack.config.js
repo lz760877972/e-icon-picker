@@ -6,7 +6,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
 const devMode = 'production';//development  production
 const config = require('./config');
 const pkg = require('../package.json');
