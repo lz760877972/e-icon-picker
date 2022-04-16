@@ -1,8 +1,5 @@
-// @ts-ignore
-import Vue from 'vue'
+import type {App} from 'vue'
 
-export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
-export type ComponentSize = 'large' | 'medium' | 'small' | 'mini'
 export interface EIconPickerOptions {
     addIconList: string[],
     removeIconList: string[],
@@ -14,10 +11,13 @@ export interface EIconPickerOptions {
     zIndex: number
 }
 
+export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
+export type ComponentSize = 'large' | 'medium' | 'small' | 'mini'
+
 /** EIconPicker Component */
-export declare class EIconPicker extends Vue {
+export declare class EIconPicker {
     /** Install component into Vue */
-    static install(vue: typeof Vue): void
+    static install(vue: App<any>, options?: EIconPickerOptions): void
 
     /** 是否禁用 */
     disabled: boolean;

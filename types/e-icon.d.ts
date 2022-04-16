@@ -1,9 +1,7 @@
-import Vue from 'vue'
-
 /** EIcon Component */
-export declare class EIcon extends Vue {
+export declare class EIcon {
     /** Install component into Vue */
-    static install(vue: typeof Vue): void
+    static install(vue: import("vue").App<any>): void
 
     /** 选择器图标名 */
     iconName: string;

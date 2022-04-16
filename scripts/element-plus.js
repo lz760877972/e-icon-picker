@@ -1,7 +1,8 @@
 const util = require("./util/httpsUtil")
 
-async function generate() {
-    let source = await util.getCss("unpkg.com", "/element-plus@1.0.2-beta.40/lib/theme-chalk/index.css")
+async function generate() {//https://cdn.bootcdn.net/ajax/libs/element-plus/1.0.2-beta.40/theme-chalk/index.css
+    let source = await util.getCss("cdn.bootcdn.net", "/ajax/libs/element-plus/1.0.2-beta.40/theme-chalk/index.min.css")
+    // console.log(source)
     let namecount = 0;
     let el = [];
     util.parseEl(source, it => {

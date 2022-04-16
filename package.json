@@ -1,6 +1,6 @@
 {
   "name": "e-icon-picker",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "element-plus和font-awesome图标选择器",
   "keywords": [
     "vue",
@@ -16,6 +16,7 @@
   "unpkg": "lib/index.umd.prod.js",
   "jsdelivr": "lib/index.umd.prod.js",
   "style": "lib/index.css",
+  "types": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/cnovel/e-icon-picker"
