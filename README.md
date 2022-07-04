@@ -53,7 +53,7 @@ Vue.use(eIconPicker, {FontAwesome: true, ElementUI: true, eIcon: true, eIconSymb
 
 **捐赠名单**
 
-*莹
+*莹 [柳叶筏](https://gitee.com/liuyefa)
 
 **另：**
  
