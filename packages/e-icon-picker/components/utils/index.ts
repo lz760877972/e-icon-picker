@@ -25,6 +25,7 @@ if (!isServer) {
         }
     })(Event.prototype, document, window);
 }
+export const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 
 export * from "./util";
 export * from "./dom";

@@ -36,10 +36,12 @@
     "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
-    "svg-sprite-loader": "^6.0.11",
-    "vue": "^3.2.37",
+    "@popperjs/core": "^2.11.5",
+    "@vue/shared": "^3.2.37",
     "@vueuse/core": "^8.7.5",
-    "@vue/shared": "^3.2.37"
+    "debounce": "^1.2.1",
+    "svg-sprite-loader": "^6.0.11",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
     "@babel/parser": "^7.18.6",
@@ -50,19 +52,22 @@
     "@docsearch/js": "^3.0.0-alpha.50",
     "@rollup/pluginutils": "^4.2.1",
     "@types/commander": "^2.12.2",
+    "@types/debounce": "^1.2.1",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.182",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.0.3",
     "@types/prompts": "^2.0.14",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.37",
-    "@types/lodash-es": "^4.17.6",
     "commander": "^9.3.0",
     "esbuild-register": "^2.6.0",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.2",
     "prompts": "^2.4.2",
     "sass": "^1.53.0",
     "shelljs": "^0.8.5",
@@ -74,9 +79,7 @@
     "vitepress": "^1.0.0-alpha.4",
     "vitepress-theme-demoblock": "1.4.2",
     "vue": "^3.2.37",
-    "vue-tsc": "^0.38.4",
-    "lodash-es": "^4.17.21",
-    "lodash-unified": "^1.0.2"
+    "vue-tsc": "^0.38.4"
   },
   "browserslist": [
     "> 1%",

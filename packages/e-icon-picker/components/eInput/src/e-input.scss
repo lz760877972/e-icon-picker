@@ -1,8 +1,8 @@
 .e-input {
   display: flex;
-
   align-items: center;
   position: relative;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 
   .prefix-icon {
     background-color: #f5f7fa;
@@ -51,7 +51,7 @@
     height: 40px;
     line-height: 40px;
     outline: none;
-    padding: 0 15px;
+    padding: 0 23px 0 10px;
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
     border-radius: 0 4px 4px 0;
 

@@ -1,9 +1,9 @@
 <template>
-  <i v-if="fontClass" :class="iconName" @click="click(iconName,$event)"></i>
-  <svg v-else-if="svg" :class="svgClass" aria-hidden="true" @click="click(iconName,$event)">
+  <i v-if="fontClass" class="e-icon" :class="iconName" @click="click(iconName,$event)"></i>
+  <svg v-else-if="svg" :class="svgClass" class="e-icon" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
-  <div v-else-if="isExternal" :style="styleExternalIcon" :class="className" class="icon external-icon"
+  <div v-else-if="isExternal" :style="styleExternalIcon" :class="className" class="e-icon icon external-icon"
        @click="click(iconName,$event)"/>
 </template>
 

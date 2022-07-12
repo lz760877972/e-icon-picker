@@ -1,0 +1,28 @@
+.e-popover {
+
+  .popper {
+    transition: background 250ms ease-in-out;
+    background: var(--popper-theme-background-color);
+    padding: var(--popper-theme-padding);
+    color: var(--popper-theme-text-color);
+    border-radius: var(--popper-theme-border-radius);
+    border-width: var(--popper-theme-border-width);
+    border-style: var(--popper-theme-border-style);
+    border-color: var(--popper-theme-border-color);
+    box-shadow: var(--popper-theme-box-shadow);
+
+    &:hover, &:hover > .e-arrow:before {
+      background: var(--popper-theme-background-color-hover);
+    }
+  }
+
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+

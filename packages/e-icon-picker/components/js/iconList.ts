@@ -3,8 +3,8 @@ import eIconList from "./eIconList";
 import elementUI from "./elementUI";
 import fontAwesome from "./fontAwesome";
 
-const add = function (list, item) {
-    let arr = [];
+const add = function (list: string[], item: string) {
+    let arr: string[] = [];
     if (item && TypeUtil.isArray(item)) {
         arr = list.concat(item);
     } else if (item && TypeUtil.isString(item)) {
@@ -14,7 +14,7 @@ const add = function (list, item) {
     return arr;
 };
 
-const remove = function (list, item) {
+const remove = function (list: string[], item: string) {
     if (item && TypeUtil.isArray(item)) {
         for (let i = 0; i < item.length; i++) {
             for (let j = 0; j < list.length; j++) {
@@ -32,20 +32,24 @@ const remove = function (list, item) {
     return list;
 };
 
-const iconList = {
+const iconList: {
+    list: Array<string>,
+    addIcon: Function,
+    removeIcon: Function
+} = {
     list: [],
     /**
      * 全局添加图标
      * @param item
      */
-    addIcon: function (item) {
+    addIcon: function (item: string) {
         this.list = add(this.list, item);
     },
     /**
      * 全局删除
      * @param item
      */
-    removeIcon: function (item) {
+    removeIcon: function (item: string) {
         this.list = remove(this.list, item);
     }
 };

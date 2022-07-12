@@ -5,6 +5,11 @@
   fill: currentColor;
   overflow: hidden;
 }
+
 .external-icon {
   display: inline-block;
+}
+
+.e-icon {
+  color: var(--popper-theme-text-color);
 }

@@ -1,21 +1,21 @@
 <template>
-  <div class="ui-fas">
+  <div class="e-icon-picker">
     <!-- 弹出框 -->
     <e-popover
         ref="popover"
-        :placement="state.myPlacement"
+        :placement="myPlacement"
         :disabled="disabled"
-        popper-class="el-icon-popper"
-        :width="state.popoverWidth"
-        v-model:visible="state.visible"
-        show-arrow
-        trigger="manual"
+        :readonly="readonly"
+        :width="popoverWidth"
+        :class="theme"
+        :max-height="400"
+        arrow
     >
-      <template #reference>
+      <template #default>
         <slot name="default"
-              v-bind:data="{prefixIcon:state.prefixIcon,visible:state.visible,placeholder,disabled,clearable,readonly,size}">
+              v-bind:data="{prefixIcon,visible,placeholder,disabled,clearable,readonly,size}">
           <e-input
-              v-model="state.name"
+              v-model="name"
               :placeholder="placeholder"
               ref="input"
               :style="styles"
@@ -28,40 +28,38 @@
               @focus="popoverShowFun(false)"
           >
             <template #prepend slot="prepend">
-              <slot name="prepend" v-bind:icon="state.prefixIcon">
-                <e-icon :icon-name="state.prefixIcon" class="e-icon"/>
+              <slot name="prepend" v-bind:icon="prefixIcon">
+                <e-icon :icon-name="prefixIcon" class="e-icon"/>
               </slot>
             </template>
           </e-input>
         </slot>
       </template>
-
-      <e-scrollbar
-          ref="eScrollbar"
-          tag="div"
-          wrap-class="el-select-dropdown__wrap"
-          view-class="el-select-dropdown__list"
-          :class="'is-empty-'+state.id"
-          v-if="!state.destroy"
-      >
-        <ul
-            class="fas-icon-list"
-            ref="fasIconList"
-            v-if="state.dataList && state.dataList.length > 0"
+      <template #content>
+        <e-scrollbar
+            ref="eScrollbar"
+            :class="'is-empty-'+id"
+            v-if="!destroy"
         >
-          <li
-              v-for="(item, index) in state.dataList"
-              :key="index"
-              @click="selectedIcon(item)"
-              :style="state.name === item && highLightColor !== '' ? {'color': highLightColor} : ''"
+          <ul
+              class="e-icon-picker-icon-list"
+              ref="fasIconList"
+              v-if="dataList && dataList.length > 0"
           >
-            <slot name="icon" v-bind:icon="item">
-              <e-icon :icon-name="item" :title="item" class="e-icon"/>
-            </slot>
-          </li>
-        </ul>
-        <span v-else class="fas-no-data" v-text="emptyText"></span>
-      </e-scrollbar>
+            <li
+                v-for="(item, index) in dataList"
+                :key="index"
+                @click="selectedIcon(item)"
+                :style="name === item && highLightColor !== '' ? {'color': highLightColor} : ''"
+            >
+              <slot name="icon" v-bind:icon="item">
+                <e-icon :icon-name="item" :title="item" class="e-icon"/>
+              </slot>
+            </li>
+          </ul>
+          <span v-else class="e-icon-picker-no-data" v-text="emptyText"></span>
+        </e-scrollbar>
+      </template>
     </e-popover>
   </div>
 </template>
@@ -69,10 +67,10 @@
 <script>
 import iconList, {eIconList, elementUI, fontAwesome} from "../../js/iconList";
 import {isServer, off, on} from "../../utils";
-import eIcon from "../../eIcon";
-import eInput from "../../eInput";
-import ePopover from "../../ePopover";
-import eScrollbar from "../../eScrollbar";
+import {eIcon} from "../../eIcon";
+import {eInput} from "../../eInput";
+import {ePopover} from "../../ePopover";
+import {eScrollbar} from "../../eScrollbar";
 import {
   computed,
   defineComponent,
@@ -82,6 +80,7 @@ import {
   onMounted,
   reactive,
   ref,
+  toRefs,
   watch
 } from "vue";
 
@@ -168,6 +167,7 @@ export default defineComponent({
   },
   emits: ['change', 'update:modelValue', 'input'],
   setup(props, context) {
+    const theme = ref("light");
     //绑定时检查宽度
     onMounted(() => {
       updateW();
@@ -394,7 +394,7 @@ export default defineComponent({
       selectedIcon,
       addIcon,
       removeIcon,
-      state,
+      ...toRefs(state),
       input,
       eScrollbar,
       popover,
@@ -403,7 +403,8 @@ export default defineComponent({
       createIconList,
       destroyIconList,
       show,
-      hide
+      hide,
+      theme
     }
   }
 });

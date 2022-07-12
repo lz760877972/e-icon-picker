@@ -1,43 +1,33 @@
-.fas-icon-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow-x: hidden;
+.e-icon-picker {
+
+  &-icon-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   /* justify-content: space-around;*/
+
+    li {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+
+      i, svg {
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+    &::after {
+      content: '';
+      flex: auto;    /* 或者flex: 1 */
+    }
+  }
+
+  &-no-data {
+    display: block;
+    text-align: center;
+  }
 }
 
-.ui-fas .el-input__inner {
-  cursor: pointer;
-}
-
-.fas-icon-list li {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-}
-
-.fas-icon-list li i, .fas-icon-list li svg {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.el-icon-popper {
-  max-height: 400px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.el-icon-popper[x-placement^="bottom"] {
-  margin-top: 5px;
-}
-
-.fas-no-data {
-  display: block;
-}
-
-.e-icon {
-  font-size: 16px;
-}
