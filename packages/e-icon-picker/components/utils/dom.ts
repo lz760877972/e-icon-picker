@@ -1,0 +1,36 @@
+import {isServer} from "./util";
+
+export const on = (function () {
+    if (!isServer) {
+        if (document && (document as Document).removeEventListener) {
+            return function (element: HTMLElement, event: any, handler: any) {
+                if (element && event && handler) {
+                    element.addEventListener(event, handler, false);
+                }
+            };
+        } else {
+            return function (element: any, event: any, handler: any) {
+                if (element && event && handler) {
+                    element.attachEvent('on' + event, handler);
+                }
+            };
+        }
+    }
+})();
+export const off = (function () {
+    if (!isServer) {
+        if (document && (document as Document).removeEventListener) {
+            return function (element: HTMLElement, event: any, handler: any) {
+                if (element && event) {
+                    element.removeEventListener(event, handler, false);
+                }
+            };
+        } else {
+            return function (element: any, event: any, handler: any) {
+                if (element && event) {
+                    element.detachEvent('on' + event, handler);
+                }
+            };
+        }
+    }
+})();

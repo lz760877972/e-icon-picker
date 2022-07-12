@@ -1,0 +1,24 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
+    "eslint:fix": "eslint --fix \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
+    "stylelint": "stylelint \"packages/**/{*.scss,*.css}\"",
+    "stylelint:fix": "stylelint --fix \"packages/**/{*.scss,*.css}\""
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-vue": "^7.11.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended-scss": "^4.3.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-scss": "^3.20.1",
+    "lint-staged": "^11.0.0"
+  },
+  "lint-staged": {
+    "packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}": "eslint --fix",
+    "packages/**/{*.scss,*.css}": "stylelint --fix"
+  }
+}
