@@ -8,11 +8,14 @@ export default defineConfig({
     },
     plugins: [],
     optimizeDeps: {
-        exclude: ['vue-router','lodash-es'],
+        exclude: ['vue-router', 'lodash-es'],
     },
     server: {
         fs: {
             strict: false,
         },
     },
+    css: {
+        preprocessorOptions: {scss: {charset: false}}
+    }
 });

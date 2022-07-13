@@ -8,5 +8,9 @@ const getVersion = (version) => {
   }
 };
 
+const formatToLine = (value) => {
+  return value.replace(/([A-Z])/g, '-$1').toLowerCase()
+}
 
 exports.getVersion = getVersion;
+exports.formatToLine = formatToLine;

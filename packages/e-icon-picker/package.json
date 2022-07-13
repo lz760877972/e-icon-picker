@@ -28,12 +28,13 @@
   "style": "index.css",
   "types": "index.d.ts",
   "scripts": {
-    "build:lib": "pnpm build:components && pnpm release",
+    "build:lib": "pnpm clean:lib && pnpm build:components && pnpm release",
     "build:components": "node ./cli/index.js build",
     "release": "node ./cli/index.js release",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "clean:lib": "rimraf lib"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
@@ -74,12 +75,14 @@
     "ts-morph": "^15.1.0",
     "typescript": "^4.7.4",
     "vite": "^2.9.14",
+    "vite-plugin-banner": "^0.3.0",
     "vite-plugin-dts": "^1.2.1",
     "vite-plugin-md": "^0.18.1",
     "vitepress": "^1.0.0-alpha.4",
     "vitepress-theme-demoblock": "1.4.2",
     "vue": "^3.2.37",
-    "vue-tsc": "^0.38.4"
+    "vue-tsc": "^0.38.4",
+    "rimraf": "^3.0.2"
   },
   "browserslist": [
     "> 1%",
