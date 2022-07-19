@@ -19,7 +19,9 @@ exports.release = async ({version}) => {
   await createPackageJson(version);
   shell.sed('-i', 'workspace:', '', path.resolve(outputDir, 'package.json'));
   shell.cp('-R', path.resolve(__dirname, '../../../../README.md'), outputDir);
-  shell.cd(outputDir);
+  shell.cp('-R', path.resolve(__dirname, './icon/ele'), outputDir);
+  shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), outputDir);
+  // shell.cd(outputDir);
   // shell.mkdir('-p', 'theme');
   // shell.cp('-R', path.resolve(__dirname, '../../devui/theme/theme.scss'), path.resolve(outputDir, 'theme'));
   // shell.exec('npm publish');

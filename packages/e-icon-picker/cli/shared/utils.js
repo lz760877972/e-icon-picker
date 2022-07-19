@@ -12,5 +12,10 @@ const formatToLine = (value) => {
   return value.replace(/([A-Z])/g, '-$1').toLowerCase()
 }
 
+const fileStr = `declare const _default: string[];
+export default _default;
+`;
+
 exports.getVersion = getVersion;
 exports.formatToLine = formatToLine;
+exports.fileStr = fileStr;

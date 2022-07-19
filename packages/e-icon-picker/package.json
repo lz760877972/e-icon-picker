@@ -28,8 +28,10 @@
   "style": "index.css",
   "types": "index.d.ts",
   "scripts": {
-    "build:lib": "pnpm clean:lib && pnpm build:components && pnpm release",
+    "build:lib": "pnpm clean:lib && pnpm build:components && pnpm build:icon && pnpm release",
     "build:components": "node ./cli/index.js build",
+    "build:icon": "pnpm clean:icon && node ./cli/index.js icon",
+    "clean:icon": "rimraf ./cli/commands/icon/ele && rimraf ./cli/commands/icon/fontawesome",
     "release": "node ./cli/index.js release",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
