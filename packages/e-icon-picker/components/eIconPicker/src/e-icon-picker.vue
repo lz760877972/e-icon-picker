@@ -7,9 +7,10 @@
         :disabled="disabled"
         :readonly="readonly"
         :width="popoverWidth"
-        :class="theme"
+        :content-class="theme"
         :max-height="400"
         arrow
+        :append-container="appendBody"
     >
       <template #default>
         <slot name="default"
@@ -163,7 +164,11 @@ export default defineComponent({
       default() {
         return null;
       },
-    }
+    },
+    appendBody: {
+      type: Boolean,
+      default: false
+    },
   },
   emits: ['change', 'update:modelValue', 'input'],
   setup(props, context) {

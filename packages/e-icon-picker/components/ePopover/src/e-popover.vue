@@ -15,20 +15,23 @@
       <!-- The default slot to trigger the popper  -->
       <slot/>
     </div>
-    <Transition name="fade">
-      <div
-          @click="!interactive && closePopper()"
-          v-show="shouldShowPopper"
-          class="popper"
-          ref="popperNode"
-          :style="{zIndex: zIndex,width:`${width}px`,height:`${height}px`,maxHeight:`${maxHeight}px`,maxWidth:`${maxWidth}px`}"
-      >
-        <slot name="content" :close="close" :isOpen="modifiedIsOpen">
-          {{ content }}
-        </slot>
-        <e-arrow v-if="arrow"/>
-      </div>
-    </Transition>
+    <teleport :to="container" :disabled="!appendContainer">
+      <Transition name="fade">
+        <div
+            @click="!interactive && closePopper()"
+            v-show="shouldShowPopper"
+            class="popper"
+            ref="popperNode"
+            :class="contentClass"
+            :style="{zIndex: zIndex,width:`${width}px`,height:`${height}px`,maxHeight:`${maxHeight}px`,maxWidth:`${maxWidth}px`}"
+        >
+          <slot name="content" :close="close" :isOpen="modifiedIsOpen">
+            {{ content }}
+          </slot>
+          <e-arrow v-if="arrow"/>
+        </div>
+      </Transition>
+    </teleport>
   </div>
 </template>
 
@@ -186,6 +189,18 @@ export default defineComponent({
       type: Number,
       default: 800,
     },
+    container: {
+      type: String,
+      default: 'body',
+    },
+    appendContainer: {
+      type: Boolean,
+      default: false,
+    },
+    contentClass: {
+      type: String,
+      default: '',
+    },
   },
   setup(props, {slots, attrs, emit}) {
     const popperContainerNode = ref(null);
@@ -326,7 +341,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "e-popover.scss";
 </style>
 <style lang="scss">

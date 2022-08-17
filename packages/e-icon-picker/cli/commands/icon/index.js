@@ -10,7 +10,7 @@ exports.icon = async () => {
   await elementPlus();
   await elementUI();
   await fontAwesome470();
-  await fontAwesome5XX();
-  await fontAwesome5XXPro();
+  // await fontAwesome5XX();
+  // await fontAwesome5XXPro();
   await fontAwesome6XX();
 }

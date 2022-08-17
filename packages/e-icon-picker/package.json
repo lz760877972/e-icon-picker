@@ -80,7 +80,7 @@
     "vite-plugin-banner": "^0.3.0",
     "vite-plugin-dts": "^1.2.1",
     "vite-plugin-md": "^0.18.1",
-    "vitepress": "^1.0.0-alpha.4",
+    "vitepress": "^1.0.0-alpha.5",
     "vitepress-theme-demoblock": "1.4.2",
     "vue": "^3.2.37",
     "vue-tsc": "^0.38.4",
