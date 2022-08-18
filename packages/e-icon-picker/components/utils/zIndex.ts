@@ -3,7 +3,7 @@ import {useGlobalConfig} from "./config";
 
 const zIndex = ref(0)
 
-export const useZIndex = () => {
+export const useZIndex = (): any => {
     const initialZIndex = ref(useGlobalConfig('zIndex', 3000))
     const currentZIndex = computed(() => initialZIndex.value + zIndex.value)
     const nextZIndex = () => {

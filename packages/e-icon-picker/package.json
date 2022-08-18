@@ -33,7 +33,7 @@
     "build:icon": "pnpm clean:icon && node ./cli/index.js icon",
     "clean:icon": "rimraf ./cli/commands/icon/ele && rimraf ./cli/commands/icon/fontawesome",
     "release": "node ./cli/index.js release",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "clean:lib": "rimraf lib"
