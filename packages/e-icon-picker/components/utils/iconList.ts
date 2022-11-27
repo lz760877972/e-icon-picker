@@ -1,7 +1,4 @@
 import {TypeUtil} from "../utils";
-import eIconList from "./eIconList";
-import elementUI from "./elementUI";
-import fontAwesome from "./fontAwesome";
 
 const add = function (list: string[], item: string | string[]) {
     let arr: string[] = [];
@@ -32,7 +29,7 @@ const remove = function (list: string[], item: string | string[]) {
     return list;
 };
 
-const iconList: {
+export const iconList: {
     list: Array<string>,
     addIcon: Function,
     removeIcon: Function
@@ -53,6 +50,3 @@ const iconList: {
         this.list = remove(this.list, item);
     }
 };
-
-export {fontAwesome, elementUI, eIconList}
-export default iconList

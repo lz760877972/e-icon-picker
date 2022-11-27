@@ -4,9 +4,11 @@ import {defineConfig} from 'vite';
 
 export default defineConfig({
     resolve: {
-        alias: [{find: '@e-icon-picker', replacement: path.resolve(__dirname, '../')}],
+        alias: [{find: '@e-icon-picker', replacement: path.resolve(__dirname, '../')},
+            {find: '@public', replacement: path.resolve(__dirname, './public')}],
     },
-    plugins: [],
+    plugins: [
+    ],
     optimizeDeps: {
         exclude: ['vue-router', 'lodash-es'],
     },

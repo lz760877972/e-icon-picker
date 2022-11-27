@@ -6,8 +6,7 @@ import ePopover from './ePopover';
 import eScrollbar from './eScrollbar';
 import eIconPicker from './eIconPicker';
 import './style/index.scss'
-import {analyzingIconForIconfont, eIconSymbol, INSTALLED_KEY} from "./utils";
-import iconList, {eIconList, elementUI, fontAwesome} from './js/iconList';
+import {analyzingIconForIconfont, eIconSymbol, iconList, INSTALLED_KEY} from "./utils";
 import {setConfig} from "./utils/config";
 
 const installs = [
@@ -16,9 +15,6 @@ const installs = [
 export {
     eInput, eIcon, ePopover, eScrollbar, eIconPicker,
     iconList,
-    elementUI,
-    fontAwesome,
-    eIconList,
     analyzingIconForIconfont,
     eIconSymbol,
 };

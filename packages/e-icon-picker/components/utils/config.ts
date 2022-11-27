@@ -1,4 +1,4 @@
-import iconList from "../js/iconList";
+import {iconList} from "./iconList";
 
 type Options = {
     addIconList: [],

@@ -1,20 +1,25 @@
 .e-popover {
 }
+
 .popper {
   transition: background 250ms ease-in-out;
-  background: var(--popper-theme-background-color);
-  padding: var(--popper-theme-padding);
-  color: var(--popper-theme-text-color);
-  border-radius: var(--popper-theme-border-radius);
-  border-width: var(--popper-theme-border-width);
-  border-style: var(--popper-theme-border-style);
-  border-color: var(--popper-theme-border-color);
-  box-shadow: var(--popper-theme-box-shadow);
+  background: var(--e-popover-background-color, #ffffff);
+  padding: var(--e-popover-padding, 32px);
+  color: var(--e-popover-color, #333333);
+
+  border-radius: var(--e-popover-border-radius, 6px);
+  //border: var(--e-popover-border, 1px solid #eeeeee);
+  border-style: var(--e-popover-border-style,solid);
+  border-width: var(--e-popover-border-width,1px);
+  border-color: var(--e-popover-border-color,#eeeeee);
+
+  box-shadow: var(--e-popover-box-shadow, 0 6px 30px -6px rgba(0, 0, 0, 0.25));
 
   &:hover, &:hover > .e-arrow:before {
-    background: var(--popper-theme-background-color-hover);
+    background: var(--e-popover-background-color-hover, #ffffff);
   }
 }
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s ease;
 }

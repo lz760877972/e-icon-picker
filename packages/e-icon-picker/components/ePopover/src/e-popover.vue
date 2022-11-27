@@ -7,6 +7,7 @@
   >
     <div
         ref="triggerNode"
+        :style="{display:display}"
         @mouseover="hover && openPopper()"
         @click="togglePopper"
         @focus="openPopper"
@@ -201,6 +202,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    display: {
+      type: String,
+      default: 'block',
+    },
   },
   setup(props, {slots, attrs, emit}) {
     const popperContainerNode = ref(null);
@@ -262,7 +267,7 @@ export default defineComponent({
       if (invalid.value || manualMode.value) {
         return;
       }
-      zIndex.value = props.zIndex || nextZIndex()
+      zIndex = props.zIndex || nextZIndex()
       closePopperDebounce.clear();
       openPopperDebounce();
     };
@@ -297,6 +302,7 @@ export default defineComponent({
      */
     watch(isOpen, isOpen => {
       if (isOpen) {
+        zIndex = props.zIndex
         modifiedIsOpen.value = true;
       } else {
         debounce(() => {

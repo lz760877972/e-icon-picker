@@ -1,10 +1,10 @@
 .e-arrow, .e-arrow::before {
   transition: background 250ms ease-in-out;
   position: absolute;
-  width: calc(10px - var(--popper-theme-border-width, 0px));
-  height: calc(10px - var(--popper-theme-border-width, 0px));
+  width: calc(10px - var(--e-popover-border-width, 0px));
+  height: calc(10px - var(--e-popover-border-width, 0px));
   box-sizing: border-box;
-  background: var(--popper-theme-background-color);
+  background: var(--e-popover-background-color, #fff);
   visibility: hidden;
 }
 
@@ -20,8 +20,8 @@
       bottom: -5px;
 
       &::before {
-        border-right: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
-        border-bottom: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
+        border-right: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
+        border-bottom: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
       }
     }
   }
@@ -31,8 +31,8 @@
       top: -5px;
 
       &::before {
-        border-left: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
-        border-top: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
+        border-left: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
+        border-top: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
       }
 
     }
@@ -43,8 +43,8 @@
       right: -5px;
 
       &::before {
-        border-right: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
-        border-top: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
+        border-right: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
+        border-top: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
       }
     }
   }
@@ -54,8 +54,8 @@
       left: -5px;
 
       &::before {
-        border-left: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
-        border-bottom: var(--popper-theme-border-width) var(--popper-theme-border-style) var(--popper-theme-border-color);
+        border-left: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
+        border-bottom: var(--e-popover-border-width) var(--e-popover-border-style) var(--e-popover-border-color);
       }
     }
   }

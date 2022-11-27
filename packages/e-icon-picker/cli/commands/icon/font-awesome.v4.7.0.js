@@ -1,6 +1,7 @@
 const util = require("../../shared/httpsUtil")
 const fs = require("fs");
 const {fileStr} = require("../../shared/utils");
+const logger = require("../../shared/logger");
 
 async function generate() {
   //https://www.bootcdn.cn/font-awesome/
@@ -18,14 +19,14 @@ async function generate() {
     }
     namecount++;
   });
-  console.log(__dirname + "/data/")
+  logger.info(__dirname + "/data/")
   await util.writeFile(__dirname + "/fontawesome/", "font-awesome.v4.7.0", fa);
-  fs.writeFileSync(__dirname + "/fontawesome/font-awesome.v4.7.0.data.d.ts", fileStr);
-  console.log("parsed (" + namecount + " names)")
+  fs.writeFileSync(__dirname + "/fontawesome/font-awesome.v4.7.0.d.ts", fileStr);
+  logger.info("parsed (" + namecount + " names)")
 }
 
 exports.fontAwesome470 = async () => {
   await generate()
-    .then(() => console.log("Successfully generated new index.js"))
+    .then(() => logger.success("Successfully generated new index.js"))
     .catch(err => console.error(err));
 }

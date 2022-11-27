@@ -17,12 +17,16 @@ const createPackageJson = async (version) => {
 
 exports.release = async ({version}) => {
   await createPackageJson(version);
+  shell.cd(outputDir);
+  shell.mkdir('-p', 'theme');
+  shell.mkdir('-p', 'icon');
+
   shell.sed('-i', 'workspace:', '', path.resolve(outputDir, 'package.json'));
   shell.cp('-R', path.resolve(__dirname, '../../../../README.md'), outputDir);
-  shell.cp('-R', path.resolve(__dirname, './icon/ele'), outputDir);
-  shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), outputDir);
-  // shell.cd(outputDir);
-  // shell.mkdir('-p', 'theme');
-  // shell.cp('-R', path.resolve(__dirname, '../../devui/theme/theme.scss'), path.resolve(outputDir, 'theme'));
+  shell.cp('-R', path.resolve(__dirname, './icon/ele'), path.resolve(outputDir, 'icon'));
+  shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), path.resolve(outputDir, 'icon'));
+
+  shell.cp('-R', path.resolve(__dirname, '../../components/default-icon'), path.resolve(outputDir, 'icon'));
+  shell.cp('-R', path.resolve(__dirname, '../../components/style/theme.css'), path.resolve(outputDir, 'theme/theme.css'));
   // shell.exec('npm publish');
 };

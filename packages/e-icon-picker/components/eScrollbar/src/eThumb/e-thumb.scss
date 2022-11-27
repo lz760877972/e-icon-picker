@@ -14,7 +14,7 @@
     cursor: pointer;
     border-radius: inherit;
     transition: background-color;
-    background-color: #303133;
+    background-color: var(--e-thumb-background-color, #303133);
     opacity: .15;
 
     &:hover {

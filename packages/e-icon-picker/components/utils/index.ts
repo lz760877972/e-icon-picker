@@ -30,3 +30,5 @@ export const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 export * from "./util";
 export * from "./dom";
 export * from "./TypeUtil";
+export * from "./iconList";
+// export * from "./getSvg";

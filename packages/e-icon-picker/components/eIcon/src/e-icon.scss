@@ -11,5 +11,9 @@
 }
 
 .e-icon {
-  color: var(--popper-theme-text-color);
+  color: var(--e-icon-color, #333333);
+}
+
+.e-icon-svg {
+  display: inline-block;
 }

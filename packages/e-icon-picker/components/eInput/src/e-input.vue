@@ -15,6 +15,7 @@
            :readonly="readonly"
            :placeholder="placeholder"
            :style="style"
+           :class="disabled ? 'is-disabled' : ''"
            @input="handleInput"
            @focus="handleFocus"
            @blur="handleBlur"

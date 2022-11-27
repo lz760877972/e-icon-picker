@@ -1,7 +1,8 @@
 const util = require("../../shared/httpsUtil")
 const fs = require("fs");
 const {fileStr} = require("../../shared/utils");
-const version = "2.15.7"
+const logger = require("../../shared/logger");
+const version = "2.15.12"
 
 async function generate() {
   //https://www.bootcdn.cn/font-awesome/
@@ -15,15 +16,15 @@ async function generate() {
     el.push(it[0]);
     namecount++;
   });
-  console.log(__dirname + "/data/")
+  logger.info(__dirname + "/data/")
   await util.writeFile(__dirname + "/ele/", `element-ui-${version}`, el);
-  fs.writeFileSync(__dirname + "/ele/"+`element-ui-${version}.data.d.ts`, fileStr);
-  console.log("parsed (" + namecount + " names)")
+  fs.writeFileSync(__dirname + "/ele/" + `element-ui-${version}.d.ts`, fileStr);
+  logger.info("parsed (" + namecount + " names)")
 }
 
 exports.elementUI = async () => {
   await generate()
-    .then(() => console.log("Successfully generated new index.js"))
+    .then(() => logger.success("Successfully generated new index.js"))
     .catch(err => console.error(err));
 }
 

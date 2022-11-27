@@ -7,36 +7,38 @@
         :disabled="disabled"
         :readonly="readonly"
         :width="popoverWidth"
-        :content-class="theme"
+        :content-class="contentClass"
         :max-height="400"
         :z-index="zIndex"
         arrow
         :append-container="appendBody"
         :show="visible"
+        :display="display"
     >
       <template #default>
-        <slot name="default"
-              v-bind:data="{prefixIcon,visible,placeholder,disabled,clearable,readonly,size}">
-          <e-input
-              v-model="name"
-              :placeholder="placeholder"
-              ref="input"
-              :style="styles"
-              :clearable="clearable"
-              :disabled="disabled"
-              :readonly="readonly"
-              :size="size"
-              @input="change"
-              @clear="initIcon(false)"
-              @focus="popoverShowFun(false)"
-          >
-            <template #prepend slot="prepend">
-              <slot name="prepend" v-bind:icon="prefixIcon">
-                <e-icon :icon-name="prefixIcon" class="e-icon"/>
-              </slot>
-            </template>
-          </e-input>
-        </slot>
+        <div @click="popoverShowFun(false)" :style="{display:display}" ref="triggerWrapper" class="trigger-wrapper">
+          <slot name="default"
+                v-bind:data="{prefixIcon,visible,placeholder,disabled,clearable,readonly,size}">
+            <e-input
+                v-model="name"
+                :placeholder="placeholder"
+                ref="input"
+                :style="styles"
+                :clearable="clearable"
+                :disabled="disabled"
+                :readonly="readonly"
+                :size="size"
+                @input="change"
+                @clear="initIcon(false)"
+            >
+              <template #prepend slot="prepend">
+                <slot name="prepend" v-bind:icon="prefixIcon">
+                  <e-icon :icon-name="prefixIcon" class="e-icon"/>
+                </slot>
+              </template>
+            </e-input>
+          </slot>
+        </div>
       </template>
       <template #content>
         <e-scrollbar
@@ -67,7 +69,6 @@
 </template>
 
 <script>
-import iconList from "../../js/iconList";
 import {eIcon} from "../../eIcon";
 import {eInput} from "../../eInput";
 import {ePopover} from "../../ePopover";
@@ -84,7 +85,9 @@ import {
   toRefs,
   watch
 } from "vue";
-import {isServer, off, on} from "../../utils";
+import {iconList, isServer, off, on} from "../../utils";
+import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../constants";
+import {useZIndex} from "../../utils/zIndex";
 
 export default defineComponent({
   name: "eIconPicker",
@@ -168,14 +171,22 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
+    contentClass: {
+      type: String,
+      default() {
+        return "";
+      },
+    }
   },
-  emits: ['change', 'update:modelValue', 'input'],
+  emits: [CHANGE_EVENT, UPDATE_MODEL_EVENT, INPUT_EVENT],
   setup(props, context) {
-    const theme = ref("light");
     let input = ref(null);
     let eScrollbar = ref(null);
     let popover = ref(null);
     let fasIconList = ref(null);
+    let triggerWrapper = ref(null);
+    // let display = ref("block");
+    const {nextZIndex} = useZIndex()
     const state = reactive({
       iconList: [],
       visible: false, // popover v-model
@@ -196,12 +207,21 @@ export default defineComponent({
       }),
       destroy: false,
       id: new Date().getTime(),
-      zIndex: 1,
+      zIndex: nextZIndex(),
+      display:"block"
     })
 
     //绑定时检查宽度
     onMounted(() => {
       updateW();
+      //检测触发组件的类型
+
+      let children = triggerWrapper.value.children[0]
+      if (triggerWrapper.value.offsetWidth > children?.offsetWidth) {
+        state.display = "inline-block"
+      }else {
+        state.display = "block"
+      }
     })
 
     onBeforeMount(() => {
@@ -228,7 +248,6 @@ export default defineComponent({
 
 
     watch(() => state.visible, (newValue) => {
-      console.log(newValue)
       if (newValue === false) {
         nextTick(() => {
           if (!isServer) {
@@ -254,8 +273,8 @@ export default defineComponent({
       state.name = type === true ? props.modelValue : "";
       state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
       if (props.options) {
-        state.icon.list = []; //重新给图标集合复制为空
         if (props.options.addIconList && props.options.addIconList.length > 0) {
+          state.icon.list = []; //重新给图标集合复制为空
           state.icon.addIcon(props.options.addIconList);
         }
         if (props.options.removeIconList && props.options.removeIconList.length > 0) {
@@ -312,15 +331,18 @@ export default defineComponent({
 
     const updatePopper = (zIndex) => {
       if (zIndex) {
-        state.zIndex.value = zIndex
+        state.zIndex = zIndex
       }
       popoverShowFun(true);
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = (flag) => {
       if (props.readonly !== true && props.disabled !== true) {
+        console.log(state.zIndex ,props.zIndex,flag)
         if (!flag && props.zIndex) {
-          state.zIndex.value = props.zIndex
+          state.zIndex = props.zIndex
+        } else {
+          state.zIndex  = nextZIndex()
         }
         state.visible = true;
         updateW();
@@ -329,8 +351,6 @@ export default defineComponent({
 
     // 点击控件外，判断是否隐藏弹出框
     const popoverHideFun = (e) => {
-      // let popperId = popover.value.popperId;
-      console.log(e)
       let path = e.path || (e.composedPath && e.composedPath());
       let isInter = path.some((list) => {
         return list.className && (list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
@@ -361,6 +381,7 @@ export default defineComponent({
 
     const show = () => {
       popoverShowFun(false)
+      console.log("popoverShowFun")
     }
     const hide = () => {
       state.visible = false
@@ -382,7 +403,7 @@ export default defineComponent({
       destroyIconList,
       show,
       hide,
-      theme
+      triggerWrapper
     }
   }
 });

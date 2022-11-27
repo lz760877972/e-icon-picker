@@ -1,3 +1,4 @@
+// @ts-ignore
 import {defineConfig} from 'vitepress'
 import sidebar from './sidebar'
 import nav from './nav'
@@ -41,7 +42,10 @@ const config = defineConfig({
         socialLinks: [
             {icon: 'github', link: 'https://gitee.com/cnovel/e-icon-picker'},
             /* { icon: 'https://gitee.com/assets/favicon.ico', link: 'https://gitee.com/cnovel/e-icon-picker' }*/
-        ]
+        ],
+        footer: {
+            copyright: 'MIT Licensed | Copyright © 2020-2022 cnovel.club'
+        }
     }
 })
 

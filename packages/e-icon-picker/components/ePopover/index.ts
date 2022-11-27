@@ -1,6 +1,6 @@
 import type {App} from 'vue';
 import ePopover from './src/e-popover.vue';
-import './src/theme.scss'
+// import './src/theme.scss'
 
 export {ePopover};
 

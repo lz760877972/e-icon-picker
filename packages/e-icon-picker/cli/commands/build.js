@@ -11,19 +11,34 @@ const outputDir = path.resolve(__dirname, '../../lib');
 const name = 'eIconPicker';// 外部引用的模块名称
 const pkg = require('../../package.json')
 const {getVersion, formatToLine} = require("../shared/utils");
+const logger = require("../shared/logger");
 
 const createBanner = () => {
   return `/**
   * ${pkg.name} v${getVersion()}
   * (c) 2019 - ${new Date().getFullYear()} ${pkg.author}
   * @license ${pkg.license}
-  */`;
+  */
+`;
 }
+const bannerPlugin = {
+  name: 'banner',
+  enforce: 'post',
+  generateBundle(options, bundle) {
+    const banner = createBanner()
+    const footer = ''
 
+    for (const module of Object.values(bundle)) {
+      if (module.type === 'chunk') {
+        module.code = banner + module.code + footer
+      }
+    }
+  }
+}
 const baseConfig = defineConfig({
   configFile: false,
   publicDir: false,
-  plugins: [vue(), banner(createBanner()), dts()],
+  plugins: [vue(), bannerPlugin],
   target: 'es2018'
 });
 
@@ -47,11 +62,12 @@ const buildSingle = async (fileName) => {
   await build(
     defineConfig({
       ...baseConfig,
+      plugins: [...baseConfig.plugins],
       build: {
         rollupOptions,
         lib: {
           entry: path.resolve(entryDir, fileName),
-          name: 'index',
+          name: fileName,
           fileName: 'index',
           formats: ['es', 'umd'],
         },
@@ -66,6 +82,12 @@ const buildAll = async () => {
   await build(
     defineConfig({
       ...baseConfig,
+      plugins: [...baseConfig.plugins, dts({
+        entryRoot: path.resolve(entryDir),
+        outputDir: outputDir,
+        exclude: ['components/default-icon/**'],
+        copyDtsFiles: false
+      })],
       build: {
         rollupOptions,
         lib: {
@@ -87,11 +109,11 @@ const createPackageJson = (fileName) => {
   "name": "${formatToLine(fileName)}",
   "version": "${getVersion()}",
   "main": "index.umd.js",
-  "module": "index.es.js",
+  "module": "index.mjs",
   "style": "index.css"
 }`;
 
-  fsExtra.outputFile(path.resolve(outputDir, `${fileName}/package.json`), fileStr, 'utf-8').then(r => console.log('create package.json success'));
+  fsExtra.outputFile(path.resolve(outputDir, `${fileName}/package.json`), fileStr, 'utf-8').then(r => logger.success('create package.json success'));
 };
 
 exports.build = async () => {
@@ -102,7 +124,6 @@ exports.build = async () => {
     const isDir = fs.lstatSync(componentDir).isDirectory();
     return isDir && fs.readdirSync(componentDir).includes('index.ts');
   });
-
   for (const fileName of components) {
     await buildSingle(fileName);
     createPackageJson(fileName);

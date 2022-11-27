@@ -1,9 +1,10 @@
 const fs = require("fs");
+const logger = require("./logger");
 fetch = (options) => new Promise((resolve, reject) => {
   require("https").get(options, function (response) {
     let body = "";
     if (response.statusCode !== 200) {
-      reject(new Error("Request failed. Status code: " + response.statusCode+ "\n" + options.host + options.path));
+      reject(new Error("Request failed. Status code: " + response.statusCode + "\n" + options.host + options.path));
       response.resume();
       return;
     }
@@ -24,14 +25,14 @@ async function getVersion(host, path) {
   if (version.length < 3) {
     throw new Error("Couldn't parse version");
   }
-  console.log("Font Awesome v" + version);
+  logger.info("Font Awesome v" + version);
   return version;
 }
 
 function parse(source, callback) {
   let main = source.match(/(fa-[a-z0-9\-]+(?:(:before|:after),\.fa-[a-z0-9\-]+)*)(:before|:after)\{content:"\\([0-9a-f]+)"|(fa[a-z]?)\.(fa-[a-z0-9\-]+(?:(:before|:after),\.fa-[a-z0-9\-]+)*)(:before|:after)\{content:"\\([0-9a-f]+)"/g);
   if (!main) {
-    console.log("Couldn't parse icons");
+    logger.warning("Couldn't parse icons");
     return;
   }
   main.forEach(it => {
@@ -44,7 +45,7 @@ function parse(source, callback) {
 function parseEl(source, callback) {
   let main = source.match(/(el-[a-z0-9\-]+(?:(:before|:after),\.el-[a-z0-9\-]+)*)(:before|:after)/g);
   if (!main) {
-    console.log("Couldn't parse icons");
+    logger.warning("Couldn't parse icons");
     return;
   }
   main.forEach(it => {
@@ -63,10 +64,10 @@ async function getCss(host, path, headers) {
 
 async function writeFile(path, name, data) {
   if (!fs.existsSync(path)) {
-    fs.mkdir(path, (err) => console.log(err));
+    fs.mkdir(path, (err) => logger.error(err));
   }
-  console.log(path + name + ".data.js")
-  fs.writeFileSync(path + name + ".data.js", 'export default ' + JSON.stringify(data));
+  logger.success(path + name + ".js")
+  fs.writeFileSync(path + name + ".js", 'export default ' + JSON.stringify(data));
 }
 
 

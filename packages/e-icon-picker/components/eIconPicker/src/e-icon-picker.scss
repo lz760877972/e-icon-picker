@@ -9,12 +9,12 @@
     flex-wrap: wrap;
 
     li {
-      width: 30px;
-      height: 30px;
-      margin: 5px;
+      width: var(--e-icon-picker-icon-list-width, 30px);
+      height: var(--e-icon-picker-icon-list-width, 30px);
+      margin: var(--e-icon-picker-icon-list-margin, 5px);
 
       i, svg {
-        font-size: 20px;
+        font-size: var(--e-icon-picker-icon-list-font-size, 20px);
         cursor: pointer;
       }
     }
