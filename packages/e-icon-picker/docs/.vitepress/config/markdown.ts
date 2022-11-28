@@ -9,10 +9,11 @@ const markdown = {
                 "import * as eIconPicker from '@e-icon-picker/lib/index.mjs'",
                 "import eIcon from '@e-icon-picker/lib/icon/default-icon/eIconList.js'",
                 "import elIcon from '@e-icon-picker/lib/icon/ele/element-plus.js'",
-                "import '@public/js/iconfont.js'",
                 "import iconfontJson from '@public/css/iconfont.json'",
                 "import svgNameList from 'virtual:svg-icons-names'",
-                "import 'virtual:svg-icons-register'"
+                "import '@e-icon-picker/lib/icon/default-icon/symbol.js'",
+                "import 'virtual:svg-icons-register'",
+                "import '@public/js/iconfont.js'",
             ],
             scriptReplaces: [
                 {

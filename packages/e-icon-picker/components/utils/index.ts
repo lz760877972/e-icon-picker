@@ -2,7 +2,7 @@ import {isServer} from "./util";
 
 if (!isServer) {
     (function (e, d, w) {
-        if (!e.composedPath) {
+        if (!e.composedPath && w) {
             e.composedPath = function () {
                 if ((this as any).path) {
                     return (this as any).path;

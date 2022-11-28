@@ -3,7 +3,6 @@ import path from 'path';
 import {defineConfig} from 'vite';
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons';
 
-
 export default defineConfig({
     resolve: {
         alias: [{find: '@e-icon-picker', replacement: path.resolve(__dirname, '../')},

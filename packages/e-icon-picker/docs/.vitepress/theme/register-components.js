@@ -10,7 +10,8 @@ import 'element-plus/dist/index.css'
 import iconList from "@e-icon-picker/docs/components/iconList.vue";
 import "../theme/styles/index.scss"
 
-export function registerComponents(app) {
+export function registerComponents(ctx) {
+  const {app} = ctx
   app.component('Demo', Demo)
   app.component('DemoBlock', DemoBlock)
   app.component('iconList', iconList)

@@ -134,7 +134,7 @@ export default defineComponent({
       e.stopPropagation()
       if (e.ctrlKey || [1, 2].includes(e.button)) return
 
-      window.getSelection()?.removeAllRanges()
+      window?.getSelection()?.removeAllRanges()
       startDrag(e)
 
       const el = e.currentTarget as HTMLDivElement

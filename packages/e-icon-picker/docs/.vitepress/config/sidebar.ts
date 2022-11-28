@@ -12,6 +12,10 @@ export default {
                     'link': '/quick-start/',
                 },
                 {
+                    'text': '进阶',
+                    'link': '/quick-start/advanced.md',
+                },
+                {
                     'text': "更新日志",
                     'link': "/update/"
                 },

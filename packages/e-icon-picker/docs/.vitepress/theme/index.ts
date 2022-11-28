@@ -6,6 +6,8 @@ export default {
     ...DefaultTheme,
     enhanceApp(ctx) {
         DefaultTheme.enhanceApp(ctx)
-        registerComponents(ctx.app)
+        registerComponents(ctx)
     }
 }
+
+

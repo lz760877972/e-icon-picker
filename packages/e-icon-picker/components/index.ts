@@ -19,7 +19,7 @@ export {
     eIconSymbol,
 };
 export default {
-    version: "1.0.0-rc.0",
+    version: "2.1.0-alpha.1",
     install(app: App, options?: any): void {
         if (app[INSTALLED_KEY]) return
         app[INSTALLED_KEY] = true
