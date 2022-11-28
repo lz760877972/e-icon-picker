@@ -8,6 +8,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import iconList from "@e-icon-picker/docs/components/iconList.vue";
+import "../theme/styles/index.scss"
 
 export function registerComponents(app) {
   app.component('Demo', Demo)

@@ -5,6 +5,8 @@ import nav from './nav'
 import markdown from './markdown'
 import head from "./head";
 import lang from './lang'
+// @ts-ignore
+import gitee from '../theme/assets/gitee.ts';
 
 const config = defineConfig({
     title: 'e-icon-picker', // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
@@ -27,24 +29,20 @@ const config = defineConfig({
         sidebar,
         nav,
         logo: '/img/logo.png',
+        outlineTitle: '本页目录',
+        lastUpdatedText: '上次更新',
         // @ts-ignore
         demoblock: lang,
-        locales: {
-            '/': {
-                lang: 'zh-CN',
-                label: '简体中文'
-            },
-            '/en-US': {
-                lang: 'en-US',
-                label: 'English'
-            }
-        },
         socialLinks: [
-            {icon: 'github', link: 'https://gitee.com/cnovel/e-icon-picker'},
+            {icon: {svg: gitee}, link: 'https://gitee.com/cnovel/e-icon-picker'},
             /* { icon: 'https://gitee.com/assets/favicon.ico', link: 'https://gitee.com/cnovel/e-icon-picker' }*/
         ],
         footer: {
             copyright: 'MIT Licensed | Copyright © 2020-2022 cnovel.club'
+        },
+        docFooter: {
+            prev: "上一页",
+            next: "下一页"
         }
     }
 })

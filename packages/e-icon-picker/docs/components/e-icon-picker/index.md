@@ -201,6 +201,45 @@ export default defineComponent({
 
 :::
 
+## 组件内使用svg图标展示
+
+:::demo
+```vue
+<template>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"
+                 placeholder="请选择"
+                 size="medium"/>
+  名称：{{icon}}
+  <e-icon :icon-name="icon"/>
+</template>
+<script lang="ts">
+import {defineComponent, onMounted, reactive, ref, toRefs} from 'vue';
+import svgNames from 'virtual:svg-icons-names';//获取图标名称
+import 'virtual:svg-icons-register';//将图标注册到dom中
+
+export default defineComponent({
+  name: 'e-icon-picker-demo5',
+  setup() {
+    let iconPicker = ref(null);
+    let state = reactive({
+      icon: '',
+      options: {}
+    });
+
+    const addIcon = () => {
+      state.options.addIconList = svgNames.map(it => `#${it}`);//svg图标是以‘#’开头的，所以对名称进行处理，将处理完的图标列表加入到图标选择器
+    }
+    onMounted(() => {
+      addIcon();
+    })
+    return {...toRefs(state), iconPicker};
+  },
+});
+</script>
+```
+
+:::
+
 ## 在dialog中使用
 
 :::demo
@@ -261,7 +300,8 @@ export default defineComponent({
 ```vue
 
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :highLightColor="highLightColor" :options="options" :zIndex="zIndex" :width="width">
+  <e-icon-picker ref="iconPicker" v-model="icon" :highLightColor="highLightColor" :options="options" :zIndex="zIndex"
+                 :width="width">
     <template v-slot="{data}">
       <el-button @click="show">{{ data.placeholder }}</el-button>
     </template>
@@ -372,10 +412,7 @@ export default defineComponent({
 
 :::
 
-
-
 ## 属性
-
 
 | 参数                  | 说明                          | 默认值                 | 可选值                  |
 | --------------------- | ----------------------------- |---------------------| ----------------------- |
@@ -400,7 +437,6 @@ export default defineComponent({
 |------------------------|------------|------|-----|
 | options.addIconList    | 自定义新增图标列表  | []   | 无   |
 | options.removeIconList | 自定义删除图标列表  | []   | 无   |
-
 
 ## 事件
 

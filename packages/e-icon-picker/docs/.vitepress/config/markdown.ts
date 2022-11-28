@@ -10,7 +10,9 @@ const markdown = {
                 "import eIcon from '@e-icon-picker/lib/icon/default-icon/eIconList.js'",
                 "import elIcon from '@e-icon-picker/lib/icon/ele/element-plus.js'",
                 "import '@public/js/iconfont.js'",
-                "import iconfontJson from '@public/css/iconfont.json'"
+                "import iconfontJson from '@public/css/iconfont.json'",
+                "import svgNameList from 'virtual:svg-icons-names'",
+                "import 'virtual:svg-icons-register'"
             ],
             scriptReplaces: [
                 {
@@ -32,6 +34,12 @@ const markdown = {
                     }
                 },
                 {
+                    searchValue: /import 'virtual:svg-icons-register'/g,
+                    replaceValue: (s, s1) => {
+                        return ``
+                    }
+                },
+                {
                     searchValue: /import (.*) from '..\/..\/public\/css\/iconfont.json'/g,
                     replaceValue: (s, s1) => {
                         return `const ${s1} = iconfontJson`
@@ -40,6 +48,10 @@ const markdown = {
                 {
                     searchValue: /import ({.*}) from 'e-icon-picker'/g,
                     replaceValue: (s, s1) => `const ${s1} = eIconPicker`
+                },
+                {
+                    searchValue: /import (.*) from 'virtual:svg-icons-names'/g,
+                    replaceValue: (s, s1) => `const ${s1} = svgNameList`
                 }
             ],
             styleReplaces: [

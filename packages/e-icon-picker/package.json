@@ -43,7 +43,6 @@
     "@vue/shared": "^3.2.45",
     "@vueuse/core": "^9.5.0",
     "debounce": "^1.2.1",
-    "svg-sprite-loader": "^6.0.11",
     "vue": "^3.2.45"
   },
   "devDependencies": {
@@ -55,6 +54,7 @@
     "@docsearch/js": "^3.3.0",
     "@element-plus/icons-vue": "^2.0.10",
     "@rollup/pluginutils": "^5.0.2",
+    "@types/chalk": "^2.2.0",
     "@types/commander": "^2.12.2",
     "@types/debounce": "^1.2.1",
     "@types/fs-extra": "^9.0.13",
@@ -62,11 +62,11 @@
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.9",
     "@types/prompts": "^2.4.1",
-    "@types/chalk": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vue/compiler-sfc": "^3.2.45",
+    "chalk": "^4.1.2",
     "commander": "^9.4.1",
     "element-plus": "^2.2.22",
     "esbuild-register": "^3.4.1",
@@ -84,11 +84,11 @@
     "vite-plugin-banner": "^0.6.1",
     "vite-plugin-dts": "^1.7.1",
     "vite-plugin-md": "^0.20.4",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vitepress": "1.0.0-alpha.29",
     "vitepress-theme-demoblock": "2.0.0",
     "vue": "^3.2.45",
-    "vue-tsc": "^1.0.9",
-    "chalk": "^4.1.2"
+    "vue-tsc": "^1.0.9"
   },
   "browserslist": [
     "> 1%",
