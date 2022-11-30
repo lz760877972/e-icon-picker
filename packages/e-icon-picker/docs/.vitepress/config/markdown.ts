@@ -11,9 +11,6 @@ const markdown = {
                 "import elIcon from '@e-icon-picker/lib/icon/ele/element-plus.js'",
                 "import iconfontJson from '@public/css/iconfont.json'",
                 "import svgNameList from 'virtual:svg-icons-names'",
-                "import '@e-icon-picker/lib/icon/default-icon/symbol.js'",
-                "import 'virtual:svg-icons-register'",
-                "import '@public/js/iconfont.js'",
             ],
             scriptReplaces: [
                 {

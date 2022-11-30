@@ -26,6 +26,8 @@ exports.release = async ({version}) => {
   shell.cp('-R', path.resolve(__dirname, './icon/ele'), path.resolve(outputDir, 'icon'));
   shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), path.resolve(outputDir, 'icon'));
 
+  shell.cp('-R', path.resolve(__dirname, '../../components/utils/getSvg.js'), path.resolve(outputDir, 'utils/getSvg.js'));
+
   shell.cp('-R', path.resolve(__dirname, '../../components/default-icon'), path.resolve(outputDir, 'icon'));
   shell.cp('-R', path.resolve(__dirname, '../../components/style/theme.css'), path.resolve(outputDir, 'theme/theme.css'));
   // shell.exec('npm publish');

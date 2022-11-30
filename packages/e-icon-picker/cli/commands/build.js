@@ -39,7 +39,7 @@ const baseConfig = defineConfig({
   configFile: false,
   publicDir: false,
   plugins: [vue(), bannerPlugin],
-  target: 'es2018'
+  // target: 'es2018'
 });
 
 const rollupOptions = {
@@ -55,7 +55,7 @@ const rollupOptions = {
       if (chunkInfo.name === 'style.css') return 'index.css';
       return chunkInfo.name;
     },
-  },
+  }
 };
 
 const buildSingle = async (fileName) => {
@@ -72,7 +72,7 @@ const buildSingle = async (fileName) => {
           formats: ['es', 'umd'],
         },
         outDir: path.resolve(outputDir, fileName),
-        emptyOutDir: false,
+        emptyOutDir: false
       },
     })
   );
@@ -94,10 +94,10 @@ const buildAll = async () => {
           entry: path.resolve(entryDir, 'index.ts'),
           name: name,
           fileName: 'index',
-          formats: ['es', 'umd'],
+          formats: ['es', 'umd', 'cjs', 'iife'],
         },
         outDir: outputDir,
-        emptyOutDir: false,
+        emptyOutDir: false
       },
     })
   );

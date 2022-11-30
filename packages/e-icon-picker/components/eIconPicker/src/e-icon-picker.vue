@@ -338,7 +338,6 @@ export default defineComponent({
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = (flag) => {
       if (props.readonly !== true && props.disabled !== true) {
-        console.log(state.zIndex ,props.zIndex,flag)
         if (!flag && props.zIndex) {
           state.zIndex = props.zIndex
         } else {
@@ -381,7 +380,6 @@ export default defineComponent({
 
     const show = () => {
       popoverShowFun(false)
-      console.log("popoverShowFun")
     }
     const hide = () => {
       state.visible = false

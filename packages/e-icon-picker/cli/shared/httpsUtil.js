@@ -49,8 +49,8 @@ function parseEl(source, callback) {
     return;
   }
   main.forEach(it => {
-    let icon = it.match(/(el-[a-z0-9\-]+)/g);
-    callback(icon);
+    let icon = it.match(/(el-icon-[a-z0-9\-]+)/g);
+    icon && icon.length > 0 && callback(icon);
   })
 }
 

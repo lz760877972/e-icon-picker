@@ -25,12 +25,13 @@ const config = defineConfig({
             label: 'English'
         }
     },
+    lastUpdated: true,
     themeConfig: {
         sidebar,
         nav,
         logo: '/img/logo.png',
         outlineTitle: '本页目录',
-        lastUpdatedText: '上次更新',
+        lastUpdatedText: '最近更新时间',
         // @ts-ignore
         demoblock: lang,
         socialLinks: [
@@ -43,7 +44,7 @@ const config = defineConfig({
         docFooter: {
             prev: "上一页",
             next: "下一页"
-        }
+        },
     }
 })
 

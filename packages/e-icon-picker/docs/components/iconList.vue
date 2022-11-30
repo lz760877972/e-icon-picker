@@ -16,7 +16,7 @@ import ele from "@e-icon-picker/lib/icon/ele/element-ui-2.15.12.js";
 import elementPlus from "@e-icon-picker/lib/icon/ele/element-plus.js";
 import fontAwesomeV470 from "@e-icon-picker/lib/icon/fontawesome/font-awesome.v4.7.0.js";
 import fontawesome from "@e-icon-picker/lib/icon/fontawesome/fontawesome-6.2.1.js";
-import '@e-icon-picker/lib/icon/default-icon/symbol.js'
+// import '@e-icon-picker/lib/icon/default-icon/symbol.js'
 
 export default {
   name: "iconList",

@@ -305,7 +305,7 @@ VUE_APP_SVG = '@/icons/svg'
 VUE_APP_SVG = '@/icons/svg' 
 ```
 
-* 创建`getSvg.ts`工具，将以下内容填入到文件中。
+* 创建`getSvg.js`工具，将以下内容填入到文件中。
 
 ```ts
 const req = (require as any).context(process.env.VUE_APP_SVG, false, /\.svg$/);
@@ -331,7 +331,7 @@ export default svgIcons
 import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 //引入刚刚创建的文件
-import svgIcons from './getSvg.ts';
+import svgIcons from './getSvg.js';
 
 //全局删除增加图标
 Vue.use(eIconPicker, {
