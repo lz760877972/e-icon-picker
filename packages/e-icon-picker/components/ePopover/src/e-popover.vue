@@ -350,6 +350,3 @@ export default defineComponent({
 <style lang="scss">
 @import "e-popover.scss";
 </style>
-<style lang="scss">
-
-</style>

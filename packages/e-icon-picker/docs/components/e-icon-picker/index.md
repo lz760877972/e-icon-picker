@@ -218,7 +218,7 @@ import svgNames from 'virtual:svg-icons-names';//获取图标名称
 import 'virtual:svg-icons-register';//将图标注册到dom中
 
 export default defineComponent({
-  name: 'e-icon-picker-demo5',
+  name: 'e-icon-picker-demo6',
   setup() {
     let iconPicker = ref(null);
     let state = reactive({
@@ -267,7 +267,7 @@ export default defineComponent({
 import {defineComponent, reactive, ref, toRefs, watch} from 'vue';
 
 export default defineComponent({
-  name: 'e-icon-picker-demo6',
+  name: 'e-icon-picker-demo7',
   setup() {
     let iconPicker = ref(null);
     const dialogVisible = ref(false)
@@ -314,7 +314,7 @@ import {defineComponent, reactive, ref, toRefs} from 'vue';
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
 
 export default defineComponent({
-  name: 'e-icon-picker-demo7',
+  name: 'e-icon-picker-demo8',
   setup() {
     let iconPicker = ref(null);
     const dialogVisible = ref(false)
@@ -367,7 +367,7 @@ export default defineComponent({
 import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
-  name: 'e-icon-picker-demo8',
+  name: 'e-icon-picker-demo9',
   components: {},
   setup() {
     let theme = ref("light");
