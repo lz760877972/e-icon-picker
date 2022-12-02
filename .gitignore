@@ -13,6 +13,5 @@ yarn-error.log
 .idea
 .pnpm-debug.log
 /pnpm-lock.yaml
-/packages/e-icon-picker/node_modules/
-/packages/e-icon-picker/docs/.vitepress/dest/
-/packages/e-icon-picker/lib/
+/docs/.vitepress/dest/
+/lib/

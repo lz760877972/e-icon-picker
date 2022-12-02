@@ -1,11 +1,60 @@
 {
   "name": "root",
-  "private": true,
+  "packageManager": "pnpm@7.3.0",
+  "private": false,
+  "description": "element-plus和font-awesome图标选择器",
+  "license": "MIT",
+  "author": "cnovel.club",
+  "keywords": [
+    "vue",
+    "icon-picker",
+    "e-icon-picker",
+    "iconPicker",
+    "eiconPicker",
+    "icon picker",
+    "icon"
+  ],
+  "homepage": "https://e-icon-picker.cnovel.club",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/cnovel/e-icon-picker"
+  },
+  "bugs": {
+    "url": "https://gitee.com/cnovel/e-icon-picker/issues"
+  },
+  "workspaces": [
+    "lib/*",
+    "packages/*",
+    "docs"
+  ],
+  "main": "index.umd.js",
+  "module": "index.mjs",
+  "unpkg": "index.umd.js",
+  "jsdelivr": "index.umd.js",
+  "style": "index.css",
+  "types": "index.d.ts",
   "scripts": {
+    "build:lib": "pnpm clean:lib && pnpm build:components && pnpm build:icon && pnpm release",
+    "build:components": "tsx scripts/build.ts",
+    "build:icon": "pnpm clean:icon && tsx scripts/build-icon.ts",
+    "clean:icon": "rimraf ./scripts/icon/ele && rimraf ./scripts/icon/fontawesome",
+    "release": "tsx scripts/release.ts",
+    "clean:lib": "rimraf lib",
+    "update:version": "tsx scripts/update-version.ts",
     "eslint": "eslint \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
     "eslint:fix": "eslint --fix \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
     "stylelint": "stylelint \"packages/**/{*.scss,*.css}\"",
     "stylelint:fix": "stylelint --fix \"packages/**/{*.scss,*.css}\""
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@vue/shared": "^3.2.45",
+    "@vueuse/core": "^9.5.0",
+    "debounce": "^1.2.1",
+    "vue": "^3.2.45"
   },
   "devDependencies": {
     "eslint": "^8.28.0",
@@ -15,10 +64,48 @@
     "stylelint-config-recommended-scss": "^8.0.0",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-scss": "^4.3.0",
-    "lint-staged": "^13.0.3"
+    "lint-staged": "^13.0.3",
+    "@babel/parser": "^7.20.3",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@babel/traverse": "^7.20.1",
+    "@rollup/pluginutils": "^5.0.2",
+    "@types/debounce": "^1.2.1",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "@vue/compiler-sfc": "^3.2.45",
+    "rimraf": "^3.0.2",
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vue": "^3.2.45",
+    "vue-tsc": "^1.0.9",
+    "tsx": "^3.6.0",
+    "chalk": "^4.1.2",
+    "@types/chalk": "^2.2.0",
+    "@types/commander": "^2.12.2",
+    "commander": "^9.4.1",
+    "@types/fs-extra": "^9.0.13",
+    "fs-extra": "^10.1.0",
+    "vite-plugin-dts": "^1.7.1",
+    "@types/lodash": "^4.14.189",
+    "@types/lodash-es": "^4.17.6",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.3",
+    "shelljs": "^0.8.5",
+    "@element-plus/icons-vue": "^2.0.10",
+    "@types/shelljs": "^0.8.11"
   },
   "lint-staged": {
     "packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}": "eslint --fix",
     "packages/**/{*.scss,*.css}": "stylelint --fix"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
