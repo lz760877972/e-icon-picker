@@ -5,7 +5,7 @@ import {getCss, getVersion, parse, writeFile} from "../shared/httpsUtil";
 
 async function generate() {
     //https://www.bootcdn.cn/font-awesome/
-    let version = await getVersion("www.bootcdn.cn", "/font-awesome/5.15.4/");
+    let version = "5.15.4";
     info("Font Awesome v" + version);
     let source = await getCss("pro.fontawesome.com", "/releases/v" + version + "/css/all.css", {"Referer": "https://mo-mar.de"})
     let nameCount = 0;
@@ -16,8 +16,8 @@ async function generate() {
             nameCount++;
         }
     });
-    await writeFile(__dirname + "/fontawesome/", "pro" + "-" + version, fa);
-    fs.writeFileSync(__dirname + "/fontawesome/" + `pro-${version}.d.ts`, fileStr);
+    await writeFile(__dirname + "/fontawesome/", `fontawesome-pro-${version}`, fa);
+    fs.writeFileSync(__dirname + "/fontawesome/" + `fontawesome-pro-${version}.d.ts`, fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

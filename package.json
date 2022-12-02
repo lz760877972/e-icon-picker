@@ -41,6 +41,7 @@
     "release": "tsx scripts/release.ts",
     "clean:lib": "rimraf lib",
     "update:version": "tsx scripts/update-version.ts",
+    "publish": "npm publish ./lib --tag beta",
     "eslint": "eslint \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
     "eslint:fix": "eslint --fix \"packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}\"",
     "stylelint": "stylelint \"packages/**/{*.scss,*.css}\"",

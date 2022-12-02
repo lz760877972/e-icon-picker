@@ -57,16 +57,17 @@ iconList.addIcon(el);
 
 对应的js列表：
 ```js
-import el from "e-icon-picker/lib/icon/ele/element-ui-2.15.12.js";//element-ui的图标
-import fontAwesome470 from "e-icon-picker/lib/icon/fontawesome/font-awesome.v4.7.0.ts";//fontAwesome470的图标
-// import fontAwesome5 from "e-icon-picker/lib/icon/fontawesome/fontawesome-5.15.4.data";//fontAwesome5.x.x的图标
-// import fontAwesome5shims from "e-icon-picker/lib/icon/fontawesome/v4-shims-5.15.4.data"//fontAwesome5.x.x shims的图标
-// import fontAwesome5pro from "e-icon-picker/lib/icon/fontawesome/pro-5.15.4.data"//fontAwesome5.x.x pro的图标
-// import all5 from "e-icon-picker/lib/icon/fontawesome/all-5.15.4.data"//fontAwesome5.x.x all的图标
-import all6 from "e-icon-picker/lib/icon/fontawesome/all-6.2.1.js"//fontAwesome6.x.x all的图标
-import brands6 from "e-icon-picker/lib/icon/fontawesome/brands-6.2.1.js"//fontAwesome6.x.x brands的图标
-import fontawesome6 from "e-icon-picker/lib/icon/fontawesome/fontawesome-6.2.1.js"//fontAwesome6.x.x fontawesome的图标
-import fontAwesome6shims from "e-icon-picker/lib/icon/fontawesome/v4-shims-6.2.1.js"//fontAwesome6.x.x shims的图标
+import el from "e-icon-picker/icon/ele/element-ui-2.15.12.js";//element-ui的图标
+import elementPlus from "e-icon-picker/icon/ele/element-plus.js";//element-plus的图标
+import fontAwesome470 from "e-icon-picker/icon/fontawesome/font-awesome.v4.7.0.js";//fontAwesome470的图标
+import fontAwesome5 from "e-icon-picker/icon/fontawesome/fontawesome-5.15.4.js";//fontAwesome5.x.x的图标
+import fontAwesome5shims from "e-icon-picker/icon/fontawesome/v4-shims-5.15.4.js"//fontAwesome5.x.x shims的图标
+import fontAwesome5pro from "e-icon-picker/icon/fontawesome/fontawesome-pro-5.15.4.js"//fontAwesome5.x.x pro的图标
+import all5 from "e-icon-picker/icon/fontawesome/all-5.15.4.js"//fontAwesome5.x.x all的图标
+import all6 from "e-icon-picker/icon/fontawesome/all-6.2.1.js"//fontAwesome6.x.x all的图标
+import brands6 from "e-icon-picker/icon/fontawesome/brands-6.2.1.js"//fontAwesome6.x.x brands的图标
+import fontawesome6 from "e-icon-picker/icon/fontawesome/fontawesome-6.2.1.js"//fontAwesome6.x.x fontawesome的图标
+import fontAwesome6shims from "e-icon-picker/icon/fontawesome/v4-shims-6.2.1.js"//fontAwesome6.x.x shims的图标
 ```
 
 ### eIcon 默认图标
