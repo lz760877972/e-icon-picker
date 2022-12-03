@@ -1,12 +1,16 @@
 # 更新日志
-#### v2.1.0-alpha.1
+#### v2.1.0-beta.3
+1. 新增antd图标。
+2. 新增arcoVueIcon图标。
+3. 新增tdesignIcons图标。
+
+#### v2.1.0-beta.2
 1. 全自定义组件，不在依赖`element-plus`。
 2. 新增`element-plus`图标组件支持。
 3. 新增`ts`支持。
 4. 修复`css`样式影响问题。
 5. 修复`zIndex`异常问题。
-6. 删除`fontawesome-5.x.x`图标库。
-7. 更新依赖。
+6. 更新依赖。
 
 #### v2.0.9
 1. 新增自定义触发组件插槽 [I4U0MJ](https://gitee.com/cnovel/e-icon-picker/issues/I4U0MJ)。

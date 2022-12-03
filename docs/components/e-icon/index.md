@@ -44,9 +44,9 @@
 import el from "e-icon-picker/lib/icon/ele/element-ui-2.15.12.js";//element-ui的图标
 import eIconPicker, {iconList} from 'e-icon-picker';
 
-
+let app = createApp(App);
 //全局删除增加图标
-Vue.use(eIconPicker, {
+app.use(eIconPicker, {
     addIconList: [...el],
     removeIconList: [],
     zIndex: 3100
@@ -68,6 +68,50 @@ import all6 from "e-icon-picker/icon/fontawesome/all-6.2.1.js"//fontAwesome6.x.x
 import brands6 from "e-icon-picker/icon/fontawesome/brands-6.2.1.js"//fontAwesome6.x.x brands的图标
 import fontawesome6 from "e-icon-picker/icon/fontawesome/fontawesome-6.2.1.js"//fontAwesome6.x.x fontawesome的图标
 import fontAwesome6shims from "e-icon-picker/icon/fontawesome/v4-shims-6.2.1.js"//fontAwesome6.x.x shims的图标
+import antDesign from "e-icon-picker/icon/antd/antd.js";//antDesign 图标
+import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";//tdesign 图标
+import arco from "e-icon-picker/icon/arco/arco.js";//arco.design 图标
+```
+### 使用组件图标
+#### 安装element-plus图标
+```bash
+npm install @element-plus/icons-vue
+```
+
+#### 安装ant-design图标
+```bash
+npm install @ant-design/icons-vue
+```
+
+#### 安装tdesign图标
+```bash
+npm install tdesign-icons-vue-next
+```
+
+#### 安装arco-design图标
+```bash
+npm install @arco-design/web-vue
+```
+#### 注册使用
+```vue
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import * as antDesign from '@ant-design/icons-vue'
+import * as tdesign from 'tdesign-icons-vue-next/esm/icons.js'
+import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
+
+
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+for (const [key, component] of Object.entries(antDesign)) {
+    app.component(key, component)
+}
+for (const [key, component] of Object.entries(tdesign)) {
+    app.component(key, component)
+}
+for (const [key, component] of Object.entries(ArcoVueIcon)) {
+    app.component(key, component)
+}
 ```
 
 ### eIcon 默认图标
@@ -93,3 +137,16 @@ import fontAwesome6shims from "e-icon-picker/icon/fontawesome/v4-shims-6.2.1.js"
 ### fontawesome 6.x 图标集
 
 <iconList type="fontawesome"/>
+
+
+### antDesign 图标集
+
+<iconList type="antDesign"/>
+
+### tdesign 图标集
+
+<iconList type="tdesign"/>
+
+### ArcoVueIcon 图标集
+
+<iconList type="arco"/>

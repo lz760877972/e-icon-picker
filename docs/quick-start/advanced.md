@@ -7,7 +7,8 @@
 * 通过全局配置添加或者删除
 
 ```js
-Vue.use(eIconPicker,
+let app = createApp(App);
+app.use(eIconPicker,
     {
         addIconList: [],
         removeIconList: [],
@@ -21,7 +22,8 @@ Vue.use(eIconPicker,
 
 ```js
 import eIconPicker, {iconList} from 'e-icon-picker';
-Vue.use(eIconPicker);
+let app = createApp(App);
+app.use(eIconPicker);
 
 iconList.addIcon(["el-icon-s-ticket", "el-icon-s-help", "el-icon-s-help"]);//添加图标
 iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
@@ -39,7 +41,7 @@ iconList.removeIcon(["el-icon-s-ticket"]);//删除图标
 ```vue
 <script lang="ts">
 import {defineComponent, reactive, toRefs, ref, onMounted} from 'vue';
-import element from 'e-icon-picker/icon/ele/element-plus.ts';
+import element from 'e-icon-picker/icon/ele/element-plus';
 
 export default defineComponent({
   name: 'e-icon-picker-demo3',
@@ -95,8 +97,9 @@ import "./css/iconfont.css";//引入css
 
 let forIconfont = analyzingIconForIconfont(iconfont);//解析class
 //let forIconfont = eIconSymbol(iconfont);//解析彩色图标
+let app = createApp(App);
 //全局删除增加图标
-Vue.use(eIconPicker, 
+app.use(eIconPicker, 
     {
         addIconList: forIconfont.list,
         removeIconList: [], 
@@ -332,9 +335,9 @@ import eIconPicker from 'e-icon-picker';
 //svgIcons 对应的就是图标列表，将图标列表添加到选择器就可以了
 //引入刚刚创建的文件
 import svgIcons from './getSvg.js';
-
+let app = createApp(App);
 //全局删除增加图标
-Vue.use(eIconPicker, {
+app.use(eIconPicker, {
     addIconList: svgIcons,
 });
 ```

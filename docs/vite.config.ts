@@ -17,12 +17,12 @@ export default defineConfig({
             symbolId: '[name]',
             svgoOptions: {
                 // @ts-ignore
-                plugins: [{
+              /*  plugins: [{
                     name: "removeAttrs",
                     params: {
                         attrs: "(fill|stroke)"
                     }
-                }]
+                }]*/
             }
         })
     ],

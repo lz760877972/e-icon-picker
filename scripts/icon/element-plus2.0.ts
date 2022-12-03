@@ -1,5 +1,4 @@
-const ElementPlusIconsVue = require('@element-plus/icons-vue')
-
+import * as  ElementPlusIconsVue from "@element-plus/icons-vue"
 import {writeFile} from "../shared/httpsUtil";
 import {fileStr} from "../shared/utils";
 import fs from "fs"

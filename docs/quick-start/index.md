@@ -33,7 +33,7 @@ npm install e-icon-picker@next -S
 
 **因`element-plus`的更新，所以以前的图标不能正常使用，组件做了以下调整**
 >
-单独 [安装element-plus图标组件](https://element-plus.gitee.io/zh-CN/component/icon.html#%E4%BD%BF%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8)
+单独 [安装element-plus图标组件](https://element-plus.gitee.io/zh-CN/component/icon.html#%E4%BD%BF%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8)， 其他图标库同理。
 
 ```js
 import {createApp} from 'vue';

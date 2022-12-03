@@ -29,6 +29,9 @@ const release = async ({version}: any) => {
     shell.cp('-R', path.resolve(__dirname, '../LICENSE'), outputDir);
     shell.cp('-R', path.resolve(__dirname, './icon/ele'), path.resolve(outputDir, 'icon'));
     shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), path.resolve(outputDir, 'icon'));
+    shell.cp('-R', path.resolve(__dirname, './icon/antd'), path.resolve(outputDir, 'icon'));
+    shell.cp('-R', path.resolve(__dirname, './icon/tdesign'), path.resolve(outputDir, 'icon'));
+    shell.cp('-R', path.resolve(__dirname, './icon/arco'), path.resolve(outputDir, 'icon'));
 
     shell.cp('-R', path.resolve(packagesDir, './utils/getSvg.js'), path.resolve(outputDir, 'utils/getSvg.js'));
 
