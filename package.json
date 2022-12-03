@@ -1,5 +1,6 @@
 {
   "name": "root",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.3.0",
   "private": false,
   "description": "element-plus和font-awesome图标选择器",
@@ -14,7 +15,7 @@
     "icon picker",
     "icon"
   ],
-  "homepage": "https://e-icon-picker.cnovel.club",
+  "homepage": "https://e-icon-picker-ts.cnovel.club",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/cnovel/e-icon-picker"

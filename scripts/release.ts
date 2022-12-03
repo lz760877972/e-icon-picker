@@ -1,7 +1,6 @@
 import path from "path";
 import fsExtra from "fs-extra";
 import {omit} from "lodash";
-// @ts-ignore
 import shell from "shelljs";
 import pkg from "../package.json"
 import {getVersion} from "./shared/utils"
@@ -11,9 +10,10 @@ const outputDir = path.resolve(__dirname, '../lib');
 const packagesDir = path.resolve(__dirname, '../packages');
 
 const createPackageJson = async (version: string) => {
-    (pkg as any).version = getVersion(version);
-    (pkg as any).name = "e-icon-picker";
-    const fileStr = JSON.stringify(omit(pkg, 'scripts', 'devDependencies', 'workspaces', 'packageManager', 'lint-staged'), null, 2);
+    const p: any = omit(pkg, 'scripts', 'devDependencies', 'workspaces', 'packageManager', 'lint-staged')
+    p.version = getVersion();
+    p.name = "e-icon-picker";
+    const fileStr: string = JSON.stringify(p, null, 2);
     await fsExtra.outputFile(path.resolve(outputDir, `package.json`), fileStr, 'utf-8');
 };
 
@@ -26,6 +26,7 @@ const release = async ({version}: any) => {
 
     // shell.sed('-i', 'workspace:', '', path.resolve(outputDir, 'package.json'));
     shell.cp('-R', path.resolve(__dirname, '../README.md'), outputDir);
+    shell.cp('-R', path.resolve(__dirname, '../LICENSE'), outputDir);
     shell.cp('-R', path.resolve(__dirname, './icon/ele'), path.resolve(outputDir, 'icon'));
     shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), path.resolve(outputDir, 'icon'));
 
