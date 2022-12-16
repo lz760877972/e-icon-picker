@@ -42,7 +42,7 @@
     "release": "tsx scripts/release.ts",
     "clean:lib": "rimraf lib",
     "update:version": "tsx scripts/update-version.ts",
-    "publish": "npm publish ./lib --tag beta",
+    "publish": "npm publish ./lib --tag next",
     "docs:dev": "pnpm run -C docs dev",
     "docs:build": "pnpm run -C docs build",
     "docs:serve": "pnpm run -C docs serve",

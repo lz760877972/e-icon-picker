@@ -1,8 +1,11 @@
 # 更新日志
+#### v2.1.0
+1. `2.1.0`正是发布
+
 #### v2.1.0-beta.3
-1. 新增antd图标。
-2. 新增arcoVueIcon图标。
-3. 新增tdesignIcons图标。
+1. 新增`antd`图标。
+2. 新增`arcoVueIcon`图标。
+3. 新增`tdesignIcons`图标。
 
 #### v2.1.0-beta.2
 1. 全自定义组件，不在依赖`element-plus`。
