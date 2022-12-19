@@ -12,15 +12,15 @@
     "e-icon-picker": "workspace:*"
   },
   "devDependencies": {
-    "vite-plugin-md": "^0.20.4",
+    "vite-plugin-md": "^0.21.5",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "1.0.0-alpha.29",
-    "vitepress-theme-demoblock": "2.0.0",
-    "element-plus": "^2.2.22",
-    "esbuild-register": "^3.4.1",
+    "vitepress": "1.0.0-alpha.32",
+    "vitepress-theme-demoblock": "2.0.1",
+    "element-plus": "^2.2.27",
+    "esbuild-register": "^3.4.2",
     "@element-plus/icons-vue": "^2.0.10",
     "@ant-design/icons-vue": "^6.1.0",
-    "tdesign-icons-vue-next": "^0.1.5",
-    "@arco-design/web-vue": "^2.39.2"
+    "tdesign-icons-vue-next": "^0.1.6",
+    "@arco-design/web-vue": "^2.40.0"
   }
 }
