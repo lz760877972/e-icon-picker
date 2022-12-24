@@ -14,7 +14,7 @@ const outputDir = path.resolve(__dirname, '../lib');
 
 const createBanner = () => {
     return `/**
-  * ${pkg.name} v${getVersion()}
+  * e-icon-picker v${getVersion()}
   * (c) 2019 - ${new Date().getFullYear()} ${pkg.author}
   * @license ${pkg.license}
   */
@@ -28,7 +28,7 @@ const bannerPlugin = {
         const footer = ''
 
         for (const module of Object.values(bundle) as any) {
-            if (module.type === 'chunk'  ) {
+            if (module.type === 'chunk') {
                 module.code = banner + module.code + footer
             }
         }

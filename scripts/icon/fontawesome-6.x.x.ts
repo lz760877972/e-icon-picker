@@ -36,8 +36,8 @@ async function generate() {
         let name2 = name.split("/");
         name2 = name2[name2.length - 1];
         name2 = name2.replace(".min.css", "");
-        await writeFile(__dirname + "/fontawesome/", name2 + "-" + version, fa);
-        fs.writeFileSync(__dirname + "/fontawesome/" + `${name2}-${version}.d.ts`, fileStr);
+        await writeFile(__dirname + "/fontawesome/", name2 + "-6" , fa);
+        fs.writeFileSync(__dirname + "/fontawesome/" + `${name2}-6.d.ts`, fileStr);
         info("parsed (" + nameCount + " names)")
     }
 }

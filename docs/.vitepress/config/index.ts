@@ -39,7 +39,7 @@ const config = defineConfig({
             /* { icon: 'https://gitee.com/assets/favicon.ico', link: 'https://gitee.com/cnovel/e-icon-picker' }*/
         ],
         footer: {
-            copyright: 'MIT Licensed | Copyright © 2020-2022 cnovel.club'
+            copyright: `MIT Licensed | Copyright © 2020-${new Date().getFullYear()} <a href="https://cnovel.club" target="_blank">cnovel.club</a>`
         },
         docFooter: {
             prev: "上一页",

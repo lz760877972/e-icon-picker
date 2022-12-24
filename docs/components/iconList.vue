@@ -12,10 +12,10 @@
 <script>
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
 
-import ele from "e-icon-picker/icon/ele/element-ui-2.15.12.js";
+import ele from "e-icon-picker/icon/ele/element-ui.js";
 import elementPlus from "e-icon-picker/icon/ele/element-plus.js";
 import fontAwesomeV470 from "e-icon-picker/icon/fontawesome/font-awesome.v4.7.0.js";
-import fontawesome from "e-icon-picker/icon/fontawesome/fontawesome-6.2.1.js";
+import fontawesome from "e-icon-picker/icon/fontawesome/fontawesome-6.js";
 import antDesign from "e-icon-picker/icon/antd/antd.js";
 import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";
 import arco from "e-icon-picker/icon/arco/arco.js";

@@ -20,7 +20,7 @@ const markdown = {
                     }
                 },
                 {
-                    searchValue: /import (.*) from 'e-icon-picker\/icon\/ele\/element-plus.ts'/g,
+                    searchValue: /import (.*) from 'e-icon-picker\/icon\/ele\/element-plus.js'/g,
                     replaceValue: (s, s1) => {
                         return `const ${s1} = elIcon`
                     }
@@ -54,7 +54,7 @@ const markdown = {
             ],
             styleReplaces: [
                 {
-                    searchValue: "@import 'e-icon-picker/theme/theme.css'",
+                    searchValue: "@import '~e-icon-picker/theme/theme.css'",
                     replaceValue: (s) => {
                         return `@import 'e-icon-picker/theme/theme.css'`
                     }

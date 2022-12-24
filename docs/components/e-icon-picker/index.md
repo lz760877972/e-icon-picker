@@ -7,7 +7,7 @@
 ```vue
 
 <template>
-  <e-icon-picker v-model="icon"/>
+  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000"/>
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -34,7 +34,7 @@ export default defineComponent({
 
 <template>
   <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :disabled="disabled" :readonly="readonly"
-                 :placement="placement" :styles="style" :width="width"/>
+                 :placement="placement" :styles="style" :width="width" clearable />
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -78,7 +78,7 @@ export default defineComponent({
 </template>
 <script lang="ts">
 import {defineComponent, reactive, toRefs, ref, onMounted} from 'vue';
-import element from 'e-icon-picker/icon/ele/element-plus.ts';
+import element from 'e-icon-picker/icon/ele/element-plus.js';
 
 export default defineComponent({
   name: 'e-icon-picker-demo3',
@@ -380,7 +380,7 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
-@import 'e-icon-picker/theme/theme.css';
+@import '~e-icon-picker/theme/theme.css';
 
 .popper-container {
   padding: 20px;

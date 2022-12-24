@@ -2,7 +2,7 @@
 
 ### npm安装
 
-推荐使用 `npm` 的方式安装，它能更好地和 `webpack/vite` 打包工具配合使用。
+推荐使用 `npm` 的方式安装，它能更好地和 `webpack`/`vite` 打包工具配合使用。
 
 ```bash
 npm install e-icon-picker@next -S

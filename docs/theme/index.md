@@ -10,7 +10,7 @@ CSS 变量是一个非常有用的功能，几乎所有浏览器都支持。 （
 > 组件默认内置两套主题样式，样式名为`light`和`dark`，具体使用请查看示例。
 
 ```css
-@import 'e-icon-picker/theme/theme.css';
+@import '~e-icon-picker/theme/theme.css';
 ```
 
 ## 全部css变量

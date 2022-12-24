@@ -54,7 +54,7 @@
             <li
                 v-for="(item, index) in dataList"
                 :key="index"
-                :style="name === item && highLightColor !== '' ? {'color': highLightColor} : ''"
+                :style="name === item && highLightColor !== '' ? {'color': highLightColor,'--e-icon-color':highLightColor} : ''"
             >
               <slot name="icon" v-bind:icon="item">
                 <e-icon :icon-name="item" :title="item" @click="selectedIcon" class="e-icon"/>

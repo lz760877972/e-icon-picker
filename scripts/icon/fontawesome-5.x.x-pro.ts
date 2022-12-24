@@ -16,8 +16,8 @@ async function generate() {
             nameCount++;
         }
     });
-    await writeFile(__dirname + "/fontawesome/", `fontawesome-pro-${version}`, fa);
-    fs.writeFileSync(__dirname + "/fontawesome/" + `fontawesome-pro-${version}.d.ts`, fileStr);
+    await writeFile(__dirname + "/fontawesome/", `fontawesome-pro-5`, fa);
+    fs.writeFileSync(__dirname + "/fontawesome/" + `fontawesome-pro-5.d.ts`, fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

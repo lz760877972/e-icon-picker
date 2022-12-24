@@ -18,8 +18,8 @@ async function generate() {
         nameCount++;
     });
     info(__dirname + "/data/")
-    await writeFile(__dirname + "/ele/", `element-ui-${version}`, el);
-    fs.writeFileSync(__dirname + "/ele/" + `element-ui-${version}.d.ts`, fileStr);
+    await writeFile(__dirname + "/ele/", `element-ui`, el);
+    fs.writeFileSync(__dirname + "/ele/" + `element-ui.d.ts`, fileStr);
     info("parsed (" + nameCount + " names)")
 }
 
