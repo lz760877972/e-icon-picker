@@ -1,6 +1,6 @@
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 import {getCss, parse, writeFile} from "../shared/httpsUtil";
 
 
@@ -28,6 +28,6 @@ async function generate() {
 const fontAwesome470 = async () => {
     await generate()
         .then(() => success("Successfully generated new font-awesome.v4.7.0 index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 export default fontAwesome470

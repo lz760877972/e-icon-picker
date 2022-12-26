@@ -1,7 +1,7 @@
 import {getCss, parseEl, writeFile} from "../shared/httpsUtil";
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 
 async function generate() {
     //https://cdn.bootcdn.net/ajax/libs/element-plus/1.0.2-beta.40/theme-chalk/index.css
@@ -21,7 +21,7 @@ async function generate() {
 const elementPlus = async () => {
     await generate()
         .then(() => success("Successfully generated new element-plus index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 
 export default elementPlus

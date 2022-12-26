@@ -20,14 +20,14 @@ const createBanner = () => {
   */
 `;
 }
-const bannerPlugin = {
+const bannerPlugin: any = {
     name: 'banner',
     enforce: 'post',
-    generateBundle(options: any, bundle: any) {
+    generateBundle(options: any, bundle: any[]) {
         const banner = createBanner()
         const footer = ''
 
-        for (const module of Object.values(bundle) as any) {
+        for (const module of Object.values(bundle)) {
             if (module.type === 'chunk') {
                 module.code = banner + module.code + footer
             }
@@ -36,7 +36,7 @@ const bannerPlugin = {
 }
 const baseConfig: any = defineConfig({
     publicDir: false,
-    plugins: [vue(), bannerPlugin as any],
+    plugins: [vue(), bannerPlugin],
 });
 
 const rollupOptions: any = {
@@ -57,7 +57,6 @@ const rollupOptions: any = {
 
 const buildSingle = (fileName: string) => {
     build(
-        // @ts-ignore
         defineConfig({
             ...baseConfig,
             plugins: [...baseConfig.plugins],
@@ -72,13 +71,12 @@ const buildSingle = (fileName: string) => {
                 outDir: path.resolve(outputDir, "components", fileName),
                 emptyOutDir: false
             },
-        })
+        }) as any
     );
 };
 
 const buildAll = async () => {
     await build(
-        // @ts-ignore
         defineConfig({
             ...baseConfig,
             plugins: [...baseConfig.plugins, dts({
@@ -100,7 +98,7 @@ const buildAll = async () => {
                 outDir: outputDir,
                 emptyOutDir: false
             },
-        })
+        }) as any
     );
 };
 
@@ -114,7 +112,7 @@ const createPackageJson = async (fileName: string) => {
   "style": "index.css"
 }`;
 
-    await fsExtra.outputFile(path.resolve(outputDir, `components/${fileName}/package.json`), fileStr, 'utf-8').then(() => success('create package.json success'));
+    await fsExtra.outputFile(path.resolve(outputDir, `components/${fileName}/package.json`), fileStr, 'utf-8').then(() => success(`create ${fileName}/package.json success`));
 };
 
 const buildComponents = async () => {

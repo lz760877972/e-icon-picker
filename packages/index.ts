@@ -5,9 +5,9 @@ import popover, {ePopover} from './components/ePopover';
 import scrollbar, {eScrollbar} from './components/eScrollbar';
 import iconPicker, {eIconPicker} from './components/eIconPicker';
 import './style/index.scss';
-import {analyzingIconForIconfont, eIconSymbol, iconList, INSTALLED_KEY} from "./utils";
+import {analyzingIconForIconfont, eIconSymbol, iconList} from "./utils";
 import {Options, setConfig} from "./utils/config";
-import {VERSION} from "./constants";
+import {INSTALLED_KEY, VERSION} from "./constants";
 
 interface MyApp extends App {
     [INSTALLED_KEY]: boolean;

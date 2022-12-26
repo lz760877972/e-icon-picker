@@ -2,12 +2,12 @@ import * as tdesign from 'tdesign-icons-vue-next/lib/icons.js'
 import {writeFile} from "../shared/httpsUtil";
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 
 async function generate() {
     let nameCount = 0;
     let tdesignIcons: string[] = [];
-    for (const [key, component] of Object.entries(tdesign)) {
+    for (const [key] of Object.entries(tdesign)) {
         tdesignIcons.push(`component ${key}`);
         nameCount++;
     }
@@ -21,7 +21,7 @@ async function generate() {
 const tdesignIcons = async () => {
     await generate()
         .then(() => success("Successfully generated new tdesign index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 
 export default tdesignIcons

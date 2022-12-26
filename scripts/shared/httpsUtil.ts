@@ -18,9 +18,7 @@ const fetch = (options: any) => new Promise<any>((resolve, reject) => {
 async function getVersion(host: string, path: string) {
     let changelog: any = await fetch({host: host, path: path});
 
-    // console.log(changelog);
     let version = (changelog.match(/(\d+\.\d+\.\d+)/g))[0];
-    // console.log(version);
     if (version.length < 3) {
         throw new Error("Couldn't parse version");
     }

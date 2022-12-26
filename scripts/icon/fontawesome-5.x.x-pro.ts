@@ -1,11 +1,12 @@
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
-import {getCss, getVersion, parse, writeFile} from "../shared/httpsUtil";
+import {error, info, success} from "../shared/logger";
+import {getCss, parse, writeFile} from "../shared/httpsUtil";
+
+const version = "5.15.4";
 
 async function generate() {
     //https://www.bootcdn.cn/font-awesome/
-    let version = "5.15.4";
     info("Font Awesome v" + version);
     let source = await getCss("pro.fontawesome.com", "/releases/v" + version + "/css/all.css", {"Referer": "https://mo-mar.de"})
     let nameCount = 0;
@@ -24,6 +25,6 @@ async function generate() {
 const fontAwesome5XXPro = async () => {
     await generate()
         .then(() => success("Successfully generated new index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 export default fontAwesome5XXPro

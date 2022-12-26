@@ -1,8 +1,8 @@
 import {VERSION} from "../../packages/constants"
-import {getVersion} from "./utils"
+import {getNextVersion} from "./utils"
 
 const isProd = process.env.NODE_ENV === 'production';
-const nextVersion = getVersion();
+const nextVersion = getNextVersion();
 
 export {
     VERSION,

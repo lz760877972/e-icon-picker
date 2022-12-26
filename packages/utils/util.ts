@@ -83,3 +83,6 @@ export function isExternal(path: string): boolean {
 
 
 export const isServer = !isClient;
+export {
+    isClient
+}

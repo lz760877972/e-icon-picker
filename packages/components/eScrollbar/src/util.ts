@@ -1,12 +1,12 @@
 import {InjectionKey} from "vue";
-import {TypeUtil} from "../../../utils";
+import {isString,isNumber} from "../../../utils";
 
 
 export function addUnit(value?: string | number, defaultUnit = 'px') {
     if (!value) {return '';}
-    if (TypeUtil.isString(value)) {
+    if (isString(value)) {
         return value;
-    } else if (TypeUtil.isNumber(value)) {
+    } else if (isNumber(value)) {
         return `${value}${defaultUnit}`;
     }
     console.warn('binding value must be a string or number');

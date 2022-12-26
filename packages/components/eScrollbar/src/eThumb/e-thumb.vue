@@ -19,8 +19,9 @@
 
 <script lang="ts">
 import {computed, defineComponent, inject, onBeforeUnmount, ref, toRef} from 'vue'
-import {isClient, useEventListener} from "@vueuse/core";
+import {useEventListener} from "@vueuse/core";
 import {BAR_MAP, scrollbarContextKey} from '../util';
+import {isClient} from "../../../../utils";
 
 export default defineComponent({
   name: "e-thumb",

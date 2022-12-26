@@ -1,9 +1,9 @@
 import {iconList} from "./iconList";
 
 export type Options = {
-    addIconList: [];
-    removeIconList: [];
-    zIndex: 3000;
+    addIconList: string[];
+    removeIconList: string[];
+    zIndex: number;
 };
 export let options: Options = {
     addIconList: [],

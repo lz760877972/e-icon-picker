@@ -85,7 +85,7 @@ import {
   toRefs,
   watch
 } from "vue";
-import {iconList, isServer, off, on} from "../../../utils";
+import {iconList, isClient, off, on} from "../../../utils";
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
 
@@ -208,7 +208,7 @@ export default defineComponent({
       destroy: false,
       id: new Date().getTime(),
       zIndex: nextZIndex(),
-      display:"block"
+      display: "block"
     })
 
     //绑定时检查宽度
@@ -219,7 +219,7 @@ export default defineComponent({
       let children = triggerWrapper.value.children[0]
       if (triggerWrapper.value.offsetWidth > children?.offsetWidth) {
         state.display = "inline-block"
-      }else {
+      } else {
         state.display = "block"
       }
     })
@@ -231,7 +231,7 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      if (!isServer) {
+      if (isClient) {
         off(document, "mouseup", popoverHideFun);
       }
       destroyIconList()
@@ -250,14 +250,14 @@ export default defineComponent({
     watch(() => state.visible, (newValue) => {
       if (newValue === false) {
         nextTick(() => {
-          if (!isServer) {
+          if (isClient) {
             off(document, "mouseup", popoverHideFun);
           }
         });
       } else {
         nextTick(() => {
           createIconList();
-          if (!isServer) {
+          if (isClient) {
             on(document, "mouseup", popoverHideFun);
           }
         });
@@ -341,7 +341,7 @@ export default defineComponent({
         if (!flag && props.zIndex) {
           state.zIndex = props.zIndex
         } else {
-          state.zIndex  = nextZIndex()
+          state.zIndex = nextZIndex()
         }
         state.visible = true;
         updateW();

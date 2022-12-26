@@ -1,6 +1,6 @@
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 import {getCss, parseEl, writeFile} from "../shared/httpsUtil";
 
 const version = "2.15.12"
@@ -26,7 +26,7 @@ async function generate() {
 const elementUI = async () => {
     await generate()
         .then(() => success("Successfully generated new element-ui index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 
 export default elementUI

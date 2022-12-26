@@ -9,10 +9,10 @@
 
 ## 安装
 
->~~因为项目使用了element-ui的组件进行二次开发，所以在使用此组件前请安装element-ui组件库。~~
->~~安装方式请参考element-ui官网的相关文档。[element-plus官网](https://element-plus.gitee.io/#/zh-CN/component/installation)。~~
+>~~因为项目使用了element-plus的组件进行二次开发，所以在使用此组件前请安装element-plus组件库。~~
+>~~安装方式请参考element-plus官网的相关文档。[element-plus官网](https://element-plus.gitee.io/#/zh-CN/component/installation)。~~
 >
->已经脱离element-ui，不需要再安装element-plus了。
+>已经脱离element-plus，不需要再安装element-plus了。
 
 **npm 安装**
 

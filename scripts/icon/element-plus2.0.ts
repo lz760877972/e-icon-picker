@@ -2,12 +2,12 @@ import * as  ElementPlusIconsVue from "@element-plus/icons-vue"
 import {writeFile} from "../shared/httpsUtil";
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 
 async function generate() {
     let nameCount = 0;
     let el = [];
-    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    for (const [key] of Object.entries(ElementPlusIconsVue)) {
         el.push(`component ${key}`);
         nameCount++;
     }
@@ -22,7 +22,7 @@ async function generate() {
 const elementPlus2 = async () => {
     await generate()
         .then(() => success("Successfully generated new element-plus index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 
 export default elementPlus2

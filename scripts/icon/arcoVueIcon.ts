@@ -2,13 +2,13 @@ import * as  ArcoVueIcon from '@arco-design/web-vue/es/icon';
 import {writeFile} from "../shared/httpsUtil";
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 
 async function generate() {
     let nameCount = 0;
     let antdIcon = [];
 
-    for (const [key, component] of Object.entries(ArcoVueIcon)) {
+    for (const [key] of Object.entries(ArcoVueIcon)) {
         if (key === "default" || key === "install") {
             continue
         }
@@ -26,7 +26,7 @@ async function generate() {
 const ArcoVue = async () => {
     await generate()
         .then(() => success("Successfully generated new arco index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 
 export default ArcoVue

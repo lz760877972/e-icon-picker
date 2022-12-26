@@ -9,7 +9,7 @@ import {getVersion} from "./shared/utils"
 const outputDir = path.resolve(__dirname, '../lib');
 const packagesDir = path.resolve(__dirname, '../packages');
 
-const createPackageJson = async (version: string) => {
+const createPackageJson = async () => {
     const p: any = omit(pkg, 'scripts', 'devDependencies', 'workspaces', 'packageManager', 'lint-staged')
     p.version = getVersion();
     p.name = "e-icon-picker";
@@ -17,8 +17,8 @@ const createPackageJson = async (version: string) => {
     await fsExtra.outputFile(path.resolve(outputDir, `package.json`), fileStr, 'utf-8');
 };
 
-const release = async ({version}: any) => {
-    await createPackageJson(version);
+const release = async () => {
+    await createPackageJson();
     shell.cd(outputDir);
     shell.mkdir('-p', 'theme');
     shell.mkdir('-p', 'icon');
@@ -39,4 +39,4 @@ const release = async ({version}: any) => {
     shell.cp('-R', path.resolve(packagesDir, 'style/theme.css'), path.resolve(outputDir, 'theme/theme.css'));
     // shell.exec('npm publish');
 };
-release(pkg)
+release()

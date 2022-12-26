@@ -1,10 +1,10 @@
-import {TypeUtil} from "../utils";
+import {isArray, isString} from "../utils";
 
 const add = (list: string[], item: string | string[]) => {
     let arr: string[] = [];
-    if (item && TypeUtil.isArray(item)) {
+    if (item && isArray(item)) {
         arr = list.concat(item);
-    } else if (item && TypeUtil.isString(item)) {
+    } else if (item && isString(item)) {
         arr = arr.concat(list);
         if (typeof item === "string") {
             arr.push(item);
@@ -14,7 +14,7 @@ const add = (list: string[], item: string | string[]) => {
 };
 
 const remove = function (list: string[], item: string | string[]) {
-    if (item && TypeUtil.isArray(item)) {
+    if (item && isArray(item)) {
         for (let i = 0; i < item.length; i++) {
             for (let j = 0; j < list.length; j++) {
                 if (list[j] === item[i]) {
@@ -23,7 +23,7 @@ const remove = function (list: string[], item: string | string[]) {
                 }
             }
         }
-    } else if (item && TypeUtil.isString(item)) {
+    } else if (item && isString(item)) {
         list = list.filter((i) => i !== item);
     }
     return list;

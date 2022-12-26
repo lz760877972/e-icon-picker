@@ -1,6 +1,6 @@
-import {isServer} from "./util";
+import {isClient} from "./util";
 
-if (!isServer) {
+if (isClient) {
     (function (e: any, d: Document, w: Window) {
         if (!e.composedPath && w) {
             e.composedPath = function () {
@@ -28,7 +28,6 @@ if (!isServer) {
         }
     })(Event.prototype, document, window);
 }
-export const INSTALLED_KEY = Symbol('INSTALLED_KEY');
 
 export * from "./util";
 export * from "./dom";

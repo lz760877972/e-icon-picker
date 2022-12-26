@@ -9,7 +9,7 @@
 
 ##  捐赠支持
 
-开源项目不易，若此项目能得到你的青睐，可以捐赠支持作者持续开发与维护。喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)。
+开源项目不易，若此项目能得到你的青睐，可以捐赠支持作者持续开发与维护。
 
 ![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
 
@@ -20,6 +20,7 @@
 **另：**
 
 本人还有一个开源项目，在项目中的菜单管理使用了该图标组件，喜欢的可以去看看，帮忙点个star,非常感谢！
+
 项目地址： [novel](https://gitee.com/cnovel/Novel-api)
 
 **演示图**

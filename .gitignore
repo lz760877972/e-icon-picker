@@ -13,5 +13,6 @@ yarn-error.log
 .idea
 .pnpm-debug.log
 /pnpm-lock.yaml
-/docs/.vitepress/dest/
+/docs/.vitepress/dist/
+/docs/.vitepress/cache/
 /lib/

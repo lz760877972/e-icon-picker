@@ -108,7 +108,7 @@
     "vue-tsc": "^1.0.17"
   },
   "lint-staged": {
-    "packages/**/{*.vue,*.js,*.ts,*.jsx,*.tsx}": "eslint --fix",
+    "packages/**/{*.vue,*.ts}": "eslint --fix",
     "packages/**/{*.scss,*.css}": "stylelint --fix"
   },
   "browserslist": [

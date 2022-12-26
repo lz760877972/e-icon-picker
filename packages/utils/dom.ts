@@ -1,7 +1,7 @@
-import {isServer} from "./util";
+import {isClient} from "./util";
 
 export const on = (function () {
-    if (!isServer) {
+    if (isClient) {
         if (document && (document as Document).addEventListener) {
             return (element: HTMLElement, event: any, handler: any) => {
                 if (element && event && handler) {
@@ -18,7 +18,7 @@ export const on = (function () {
     }
 })();
 export const off = (function () {
-    if (!isServer) {
+    if (isClient) {
         if (document && (document as Document).removeEventListener) {
             return function (element: HTMLElement, event: any, handler: any) {
                 if (element && event) {

@@ -1,6 +1,6 @@
 import {fileStr} from "../shared/utils";
 import fs from "fs"
-import {info, success} from "../shared/logger";
+import {error, info, success} from "../shared/logger";
 import {getCss, parse, writeFile} from "../shared/httpsUtil";
 
 async function generate() {
@@ -36,7 +36,7 @@ async function generate() {
         let name2 = name.split("/");
         name2 = name2[name2.length - 1];
         name2 = name2.replace(".min.css", "");
-        await writeFile(__dirname + "/fontawesome/", name2 + "-6" , fa);
+        await writeFile(__dirname + "/fontawesome/", name2 + "-6", fa);
         fs.writeFileSync(__dirname + "/fontawesome/" + `${name2}-6.d.ts`, fileStr);
         info("parsed (" + nameCount + " names)")
     }
@@ -45,6 +45,6 @@ async function generate() {
 const fontAwesome6XX = async () => {
     await generate()
         .then(() => success("Successfully generated new index.js"))
-        .catch(err => console.error(err));
+        .catch(err => error(err));
 }
 export default fontAwesome6XX
