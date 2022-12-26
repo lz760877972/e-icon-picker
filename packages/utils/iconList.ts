@@ -1,6 +1,6 @@
 import {TypeUtil} from "../utils";
 
-const add = function (list: string[], item: string | string[]) {
+const add = (list: string[], item: string | string[]) => {
     let arr: string[] = [];
     if (item && TypeUtil.isArray(item)) {
         arr = list.concat(item);
@@ -29,11 +29,13 @@ const remove = function (list: string[], item: string | string[]) {
     return list;
 };
 
-export const iconList: {
-    list: Array<string>,
-    addIcon: Function,
+export declare class IconList {
+    list: Array<string>;
+    addIcon: Function;
     removeIcon: Function
-} = {
+}
+
+export const iconList: IconList = {
     list: [],
     /**
      * 全局添加图标

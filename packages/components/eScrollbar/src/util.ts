@@ -1,14 +1,12 @@
-import {isString,} from '@vue/shared'
 import {InjectionKey} from "vue";
+import {TypeUtil} from "../../../utils";
 
-export {isBoolean, isObject} from '@vueuse/core'
-export const isNumber = (val: any) => typeof val === "number";
 
 export function addUnit(value?: string | number, defaultUnit = 'px') {
     if (!value) return ''
-    if (isString(value)) {
+    if (TypeUtil.isString(value)) {
         return value
-    } else if (isNumber(value)) {
+    } else if (TypeUtil.isNumber(value)) {
         return `${value}${defaultUnit}`
     }
     console.warn('binding value must be a string or number')
@@ -21,9 +19,7 @@ export interface ScrollbarContext {
     wrapElement: HTMLDivElement
 }
 
-export const scrollbarContextKey: InjectionKey<ScrollbarContext> = Symbol(
-    'scrollbarContextKey'
-)
+export const scrollbarContextKey: InjectionKey<ScrollbarContext> = Symbol('scrollbarContextKey')
 
 export const BAR_MAP = {
     vertical: {

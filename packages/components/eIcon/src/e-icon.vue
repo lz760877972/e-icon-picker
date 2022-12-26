@@ -11,6 +11,7 @@
 <script>
 import {defineComponent, reactive} from 'vue'
 import {isExternal} from "../../../utils";
+import {CLICK_EVENT} from "../../../constants";
 
 export default defineComponent({
   name: "e-icon",
@@ -24,13 +25,13 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['click'],
+  emits: [CLICK_EVENT],
   setup(props, context) {
     const state = reactive({})
 
     const click = (iconName, event) => {
       if (event) event.preventDefault();
-      context.emit('click', iconName)
+      context.emit(CLICK_EVENT, iconName)
     }
     return {
       click,

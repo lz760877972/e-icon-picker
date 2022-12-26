@@ -42,7 +42,7 @@ export default defineComponent({
   components: {
     eThumb
   },
-  setup(props, {emit}) {
+  setup(props) {
     const state = reactive({
       moveX: 0,
       moveY: 0

@@ -46,7 +46,7 @@ export default defineComponent({
       default: 1
     }
   },
-  setup(props, {emit}) {
+  setup(props) {
     const visible = ref(false)
     let cursorDown = false
     let cursorLeave = false

@@ -25,7 +25,9 @@ import {
   watch
 } from 'vue'
 import {eBar, eBarInstance} from './eBar'
-import {addUnit, GAP, isNumber, isObject, scrollbarContextKey} from './util'
+import {addUnit, GAP, scrollbarContextKey} from './util'
+import {TypeUtil} from "../../../utils";
+import {SCROLL_EVENT} from "../../../constants";
 
 export default defineComponent({
   name: "e-scrollbar",
@@ -98,14 +100,14 @@ export default defineComponent({
         }
     )
     const scrollTo = (arg1: any, arg2?: any) => {
-      if (isObject(arg1)) {
+      if (TypeUtil.isObject(arg1)) {
         wrap.value!.scrollTo(arg1)
-      } else if (isNumber(arg1) && isNumber(arg2)) {
+      } else if (TypeUtil.isNumber(arg1) && TypeUtil.isNumber(arg2)) {
         wrap.value!.scrollTo(arg1, arg2)
       }
     }
     const setScrollTop = (value: number) => {
-      if (!isNumber(value)) {
+      if (!TypeUtil.isNumber(value)) {
         console.warn('value must be a number')
         return
       }
@@ -113,7 +115,7 @@ export default defineComponent({
     }
 
     const setScrollLeft = (value: number) => {
-      if (!isNumber(value)) {
+      if (!TypeUtil.isNumber(value)) {
         console.warn('value must be a number')
         return
       }
@@ -134,7 +136,7 @@ export default defineComponent({
       if (wrap.value) {
         barRef.value?.handleScroll(wrap.value)
 
-        emit('scroll', {
+        emit(SCROLL_EVENT, {
           scrollTop: wrap.value.scrollTop,
           scrollLeft: wrap.value.scrollLeft,
         })

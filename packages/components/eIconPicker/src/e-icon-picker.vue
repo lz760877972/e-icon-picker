@@ -361,9 +361,9 @@ export default defineComponent({
     }
     // 判断类型，抛出当前选中id
     const emitFun = (val) => {
-      context.emit("update:modelValue", val);
-      context.emit("change", val);
-      context.emit('input', val)
+      context.emit(UPDATE_MODEL_EVENT, val);
+      context.emit(CHANGE_EVENT, val);
+      context.emit(INPUT_EVENT, val)
     }
     /**
      * 销毁图标列表，不销毁输入框等

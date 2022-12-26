@@ -37,7 +37,16 @@
 <script lang="ts">
 import {eIcon} from "../../eIcon";
 import {computed, defineComponent, onMounted, reactive, shallowRef, watch} from "vue";
-import {UPDATE_MODEL_EVENT} from "../../../constants";
+import {
+  BLUR_EVENT,
+  CHANGE_EVENT,
+  CLEAR_EVENT,
+  FOCUS_EVENT,
+  INPUT_EVENT,
+  MOUSE_ENTER_EVENT,
+  MOUSE_LEAVE_EVENT,
+  UPDATE_MODEL_EVENT
+} from "../../../constants";
 
 type TargetElement = HTMLInputElement;
 export default defineComponent({
@@ -91,23 +100,23 @@ export default defineComponent({
       let {value} = event.target as TargetElement
 
       emit(UPDATE_MODEL_EVENT, value)
-      emit('input', value)
+      emit(INPUT_EVENT, value)
       setNativeInputValue()
     }
 
     const handleFocus = (event: FocusEvent) => {
       state.focused = true
-      emit('focus', event)
+      emit(FOCUS_EVENT, event)
     }
 
 
     const handleBlur = (event: FocusEvent) => {
       state.focused = false
-      emit('blur', event)
+      emit(BLUR_EVENT, event)
     }
 
     const handleChange = (event: Event) => {
-      emit('change', (event.target as TargetElement).value)
+      emit(CHANGE_EVENT, (event.target as TargetElement).value)
     }
 
     const showClear = computed(
@@ -122,12 +131,12 @@ export default defineComponent({
 
     const handleMouseLeave = (evt: MouseEvent) => {
       state.hovering = false
-      emit('mouseleave', evt)
+      emit(MOUSE_LEAVE_EVENT, evt)
     }
 
     const handleMouseEnter = (evt: MouseEvent) => {
       state.hovering = true
-      emit('mouseenter', evt)
+      emit(MOUSE_ENTER_EVENT, evt)
     }
 
     const setNativeInputValue = () => {
@@ -143,9 +152,9 @@ export default defineComponent({
     })
     const clear = () => {
       emit(UPDATE_MODEL_EVENT, '')
-      emit('change', '')
-      emit('clear')
-      emit('input', '')
+      emit(CHANGE_EVENT, '')
+      emit(CLEAR_EVENT)
+      emit(INPUT_EVENT, '')
     }
 
     return {

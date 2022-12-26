@@ -4,7 +4,7 @@
 .popper {
   transition: background 250ms ease-in-out;
   background: var(--e-popover-background-color, #ffffff);
-  padding: var(--e-popover-padding, 32px);
+  padding: var(--e-popover-padding, 20px);
   color: var(--e-popover-color, #333333);
 
   border-radius: var(--e-popover-border-radius, 6px);

@@ -1,18 +1,20 @@
 import {nextTick, onBeforeUnmount, reactive, toRefs, watch} from "vue";
-// @ts-ignore
 import {arrow, createPopper, flip, offset, preventOverflow} from "@popperjs/core";
+import {CLOSE_POPPER_EVENT, OPEN_POPPER_EVENT} from "../../../../constants";
 
 const toInt = (x: string) => parseInt(x, 10);
-export default function usePopper({
-                                      arrowPadding,
-                                      emit,
-                                      locked,
-                                      offsetDistance,
-                                      offsetSkid,
-                                      placement,
-                                      popperNode,
-                                      triggerNode,
-                                  }: any): any {
+export default function usePopper(
+    {
+        arrowPadding,
+        emit,
+        locked,
+        offsetDistance,
+        offsetSkid,
+        placement,
+        popperNode,
+        triggerNode,
+    }: any
+): any {
     const state = reactive<any>({
         isOpen: false,
         popperInstance: null,
@@ -35,7 +37,7 @@ export default function usePopper({
         }
 
         state.isOpen = false;
-        emit("close:popper");
+        emit(CLOSE_POPPER_EVENT);
     };
 
     const open = () => {
@@ -44,7 +46,7 @@ export default function usePopper({
         }
 
         state.isOpen = true;
-        emit("open:popper");
+        emit(OPEN_POPPER_EVENT);
     };
 
     // When isOpen or placement change

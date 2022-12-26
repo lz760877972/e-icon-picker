@@ -1,6 +1,6 @@
 import {iconList} from "./iconList";
 
-type Options = {
+export type Options = {
     addIconList: [],
     removeIconList: [],
     zIndex: 3000,
@@ -15,7 +15,7 @@ export function useGlobalConfig<K extends keyof Options>(option: K, defaultValue
     return options[option] || defaultValue
 }
 
-export const setConfig = (op: Options): any => {
+export const setConfig = (op: Options): void => {
     options = {...options, ...op}
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
         iconList.addIcon(options.addIconList);

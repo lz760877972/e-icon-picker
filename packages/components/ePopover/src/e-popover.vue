@@ -40,7 +40,6 @@
 import {computed, defineComponent, onMounted, ref, toRefs, watch, watchEffect} from 'vue'
 import {eArrow} from "./eArrow";
 import {useClickAway, useContent, usePopper} from "./util/index";
-//@ts-ignore
 import {debounce} from "debounce";
 import {useZIndex} from "../../../utils/zIndex";
 

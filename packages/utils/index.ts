@@ -1,27 +1,30 @@
 import {isServer} from "./util";
 
 if (!isServer) {
-    (function (e, d, w) {
+    (function (e: any, d: Document, w: Window) {
         if (!e.composedPath && w) {
             e.composedPath = function () {
-                if ((this as any).path) {
-                    return (this as any).path;
+                if (this.path) {
+                    return this.path;
                 }
-                let target = this.target;
+                let target: any = this.target;
 
-                (this as any).path = [];
-                while ((target as any).parentNode !== null) {
-                    (this as any).path.push(target);
-                    target = (target as any).parentNode;
+                this.path = [];
+                while (target.parentNode !== null) {
+                    this.path.push(target);
+                    target = target.parentNode;
                 }
-                (this as any).path.push(d, w);
-                return (this as any).path;
+                this.path.push(d, w);
+                return this.path;
             }
         }
         if (!String.prototype.startsWith) {
-            String.prototype.startsWith = function (search, pos) {
-                return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search
-            }
+            Object.defineProperty(String.prototype, 'startsWith', {
+                value: function (search: string, pos: number | undefined) {
+                    pos = !pos || pos < 0 ? 0 : +pos;
+                    return this.substring(pos, pos + search.length) === search;
+                }
+            });
         }
     })(Event.prototype, document, window);
 }
