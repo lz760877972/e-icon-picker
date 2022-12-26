@@ -1,4 +1,4 @@
-import {isClient} from '@vueuse/core'
+import {isClient} from '@vueuse/core';
 
 
 export declare class ForIconfontGlyphs {
@@ -15,7 +15,7 @@ export declare class ForIconfont {
     font_family: string;
     css_prefix_text: string;
     description: string;
-    glyphs: Array<ForIconfontGlyphs>
+    glyphs: Array<ForIconfontGlyphs>;
 }
 
 /**
@@ -42,7 +42,7 @@ export const analyzingIconForIconfont = (json: ForIconfont): { font_family: stri
         font_family,
         css_prefix_text,
         list
-    }
+    };
 };
 
 /**
@@ -69,7 +69,7 @@ export const eIconSymbol = (json: ForIconfont) => {
         font_family,
         css_prefix_text,
         list
-    }
+    };
 };
 
 /**
@@ -78,7 +78,7 @@ export const eIconSymbol = (json: ForIconfont) => {
  * @returns {Boolean}
  */
 export function isExternal(path: string): boolean {
-    return /^(https?:|data:|\/\/?)/.test(path)
+    return /^(https?:|data:|\/\/?)/.test(path);
 }
 
 

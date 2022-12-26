@@ -1,7 +1,7 @@
 import type {App} from 'vue';
 import eBar from './e-bar.vue';
 
-export type eBarInstance = InstanceType<typeof eBar>
+export type eBarInstance = InstanceType<typeof eBar>;
 
 export {eBar};
 

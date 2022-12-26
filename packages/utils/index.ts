@@ -16,7 +16,7 @@ if (!isServer) {
                 }
                 this.path.push(d, w);
                 return this.path;
-            }
+            };
         }
         if (!String.prototype.startsWith) {
             Object.defineProperty(String.prototype, 'startsWith', {
@@ -28,7 +28,7 @@ if (!isServer) {
         }
     })(Event.prototype, document, window);
 }
-export const INSTALLED_KEY = Symbol('INSTALLED_KEY')
+export const INSTALLED_KEY = Symbol('INSTALLED_KEY');
 
 export * from "./util";
 export * from "./dom";

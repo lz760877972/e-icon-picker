@@ -3,23 +3,23 @@ import {TypeUtil} from "../../../utils";
 
 
 export function addUnit(value?: string | number, defaultUnit = 'px') {
-    if (!value) return ''
+    if (!value) {return '';}
     if (TypeUtil.isString(value)) {
-        return value
+        return value;
     } else if (TypeUtil.isNumber(value)) {
-        return `${value}${defaultUnit}`
+        return `${value}${defaultUnit}`;
     }
-    console.warn('binding value must be a string or number')
+    console.warn('binding value must be a string or number');
 }
 
-export const GAP = 4
+export const GAP = 4;
 
 export interface ScrollbarContext {
-    scrollbarElement: HTMLDivElement
-    wrapElement: HTMLDivElement
+    scrollbarElement: HTMLDivElement;
+    wrapElement: HTMLDivElement;
 }
 
-export const scrollbarContextKey: InjectionKey<ScrollbarContext> = Symbol('scrollbarContextKey')
+export const scrollbarContextKey: InjectionKey<ScrollbarContext> = Symbol('scrollbarContextKey');
 
 export const BAR_MAP = {
     vertical: {
@@ -42,4 +42,4 @@ export const BAR_MAP = {
         client: 'clientX',
         direction: 'left',
     },
-} as const
+} as const;

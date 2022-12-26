@@ -79,7 +79,7 @@ module.exports = {
         '@typescript-eslint/dot-notation': 'off',
         '@typescript-eslint/indent': [
             'error',
-            2,
+            4,
             {FunctionDeclaration: {parameters: 'first'}, FunctionExpression: {parameters: 'first'}},
         ],
         '@typescript-eslint/member-delimiter-style': [

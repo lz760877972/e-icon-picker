@@ -24,15 +24,17 @@ const remove = function (list: string[], item: string | string[]) {
             }
         }
     } else if (item && TypeUtil.isString(item)) {
-        list = list.filter((i) => i !== item)
+        list = list.filter((i) => i !== item);
     }
     return list;
 };
 
 export declare class IconList {
     list: Array<string>;
-    addIcon: Function;
-    removeIcon: Function
+
+    addIcon(item: string | string[]): void;
+
+    removeIcon(item: string | string[]): void;
 }
 
 export const iconList: IconList = {
@@ -41,7 +43,7 @@ export const iconList: IconList = {
      * 全局添加图标
      * @param item
      */
-    addIcon: function (item: string | string[]) {
+    addIcon: function (item: string | string[]): void {
         this.list = add(this.list, item);
     },
     /**

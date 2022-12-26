@@ -2,7 +2,7 @@
   /*popper背景颜色*/
   --e-popover-background-color: #312a2a;
   /*popper padding大小*/
-  --e-popover-padding: 32px;
+  --e-popover-padding: 20px;
   /*popper字体颜色*/
   --e-popover-color: #e4dddd;
   /*popper圆角半径*/
@@ -50,7 +50,7 @@
   /*popper背景颜色*/
   --e-popover-background-color: #ffffff;
   /*popper padding大小*/
-  --e-popover-padding: 32px;
+  --e-popover-padding: 20px;
   /*popper字体颜色*/
   --e-popover-color: #333333;
   /*popper圆角半径*/
