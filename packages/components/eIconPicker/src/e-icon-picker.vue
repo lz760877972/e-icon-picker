@@ -282,7 +282,6 @@ export default defineComponent({
     onMounted(() => {
       updateW();
       //检测触发组件的类型
-
       let children: any = triggerWrapper.value!.children[0]
       if (triggerWrapper.value!.offsetWidth > children?.offsetWidth) {
         state.display = "inline-block"

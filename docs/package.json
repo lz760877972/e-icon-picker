@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vitepress dev . --host",
     "build": "vitepress build .",
-    "serve": "vitepress serve ."
+    "preview": "vitepress preview ."
   },
   "dependencies": {
     "vue": "^3.2.45",

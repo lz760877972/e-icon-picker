@@ -24,9 +24,9 @@
     "url": "https://gitee.com/cnovel/e-icon-picker/issues"
   },
   "workspaces": [
-    "lib/*",
     "packages/*",
-    "docs"
+    "docs",
+    "./**"
   ],
   "main": "index.umd.js",
   "module": "index.mjs",
@@ -45,7 +45,7 @@
     "publish": "npm publish ./lib --tag next",
     "docs:dev": "pnpm run -C docs dev",
     "docs:build": "pnpm run -C docs build",
-    "docs:serve": "pnpm run -C docs serve",
+    "docs:preview": "pnpm run -C docs preview",
     "eslint": "eslint \"packages/**/{*.vue,*.ts}\"",
     "eslint:fix": "eslint --fix \"packages/**/{*.vue,*.ts}\"",
     "stylelint": "stylelint \"packages/**/{*.scss,*.css}\"",
