@@ -12,7 +12,7 @@ export declare class ZIndex {
 
 const zIndex = ref(0);
 
-export const useZIndex = (): ZIndex => {
+export const useZIndex = () => {
     const initialZIndex = ref(useGlobalConfig('zIndex', 3000));
     const currentZIndex = computed(() => initialZIndex.value + zIndex.value);
     const nextZIndex = () => {

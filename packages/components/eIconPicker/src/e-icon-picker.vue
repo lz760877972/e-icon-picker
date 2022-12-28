@@ -83,11 +83,11 @@ import {
   PropType,
   reactive,
   shallowRef,
+  StyleValue,
   toRefs,
-  watch,
-  StyleValue
+  watch
 } from "vue";
-import {iconList, off, on} from "../../../utils";
+import {iconList, isClient, off, on} from "../../../utils";
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
 
@@ -95,7 +95,8 @@ export class Options {
   addIconList?: Array<string>;
   removeIconList?: Array<string>;
 }
-export type Placement="top"|"bottom";
+
+export type Placement = "top" | "bottom";
 export default defineComponent({
   name: "eIconPicker",
   components: {
@@ -142,7 +143,7 @@ export default defineComponent({
      * 弹出框位置
      */
     placement: {
-      type:String as  PropType<Placement>,
+      type: String as PropType<Placement>,
       default: 'bottom',
       validator: (value: string) => {
         return [
@@ -263,13 +264,13 @@ export default defineComponent({
       popoverWidth: 200,
       dataList: computed(() => {
         //去重
-        let arr1 = []; // 新建一个数组来存放arr中的值
+        let arr = []; // 新建一个数组来存放arr中的值
         for (let i = 0, len = state.iconList.length; i < len; i++) {
-          if (arr1.indexOf(state.iconList[i]) === -1) {
-            arr1.push(state.iconList[i]);
+          if (arr.indexOf(state.iconList[i]) === -1) {
+            arr.push(state.iconList[i]);
           }
         }
-        return arr1;
+        return arr;
       }),
       destroy: false,
       id: new Date().getTime(),
@@ -297,7 +298,7 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      if (off) {
+      if (isClient) {
         off(document, "mouseup", popoverHideFun);
       }
       destroyIconList()
@@ -316,14 +317,14 @@ export default defineComponent({
     watch(() => state.visible, (newValue) => {
       if (newValue === false) {
         nextTick(() => {
-          if (off) {
+          if (isClient) {
             off(document, "mouseup", popoverHideFun);
           }
         });
       } else {
         nextTick(() => {
           createIconList();
-          if (on) {
+          if (isClient) {
             on(document, "mouseup", popoverHideFun);
           }
         });
@@ -372,9 +373,11 @@ export default defineComponent({
       }
     }
     const selectedIcon = (item: string) => {
+      console.log(item)
       state.visible = false;
       state.name = item;
       state.prefixIcon = state.name;
+      console.log("state", state)
       emitFun(state.prefixIcon);
     }
     // 更新宽度
@@ -385,10 +388,11 @@ export default defineComponent({
         } else {
           state.popoverWidth = props.width;
         }
-        if (eScrollbar && eScrollbar.value && eScrollbar.value.setScrollTop) {
+
+        if (eScrollbar && eScrollbar.value) {
           setTimeout(() => {
-            eScrollbar.value?.setScrollTop(0);
-            eScrollbar.value?.update();
+            eScrollbar.value!.setScrollTop(0);
+            eScrollbar.value!.update();
           }, 100);
         }
       });
@@ -427,6 +431,7 @@ export default defineComponent({
     }
     // 判断类型，抛出当前选中id
     const emitFun = (val: string) => {
+      console.log("emitFun", val)
       context.emit(UPDATE_MODEL_EVENT, val);
       context.emit(CHANGE_EVENT, val);
       context.emit(INPUT_EVENT, val)
@@ -471,10 +476,6 @@ export default defineComponent({
     }
   }
 });
-
-function PropType<T>(): any {
-  throw new Error("Function not implemented.");
-}
 </script>
 
 <style lang="scss" scoped>

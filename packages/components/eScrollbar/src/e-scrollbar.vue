@@ -111,7 +111,9 @@ export default defineComponent({
         console.warn('value must be a number')
         return
       }
-      wrap.value!.scrollTop = value
+      nextTick(() => {
+        wrap.value!.scrollTop = value
+      })
     }
 
     const setScrollLeft = (value: number) => {
@@ -119,7 +121,10 @@ export default defineComponent({
         console.warn('value must be a number')
         return
       }
-      wrap.value!.scrollLeft = value
+
+      nextTick(() => {
+        wrap.value!.scrollLeft = value
+      })
     }
     onMounted(() => {
       nextTick(() => update())

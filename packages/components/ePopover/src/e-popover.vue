@@ -213,7 +213,7 @@ export default defineComponent({
     const triggerNode = ref(null);
     const modifiedIsOpen = ref(false);
     const {nextZIndex} = useZIndex()
-    let zIndex = ref<number>(props.zIndex || nextZIndex().value)
+    let zIndex = props.zIndex || nextZIndex()
     onMounted(() => {
       const children = slots.default?.() ?? [];
 
@@ -267,7 +267,7 @@ export default defineComponent({
       if (invalid.value || manualMode.value) {
         return;
       }
-      zIndex = ref<number>(props.zIndex) || nextZIndex()
+      zIndex = props.zIndex || nextZIndex()
       closePopperDebounce.clear();
       openPopperDebounce();
     };
@@ -302,7 +302,7 @@ export default defineComponent({
      */
     watch(isOpen, isOpen => {
       if (isOpen) {
-        zIndex = ref<number>(props.zIndex)
+        zIndex = props.zIndex
         modifiedIsOpen.value = true;
       } else {
         debounce(() => {

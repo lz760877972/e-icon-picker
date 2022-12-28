@@ -7,7 +7,7 @@
 ```vue
 
 <template>
-  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" />
+  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" @change="change" />
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -18,7 +18,10 @@ export default defineComponent({
   name: 'e-icon-picker-demo',
   setup() {
     let icon = ref("");
-    return {icon};
+    const change=(val:string)=>{
+      console.log(val)
+    }
+    return {icon,change};
   },
 });
 </script>

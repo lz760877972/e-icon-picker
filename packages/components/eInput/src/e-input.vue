@@ -17,7 +17,7 @@
            :readonly="readonly"
            :placeholder="placeholder"
            :style="style"
-           :class="[disabled ? 'is-disabled' : '']"
+           :class="disabled ? 'is-disabled' : ''"
            @input="handleInput"
            @focus="handleFocus"
            @blur="handleBlur"
@@ -88,7 +88,6 @@ export default defineComponent({
     },
     size: {
       type: String,
-      values: componentSizes,
       default: "default",
       required: false,
     }
