@@ -422,7 +422,7 @@ export default defineComponent({
 | width                 | 组件宽度             | -1                  | number                  |
 | readonly              | 原生属性，是否只读        | false               | true/false              |
 | defaultIcon           | 默认图标             | eiconfont e-icon-bi | 图标名                  |
-| clearable             | 是否可清空            | true                | true/false              |
+| clearable             | 是否可清空            | false                | true/false              |
 | placement             | 弹窗位置             | bottom              | top/bottom              |
 | placeholder           | 输入框提示信息          | 请选择图标               | 任意                    |
 | styles                | 组件自定义样式          | 空                   | 无                      |

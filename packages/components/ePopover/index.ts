@@ -3,7 +3,7 @@ import ePopover from './src/e-popover.vue';
 // import './src/theme.scss'
 
 export {ePopover};
-
+export type PopoverInstance = InstanceType<typeof ePopover>
 export default {
     install(app: App): void {
         app.component(ePopover.name, ePopover);

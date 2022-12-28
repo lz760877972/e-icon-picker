@@ -1,5 +1,10 @@
 import {isArray, isString} from "../utils";
 
+/**
+ * 新增图标
+ * @param list 图标列表
+ * @param item 新增项
+ */
 const add = (list: string[], item: string | string[]) => {
     let arr: string[] = [];
     if (item && isArray(item)) {
@@ -12,7 +17,11 @@ const add = (list: string[], item: string | string[]) => {
     }
     return arr;
 };
-
+/**
+ * 删除图标
+ * @param list 图标列表
+ * @param item 删除项
+ */
 const remove = function (list: string[], item: string | string[]) {
     if (item && isArray(item)) {
         for (let i = 0; i < item.length; i++) {
@@ -29,14 +38,29 @@ const remove = function (list: string[], item: string | string[]) {
     return list;
 };
 
+
 export declare class IconList {
+    /**
+     * 图标列表
+     */
     list: Array<string>;
 
+    /**
+     * 增加图标
+     * @param item 新增项
+     */
     addIcon(item: string | string[]): void;
 
+    /**
+     * 删除图标
+     * @param item 删除项
+     */
     removeIcon(item: string | string[]): void;
 }
 
+/**
+ * 图标列表
+ */
 export const iconList: IconList = {
     list: [],
     /**

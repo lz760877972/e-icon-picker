@@ -68,11 +68,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {eIcon} from "../../eIcon";
-import {eInput} from "../../eInput";
-import {ePopover} from "../../ePopover";
-import {eScrollbar} from "../../eScrollbar";
+import {eInput, InputInstance} from "../../eInput";
+import {ePopover, PopoverInstance} from "../../ePopover";
+import {eScrollbar, ScrollbarInstance} from "../../eScrollbar";
 import {
   computed,
   defineComponent,
@@ -81,13 +81,18 @@ import {
   onBeforeUnmount,
   onMounted,
   reactive,
-  ref,
+  shallowRef,
   toRefs,
   watch
 } from "vue";
 import {iconList, isClient, off, on} from "../../../utils";
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
+
+export class Options {
+  addIconList?: Array<string>;
+  removeIconList?: Array<string>;
+}
 
 export default defineComponent({
   name: "eIconPicker",
@@ -98,79 +103,125 @@ export default defineComponent({
     eScrollbar
   },
   props: {
-    // 是否禁用文本框
+    /**
+     * 是否禁用文本框
+     */
     disabled: {
       type: Boolean,
       // false
       default: false
     },
+    /**
+     * 只读
+     */
     readonly: {
       type: Boolean,
       // false
       default: false
     },
+    /**
+     * 可清空
+     */
     clearable: {
       type: Boolean,
       // true
       default: false
     },
-    // e-icon-picker 样式
+    /**
+     *  e-icon-picker 样式
+     */
     styles: {
       type: Object,
       default() {
         return {};
       },
     },
-    // 弹出框位置
+    /**
+     * 弹出框位置
+     */
     placement: {
       type: String,
       default: 'bottom'
     },
+    /**
+     * 值
+     */
     modelValue: {
       type: String,
       default: ""
     },
+    /**
+     * 参数
+     */
     options: {
-      type: Object
+      type: Options,
+      default: {}
     },
+    /**
+     * 宽度
+     */
     width: {
       type: Number,
       default: -1
     },
+    /**
+     * 大小
+     */
     size: {
       type: String,
       default: "medium"
     },
+    /**
+     * 原生提示
+     */
     placeholder: {
       type: String,
       default: "请选择图标"
     },
+    /**
+     * 默认图标
+     */
     defaultIcon: {
       type: String,
       default: "eiconfont e-icon-bi"
     },
+    /**
+     * 空列表显示文字
+     */
     emptyText: {
       type: String,
       default() {
         return "暂无可选图标";
       },
     },
+    /**
+     * 高亮颜色
+     */
     highLightColor: {
       type: String,
       default() {
         return "";
       },
     },
+    /**
+     * zindex
+     */
     zIndex: {
       type: Number,
       default() {
         return null;
       },
     },
+    /**
+     * 是否追加到body
+     */
     appendBody: {
       type: Boolean,
       default: true
     },
+    /**
+     * 内容自定义样式
+     */
     contentClass: {
       type: String,
       default() {
@@ -180,14 +231,14 @@ export default defineComponent({
   },
   emits: [CHANGE_EVENT, UPDATE_MODEL_EVENT, INPUT_EVENT],
   setup(props, context) {
-    let input = ref(null);
-    let eScrollbar = ref(null);
-    let popover = ref(null);
-    let fasIconList = ref(null);
-    let triggerWrapper = ref(null);
+    let input = shallowRef<InputInstance>();
+    let eScrollbar = shallowRef<ScrollbarInstance>();
+    let popover = shallowRef<PopoverInstance>();
+    let fasIconList = shallowRef<HTMLUListElement>();
+    let triggerWrapper = shallowRef<HTMLDivElement>();
     // let display = ref("block");
     const {nextZIndex} = useZIndex()
-    const state = reactive({
+    const state: any = reactive({
       iconList: [],
       visible: false, // popover v-model
       prefixIcon: "eiconfont e-icon-bi",
@@ -216,8 +267,8 @@ export default defineComponent({
       updateW();
       //检测触发组件的类型
 
-      let children = triggerWrapper.value.children[0]
-      if (triggerWrapper.value.offsetWidth > children?.offsetWidth) {
+      let children: any = triggerWrapper.value!.children[0]
+      if (triggerWrapper.value!.offsetWidth > children?.offsetWidth) {
         state.display = "inline-block"
       } else {
         state.display = "block"
@@ -242,7 +293,7 @@ export default defineComponent({
       state.prefixIcon = state.name ? state.name : props.defaultIcon;
     }, {deep: true})
 
-    watch(() => props.options, (val) => {
+    watch(() => props.options, () => {
       initIcon(true);
     }, {deep: true})
 
@@ -264,12 +315,12 @@ export default defineComponent({
       }
     }, {deep: true})
 
-    const change = (val) => {
-      state.iconList = state.icon.list.filter((i) => i.indexOf(val) !== -1);
+    const change = (val: string) => {
+      state.iconList = state.icon.list.filter((i: string) => i.indexOf(val) !== -1);
     }
 
-    const initIcon = (type) => {
-      state.prefixIcon = props.modelValue && type && true === type ? props.modelValue : props.defaultIcon;
+    const initIcon = (type: boolean | undefined) => {
+      state.prefixIcon = props.modelValue && type && type ? props.modelValue : props.defaultIcon;
       state.name = type === true ? props.modelValue : "";
       state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
       if (props.options) {
@@ -305,7 +356,7 @@ export default defineComponent({
         state.iconList = state.icon.list;
       }
     }
-    const selectedIcon = (item) => {
+    const selectedIcon = (item: string) => {
       state.visible = false;
       state.name = item;
       state.prefixIcon = state.name;
@@ -321,22 +372,22 @@ export default defineComponent({
         }
         if (eScrollbar && eScrollbar.value && eScrollbar.value.setScrollTop) {
           setTimeout(() => {
-            eScrollbar.value.setScrollTop(0);
-            eScrollbar.value.update();
+            eScrollbar.value?.setScrollTop(0);
+            eScrollbar.value?.update();
           }, 100);
         }
       });
     }
 
 
-    const updatePopper = (zIndex) => {
+    const updatePopper = (zIndex: number) => {
       if (zIndex) {
         state.zIndex = zIndex
       }
       popoverShowFun(true);
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
-    const popoverShowFun = (flag) => {
+    const popoverShowFun = (flag: boolean) => {
       if (props.readonly !== true && props.disabled !== true) {
         if (!flag && props.zIndex) {
           state.zIndex = props.zIndex
@@ -349,9 +400,9 @@ export default defineComponent({
     }
 
     // 点击控件外，判断是否隐藏弹出框
-    const popoverHideFun = (e) => {
+    const popoverHideFun = (e: any) => {
       let path = e.path || (e.composedPath && e.composedPath());
-      let isInter = path.some((list) => {
+      let isInter = path.some((list: HTMLElement) => {
         return list.className && (list.className.toString().indexOf("is-empty-" + state.id) !== -1 ||
             (list.className.toString().indexOf("e-icon-picker-" + state.id) !== -1));
       });
@@ -360,7 +411,7 @@ export default defineComponent({
       }
     }
     // 判断类型，抛出当前选中id
-    const emitFun = (val) => {
+    const emitFun = (val: string) => {
       context.emit(UPDATE_MODEL_EVENT, val);
       context.emit(CHANGE_EVENT, val);
       context.emit(INPUT_EVENT, val)

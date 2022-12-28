@@ -1,8 +1,17 @@
 import {iconList} from "./iconList";
 
 export type Options = {
+    /**
+     * 增加的图标
+     */
     addIconList: string[];
+    /**
+     * 删除的图标
+     */
     removeIconList: string[];
+    /**
+     * z-index
+     */
     zIndex: number;
 };
 export let options: Options = {
@@ -11,12 +20,21 @@ export let options: Options = {
     zIndex: 3000,
 };
 
-export function useGlobalConfig<K extends keyof Options>(option: K, defaultValue: any): any {
-    return options[option] || defaultValue;
+/**
+ * 获取全局配置
+ * @param key 配置key
+ * @param defaultValue 默认值
+ */
+export function useGlobalConfig<K extends keyof Options>(key: K, defaultValue?: any): any {
+    return options[key] || defaultValue;
 }
 
-export const setConfig = (op: Options): void => {
-    options = {...options, ...op};
+/**
+ * 设置全局配置
+ * @param option 配置信息
+ */
+export const setConfig = (option: Options): void => {
+    options = {...options, ...option};
     if (options.addIconList !== undefined && options.addIconList && options.addIconList.length > 0) {
         iconList.addIcon(options.addIconList);
     }

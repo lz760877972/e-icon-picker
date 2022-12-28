@@ -51,7 +51,7 @@ export default defineComponent({
   props: {
 
     /**
-     * Preferred placement (the "auto" placements will choose the side with most space.)
+     * 显示的位置（“auto”放置位置将选择空间最大的一侧）
      */
     placement: {
       type: String,
@@ -136,7 +136,8 @@ export default defineComponent({
      * The z-index of the Popper.
      */
     zIndex: {
-      type: [Number]
+      type: [Number],
+      default: 0
     },
     /**
      * Display an arrow on the popper
@@ -212,7 +213,7 @@ export default defineComponent({
     const triggerNode = ref(null);
     const modifiedIsOpen = ref(false);
     const {nextZIndex} = useZIndex()
-    let zIndex = ref(props.zIndex || nextZIndex())
+    let zIndex = ref<number>(props.zIndex || nextZIndex().value)
     onMounted(() => {
       const children = slots.default?.() ?? [];
 
@@ -266,7 +267,7 @@ export default defineComponent({
       if (invalid.value || manualMode.value) {
         return;
       }
-      zIndex = props.zIndex || nextZIndex()
+      zIndex = ref<number>(props.zIndex) || nextZIndex()
       closePopperDebounce.clear();
       openPopperDebounce();
     };
@@ -301,7 +302,7 @@ export default defineComponent({
      */
     watch(isOpen, isOpen => {
       if (isOpen) {
-        zIndex = props.zIndex
+        zIndex = ref<number>(props.zIndex)
         modifiedIsOpen.value = true;
       } else {
         debounce(() => {

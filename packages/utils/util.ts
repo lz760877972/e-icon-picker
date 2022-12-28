@@ -21,7 +21,6 @@ export declare class ForIconfont {
 /**
  * 将阿里妈妈的iconfont.json文件读成想用的单色图标对象
  * @param json
- * @returns {{font_family: string, list: [], css_prefix_text: string}}
  */
 export const analyzingIconForIconfont = (json: ForIconfont): { font_family: string; css_prefix_text: string; list: Array<string> } => {
     let font_family = '';
@@ -48,9 +47,8 @@ export const analyzingIconForIconfont = (json: ForIconfont): { font_family: stri
 /**
  * 将阿里妈妈的iconfont.json文件读成想用的彩色图标对象
  * @param json
- * @returns {{font_family: string, list: [], css_prefix_text: string}}
  */
-export const eIconSymbol = (json: ForIconfont) => {
+export const eIconSymbol = (json: ForIconfont): { font_family: string, list: string[], css_prefix_text: string } => {
     let font_family = '';
     let css_prefix_text = '';
     let list: Array<string> = [];
@@ -74,15 +72,19 @@ export const eIconSymbol = (json: ForIconfont) => {
 
 /**
  * 校验是否是外部链接
- * @param {string} path
- * @returns {Boolean}
+ * @param {string} path 路径
  */
 export function isExternal(path: string): boolean {
     return /^(https?:|data:|\/\/?)/.test(path);
 }
 
-
+/**
+ * 是否是服务端
+ */
 export const isServer = !isClient;
 export {
-    isClient
+    /**
+     * 是否是客户端
+     */
+        isClient
 }
