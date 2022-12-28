@@ -7,7 +7,7 @@
 ```vue
 
 <template>
-  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" clearable />
+  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" />
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
