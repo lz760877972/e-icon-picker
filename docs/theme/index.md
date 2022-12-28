@@ -18,38 +18,36 @@ CSS 变量是一个非常有用的功能，几乎所有浏览器都支持。 （
 ```css
 .dark {
     /*popper背景颜色*/
-    --e-popover-background-color: #ffffff;
+    --e-popover-background-color: #312a2a;
     /*popper padding大小*/
-    --e-popover-padding: 32px;
+    --e-popover-padding: 20px;
     /*popper字体颜色*/
-    --e-popover-color: #333333;
+    --e-popover-color: #e4dddd;
     /*popper圆角半径*/
     --e-popover-border-radius: 6px;
     /*popper边框样式*/
     --e-popover-border-style: solid;
-    --e-popover-border-width: 1px;
+    --e-popover-border-width: 0px;
     --e-popover-border-color: #eeeeee;
-
     /*popper阴影*/
     --e-popover-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
     /*popper hover状态下背景颜色*/
-    --e-popover-background-color-hover: #ffffff;
-
+    --e-popover-background-color-hover: #312a2a;
 
     /*图标字体颜色*/
-    --e-icon-color: #333333;
+    --e-icon-color: #e4dddd;
     /*滑道背景颜色*/
-    --e-thumb-background-color: #303133;
+    --e-thumb-background-color: #f2f3f3;
     /*输入框前图标边框颜色*/
     --e-input-prefix-icon-border-color: #dcdfe6;
     /*输入框前图标背景颜色*/
-    --e-input-prefix-icon-background-color: #f5f7fa;
+    --e-input-prefix-icon-background-color: #312a2a;
     /*输入框背景颜色*/
-    --e-input-inner-background-color: #ffffff;
+    --e-input-inner-background-color: #312a2a;
     /*输入框边框颜色*/
     --e-input-inner-border-color: #dcdfe6;
     /*输入框字体颜色*/
-    --e-input-inner-color: #606266;
+    --e-input-inner-color: #e4dddd;
     /*输入框获取焦点时边框颜色*/
     --e-input-inner-focus-border-color: #409EFF;
     /*输入框禁用时背景颜色*/
@@ -64,5 +62,17 @@ CSS 变量是一个非常有用的功能，几乎所有浏览器都支持。 （
     --e-icon-picker-icon-list-margin: 5px;
     /*图标选择器列表图标大小*/
     --e-icon-picker-icon-list-font-size: 20px;
+    /*输入框large下字体大小*/
+    --e-input-font-size-large: 14px;
+    /*输入框small下字体大小*/
+    --e-input-font-size-small: 12px;
+    /*输入框default下字体大小*/
+    --e-input-font-size-default: 12px;
+    /*输入框small下高度*/
+    --e-input-height-small: 24px;
+    /*输入框default下高度*/
+    --e-input-height-default: 32px;
+    /*输入框large下高度*/
+    --e-input-height-large: 40px;
 }
 ```
