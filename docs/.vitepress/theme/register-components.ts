@@ -7,7 +7,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as antDesign from '@ant-design/icons-vue'
 import * as tdesign from 'tdesign-icons-vue-next/lib/icons.js'
 import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
-import ElementPlus from 'element-plus'
+import {ElButton, ElDialog, ElMessage} from 'element-plus'
 import 'element-plus/dist/index.css'
 // @ts-ignore
 import iconList from "@docs/components/iconList.vue";
@@ -18,7 +18,9 @@ export function registerComponents(ctx) {
     app.component('Demo', Demo)
     app.component('DemoBlock', DemoBlock)
     app.component('iconList', iconList)
-    app.use(ElementPlus)
+    app.use(ElMessage)
+    app.use(ElButton)
+    app.use(ElDialog)
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
         app.component(key, component)
     }

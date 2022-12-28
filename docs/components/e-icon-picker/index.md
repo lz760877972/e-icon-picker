@@ -7,7 +7,7 @@
 ```vue
 
 <template>
-  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000"/>
+  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" clearable />
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -70,9 +70,7 @@ export default defineComponent({
 ```vue
 
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component EditPen"
-                 placeholder="请选择"
-                 size="medium"/>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component EditPen" placeholder="请选择" />
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -120,9 +118,7 @@ export default defineComponent({
 ```vue
 
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"
-                 placeholder="请选择"
-                 size="medium"/>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -163,9 +159,7 @@ export default defineComponent({
 ```vue
 
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"
-                 placeholder="请选择"
-                 size="medium"/>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -206,9 +200,7 @@ export default defineComponent({
 :::demo
 ```vue
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"
-                 placeholder="请选择"
-                 size="medium"/>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -252,7 +244,7 @@ export default defineComponent({
       title="在dialog中使用"
       v-model="dialogVisible"
       width="30%">
-    <e-icon-picker ref="iconPicker" v-model="icon" placeholder="请选择" size="medium"/>
+    <e-icon-picker ref="iconPicker" v-model="icon" placeholder="请选择" />
     <template #footer>
         <span class="dialog-footer">
             <el-button @click="dialogVisible = false">取 消</el-button>
@@ -300,7 +292,7 @@ export default defineComponent({
 ```vue
 
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :highLightColor="highLightColor" :options="options" :zIndex="zIndex"
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :zIndex="zIndex"
                  :width="width">
     <template v-slot="{data}">
       <el-button @click="show">{{ data.placeholder }}</el-button>
@@ -320,7 +312,6 @@ export default defineComponent({
     const dialogVisible = ref(false)
     let state = reactive({
       icon: '',
-      highLightColor: "#fc1944",
       zIndex: 3500,
       width: 800,
       options: {addIconList: [...eIconList], removeIconList: []},

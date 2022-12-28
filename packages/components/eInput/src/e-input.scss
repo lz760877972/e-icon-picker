@@ -11,12 +11,9 @@
     display: table-cell;
     position: relative;
     border: 1px solid var(--e-input-prefix-icon-border-color, #dcdfe6);
-    padding: 0 20px;
     white-space: nowrap;
     border-right: 0;
     border-radius: 4px 0 0 4px;
-    height: 40px;
-    line-height: 40px;
     box-sizing: border-box;
 
     .e-icon {
@@ -50,8 +47,6 @@
     color: var(--e-input-inner-color, #606266);
     display: inline-block;
     font-size: inherit;
-    height: 40px;
-    line-height: 40px;
     outline: none;
     padding: 0 23px 0 10px;
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -59,6 +54,36 @@
 
     &:focus {
       border-color: var(--e-input-inner-focus-border-color, #409EFF);
+    }
+  }
+
+  &--large {
+    height: var(--e-input-height-large, 40px);
+    line-height: var(--e-input-height-large, 40px);
+    font-size: var(--e-input-font-size-large, 14px);
+
+    .prefix-icon {
+      padding: 0 20px;
+    }
+  }
+
+  &--small {
+    height: var(--e-input-height-small, 24px);
+    line-height: var(--e-input-height-small, 24px);
+    font-size: var(--e-input-font-size-small, 12px);
+
+    .prefix-icon {
+      padding: 0 8px;
+    }
+  }
+
+  &--default {
+    height: var(--e-input-height-default, 32px);
+    line-height: var(--e-input-height-default, 32px);
+    font-size: var(--e-input-font-size-default, 12px);
+
+    .prefix-icon {
+      padding: 0 12px;
     }
   }
 

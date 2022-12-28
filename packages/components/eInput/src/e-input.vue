@@ -2,6 +2,7 @@
   <div class="e-input"
        @mouseenter="handleMouseEnter"
        @mouseleave="handleMouseLeave"
+       :class="`e-input--${size}`"
   >
     <!--  前缀图标区域 v-if="$slots.prepend" -->
     <div class="prefix-icon">
@@ -11,16 +12,17 @@
     </div>
     <input type="text"
            ref="input"
+           class="e-input-inner"
            :disabled="disabled"
            :readonly="readonly"
            :placeholder="placeholder"
            :style="style"
-           :class="disabled ? 'is-disabled' : ''"
+           :class="[disabled ? 'is-disabled' : '']"
            @input="handleInput"
            @focus="handleFocus"
            @blur="handleBlur"
            @change="handleChange"
-           class="e-input-inner"
+
     />
     <!--  清空按钮  -->
     <div class="suffix-icon" v-if="showClear" @click.stop="clear">
@@ -45,7 +47,8 @@ import {
   INPUT_EVENT,
   MOUSE_ENTER_EVENT,
   MOUSE_LEAVE_EVENT,
-  UPDATE_MODEL_EVENT
+  UPDATE_MODEL_EVENT,
+  componentSizes
 } from "../../../constants";
 
 type TargetElement = HTMLInputElement;
@@ -83,6 +86,12 @@ export default defineComponent({
       type: String,
       default: ""
     },
+    size: {
+      type: String,
+      values: componentSizes,
+      default: "default",
+      required: false,
+    }
   },
   setup(props, {emit}) {
     const state = reactive({

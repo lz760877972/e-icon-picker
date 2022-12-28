@@ -80,12 +80,14 @@ import {
   onBeforeMount,
   onBeforeUnmount,
   onMounted,
+  PropType,
   reactive,
   shallowRef,
   toRefs,
-  watch
+  watch,
+  StyleValue
 } from "vue";
-import {iconList, isClient, off, on} from "../../../utils";
+import {iconList, off, on} from "../../../utils";
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
 
@@ -93,7 +95,7 @@ export class Options {
   addIconList?: Array<string>;
   removeIconList?: Array<string>;
 }
-
+export type Placement="top"|"bottom";
 export default defineComponent({
   name: "eIconPicker",
   components: {
@@ -131,7 +133,7 @@ export default defineComponent({
      *  e-icon-picker 样式
      */
     styles: {
-      type: Object,
+      type: Object as PropType<StyleValue>,
       default() {
         return {};
       },
@@ -140,8 +142,14 @@ export default defineComponent({
      * 弹出框位置
      */
     placement: {
-      type: String,
-      default: 'bottom'
+      type:String as  PropType<Placement>,
+      default: 'bottom',
+      validator: (value: string) => {
+        return [
+          "top",
+          "bottom",
+        ].includes(value);
+      },
     },
     /**
      * 值
@@ -154,7 +162,7 @@ export default defineComponent({
      * 参数
      */
     options: {
-      type: Options,
+      type: Object as PropType<Options>,
       default: {}
     },
     /**
@@ -169,7 +177,14 @@ export default defineComponent({
      */
     size: {
       type: String,
-      default: "medium"
+      default: "default",
+      validator: (value: string) => {
+        return [
+          "default",
+          "small",
+          "large"
+        ].includes(value);
+      },
     },
     /**
      * 原生提示
@@ -282,7 +297,7 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      if (isClient) {
+      if (off) {
         off(document, "mouseup", popoverHideFun);
       }
       destroyIconList()
@@ -301,14 +316,14 @@ export default defineComponent({
     watch(() => state.visible, (newValue) => {
       if (newValue === false) {
         nextTick(() => {
-          if (isClient) {
+          if (off) {
             off(document, "mouseup", popoverHideFun);
           }
         });
       } else {
         nextTick(() => {
           createIconList();
-          if (isClient) {
+          if (on) {
             on(document, "mouseup", popoverHideFun);
           }
         });
@@ -456,6 +471,10 @@ export default defineComponent({
     }
   }
 });
+
+function PropType<T>(): any {
+  throw new Error("Function not implemented.");
+}
 </script>
 
 <style lang="scss" scoped>
