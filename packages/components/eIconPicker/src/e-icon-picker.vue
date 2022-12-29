@@ -412,6 +412,7 @@ export default defineComponent({
         } else {
           state.zIndex = nextZIndex()
         }
+        state.iconList = state.icon.list
         state.visible = true;
         updateW();
       }
