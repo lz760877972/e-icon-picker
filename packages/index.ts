@@ -15,11 +15,6 @@ export * from './components/ePopover';
 export * from './components/eScrollbar';
 export * from './components/eIconPicker';
 
-interface MyApp extends App {
-    [INSTALLED_KEY]: boolean;
-}
-
-
 const components = [input, icon, popover, scrollbar, iconPicker];
 
 export {
@@ -30,10 +25,12 @@ export {
 
 export default {
     version: VERSION,
-    install(app: MyApp, options?: Options): void {
+    install(app: App, options?: Options): void {
+        // @ts-ignore
         if (app[INSTALLED_KEY]) {
             return;
         }
+        // @ts-ignore
         app[INSTALLED_KEY] = true;
         components.forEach((component) => app.use(component));
         if (options) {
