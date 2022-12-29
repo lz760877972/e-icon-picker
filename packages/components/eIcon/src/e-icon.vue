@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive} from 'vue'
+import {defineComponent} from 'vue'
 import {isExternal} from "../../../utils";
 import {CLICK_EVENT} from "../../../constants";
 
@@ -34,19 +34,19 @@ export default defineComponent({
   },
   emits: [CLICK_EVENT],
   setup(props, context) {
-    const state = reactive({})
     /**
      * 图标点击事件
      * @param iconName
      * @param event
      */
     const click = (iconName: string, event: Event) => {
-      if (event) event.preventDefault();
+      if (event) {
+        event.preventDefault();
+      }
       context.emit(CLICK_EVENT, iconName)
     }
     return {
-      click,
-      state
+      click
     }
   },
   computed: {

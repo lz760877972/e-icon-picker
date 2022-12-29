@@ -5,9 +5,10 @@
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" @change="change" />
+  <client-only>
+    <e-icon-picker v-model="icon" clearable highLightColor="#ff0000" size="large" @change="change"/>
+  </client-only>
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -18,10 +19,10 @@ export default defineComponent({
   name: 'e-icon-picker-demo',
   setup() {
     let icon = ref("");
-    const change=(val:string)=>{
+    const change = (val: string) => {
       console.log(val)
     }
-    return {icon,change};
+    return {icon, change};
   },
 });
 </script>
@@ -34,10 +35,11 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :disabled="disabled" :readonly="readonly"
-                 :placement="placement" :styles="style" :width="width" clearable />
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :disabled="disabled" :readonly="readonly"
+                   :placement="placement" :styles="style" :width="width" clearable/>
+  </client-only>
   名称： {{ icon }}
   <e-icon :icon-name="icon"/>
 </template>
@@ -71,9 +73,11 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component EditPen" placeholder="请选择" />
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component EditPen"
+                   placeholder="请选择"/>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -94,8 +98,8 @@ export default defineComponent({
       return new URL(`../../public/img/${name}`, import.meta.url).href
     }
     onMounted(() => {
-      iconPicker.value.addIcon("fa fa-slack");
-      iconPicker.value.removeIcon("fa fa-slack");//组件内动态删除图标
+      iconPicker.value?.addIcon("fa fa-slack");
+      iconPicker.value?.removeIcon("fa fa-slack");//组件内动态删除图标
 
       setTimeout(() => {//通过修改参数进行重新设置组件
         state.options.addIconList.push('fa fa-slack');
@@ -119,9 +123,10 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择"/>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -160,9 +165,10 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择"/>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -201,9 +207,12 @@ export default defineComponent({
 ## 组件内使用svg图标展示
 
 :::demo
+
 ```vue
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" />
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择"/>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -240,21 +249,22 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
   <el-button type="primary" @click="dialogVisible = true">点击打开 Dialog</el-button>
-  <el-dialog
-      title="在dialog中使用"
-      v-model="dialogVisible"
-      width="30%">
-    <e-icon-picker ref="iconPicker" v-model="icon" placeholder="请选择" />
-    <template #footer>
+  <client-only>
+    <el-dialog
+        title="在dialog中使用"
+        v-model="dialogVisible"
+        width="30%">
+      <e-icon-picker ref="iconPicker" v-model="icon" placeholder="请选择"/>
+      <template #footer>
         <span class="dialog-footer">
             <el-button @click="dialogVisible = false">取 消</el-button>
             <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
         </span>
-    </template>
-  </el-dialog>
+      </template>
+    </el-dialog>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -293,14 +303,15 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :zIndex="zIndex"
-                 :width="width">
-    <template v-slot="{data}">
-      <el-button @click="show">{{ data.placeholder }}</el-button>
-    </template>
-  </e-icon-picker>
+  <client-only>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" :zIndex="zIndex"
+                   :width="width">
+      <template v-slot="{data}">
+        <el-button @click="show">{{ data.placeholder }}</el-button>
+      </template>
+    </e-icon-picker>
+  </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>
@@ -342,7 +353,6 @@ export default defineComponent({
 :::demo
 
 ```vue
-
 <template>
   <div class="popper-container" :class="theme">
     <div>
@@ -351,8 +361,10 @@ export default defineComponent({
       <input type="radio" v-model="theme" id="dark" value="dark"/>
       <label for="dark">Dark theme</label>
     </div>
-    <div>
-      <e-icon-picker v-model="icon" :content-class="theme"/>
+    <div class="popper-container-icon">
+      <client-only>
+        <e-icon-picker v-model="icon" :content-class="theme"/>
+      </client-only>
       名称： {{ icon }}
       <e-icon :icon-name="icon"/>
     </div>
@@ -387,7 +399,7 @@ export default defineComponent({
   align-items: center;
   justify-content: space-around;
 
-  :last-child {
+  &-icon {
     width: 100%;
   }
 }
@@ -424,7 +436,7 @@ export default defineComponent({
 | emptyText             | 图标列表为空时默认显示的文本   | 暂无可选图标              | 任意                    |
 | highLightColor        | 图标选中高亮（对svg图标无效） | 空                   | 任意（hex）             |
 | zIndex                | 显示的弹窗层数（会全局影响）   | 空                   | 数字                    |
-| appendBody            | 弹窗内容追加到body删除      | true                | true/false                   |
+| appendBody            | 弹窗内容追加到body删除      | false                | true/false                   |
 | contentClass          | 弹窗内容类样式          | 空                |                  |
 | options               | 图标参数             | object              | 无                      |
 

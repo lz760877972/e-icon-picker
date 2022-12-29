@@ -24,16 +24,27 @@
     "url": "https://gitee.com/cnovel/e-icon-picker/issues"
   },
   "workspaces": [
-    "packages/*",
     "docs",
-    "./**"
+    "lib"
   ],
   "main": "index.umd.js",
   "module": "index.mjs",
   "unpkg": "index.umd.js",
   "jsdelivr": "index.umd.js",
-  "style": "index.css",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "style": "index.css",
+  "sideEffects": [
+    "theme/*",
+    "components/*/*"
+  ],
   "scripts": {
     "build:lib": "pnpm clean:lib && pnpm build:components && pnpm build:icon && pnpm release",
     "build:components": "tsx scripts/build.ts",

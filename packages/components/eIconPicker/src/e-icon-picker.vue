@@ -87,7 +87,7 @@ import {
   toRefs,
   watch
 } from "vue";
-import {iconList, isClient, off, on} from "../../../utils";
+import {iconList, isClient, isString, off, on} from "../../../utils";
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
 
@@ -233,7 +233,7 @@ export default defineComponent({
      */
     appendBody: {
       type: Boolean,
-      default: true
+      default: false
     },
     /**
      * 内容自定义样式
@@ -331,7 +331,9 @@ export default defineComponent({
     }, {deep: true})
 
     const change = (val: string) => {
-      state.iconList = state.icon.list.filter((i: string) => i.indexOf(val) !== -1);
+      if (isString(val)) {
+        state.iconList = state.icon.list.filter((i: string) => i.indexOf(val) !== -1);
+      }
     }
 
     const initIcon = (type: boolean | undefined) => {

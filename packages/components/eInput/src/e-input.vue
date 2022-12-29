@@ -106,7 +106,6 @@ export default defineComponent({
 
     const handleInput = (event: Event) => {
       let {value} = event.target as TargetElement
-
       emit(UPDATE_MODEL_EVENT, value)
       emit(INPUT_EVENT, value)
       setNativeInputValue()

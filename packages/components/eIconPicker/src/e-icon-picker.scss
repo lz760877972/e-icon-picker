@@ -31,6 +31,8 @@
   &-no-data {
     display: block;
     text-align: center;
+    color: var(--e-icon-picker-icon-list-no-data-color, rgba(60, 60, 60, .7));
+    font-size: 14px;
   }
 }
 
