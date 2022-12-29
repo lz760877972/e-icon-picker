@@ -35,9 +35,9 @@ export function registerComponents(ctx) {
         addIconList: eIconList,
         zIndex: 3100
     })
-
     app.mixin({
         mounted() {
+
             import('e-icon-picker/icon/default-icon/symbol.js')
             // @ts-ignore
             import('virtual:svg-icons-register')

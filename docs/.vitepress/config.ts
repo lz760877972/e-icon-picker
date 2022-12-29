@@ -1,4 +1,4 @@
-require('esbuild-register')
+// require('esbuild-register')
 
 import configs from './config/index'
 

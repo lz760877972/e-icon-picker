@@ -1,13 +1,19 @@
 import type {App} from 'vue';
-import input, {eInput} from './components/eInput';
-import icon, {eIcon} from './components/eIcon';
-import popover, {ePopover} from './components/ePopover';
-import scrollbar, {eScrollbar} from './components/eScrollbar';
-import iconPicker, {eIconPicker} from './components/eIconPicker';
+import input from './components/eInput';
+import icon from './components/eIcon';
+import popover from './components/ePopover';
+import scrollbar from './components/eScrollbar';
+import iconPicker from './components/eIconPicker';
 import './style/index.scss';
 import {analyzingIconForIconfont, eIconSymbol, iconList} from "./utils";
 import {Options, setConfig} from "./utils/config";
 import {INSTALLED_KEY, VERSION} from "./constants";
+
+export * from './components/eInput';
+export * from './components/eIcon';
+export * from './components/ePopover';
+export * from './components/eScrollbar';
+export * from './components/eIconPicker';
 
 interface MyApp extends App {
     [INSTALLED_KEY]: boolean;
@@ -17,7 +23,6 @@ interface MyApp extends App {
 const components = [input, icon, popover, scrollbar, iconPicker];
 
 export {
-    eInput, eIcon, ePopover, eScrollbar, eIconPicker,
     iconList,
     analyzingIconForIconfont,
     eIconSymbol,

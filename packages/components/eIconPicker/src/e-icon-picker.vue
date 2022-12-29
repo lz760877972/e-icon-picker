@@ -372,11 +372,9 @@ export default defineComponent({
       }
     }
     const selectedIcon = (item: string) => {
-      console.log(item)
       state.visible = false;
       state.name = item;
       state.prefixIcon = state.name;
-      console.log("state", state)
       emitFun(state.prefixIcon);
     }
     // 更新宽度
@@ -390,8 +388,8 @@ export default defineComponent({
 
         if (eScrollbar && eScrollbar.value) {
           setTimeout(() => {
-            eScrollbar.value!.setScrollTop(0);
-            eScrollbar.value!.update();
+            eScrollbar.value?.setScrollTop(0);
+            eScrollbar.value?.update();
           }, 100);
         }
       });
@@ -430,7 +428,6 @@ export default defineComponent({
     }
     // 判断类型，抛出当前选中id
     const emitFun = (val: string) => {
-      console.log("emitFun", val)
       context.emit(UPDATE_MODEL_EVENT, val);
       context.emit(CHANGE_EVENT, val);
       context.emit(INPUT_EVENT, val)

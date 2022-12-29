@@ -305,13 +305,14 @@ export default defineComponent({
   <e-icon :icon-name="icon"/>
 </template>
 <script lang="ts">
-import {defineComponent, reactive, ref, toRefs} from 'vue';
+import {defineComponent, reactive, ref, toRefs, shallowRef} from 'vue';
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
+import {IconPickerInstance} from 'e-icon-picker'
 
 export default defineComponent({
   name: 'e-icon-picker-demo8',
   setup() {
-    let iconPicker = ref(null);
+    let iconPicker = shallowRef<IconPickerInstance>();
     const dialogVisible = ref(false)
     let state = reactive({
       icon: '',
