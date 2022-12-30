@@ -214,9 +214,7 @@ export default defineConfig({
 3.  使用
 ```vue
 <template>
-  <e-icon-picker ref="iconPicker" v-model="icon" :options="options"
-                 placeholder="请选择"
-                 size="medium"/>
+  <e-icon-picker ref="iconPicker" v-model="icon" :options="options" placeholder="请选择" size="medium"/>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>
 </template>

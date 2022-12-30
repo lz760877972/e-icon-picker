@@ -69,6 +69,5 @@ app.mount('#app');
 ## 使用
 
 ```html
-
 <e-icon-picker v-model="icon"/>
 ```

@@ -74,5 +74,7 @@ CSS 变量是一个非常有用的功能，几乎所有浏览器都支持。 （
     --e-input-height-default: 32px;
     /*输入框large下高度*/
     --e-input-height-large: 40px;
+    /*当无图标时显示的文字颜色*/
+    --e-icon-picker-icon-list-no-data-color: rgba(60, 60, 60, .7)
 }
 ```

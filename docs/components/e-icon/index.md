@@ -5,7 +5,6 @@
 :::demo
 
 ```vue
-
 <template>
   <e-icon icon-name="e-icon-xianxingbenzitubiao1" class-name="eiconfont font"/>
   <e-icon icon-name="e-icon-xianxingbenzitubiao2" class-name="eiconfont font"/>
@@ -98,7 +97,6 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as antDesign from '@ant-design/icons-vue'
 import * as tdesign from 'tdesign-icons-vue-next/esm/icons.js'
 import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
-
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
