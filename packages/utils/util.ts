@@ -48,7 +48,7 @@ export const analyzingIconForIconfont = (json: ForIconfont): { font_family: stri
  * 将阿里妈妈的iconfont.json文件读成想用的彩色图标对象
  * @param json
  */
-export const eIconSymbol = (json: ForIconfont): { font_family: string, list: string[], css_prefix_text: string } => {
+export const eIconSymbol = (json: ForIconfont): { font_family: string; list: string[]; css_prefix_text: string } => {
     let font_family = '';
     let css_prefix_text = '';
     let list: Array<string> = [];
@@ -86,5 +86,5 @@ export {
     /**
      * 是否是客户端
      */
-        isClient
-}
+    isClient
+};

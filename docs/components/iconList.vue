@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
 
 import ele from "e-icon-picker/icon/ele/element-ui.js";
@@ -19,9 +19,13 @@ import fontawesome from "e-icon-picker/icon/fontawesome/fontawesome-6.js";
 import antDesign from "e-icon-picker/icon/antd/antd.js";
 import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";
 import arco from "e-icon-picker/icon/arco/arco.js";
+import layui from "e-icon-picker/icon/layui-vue/layui-vue.js"
+import {isClient} from '@vueuse/core';
+import {defineComponent, onMounted, reactive, toRefs} from "vue";
 // import '@e-icon-picker/lib/icon/default-icon/symbol.js'
+import {ElMessage} from 'element-plus'
 
-export default {
+export default defineComponent({
   name: "iconList",
   props: {
     // 是否禁用文本框
@@ -33,52 +37,61 @@ export default {
       },
     },
   },
-  data() {
+  setup(props, context) {
+    const state = reactive({
+      dataList: [] as string[]
+    })
+
+    onMounted(async () => {
+
+      if (props.type === "eIcon") {
+        state.dataList = eIconList
+      } else if (props.type === "eIconSymbol") {
+        state.dataList = eIconList.map((item) => {
+          return item.replace("eiconfont ", "#");
+        })
+      } else if (props.type === "ele") {
+        state.dataList = ele
+      } else if (props.type === "elementPlus") {
+        state.dataList = elementPlus
+      } else if (props.type === "fontAwesomeV470") {
+        state.dataList = fontAwesomeV470
+      } else if (props.type === "fontawesome") {
+        state.dataList = fontawesome
+      } else if (props.type === "antDesign") {
+        state.dataList = antDesign
+      } else if (props.type === "tdesign") {
+        state.dataList = tdesign
+      } else if (props.type === "arco") {
+        state.dataList = arco
+      } else if (props.type === "layui") {
+        state.dataList = layui
+      } else {
+        state.dataList = []
+      }
+    })
+    const copy = (className) => {
+      if (isClient) {
+        let tag = document.createElement('input');
+        tag.setAttribute('id', 'cp_hgz_input');
+        tag.value = className;
+        document.getElementsByTagName('body')[0].appendChild(tag);
+        (document.getElementById('cp_hgz_input')! as HTMLInputElement).select();
+
+        document.execCommand('copy');
+        document.getElementById('cp_hgz_input')!.remove();
+        ElMessage({
+          message: '复制成功',
+          type: 'success'
+        });
+      }
+    }
     return {
-      dataList: []
+      copy,
+      ...toRefs(state)
     }
-  },
-  mounted() {
-    if (this.type === "eIcon") {
-      this.dataList = eIconList
-    } else if (this.type === "eIconSymbol") {
-      this.dataList = eIconList.map((item) => {
-        return item.replace("eiconfont ", "#");
-      })
-    } else if (this.type === "ele") {
-      this.dataList = ele
-    } else if (this.type === "elementPlus") {
-      this.dataList = elementPlus
-    } else if (this.type === "fontAwesomeV470") {
-      this.dataList = fontAwesomeV470
-    } else if (this.type === "fontawesome") {
-      this.dataList = fontawesome
-    } else if (this.type === "antDesign") {
-      this.dataList = antDesign
-    } else if (this.type === "tdesign") {
-      this.dataList = tdesign
-    } else if (this.type === "arco") {
-      this.dataList = arco
-    } else {
-      this.dataList = []
-    }
-  },
-  methods: {
-    copy(className) {
-      let tag = document.createElement('input');
-      tag.setAttribute('id', 'cp_hgz_input');
-      tag.value = className;
-      document.getElementsByTagName('body')[0].appendChild(tag);
-      document.getElementById('cp_hgz_input').select();
-      document.execCommand('copy');
-      document.getElementById('cp_hgz_input').remove();
-      this.$message({
-        message: '复制成功',
-        type: 'success'
-      });
-    },
-  },
-}
+  }
+})
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 import {computed, ComputedRef, ref} from 'vue';
 import {useGlobalConfig} from "./config";
-import type { Ref } from 'vue'
+import type { Ref } from 'vue';
 
 export declare class ZIndex {
     initialZIndex: Ref<number>;

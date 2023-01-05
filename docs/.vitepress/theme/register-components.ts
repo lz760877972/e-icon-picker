@@ -2,14 +2,15 @@ import Demo from 'vitepress-theme-demoblock/dist/client/components/Demo.vue'
 import DemoBlock from 'vitepress-theme-demoblock/dist/client/components/DemoBlock.vue'
 import eIconPicker from 'e-icon-picker';
 import 'e-icon-picker/index.css';
-import eIconList from 'e-icon-picker/icon/default-icon/eIconList'
+import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as antDesign from '@ant-design/icons-vue'
 import * as tdesign from 'tdesign-icons-vue-next/lib/icons.js'
+import * as layui from '@layui/icons-vue/lib/icons-vue.umd.js'
+import '@layui/icons-vue/lib/index.css'
 import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
 import {ElButton, ElDialog, ElMessage} from 'element-plus'
 import 'element-plus/dist/index.css'
-// @ts-ignore
 import iconList from "@docs/components/iconList.vue";
 import "../theme/styles/index.scss"
 
@@ -33,17 +34,20 @@ export function registerComponents(ctx) {
     for (const [key, component] of Object.entries(ArcoVueIcon)) {
         app.component(key, component)
     }
+    for (const [key, component] of Object.entries(layui)) {
+        if (key !== 'LayIconList') {
+            app.component(key, component)
+        }
+    }
     app.use(eIconPicker, {
         addIconList: eIconList,
         zIndex: 3100
     })
     app.mixin({
         mounted() {
-            // @ts-ignore
             import('e-icon-picker/icon/default-icon/symbol.js')
             // @ts-ignore
             import('virtual:svg-icons-register')
-            // @ts-ignore
             import('@public/js/iconfont.js')
         },
     })

@@ -193,7 +193,14 @@ export default defineConfig({
     plugins: [
         createSvgIconsPlugin({
             // 指定需要缓存的图标文件夹
-            iconDirs: [path.resolve(process.cwd(), 'src/svg')],
+            iconDirs: [
+              //本地图标
+              path.resolve(process.cwd(), '.vitepress/theme/svg'),
+              //外部 feather-icons 图标集
+              //npm install feather-icons --save
+              //https://github.com/feathericons/feather#feather
+              path.resolve(process.cwd(), 'node_modules/feather-icons/dist/icons')
+            ],
             // 指定symbolId格式
             symbolId: '[name]',
             svgoOptions: {

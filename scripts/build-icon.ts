@@ -1,12 +1,15 @@
-import elementPlus2 from "./icon/element-plus2.0"
-import elementUI from "./icon/element-ui"
-import fontAwesome470 from "./icon/font-awesome.v4.7.0"
-import fontAwesome6XX from "./icon/fontawesome-6.x.x"
-import fontAwesome5XX from "./icon/fontawesome-5.x.x"
-import fontAwesome5XXPro from "./icon/fontawesome-5.x.x-pro"
-import antDesign from "./icon/antDesign"
-import tdesignIcons from "./icon/tdesignIcons"
-import arcoVueIcon from "./icon/arcoVueIcon"
+import {
+    antDesign,
+    arcoVueIcon,
+    elementPlus2,
+    elementUI,
+    fontAwesome470,
+    fontAwesome5XX,
+    fontAwesome5XXPro,
+    fontAwesome6XX,
+    layuiVue,
+    tdesignIcons
+} from './icon';
 
 const icon = async () => {
     await elementPlus2();
@@ -19,5 +22,6 @@ const icon = async () => {
     await antDesign();
     await tdesignIcons();
     await arcoVueIcon();
+    await layuiVue();
 }
 icon()

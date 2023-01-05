@@ -10,9 +10,11 @@
     "strict": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "lib": ["WebWorker"],
+    "lib": ["WebWorker","DOM"],
     "paths": {
       "e-icon-picker": ["../lib"],
+      "@docs/*": ["./*"],
+      "@public/*": ["./public/*"],
       "~/*": ["./.vitepress/vitepress/*"]
     }
   },

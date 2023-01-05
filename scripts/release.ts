@@ -33,6 +33,7 @@ const release = async () => {
     shell.cp('-R', path.resolve(__dirname, './icon/antd'), path.resolve(outputDir, 'icon'));
     shell.cp('-R', path.resolve(__dirname, './icon/tdesign'), path.resolve(outputDir, 'icon'));
     shell.cp('-R', path.resolve(__dirname, './icon/arco'), path.resolve(outputDir, 'icon'));
+    shell.cp('-R', path.resolve(__dirname, './icon/layui-vue'), path.resolve(outputDir, 'icon'));
 
     shell.cp('-R', path.resolve(packagesDir, './utils/getSvg.js'), path.resolve(outputDir, 'utils/getSvg.js'));
 

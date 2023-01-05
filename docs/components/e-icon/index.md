@@ -70,6 +70,7 @@ import fontAwesome6shims from "e-icon-picker/icon/fontawesome/v4-shims-6.js"//fo
 import antDesign from "e-icon-picker/icon/antd/antd.js";//antDesign 图标
 import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";//tdesign 图标
 import arco from "e-icon-picker/icon/arco/arco.js";//arco.design 图标
+import layui from "e-icon-picker/icon/layui-vue/layui-vue.js";//layui-vue图标
 ```
 ### 使用组件图标
 #### 安装element-plus图标
@@ -91,12 +92,20 @@ npm install tdesign-icons-vue-next
 ```bash
 npm install @arco-design/web-vue
 ```
+
+#### 安装@layui/icons-vue图标
+```bash
+npm install @layui/icons-vue
+```
+
 #### 注册使用
 ```vue
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as antDesign from '@ant-design/icons-vue'
 import * as tdesign from 'tdesign-icons-vue-next/esm/icons.js'
 import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
+import * as layui from '@layui/icons-vue';
+import '@layui/icons-vue/lib/index.css';//layui-vue需要引入css
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
@@ -110,11 +119,18 @@ for (const [key, component] of Object.entries(tdesign)) {
 for (const [key, component] of Object.entries(ArcoVueIcon)) {
     app.component(key, component)
 }
+for (const [key, component] of Object.entries(layui)) {
+    app.component(key, component)
+}
 ```
 
 ### eIcon 默认图标
 
 <iconList type="eIcon"/>
+
+### eIcon Symbol 图标集
+
+<iconList type="eIconSymbol"/>
 
 ### fontAwesome 4.7 整理后的图标集
 
@@ -128,14 +144,9 @@ for (const [key, component] of Object.entries(ArcoVueIcon)) {
 
 <iconList type="elementPlus"/>
 
-### eIconSymbol 图标集
-
-<iconList type="eIconSymbol"/>
-
 ### fontawesome 6.x 图标集
 
 <iconList type="fontawesome"/>
-
 
 ### antDesign 图标集
 
@@ -148,3 +159,7 @@ for (const [key, component] of Object.entries(ArcoVueIcon)) {
 ### ArcoVueIcon 图标集
 
 <iconList type="arco"/>
+
+### layui-vue 图标集
+
+<iconList type="layui"/>
