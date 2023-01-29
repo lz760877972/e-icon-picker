@@ -19,7 +19,7 @@ npm install e-icon-picker@next -S
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://unpkg.com/e-icon-picker@next/index.css">
 
-<!-- font-awesome图标样式 -->
+<!-- font-awesome 4.7 图标样式 -->
 <link rel="stylesheet" href="https://unpkg.com/font-awesome/css/font-awesome.min.css">
 
 <!--单独引用element-plus图标组件 -->

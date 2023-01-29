@@ -98,6 +98,13 @@ npm install @arco-design/web-vue
 npm install @layui/icons-vue
 ```
 
+####  安装@fortawesome图标
+> 因为@fortawesome不是全部免费，所以需要自行解决安装。下面的也不是全部图标。
+```bash
+npm install --save @fortawesome/fontawesome-svg-core 
+npm install --save @fortawesome/free-solid-svg-icons 
+```
+
 #### 注册使用
 ```vue
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
