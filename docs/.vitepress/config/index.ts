@@ -4,7 +4,7 @@ import sidebar from './sidebar'
 import nav from './nav'
 import markdown from './markdown'
 import head from "./head";
-import lang from './lang'
+// import lang from './lang'
 // @ts-ignore
 import gitee from '../theme/assets/gitee.ts';
 
@@ -30,10 +30,12 @@ const config = defineConfig({
         sidebar,
         nav,
         logo: '/img/logo.png',
-        outlineTitle: '本页目录',
+        // // @ts-ignore
+        // demoblock: lang,
+        outline:{
+            label: '本页目录',
+        },
         lastUpdatedText: '最近更新时间',
-        // @ts-ignore
-        demoblock: lang,
         socialLinks: [
             {icon: {svg: gitee}, link: 'https://gitee.com/cnovel/e-icon-picker'},
             /* { icon: 'https://gitee.com/assets/favicon.ico', link: 'https://gitee.com/cnovel/e-icon-picker' }*/

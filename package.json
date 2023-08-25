@@ -15,7 +15,7 @@
     "icon picker",
     "icon"
   ],
-  "homepage": "https://e-icon-picker-ts.cnovel.club",
+  "homepage": "https://e-icon-picker-ts.cnovel.top",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/cnovel/e-icon-picker"
@@ -49,7 +49,7 @@
     "build:lib": "pnpm clean:lib && pnpm build:components && pnpm build:icon && pnpm release",
     "build:components": "tsx scripts/build.ts",
     "build:icon": "pnpm clean:icon && tsx scripts/build-icon.ts",
-    "clean:icon": "rimraf ./scripts/icon/ele && rimraf ./scripts/icon/fontawesome",
+    "clean:icon": "cd ./scripts/icon && rimraf ./antd ./arco ./ele ./fontawesome ./layui-vue ./tdesign",
     "release": "tsx scripts/release.ts",
     "clean:lib": "rimraf lib",
     "update:version": "tsx scripts/update-version.ts",
@@ -68,7 +68,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@vue/shared": "^3.2.45",
-    "@vueuse/core": "^9.11.0",
+    "@vueuse/core": "^9.12.0",
     "debounce": "^1.2.1",
     "vue": "^3.2.45"
   },
@@ -76,10 +76,10 @@
     "@layui/icons-vue": "^1.0.9",
     "@ant-design/icons-vue": "^6.1.0",
     "@arco-design/web-vue": "^2.42.0",
-    "@babel/parser": "^7.20.7",
+    "@babel/parser": "^7.20.13",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.18.6",
-    "@babel/traverse": "^7.20.12",
+    "@babel/traverse": "^7.20.13",
     "@element-plus/icons-vue": "^2.0.10",
     "@rollup/pluginutils": "^5.0.2",
     "@types/chalk": "^2.2.0",
@@ -90,13 +90,12 @@
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.18",
     "@types/shelljs": "^0.8.11",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "@typescript-eslint/parser": "^5.48.2",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/compiler-sfc": "^3.2.45",
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
-    "eslint": "^8.32.0",
+    "eslint": "^8.33.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-vue": "^9.9.0",
     "fs-extra": "^11.1.0",
@@ -104,7 +103,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
-    "rimraf": "^4.1.1",
+    "rimraf": "^4.1.2",
     "sass": "^1.57.1",
     "shelljs": "^0.8.5",
     "stylelint": "^14.16.1",
@@ -116,7 +115,8 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-plugin-dts": "^1.7.1",
-    "vue-tsc": "^1.0.24"
+    "vue-tsc": "^1.0.24",
+    "e-icon-picker": "workspace:./lib"
   },
   "lint-staged": {
     "packages/**/{*.vue,*.ts}": "eslint --fix",

@@ -12,7 +12,8 @@ import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
 import {ElButton, ElDialog, ElMessage} from 'element-plus'
 import 'element-plus/dist/index.css'
 import iconList from "@docs/components/iconList.vue";
-import "../theme/styles/index.scss"
+import "../theme/styles/index.scss";
+import 'vitepress-theme-demoblock/dist/theme/styles/index.css';
 
 export function registerComponents(ctx) {
     const {app} = ctx

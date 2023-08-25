@@ -1,9 +1,9 @@
 # e-icon-picker 图标选择组件
 简洁大方，专为`element-plus`（已经脱离element-plus独立可用）和`font-awesome`（可选）图标库开发的图标选择组件，希望大家喜欢！
 
-![示例图片](https://oscimg.oschina.net/oscnet/up-bf411d272ce969c1d5be9dc1ea12a8969ea.JPEG "示例图片")
+![示例图片](https://f.pz.al/pzal/2023/08/25/b08849bad57de.jpeg "示例图片")
 
-![示例图片](https://oscimg.oschina.net/oscnet/up-c4ac227f3356ee405358e951450cdeffed5.png "示例图片")
+![示例图片](https://f.pz.al/pzal/2023/08/25/1eb5b2cfd9882.png "示例图片")
 
 喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)
 
@@ -39,7 +39,7 @@ app.mount('#app');
 ```
 
 详细文档
-- [使用文档](https://e-icon-picker-ts.cnovel.club)
+- [使用文档](http://e-icon-picker-ts.cnovel.top)
 
 ## 使用
 
@@ -51,7 +51,7 @@ app.mount('#app');
 
 开源项目不易，若此项目能得到你的青睐，可以捐赠支持作者持续开发与维护。喜欢的欢迎star [项目地址](https://gitee.com/cnovel/e-icon-picker)。
 
- ![收款码](https://oscimg.oschina.net/oscnet/up-e2344cd770f7f7386637d0dbbfb5d48472c.JPEG)
+![收款码](https://f.pz.al/pzal/2023/08/25/c258541523819.jpeg)
 
 **捐赠名单**
 
@@ -64,14 +64,20 @@ app.mount('#app');
 
 **演示图**
 
-| ![用户登录](https://oscimg.oschina.net/oscnet/up-4fc9e90ab9a427415b2a231d647bb6682b4.png "用户登录") | ![系统首页](https://oscimg.oschina.net/oscnet/up-f5f91451165f3d0dcfdcab9482ab867c09f.png "系统首页") |
-| ------------ | ------------ |
-| ![用户管理](https://oscimg.oschina.net/oscnet/up-3914e348f499598c26aba4b7c92ad5ce8bb.png "用户管理") | ![用户编辑](https://oscimg.oschina.net/oscnet/up-f24997c68d622dc9b2d079ef24da9919d17.png "用户编辑") |
-| ![角色管理](https://oscimg.oschina.net/oscnet/up-a0604715ea922b9cc06cc7ebf5e9d874159.png "角色管理") | ![角色编辑](https://oscimg.oschina.net/oscnet/up-8f24ea94aec59ff494d205254ec9f04ad2c.png "角色编辑") |
-| ![菜单管理](https://oscimg.oschina.net/oscnet/up-fb682a64f33692c7fe95befcc83b484f02f.png "菜单管理") | ![菜单编辑](https://oscimg.oschina.net/oscnet/up-ce248e9ea710d4b39969400a5c485cf19a2.png "菜单编辑") |
-| ![岗位管理](https://oscimg.oschina.net/oscnet/up-d962e260fdcd43929ff5e8664a00b9ebf2e.png "岗位管理") | ![岗位编辑](https://oscimg.oschina.net/oscnet/up-deac57b7fae4d300bf64267fe9d4408f1d1.png "岗位编辑") |
-| ![部门管理](https://oscimg.oschina.net/oscnet/up-a87d3c402fc59b075d11749860043af78f4.png "部门管理") | ![部门编辑](https://oscimg.oschina.net/oscnet/up-c9663b06835ac73f523409c14d65f8d1b85.png "部门编辑") |
-| ![操作日志](https://oscimg.oschina.net/oscnet/up-51c244b113d1fe11e51c5e8db36c27baf83.png "操作日志") | ![日志详情](https://oscimg.oschina.net/oscnet/up-12952a8957a15b8e7fb0d9cebe219c6e093.png "日志详情") |
-| ![登录日志](https://oscimg.oschina.net/oscnet/up-04f46761918f952cf8df0dc56b09672e69e.png "登录日志") | ![服务监控](https://oscimg.oschina.net/oscnet/up-257213ddf2fcbf090f15a2f3573eff2b566.png "服务监控") |
-| ![在线用户](https://oscimg.oschina.net/oscnet/up-0b0ab18325a221e68057be0baabea481602.png "在线用户") | ![数据监控](https://oscimg.oschina.net/oscnet/up-762373c8e139d6512c4f0c64269a5d55c19.png "数据监控") |
-| ![个人信息](https://oscimg.oschina.net/oscnet/up-172e7b0f0140f82b11f4929e8af9b33aac5.png "个人信息") | ![编辑头像](https://oscimg.oschina.net/oscnet/up-4583a5fb165131316c90e4793089755f896.png "编辑头像") |
+| ![用户登录](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241055743.png "用户登录") | ![系统首页](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241055484.png "系统首页") |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![用户管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241055932.png "用户管理") | ![用户编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241055644.png "用户编辑") |
+| ![角色管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241055985.png "角色管理") | ![角色编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056529.png "角色编辑") |
+| ![菜单管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241116698.png "菜单管理") | ![菜单编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056802.png "菜单编辑") |
+| ![岗位管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056046.png "岗位管理") | ![岗位编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241114800.png "岗位编辑") |
+| ![部门管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241116748.png "部门管理") | ![部门编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056406.png "部门编辑") |
+| ![参数管理](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056163.png "参数管理") | ![参数编辑](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056066.png "参数编辑") |
+| ![操作日志](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056139.png "操作日志") | ![日志详情](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241056804.png "日志详情") |
+| ![登录日志](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241121203.png "登录日志") | ![服务监控](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057672.png "服务监控") |
+| ![在线用户](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057712.png "在线用户") | ![数据源监控](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057120.png "数据源监控") |
+| ![个人信息](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057687.png "个人信息") | ![编辑头像](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057156.png "编辑头像") |
+| ![定时任务](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241059717.png "定时任务") | ![任务日志](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057034.png "任务日志") |
+| ![SQL监控](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241057166.png "SQL监控") | ![SQL监控详情](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241058040.png "SQL监控详情") |
+| ![WEB监控](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241058339.png "WEB监控") | ![SQL防火墙](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241101277.png "SQL防火墙") |
+| ![Spring监控](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241101320.png "Spring监控") | ![Spring监控详情](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241119563.png "Spring监控详情") |
+| ![个人网盘](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241058295.png "个人网盘") | ![图片预览](https://raw.gitmirror.com/lizhen789/pic/main/test/202308241058018.png "图片预览") |
