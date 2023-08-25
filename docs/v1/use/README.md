@@ -22,7 +22,7 @@ https://unpkg.com/e-icon-picker@latest
 https://unpkg.com/e-icon-picker@latest/lib/index.css
 
 <!-- font-awesome图标样式 -->
-https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css
+https://unpkg.com/font-awesome/css/font-awesome.min.css
 
 <!-- element-ui图标样式 -->
 https://unpkg.com/element-ui/lib/theme-chalk/icon.css
