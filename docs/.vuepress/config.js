@@ -10,7 +10,7 @@ module.exports = {
         ['link', {rel: 'icon', href: '/img/favicon.ico'}],  //浏览器的标签栏的网页图标
         ['link', {rel: 'stylesheet', href: 'https://unpkg.com/e-icon-picker@latest/lib/index.css'}],
         ['link', {rel: 'stylesheet', href: 'https://unpkg.com/element-ui/lib/theme-chalk/icon.css'}],
-        ['link', {rel: 'stylesheet', href: 'https://unpkg.zhimg.com/font-awesome/css/font-awesome.min.css'}],
+        ['link', {rel: 'stylesheet', href: 'https://unpkg.com/font-awesome/css/font-awesome.min.css'}],
         ['link', {rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css'}],
         ['link', {
             rel: 'stylesheet',
