@@ -26,17 +26,17 @@
       {
         "name": "@vuedx/typescript-plugin-vue"
       }
-    ]
+    ],
+    "paths": {
+      "@e-icon-picker/*": ["packages/*"]
+    }
   },
   "include": [
-    "packages/components/**/*",
-    "docs/**/*"
+    "packages/components/**",
+    "docs/**"
   ],
   "exclude": [
     "node_modules",
     "node_module/**",
-  ],
-  "paths": {
-    "@e-icon-picker/*": ["packages/*"]
-  }
+  ]
 }

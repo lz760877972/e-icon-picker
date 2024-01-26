@@ -39,7 +39,13 @@
 div[class*='language-'] {
   padding-bottom: 2px;
 }
-
+.el-button{
+  height: auto!important;
+}
+.el-dialog{
+  width: var(--el-dialog-width,50%)!important;
+  margin: var(--el-dialog-margin-top,15vh) auto 50px!important;
+}
 :root {
   --vp-c-brand: #646cff;
   --vp-c-brand-light: #747bff;

@@ -9,7 +9,9 @@ async function generate() {
     // let version = await util.getVersion("www.bootcdn.cn", "/font-awesome/");
     // console.log("Font Awesome v" + version);
     //https://unpkg.zhimg.com/font-awesome@4.7.0/css/font-awesome.min.css
-    let source = await getCss("unpkg.com", "/font-awesome@4.7.0/css/font-awesome.min.css")
+    let source = await getCss("cdn.bootcdn.net", `/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css`)
+
+    console.log("f470",source)
     let nameCount = 0;
     let fa: string[] = [];
     parse(source, (it: string[]) => {

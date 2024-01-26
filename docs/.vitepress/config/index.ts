@@ -7,6 +7,7 @@ import head from "./head";
 // import lang from './lang'
 // @ts-ignore
 import gitee from '../theme/assets/gitee.ts';
+import {demoblockVitePlugin} from "vitepress-theme-demoblock";
 
 const config = defineConfig({
     title: 'e-icon-picker', // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
@@ -14,6 +15,9 @@ const config = defineConfig({
     // @ts-ignore
     head, // 注入到当前页面的 HTML <head> 中的标签
     markdown,
+    vite: {
+        plugins: [demoblockVitePlugin()]
+    },
     lang: 'zh-CN', // 语言
     locales: {
         '/': {
@@ -35,13 +39,15 @@ const config = defineConfig({
         outline:{
             label: '本页目录',
         },
-        lastUpdatedText: '最近更新时间',
+        lastUpdated:{
+            text:'最近更新时间'
+        },
         socialLinks: [
             {icon: {svg: gitee}, link: 'https://gitee.com/cnovel/e-icon-picker'},
             /* { icon: 'https://gitee.com/assets/favicon.ico', link: 'https://gitee.com/cnovel/e-icon-picker' }*/
         ],
         footer: {
-            copyright: `MIT Licensed | Copyright © 2020-${new Date().getFullYear()} <a href="https://cnovel.club" target="_blank">cnovel.club</a>`
+            copyright: `MIT Licensed | Copyright © 2020-${new Date().getFullYear()} <a href="https://cnovel.top" target="_blank">cnovel.top</a>`
         },
         docFooter: {
             prev: "上一页",

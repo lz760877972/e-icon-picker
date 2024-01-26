@@ -16,7 +16,8 @@
       "@docs/*": ["./*"],
       "@public/*": ["./public/*"],
       "~/*": ["./.vitepress/vitepress/*"]
-    }
+    },
+    "types": ["vite-plugin-svg-icons/client"]
   },
   "include": ["**/*", ".vitepress/**/*"],
   "exclude": ["node_modules"]

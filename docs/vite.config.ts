@@ -1,46 +1,37 @@
-import path from 'path';
-import {defineConfig} from 'vite';
+import path, {resolve} from 'path';
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons';
 
-export default defineConfig({
+const pathResolve = (dir: string): string => {
+  return resolve(__dirname, '.', dir);
+};
+
+export default () => {
+  return {
     resolve: {
-        alias: [
-            {find: '@public', replacement: path.resolve(__dirname, './public')},
-            {find: '@docs', replacement: path.resolve(__dirname, './')}
-        ],
+      alias: [
+        {find: '@public', replacement: path.resolve(__dirname, './public')},
+        {find: '@docs', replacement: path.resolve(__dirname, './')}
+      ],
     },
     plugins: [
-        createSvgIconsPlugin({
-            // 指定需要缓存的图标文件夹
-            iconDirs: [
-                path.resolve(process.cwd(), '.vitepress/theme/svg'),
-                //feather-icons 图标集
-                //npm install feather-icons --save
-                //https://github.com/feathericons/feather#feather
-                path.resolve(process.cwd(), 'node_modules/feather-icons/dist/icons')
-            ],
-            // 指定symbolId格式
-            symbolId: '[name]',
-            svgoOptions: {
-                // @ts-ignore
-              /*  plugins: [{
-                    name: "removeAttrs",
-                    params: {
-                        attrs: "(fill|stroke)"
-                    }
-                }]*/
-            }
-        })
+      createSvgIconsPlugin({
+        iconDirs: [
+          pathResolve('.vitepress/theme/svg'),
+          pathResolve('node_modules/feather-icons/dist/icons')
+        ],
+        symbolId: '[name]'
+      })
     ],
     optimizeDeps: {
-        exclude: ['vue-router'],
+      exclude: ['vue-router'],
     },
     server: {
-        fs: {
-            strict: false,
-        },
+      fs: {
+        strict: false,
+      },
     },
     css: {
-        preprocessorOptions: {scss: {charset: false}}
+      preprocessorOptions: {scss: {charset: false}}
     }
-});
+  }
+}

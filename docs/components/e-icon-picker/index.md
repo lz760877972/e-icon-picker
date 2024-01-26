@@ -132,7 +132,7 @@ export default defineComponent({
 <script lang="ts">
 import {defineComponent, onMounted, reactive, ref, toRefs} from 'vue';
 import {eIconSymbol} from 'e-icon-picker';
-import '../../public/js/iconfont.js'
+// import '../../public/js/iconfont.js' //引入图标库
 import iconfont from '../../public/css/iconfont.json' //引入图标名称json
 
 export default defineComponent({
@@ -174,11 +174,12 @@ export default defineComponent({
 <script lang="ts">
 import {defineComponent, onMounted, reactive, ref, toRefs} from 'vue';
 import {analyzingIconForIconfont} from 'e-icon-picker';
-import iconfont from '../../public/css/iconfont.json' //引入图标名称json
+import iconfont from '@public/css/iconfont.json' //引入图标名称json
 
 export default defineComponent({
   name: 'e-icon-picker-demo5',
   setup() {
+    console.log("iconfont",iconfont)
     let iconPicker = ref(null);
     let state = reactive({
       icon: '',
@@ -187,6 +188,7 @@ export default defineComponent({
 
     const addIcon = () => {
       let icon = analyzingIconForIconfont(iconfont);//处理图标
+      console.log("图标列表",icon)
       state.options.addIconList = icon.list;//将图标列表加入到图标选择器
     }
     onMounted(() => {
@@ -196,8 +198,8 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-@import '../../public/css/iconfont.css';
+<style lang="scss">
+@import '@public/css/iconfont.css';
 </style>
 ```
 
@@ -288,7 +290,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .dialog-footer button {
   margin-right: 10px;
 }
@@ -385,7 +387,7 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
-@import '~e-icon-picker/theme/theme.css';
+@import 'e-icon-picker/theme/theme.css';
 
 .popper-container {
   padding: 20px;

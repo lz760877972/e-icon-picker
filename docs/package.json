@@ -2,27 +2,30 @@
   "name": "@e-icon-picker/docs",
   "private": true,
   "version": "2.0.10",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev . --host",
     "build": "vitepress build .",
     "preview": "vitepress preview ."
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.1.0",
-    "@arco-design/web-vue": "^2.43.2",
-    "@element-plus/icons-vue": "^2.1.0",
-    "@layui/icons-vue": "^1.0.9",
-    "element-plus": "^2.2.33",
-    "feather-icons": "^4.29.0",
-    "tdesign-icons-vue-next": "^0.1.7",
-    "vue": "^3.2.47"
+    "@ant-design/icons-vue": "^7.0.1",
+    "@arco-design/web-vue": "^2.54.3",
+    "@element-plus/icons-vue": "^2.3.1",
+    "@layui/icons-vue": "^1.1.0",
+    "element-plus": "^2.5.3",
+    "feather-icons": "^4.29.1",
+    "tdesign-icons-vue-next": "^0.2.2",
+    "vue": "^3.4.15",
+    "vitepress-theme-demoblock": "3.0.3",
+    "e-icon-picker": "workspace:./lib"
   },
   "devDependencies": {
-    "@types/node": "^18.14.6",
-    "esbuild-register": "^3.4.2",
+    "@types/node": "^20.11.7",
+    "esbuild-register": "^3.5.0",
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "1.0.0-alpha.49",
-    "vitepress-theme-demoblock": "2.0.2"
+    "vitepress": "1.0.0-rc.40",
+    "sass": "^1.70.0"
   }
 }

@@ -16,18 +16,20 @@
     /*popper hover状态下背景颜色*/
     --e-popover-background-color-hover: #312a2a;
 
+    /*输入框边框颜色*/
+    --e-border-color: #4c4d4f;
     /*图标字体颜色*/
     --e-icon-color: #e4dddd;
     /*滑道背景颜色*/
     --e-thumb-background-color: #f2f3f3;
     /*输入框前图标边框颜色*/
-    --e-input-prefix-icon-border-color: #dcdfe6;
+    --e-input-prefix-icon-border-color: var(--e-border-color);
     /*输入框前图标背景颜色*/
-    --e-input-prefix-icon-background-color: #312a2a;
+    --e-input-prefix-icon-background-color: #161618;
     /*输入框背景颜色*/
-    --e-input-inner-background-color: #312a2a;
+    --e-input-inner-background-color: #161618;
     /*输入框边框颜色*/
-    --e-input-inner-border-color: #dcdfe6;
+    --e-input-inner-border-color: var(--e-border-color);
     /*输入框字体颜色*/
     --e-input-inner-color: #e4dddd;
     /*输入框获取焦点时边框颜色*/
@@ -35,7 +37,7 @@
     /*输入框禁用时背景颜色*/
     --e-input-inner-disabled-background-color: #f5f7fa;
     /*输入框禁用时边框颜色*/
-    --e-input-inner-disabled-border-color: #dcdfe6;
+    --e-input-inner-disabled-border-color: var(--e-border-color);
     /*输入框禁用时字体颜色*/
     --e-input-inner-disabled-color: #c0c4cc;
     /*图标选择器列表图标宽度*/
@@ -79,19 +81,20 @@
     /*popper hover状态下背景颜色*/
     --e-popover-background-color-hover: #ffffff;
 
-
+    /*输入框边框颜色*/
+    --e-border-color: #dcdfe6;
     /*图标字体颜色*/
     --e-icon-color: #333333;
     /*滑道背景颜色*/
     --e-thumb-background-color: #303133;
     /*输入框前图标边框颜色*/
-    --e-input-prefix-icon-border-color: #dcdfe6;
+    --e-input-prefix-icon-border-color: var(--e-border-color);
     /*输入框前图标背景颜色*/
     --e-input-prefix-icon-background-color: #f5f7fa;
     /*输入框背景颜色*/
     --e-input-inner-background-color: #ffffff;
     /*输入框边框颜色*/
-    --e-input-inner-border-color: #dcdfe6;
+    --e-input-inner-border-color: var(--e-border-color);
     /*输入框字体颜色*/
     --e-input-inner-color: #606266;
     /*输入框获取焦点时边框颜色*/
@@ -99,7 +102,7 @@
     /*输入框禁用时背景颜色*/
     --e-input-inner-disabled-background-color: #f5f7fa;
     /*输入框禁用时边框颜色*/
-    --e-input-inner-disabled-border-color: #dcdfe6;
+    --e-input-inner-disabled-border-color: var(--e-border-color);
     /*输入框禁用时字体颜色*/
     --e-input-inner-disabled-color: #c0c4cc;
     /*图标选择器列表图标宽度*/
