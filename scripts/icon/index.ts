@@ -9,3 +9,4 @@ export {default as antDesign} from "./antDesign"
 export {default as tdesignIcons} from "./tdesignIcons"
 export {default as arcoVueIcon} from "./arcoVueIcon"
 export {default as layuiVue} from './layui-vue'
+export {default as iconify} from './iconify'

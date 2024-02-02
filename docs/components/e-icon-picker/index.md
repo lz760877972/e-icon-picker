@@ -46,14 +46,14 @@ export default defineComponent({
 <script lang="ts">
 import {defineComponent, reactive, toRefs, ref} from 'vue';
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'
-
+import brandico from "e-icon-picker/icon/iconify/brandico.js"
 export default defineComponent({
   name: 'e-icon-picker-demo2',
   setup() {
     let iconPicker = ref(null);
     let state = reactive({
       icon: '',
-      options: {addIconList: [...eIconList], removeIconList: []},
+      options: {addIconList: [...eIconList,...brandico], removeIconList: []},
       disabled: false,
       readonly: false,
       placement: 'bottom',

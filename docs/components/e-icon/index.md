@@ -71,6 +71,7 @@ import antDesign from "e-icon-picker/icon/antd/antd.js";//antDesign 图标
 import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";//tdesign 图标
 import arco from "e-icon-picker/icon/arco/arco.js";//arco.design 图标
 import layui from "e-icon-picker/icon/layui-vue/layui-vue.js";//layui-vue图标
+import academicons from "e-icon-picker/icon/iconify/academicons.js";//iconify:academicons图标 同名文件自行查看，或者去iconify官网查看
 ```
 ### 使用组件图标
 #### 安装element-plus图标
@@ -170,3 +171,7 @@ for (const [key, component] of Object.entries(layui)) {
 ### layui-vue 图标集
 
 <iconList type="layui"/>
+
+### iconify:brandico 图标集
+
+<iconList type="brandico"/>

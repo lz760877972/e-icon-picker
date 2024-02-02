@@ -52,6 +52,7 @@ export function registerComponents(ctx) {
       import('e-icon-picker/icon/default-icon/symbol.js')
       // @ts-ignore
       import('virtual:svg-icons-register')
+      import('@purge-icons/generated')
       import('@public/js/iconfont.js')
     },
   })

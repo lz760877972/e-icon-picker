@@ -8,7 +8,8 @@ import {
     fontAwesome5XXPro,
     fontAwesome6XX,
     layuiVue,
-    tdesignIcons
+    tdesignIcons,
+    iconify
 } from './icon';
 
 const icon = async () => {
@@ -23,5 +24,6 @@ const icon = async () => {
     await tdesignIcons();
     await arcoVueIcon();
     await layuiVue();
+    await iconify();
 }
 icon()

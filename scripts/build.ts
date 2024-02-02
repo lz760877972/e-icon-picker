@@ -81,8 +81,7 @@ const buildAll = async () => {
             ...baseConfig,
             plugins: [...baseConfig.plugins, dts({
                 entryRoot: path.resolve(entryDir),
-                skipDiagnostics: false,
-                outputDir: outputDir,
+                outDir: outputDir,
                 include: "packages",
                 exclude: "packages/default-icon",
                 copyDtsFiles: false

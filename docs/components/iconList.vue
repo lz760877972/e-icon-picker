@@ -20,6 +20,7 @@ import antDesign from "e-icon-picker/icon/antd/antd.js";
 import tdesign from "e-icon-picker/icon/tdesign/tdesign.js";
 import arco from "e-icon-picker/icon/arco/arco.js";
 import layui from "e-icon-picker/icon/layui-vue/layui-vue.js"
+import brandico from "e-icon-picker/icon/iconify/brandico.js"
 import {isClient} from '@vueuse/core';
 import {defineComponent, onMounted, reactive, toRefs} from "vue";
 // import '@e-icon-picker/lib/icon/default-icon/symbol.js'
@@ -66,6 +67,8 @@ export default defineComponent({
         state.dataList = arco
       } else if (props.type === "layui") {
         state.dataList = layui
+      } else if (props.type === "brandico") {
+        state.dataList = brandico
       } else {
         state.dataList = []
       }

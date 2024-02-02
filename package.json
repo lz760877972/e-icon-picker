@@ -5,7 +5,7 @@
   "private": false,
   "description": "element-plus和font-awesome图标选择器",
   "license": "MIT",
-  "author": "cnovel.club",
+  "author": "cnovel.top",
   "keywords": [
     "vue",
     "icon-picker",
@@ -23,10 +23,6 @@
   "bugs": {
     "url": "https://gitee.com/cnovel/e-icon-picker/issues"
   },
-  "workspaces": [
-    "docs",
-    "lib"
-  ],
   "main": "index.umd.js",
   "module": "index.mjs",
   "unpkg": "index.umd.js",
@@ -49,7 +45,7 @@
     "build:lib": "pnpm clean:lib && pnpm build:components && pnpm build:icon && pnpm release",
     "build:components": "tsx scripts/build.ts",
     "build:icon": "pnpm clean:icon && tsx scripts/build-icon.ts",
-    "clean:icon": "cd ./scripts/icon && rimraf ./antd ./arco ./ele ./fontawesome ./layui-vue ./tdesign",
+    "clean:icon": "cd ./scripts/icon && rimraf ./antd ./arco ./ele ./fontawesome ./layui-vue ./tdesign ./iconify",
     "release": "tsx scripts/release.ts",
     "clean:lib": "rimraf lib",
     "update:version": "tsx scripts/update-version.ts",
@@ -71,6 +67,7 @@
     "@vueuse/core": "^10.7.2",
     "debounce": "^2.0.0",
     "vue": "^3.4.15",
+    "@iconify/vue": "^4.1.1",
     "e-icon-picker": "workspace:./lib"
   },
   "devDependencies": {
@@ -116,7 +113,8 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vite-plugin-dts": "^3.7.2",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^1.8.27",
+    "@iconify/json": "^2.2.177"
   },
   "lint-staged": {
     "packages/**/{*.vue,*.ts}": "eslint --fix",

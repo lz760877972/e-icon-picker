@@ -1,4 +1,7 @@
 # 更新日志
+#### v2.2.0
+1. 新增[iconify](https://iconify.design/)图标合集。
+
 #### v2.1.2
 1. 修复input框高度显示问题。
 2. 修复install Myapp类型不认识问题。

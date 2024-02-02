@@ -35,6 +35,8 @@ npm install e-icon-picker@next -S
 >
 单独 [安装element-plus图标组件](https://element-plus.gitee.io/zh-CN/component/icon.html#%E4%BD%BF%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8)， 其他图标库同理。
 
+iconify图标请参考 [iconify](https://iconify.design/) 使用方法。
+
 ```js
 import {createApp} from 'vue';
 import App from './App.vue';

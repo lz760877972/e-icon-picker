@@ -1,21 +1,26 @@
 <template>
-  <i v-if="fontClass" class="e-icon" :class="[iconName,className]" @click="click(iconName,$event)"></i>
-  <svg v-else-if="svg" :class="svgClass" class="e-icon e-icon-svg" aria-hidden="true" @click="click(iconName,$event)">
+  <i v-if="isFontClass" class="e-icon" :class="[iconName,className]" @click="click(iconName,$event)"></i>
+  <svg v-else-if="isSvg" :class="svgClass" class="e-icon e-icon-svg" aria-hidden="true" @click="click(iconName,$event)">
     <use :xlink:href="iconName"></use>
   </svg>
   <component v-else-if="isComponent" :is="component" class="e-icon icon e-icon-svg"
              @click="click(iconName,$event)"></component>
   <div v-else-if="isExternal" :style="styleExternalIcon" :class="className" class="e-icon icon external-icon"
        @click="click(iconName,$event)"/>
+  <Icon v-else-if="isIconify" :icon="iconName" class="e-icon icon e-icon-svg" @click="click(iconName,$event)"/>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
 import {isExternal} from "../../../utils";
 import {CLICK_EVENT} from "../../../constants";
+import {Icon} from '@iconify/vue'
 
 export default defineComponent({
   name: "e-icon",
+  components: {
+    Icon
+  },
   props: {
     /**
      * 图标名称
@@ -54,14 +59,14 @@ export default defineComponent({
      * 判断是否是字体图标
      * @returns {""|false|boolean}
      */
-    fontClass() {
-      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && !this.iconName.startsWith("#") && !this.iconName.startsWith("component "));
+    isFontClass() {
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && !this.iconName.startsWith("#") && !this.iconName.startsWith("component ")&& !this.iconName.includes(":"));
     },
     /**
      * 判断是否是svg图标
      * @returns {""|false|boolean}
      */
-    svg() {
+    isSvg() {
       return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.startsWith("#"));
     },
     /**
@@ -77,6 +82,9 @@ export default defineComponent({
      */
     component() {
       return this.iconName.replace("component ", "")
+    },
+    isIconify() {
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.includes(":"));
     },
     /**
      * 判断是否是外部链接
