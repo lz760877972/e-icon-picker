@@ -28,18 +28,11 @@ const release = async () => {
     // shell.sed('-i', 'workspace:', '', path.resolve(outputDir, 'package.json'));
     shell.cp('-R', path.resolve(__dirname, '../README.md'), outputDir);
     shell.cp('-R', path.resolve(__dirname, '../LICENSE'), outputDir);
-    shell.cp('-R', path.resolve(__dirname, './icon/ele'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/fontawesome'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/antd'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/tdesign'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/arco'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/layui-vue'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(__dirname, './icon/iconify'), path.resolve(outputDir, 'icon'));
+    shell.cp('-R', path.resolve(packagesDir, './icon'), outputDir);
 
     shell.cp('-R', path.resolve(packagesDir, './utils/getSvg.js'), path.resolve(outputDir, 'utils/getSvg.js'));
 
-    shell.cp('-R', path.resolve(packagesDir, 'default-icon'), path.resolve(outputDir, 'icon'));
-    shell.cp('-R', path.resolve(packagesDir, 'style/theme.css'), path.resolve(outputDir, 'theme/theme.css'));
+    shell.cp('-R', path.resolve(packagesDir, 'theme/theme.css'), path.resolve(outputDir, 'theme/theme.css'));
     // shell.exec('npm publish');
 };
 release()

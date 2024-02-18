@@ -12,9 +12,11 @@ async function generate() {
         nameCount++;
     }
 
-    await writeFile(__dirname + "/antd/", "antd", antdIcon);
+    let basePath = __dirname + "/../../packages/icon"
 
-    fs.writeFileSync(__dirname + "/antd/antd.d.ts", fileStr);
+    await writeFile(basePath + "/antd/", "antd", antdIcon);
+
+    fs.writeFileSync(basePath + "/antd/antd.d.ts", fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

@@ -35,10 +35,10 @@ async function generate() {
         const filename = path.basename(filePath).replace(".json", "");
 
         let iconList = icons.map(icon => `${prefix}:${icon}`)
+        let basePath = __dirname + "/../../packages/icon"
+        await writeFile(`${basePath}/iconify/`, filename, iconList);
 
-        await writeFile(`${__dirname}/iconify/`, filename, iconList);
-
-        fs.writeFileSync(`${__dirname}/iconify/${filename}.d.ts`, fileStr);
+        fs.writeFileSync(`${basePath}/iconify/${filename}.d.ts`, fileStr);
         info("parsed (" + filePath + " names)")
     }
 }

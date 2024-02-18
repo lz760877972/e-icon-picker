@@ -11,9 +11,10 @@ async function generate() {
         tdesignIcons.push(`component ${key}`);
         nameCount++;
     }
-    await writeFile(__dirname + "/tdesign/", "tdesign", tdesignIcons);
+    let basePath = __dirname + "/../../packages/icon"
+    await writeFile(basePath + "/tdesign/", "tdesign", tdesignIcons);
 
-    fs.writeFileSync(__dirname + "/tdesign/tdesign.d.ts", fileStr);
+    fs.writeFileSync(basePath + "/tdesign/tdesign.d.ts", fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

@@ -17,9 +17,10 @@ async function generate() {
         el.push(it[0]);
         nameCount++;
     });
-    info(__dirname + "/data/")
-    await writeFile(__dirname + "/ele/", `element-ui`, el);
-    fs.writeFileSync(__dirname + "/ele/" + `element-ui.d.ts`, fileStr);
+    let basePath = __dirname + "/../../packages/icon"
+    info(basePath + "/data/")
+    await writeFile(basePath + "/ele/", `element-ui`, el);
+    fs.writeFileSync(basePath + "/ele/" + `element-ui.d.ts`, fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

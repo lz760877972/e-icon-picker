@@ -14,9 +14,10 @@ async function generate() {
         layuiIcons.push(`component ${key}`);
         nameCount++;
     }
-    await writeFile(__dirname + "/layui-vue/", "layui-vue", layuiIcons);
+    let basePath = __dirname + "/../../packages/icon"
+    await writeFile(basePath + "/layui-vue/", "layui-vue", layuiIcons);
 
-    fs.writeFileSync(__dirname + "/layui-vue/layui-vue.d.ts", fileStr);
+    fs.writeFileSync(basePath + "/layui-vue/layui-vue.d.ts", fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

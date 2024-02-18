@@ -15,10 +15,10 @@ async function generate() {
         antdIcon.push(`component ${key}`);
         nameCount++;
     }
+    let basePath = __dirname + "/../../packages/icon"
+    await writeFile(basePath + "/arco/", "arco", antdIcon);
 
-    await writeFile(__dirname + "/arco/", "arco", antdIcon);
-
-    fs.writeFileSync(__dirname + "/arco/arco.d.ts", fileStr);
+    fs.writeFileSync(basePath + "/arco/arco.d.ts", fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

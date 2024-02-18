@@ -17,8 +17,9 @@ async function generate() {
             nameCount++;
         }
     });
-    await writeFile(__dirname + "/fontawesome/", `fontawesome-pro-5`, fa);
-    fs.writeFileSync(__dirname + "/fontawesome/" + `fontawesome-pro-5.d.ts`, fileStr);
+    let basePath = __dirname + "/../../packages/icon"
+    await writeFile(basePath + "/fontawesome/", `fontawesome-pro-5`, fa);
+    fs.writeFileSync(basePath + "/fontawesome/" + `fontawesome-pro-5.d.ts`, fileStr);
     info("parsed (" + nameCount + " names)")
 }
 

@@ -11,10 +11,10 @@ async function generate() {
         el.push(`component ${key}`);
         nameCount++;
     }
+    let basePath = __dirname + "/../../packages/icon"
+    await writeFile(basePath + "/ele/", "element-plus", el);
 
-    await writeFile(__dirname + "/ele/", "element-plus", el);
-
-    fs.writeFileSync(__dirname + "/ele/element-plus.d.ts", fileStr);
+    fs.writeFileSync(basePath + "/ele/element-plus.d.ts", fileStr);
     info("parsed (" + nameCount + " names)")
 }
 
