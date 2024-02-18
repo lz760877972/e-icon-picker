@@ -10,26 +10,26 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@arco-design/web-vue": "^2.54.3",
+    "@arco-design/web-vue": "^2.54.4",
     "@element-plus/icons-vue": "^2.3.1",
-    "@layui/icons-vue": "^1.1.0",
-    "element-plus": "^2.5.3",
+    "@layui/icons-vue": "^1.1.1",
+    "element-plus": "^2.5.6",
     "feather-icons": "^4.29.1",
     "tdesign-icons-vue-next": "^0.2.2",
-    "vue": "^3.4.15",
+    "vue": "^3.4.19",
     "vitepress-theme-demoblock": "3.0.3",
     "e-icon-picker": "workspace:*",
     "@iconify/iconify": "^3.1.1",
-    "@iconify/json": "^2.2.177",
+    "@iconify/json": "^2.2.183",
     "@purge-icons/generated": "^0.10.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.7",
+    "@types/node": "^20.11.19",
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "1.0.0-rc.40",
-    "sass": "^1.70.0",
+    "vitepress": "1.0.0-rc.43",
+    "sass": "^1.71.0",
     "vite-plugin-purge-icons": "^0.10.0",
-    "unplugin-icons": "^0.18.3"
+    "unplugin-icons": "^0.18.5"
   }
 }

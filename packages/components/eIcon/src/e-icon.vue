@@ -15,6 +15,7 @@ import {defineComponent} from 'vue'
 import {isExternal} from "../../../utils";
 import {CLICK_EVENT} from "../../../constants";
 import {Icon} from '@iconify/vue'
+import {isFunction, startsWith} from "lodash-es";
 
 export default defineComponent({
   name: "e-icon",
@@ -45,7 +46,7 @@ export default defineComponent({
      * @param event
      */
     const click = (iconName: string, event: Event) => {
-      if (event) {
+      if (event && isFunction(event.preventDefault)) {
         event.preventDefault();
       }
       context.emit(CLICK_EVENT, iconName)
@@ -60,28 +61,28 @@ export default defineComponent({
      * @returns {""|false|boolean}
      */
     isFontClass() {
-      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && !this.iconName.startsWith("#") && !this.iconName.startsWith("component ")&& !this.iconName.includes(":"));
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && !startsWith(this.iconName, "#") && !startsWith(this.iconName, "component ") && !this.iconName.includes(":"));
     },
     /**
      * 判断是否是svg图标
      * @returns {""|false|boolean}
      */
     isSvg() {
-      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.startsWith("#"));
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && startsWith(this.iconName, "#"));
     },
     /**
      * 判断是否是图标组件
      * @returns {""|false|boolean}
      */
     isComponent() {
-      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.startsWith("component "));
+      return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && startsWith(this.iconName, "component "));
     },
     /**
      * 组件名
      * @returns {string}
      */
     component() {
-      return this.iconName.replace("component ", "")
+      return this.iconName.replace("component ", "");
     },
     isIconify() {
       return this.iconName && this.iconName.trim().length > 2 && (!isExternal(this.iconName) && this.iconName.includes(":"));

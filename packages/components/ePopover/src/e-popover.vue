@@ -39,10 +39,10 @@
 <script lang="ts">
 import {computed, defineComponent, onMounted, ref, toRefs, watch, watchEffect} from 'vue'
 import {eArrow} from "./eArrow";
-import {useClickAway, useContent, usePopper} from "./util/index";
-import debounce from "debounce";
+import { useContent, usePopper} from "./util/index";
 import {useZIndex} from "../../../utils/zIndex";
-
+import { useDebounceFn } from '@vueuse/core'
+import { onClickOutside } from '@vueuse/core'
 export default defineComponent({
   name: "e-popover",
   components: {
@@ -208,7 +208,7 @@ export default defineComponent({
     },
   },
   setup(props, {slots, emit}) {
-    const popperContainerNode = ref(null);
+    const popperContainerNode = ref<HTMLDivElement|null>(null);
     const popperNode = ref(null);
     const triggerNode = ref(null);
     const modifiedIsOpen = ref(false);
@@ -261,14 +261,13 @@ export default defineComponent({
         interactive.value ? `border: ${offsetDistance.value}px solid transparent; margin: -${offsetDistance.value}px;` : null,
     );
 
-    const openPopperDebounce = debounce(open, openDelay.value);
-    const closePopperDebounce = debounce(close, closeDelay.value);
+    const openPopperDebounce = useDebounceFn(open, openDelay.value);
+    const closePopperDebounce = useDebounceFn(close, closeDelay.value);
     const openPopper = async () => {
       if (invalid.value || manualMode.value) {
         return;
       }
       zIndex = props.zIndex || nextZIndex()
-      closePopperDebounce.clear();
       openPopperDebounce();
     };
 
@@ -276,8 +275,6 @@ export default defineComponent({
       if (manualMode.value) {
         return;
       }
-
-      openPopperDebounce.clear();
       closePopperDebounce();
     };
 
@@ -305,7 +302,7 @@ export default defineComponent({
         zIndex = props.zIndex
         modifiedIsOpen.value = true;
       } else {
-        debounce(() => {
+        useDebounceFn(() => {
           modifiedIsOpen.value = false;
         }, 200);
       }
@@ -326,7 +323,7 @@ export default defineComponent({
      */
     watchEffect(() => {
       if (enableClickAway.value) {
-        useClickAway(popperContainerNode, closePopper);
+        onClickOutside(popperContainerNode, closePopper)
       }
     });
 

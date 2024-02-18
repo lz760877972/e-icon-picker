@@ -16,7 +16,8 @@
         :display="state.display"
     >
       <template #default>
-        <div @click="popoverShowFun(false)" :style="{display:state.display}" ref="triggerWrapper" class="trigger-wrapper">
+        <div @click="popoverShowFun(false)" :style="{display:state.display}" ref="triggerWrapper"
+             class="trigger-wrapper">
           <slot name="default"
                 v-bind:data="{prefixIcon:state.prefixIcon,visible:state.visible,placeholder,disabled,clearable,readonly,size}">
             <e-input
@@ -87,9 +88,11 @@ import {
   toRefs,
   watch
 } from "vue";
-import {iconList, isClient, isString, off, on} from "../../../utils";
+import {iconList} from "../../../utils";
+import {isClient, useEventListener} from '@vueuse/core';
 import {CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT} from "../../../constants";
 import {useZIndex} from "../../../utils/zIndex";
+import {isString} from "lodash-es";
 
 export class Options {
   addIconList?: Array<string>;
@@ -300,9 +303,6 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      if (isClient) {
-        off(document, "mouseup", popoverHideFun);
-      }
       destroyIconList()
     })
 
@@ -318,16 +318,11 @@ export default defineComponent({
 
     watch(() => state.visible, (newValue) => {
       if (newValue === false) {
-        nextTick(() => {
-          if (isClient) {
-            off(document, "mouseup", popoverHideFun);
-          }
-        });
       } else {
         nextTick(() => {
           createIconList();
           if (isClient) {
-            on(document, "mouseup", popoverHideFun);
+            useEventListener(document, "mouseup", popoverHideFun);
           }
         });
       }

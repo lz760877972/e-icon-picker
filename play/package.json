@@ -1,0 +1,11 @@
+{
+  "name": "@e-icon-picker/play",
+  "private": true,
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "vue": "^3.4.19",
+    "e-icon-picker": "workspace:*"
+  }
+}

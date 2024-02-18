@@ -5,7 +5,7 @@ import popover from './components/ePopover';
 import scrollbar from './components/eScrollbar';
 import iconPicker from './components/eIconPicker';
 import './style/index.scss';
-import {analyzingIconForIconfont, eIconSymbol, iconList} from "./utils";
+import {analyzingIconForIconfont, eIconSymbol, iconList,addPrefix} from "./utils";
 import {Options, setConfig} from "./utils/config";
 import {INSTALLED_KEY, VERSION} from "./constants";
 
@@ -21,6 +21,7 @@ export {
     iconList,
     analyzingIconForIconfont,
     eIconSymbol,
+    addPrefix
 };
 
 export default {

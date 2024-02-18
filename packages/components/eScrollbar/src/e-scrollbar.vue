@@ -26,8 +26,8 @@ import {
 } from 'vue'
 import {eBar, eBarInstance} from './eBar'
 import {addUnit, GAP, scrollbarContextKey} from './util'
-import {isNumber, isObject} from "../../../utils";
 import {SCROLL_EVENT} from "../../../constants";
+import {isNumber, isObject} from "lodash-es";
 
 export default defineComponent({
   name: "e-scrollbar",

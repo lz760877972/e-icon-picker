@@ -83,14 +83,14 @@ export default defineComponent({
 <script lang="ts">
 import {defineComponent, reactive, toRefs, ref, onMounted} from 'vue';
 import element from 'e-icon-picker/icon/ele/element-plus.js';
-
+import {addPrefix} from "e-icon-picker"
 export default defineComponent({
   name: 'e-icon-picker-demo3',
   setup() {
     let iconPicker = ref(null);
     let state = reactive({
       icon: '',
-      options: {addIconList: [...element], removeIconList: []}
+      options: {addIconList: [...(element.map(i=>addPrefix('ele-',i)))], removeIconList: []}
     });
     //因为vite导入静态图片无法实现，所以才用这种方式
     const getImageUrl = (name) => {

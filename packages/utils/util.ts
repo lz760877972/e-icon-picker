@@ -1,5 +1,4 @@
-import {isClient} from '@vueuse/core';
-
+import {startsWith} from "lodash-es";
 
 export declare class ForIconfontGlyphs {
     icon_id: string;
@@ -22,7 +21,11 @@ export declare class ForIconfont {
  * 将阿里妈妈的iconfont.json文件读成想用的单色图标对象
  * @param json
  */
-export const analyzingIconForIconfont = (json: ForIconfont): { font_family: string; css_prefix_text: string; list: Array<string> } => {
+export const analyzingIconForIconfont = (json: ForIconfont): {
+    font_family: string;
+    css_prefix_text: string;
+    list: Array<string>
+} => {
     let font_family = '';
     let css_prefix_text = '';
     let list: Array<string> = [];
@@ -69,22 +72,24 @@ export const eIconSymbol = (json: ForIconfont): { font_family: string; list: str
         list
     };
 };
+/**
+ * 添加前缀
+ * @param prefix
+ * @param item
+ */
+export const addPrefix = (prefix: string, item: string): string => {
+    let res: string = item;
+    if (startsWith(item, "component ") && prefix) {
+        let split = item.split(" ");
+        res = `${split[0]} ${prefix}${split[1]}`
+    }
+    return res;
+};
 
 /**
  * 校验是否是外部链接
  * @param {string} path 路径
  */
-export function isExternal(path: string): boolean {
+export const isExternal = (path: string): boolean => {
     return /^(https?:|data:|\/\/?)/.test(path);
 }
-
-/**
- * 是否是服务端
- */
-export const isServer = !isClient;
-export {
-    /**
-     * 是否是客户端
-     */
-    isClient
-};

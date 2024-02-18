@@ -115,20 +115,29 @@ import ArcoVueIcon from '@arco-design/web-vue/lib/icon';
 import * as layui from '@layui/icons-vue';
 import '@layui/icons-vue/lib/index.css';//layui-vue需要引入css
 
+/* 注册图标时，可能有同名的图标，所以需要添加一些前缀来区分
+   使用时需要对图标数据进行处理
+   import {addPrefix} from "e-icon-picker"
+   state.dataList = elementPlus.map((item) => {
+        return addPrefix("ele-", item);
+   })
+*/
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+    app.component(`ele-${key}`, component)
 }
 for (const [key, component] of Object.entries(antDesign)) {
-    app.component(key, component)
+    app.component(`antd-${key}`, component)
 }
 for (const [key, component] of Object.entries(tdesign)) {
-    app.component(key, component)
+    app.component(`td-${key}`, component)
 }
 for (const [key, component] of Object.entries(ArcoVueIcon)) {
-    app.component(key, component)
+    app.component(`arco-${key}`, component)
 }
 for (const [key, component] of Object.entries(layui)) {
-    app.component(key, component)
+    if (key !== 'LayIconList') {
+        app.component(`layui-${key}`, component)
+    }
 }
 ```
 

@@ -1,5 +1,5 @@
 import {InjectionKey} from "vue";
-import {isString,isNumber} from "../../../utils";
+import {isNumber, isString} from "lodash-es";
 
 
 export function addUnit(value?: string | number, defaultUnit = 'px') {

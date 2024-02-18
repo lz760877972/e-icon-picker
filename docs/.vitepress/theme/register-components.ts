@@ -26,20 +26,20 @@ export function registerComponents(ctx) {
   app.use(ElMessage)
   app.use(ElDialog)
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+    app.component(`ele-${key}`, component)
   }
   for (const [key, component] of Object.entries(antDesign)) {
-    app.component(key, component)
+    app.component(`antd-${key}`, component)
   }
   for (const [key, component] of Object.entries(tdesign)) {
-    app.component(key, component)
+    app.component(`td-${key}`, component)
   }
   for (const [key, component] of Object.entries(ArcoVueIcon)) {
-    app.component(key, component)
+    app.component(`arco-${key}`, component)
   }
   for (const [key, component] of Object.entries(layui)) {
     if (key !== 'LayIconList') {
-      app.component(key, component)
+      app.component(`layui-${key}`, component)
     }
   }
   app.use(eIconPicker, {

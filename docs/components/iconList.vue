@@ -22,6 +22,8 @@ import arco from "e-icon-picker/icon/arco/arco.js";
 import layui from "e-icon-picker/icon/layui-vue/layui-vue.js"
 import brandico from "e-icon-picker/icon/iconify/brandico.js"
 import {isClient} from '@vueuse/core';
+import {addPrefix} from "e-icon-picker"
+
 import {defineComponent, onMounted, reactive, toRefs} from "vue";
 // import '@e-icon-picker/lib/icon/default-icon/symbol.js'
 import {ElMessage} from 'element-plus'
@@ -54,19 +56,29 @@ export default defineComponent({
       } else if (props.type === "ele") {
         state.dataList = ele
       } else if (props.type === "elementPlus") {
-        state.dataList = elementPlus
+        state.dataList = elementPlus.map((item) => {
+          return addPrefix("ele-", item);
+        })
       } else if (props.type === "fontAwesomeV470") {
         state.dataList = fontAwesomeV470
       } else if (props.type === "fontawesome") {
         state.dataList = fontawesome
       } else if (props.type === "antDesign") {
-        state.dataList = antDesign
+        state.dataList = antDesign.map((item) => {
+          return addPrefix("antd-", item);
+        })
       } else if (props.type === "tdesign") {
-        state.dataList = tdesign
+        state.dataList = tdesign.map((item) => {
+          return addPrefix("td-", item);
+        })
       } else if (props.type === "arco") {
-        state.dataList = arco
+        state.dataList = arco.map((item) => {
+          return addPrefix("arco-", item);
+        })
       } else if (props.type === "layui") {
-        state.dataList = layui
+        state.dataList = layui.map((item) => {
+          return addPrefix("layui-", item);
+        })
       } else if (props.type === "brandico") {
         state.dataList = brandico
       } else {

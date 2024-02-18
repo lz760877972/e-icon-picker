@@ -4,15 +4,15 @@ export type Options = {
     /**
      * 增加的图标
      */
-    addIconList: string[];
+    addIconList?: string[];
     /**
      * 删除的图标
      */
-    removeIconList: string[];
+    removeIconList?: string[];
     /**
      * z-index
      */
-    zIndex: number;
+    zIndex?: number;
 };
 export let options: Options = {
     addIconList: [],
