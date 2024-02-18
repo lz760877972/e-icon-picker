@@ -1,26 +1,26 @@
 <template>
-  <div class="e-icon-picker" :class="`e-icon-picker-${id}`">
+  <div class="e-icon-picker" :class="`e-icon-picker-${state.id}`">
     <!-- 弹出框 -->
     <e-popover
         ref="popover"
-        :placement="myPlacement"
+        :placement="state.myPlacement"
         :disabled="disabled"
         :readonly="readonly"
-        :width="popoverWidth"
+        :width="state.popoverWidth"
         :content-class="contentClass"
         :max-height="400"
         :z-index="zIndex"
         arrow
         :append-container="appendBody"
-        :show="visible"
-        :display="display"
+        :show="state.visible"
+        :display="state.display"
     >
       <template #default>
-        <div @click="popoverShowFun(false)" :style="{display:display}" ref="triggerWrapper" class="trigger-wrapper">
+        <div @click="popoverShowFun(false)" :style="{display:state.display}" ref="triggerWrapper" class="trigger-wrapper">
           <slot name="default"
-                v-bind:data="{prefixIcon,visible,placeholder,disabled,clearable,readonly,size}">
+                v-bind:data="{prefixIcon:state.prefixIcon,visible:state.visible,placeholder,disabled,clearable,readonly,size}">
             <e-input
-                v-model="name"
+                v-model="state.name"
                 :placeholder="placeholder"
                 ref="input"
                 :style="styles"
@@ -32,8 +32,8 @@
                 @clear="initIcon(false)"
             >
               <template #prepend slot="prepend">
-                <slot name="prepend" v-bind:icon="prefixIcon">
-                  <e-icon :icon-name="prefixIcon" class="e-icon"/>
+                <slot name="prepend" v-bind:icon="state.prefixIcon">
+                  <e-icon :icon-name="state.prefixIcon" class="e-icon"/>
                 </slot>
               </template>
             </e-input>
@@ -43,18 +43,18 @@
       <template #content>
         <e-scrollbar
             ref="eScrollbar"
-            :class="'is-empty-'+id"
-            v-if="!destroy"
+            :class="'is-empty-'+state.id"
+            v-if="!state.destroy"
         >
           <ul
               class="e-icon-picker-icon-list"
               ref="fasIconList"
-              v-if="dataList && dataList.length > 0"
+              v-if="state.dataList?.length > 0"
           >
             <li
-                v-for="(item, index) in dataList"
+                v-for="(item, index) in state.dataList"
                 :key="index"
-                :style="name === item && highLightColor !== '' ? {'color': highLightColor,'--e-icon-color':highLightColor} : ''"
+                :style="state.name === item && highLightColor !== '' ? {'color': highLightColor,'--e-icon-color':highLightColor} : ''"
             >
               <slot name="icon" v-bind:icon="item">
                 <e-icon :icon-name="item" :title="item" @click="selectedIcon" class="e-icon"/>
@@ -98,7 +98,7 @@ export class Options {
 
 export type Placement = "top" | "bottom";
 export default defineComponent({
-  name: "eIconPicker",
+  name: "e-icon-picker",
   components: {
     eIcon,
     eInput,
@@ -164,7 +164,10 @@ export default defineComponent({
      */
     options: {
       type: Object as PropType<Options>,
-      default: {}
+      default: {
+        addIconList: [],
+        removeIconList: []
+      }
     },
     /**
      * 宽度
@@ -341,11 +344,11 @@ export default defineComponent({
       state.name = type === true ? props.modelValue : "";
       state.icon = Object.assign({}, iconList); //复制一个全局对象，避免全局对象污染
       if (props.options) {
-        if (props.options.addIconList && props.options.addIconList.length > 0) {
+        if (props.options.addIconList?.length > 0) {
           state.icon.list = []; //重新给图标集合复制为空
           state.icon.addIcon(props.options.addIconList);
         }
-        if (props.options.removeIconList && props.options.removeIconList.length > 0) {
+        if (props.options.removeIconList?.length > 0) {
           state.icon.removeIcon(props.options.removeIconList);
         }
       }
@@ -406,7 +409,7 @@ export default defineComponent({
     }
     // 显示弹出框的时候容错，查看是否和el宽度一致
     const popoverShowFun = (flag: boolean) => {
-      if (props.readonly !== true && props.disabled !== true) {
+      if (!props.readonly && !props.disabled) {
         if (!flag && props.zIndex) {
           state.zIndex = props.zIndex
         } else {
@@ -462,6 +465,7 @@ export default defineComponent({
       addIcon,
       removeIcon,
       ...toRefs(state),
+      state,
       input,
       eScrollbar,
       popover,

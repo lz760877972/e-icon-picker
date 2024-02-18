@@ -40,7 +40,7 @@
 import {computed, defineComponent, onMounted, ref, toRefs, watch, watchEffect} from 'vue'
 import {eArrow} from "./eArrow";
 import {useClickAway, useContent, usePopper} from "./util/index";
-import {debounce} from "debounce";
+import debounce from "debounce";
 import {useZIndex} from "../../../utils/zIndex";
 
 export default defineComponent({
@@ -207,7 +207,7 @@ export default defineComponent({
       default: 'block',
     },
   },
-  setup(props, {slots, attrs, emit}) {
+  setup(props, {slots, emit}) {
     const popperContainerNode = ref(null);
     const popperNode = ref(null);
     const triggerNode = ref(null);

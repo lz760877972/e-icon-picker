@@ -33,4 +33,3 @@ export * from "./util";
 export * from "./dom";
 export * from "./typeUtil";
 export * from "./iconList";
-// export * from "./getSvg";
