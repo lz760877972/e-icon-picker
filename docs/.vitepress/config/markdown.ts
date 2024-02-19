@@ -1,6 +1,7 @@
 import {demoBlockPlugin} from 'vitepress-theme-demoblock'
+import {MarkdownOptions} from "vitepress/dist/node";
 
-const markdown = {
+const markdown: MarkdownOptions = {
     config: (md) => {
         md.use(demoBlockPlugin)
     }

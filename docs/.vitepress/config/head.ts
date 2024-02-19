@@ -1,4 +1,6 @@
-const head = [
+import {HeadConfig} from "vitepress/types/shared";
+
+const head:HeadConfig[] = [
     ['link', {rel: 'icon', href: '/img/favicon.ico'}],
     ['link', {rel: 'stylesheet', href: '//cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'}],
     ['link', {rel: 'stylesheet', href: '//cdn.bootcdn.net/ajax/libs/element-ui/2.15.14/theme-chalk/index.css'}],
