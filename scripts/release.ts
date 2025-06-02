@@ -13,7 +13,12 @@ const createPackageJson = async () => {
     const p: any = omit(pkg, 'scripts', 'devDependencies', 'workspaces', 'packageManager', 'lint-staged')
     p.version = getVersion();
     p.name = "e-icon-picker";
-    p.type = "module"
+    p.type = "module";
+    p['web-types'] = "web-types.json";
+    p.vetur = {
+        tags: "tags.json",
+        attributes: "attributes.json"
+    }
     const fileStr: string = JSON.stringify(p, null, 2);
     await fsExtra.outputFile(path.resolve(outputDir, `package.json`), fileStr, 'utf-8');
 };
