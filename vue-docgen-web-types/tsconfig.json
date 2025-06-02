@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "declaration": true,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    // ⽀持es6,commonjs模块
+    "target": "esnext",
+    "moduleResolution": "node",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/*.ts",
+    "src/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

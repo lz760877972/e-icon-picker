@@ -6,6 +6,6 @@ export type ThumbInstance = InstanceType<typeof eThumb>;
 
 export default {
     install(app: App): void {
-        app.component(eThumb.name, eThumb);
+        app.component(eThumb.name!, eThumb);
     }
 };

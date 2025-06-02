@@ -1,10 +1,10 @@
 import path from "path";
 import fsExtra from "fs-extra";
-import {omit} from "lodash";
+import {omit} from "lodash-es";
 import shell from "shelljs";
 import pkg from "../package.json"
 import {getVersion} from "./shared/utils"
-
+import build from "vue-docgen-web-types/lib/build";
 
 const outputDir = path.resolve(__dirname, '../lib');
 const packagesDir = path.resolve(__dirname, '../packages');
@@ -19,6 +19,15 @@ const createPackageJson = async () => {
 };
 
 const release = async () => {
+    await build({
+        componentsRoot: './packages/components',
+        components: "**\\/[a-zA-Z]*.vue",
+        outPath: "./lib",
+        packageName: "e-icon-picker",
+        prefix: "",
+        cwd: process.cwd()
+    });
+
     await createPackageJson();
     shell.cd(outputDir);
     shell.mkdir('-p', 'theme');

@@ -1,7 +1,7 @@
 import Demo from 'vitepress-theme-demoblock/dist/client/components/Demo.vue'
 import DemoBlock from 'vitepress-theme-demoblock/dist/client/components/DemoBlock.vue'
 import eIconPicker from 'e-icon-picker';
-import 'e-icon-picker/index.css';
+import 'e-icon-picker/style/index.scss';
 import 'e-icon-picker/theme/theme.css';
 // @ts-ignore
 import eIconList from 'e-icon-picker/icon/default-icon/eIconList.js'

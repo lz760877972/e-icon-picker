@@ -1,4 +1,4 @@
-@import './layout.scss';
+@use './layout.scss';
 /* 整个滚动条*/
 ::-webkit-scrollbar {
   width: 8px;

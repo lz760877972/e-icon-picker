@@ -1,6 +1,6 @@
-import {onBeforeUnmount, onMounted, ref, watch} from "vue";
+import {onBeforeUnmount, onMounted, Ref, ref, watch} from "vue";
 
-export default function useContent(slots: any, popperNode: any, content: any) {
+export default function useContent(slots: Readonly<any>, popperNode: Ref<HTMLElement | null>, content: Ref<string | null>) {
     let observer: any = null;
     const hasContent = ref(false);
 

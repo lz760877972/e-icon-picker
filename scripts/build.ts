@@ -15,7 +15,7 @@ const outputDir = path.resolve(__dirname, '../lib');
 const createBanner = () => {
     return `/**
   * e-icon-picker v${getVersion()}
-  * (c) 2019 - ${new Date().getFullYear()} ${pkg.author}
+  * (c) 2020 - present ${pkg.author}
   * @license ${pkg.license}
   */
 `;
@@ -48,7 +48,7 @@ const rollupOptions: any = {
         globals: {
             vue: 'Vue',
         },
-        assetFileNames: (chunkInfo: any) => {
+        assetFileNames: (chunkInfo: any): string => {
             if (chunkInfo.name === 'style.css') return 'index.css';
             return chunkInfo.name;
         },
@@ -83,7 +83,7 @@ const buildAll = async () => {
                 entryRoot: path.resolve(entryDir),
                 outDir: outputDir,
                 include: "packages",
-                exclude: "packages/default-icon",
+                exclude: "packages/icon",
                 copyDtsFiles: false
             })],
             build: {
@@ -114,7 +114,7 @@ const createPackageJson = async (fileName: string) => {
     await fsExtra.outputFile(path.resolve(outputDir, `components/${fileName}/package.json`), fileStr, 'utf-8').then(() => success(`create ${fileName}/package.json success`));
 };
 
-const buildComponents = async () => {
+const buildComponents = () => {
     buildAll();//编译主组件
     //编译子组件
     const components = fsExtra.readdirSync(path.resolve(entryDir, "components")).filter((fileName) => {
@@ -123,8 +123,8 @@ const buildComponents = async () => {
         return isDir && fsExtra.readdirSync(componentDir).includes('index.ts');
     });
     for (const fileName of components) {
-        await buildSingle(fileName);
-        await createPackageJson(fileName);
+        buildSingle(fileName);
+        createPackageJson(fileName);
     }
 };
 buildComponents()

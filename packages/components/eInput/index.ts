@@ -5,6 +5,6 @@ export {eInput};
 export type InputInstance = InstanceType<typeof eInput>;
 export default {
     install(app: App): void {
-        app.component(eInput.name, eInput);
+        app.component(eInput.name!, eInput);
     }
 };

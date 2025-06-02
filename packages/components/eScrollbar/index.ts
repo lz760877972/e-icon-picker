@@ -7,6 +7,6 @@ export {eScrollbar};
 export type ScrollbarInstance = InstanceType<typeof eScrollbar>;
 export default {
     install(app: App): void {
-        app.component(eScrollbar.name, eScrollbar);
+        app.component(eScrollbar.name!, eScrollbar);
     }
 };

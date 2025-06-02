@@ -2,14 +2,13 @@
   <span ref="arrowRef" class="e-arrow" data-popper-arrow=""/>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
-
-export default defineComponent({
-  name: "e-arrow"
+<script lang="ts" setup>
+defineOptions({
+  inheritAttrs: true,
+  name: 'e-arrow'
 })
 </script>
 
 <style lang="scss" scoped>
-@import "e-arrow.scss";
+@use "e-arrow.scss";
 </style>

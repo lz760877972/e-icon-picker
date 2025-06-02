@@ -75,7 +75,7 @@ export default defineComponent({
 ```vue
 <template>
   <client-only>
-    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component EditPen" placeholder="请选择"/>
+    <e-icon-picker ref="iconPicker" v-model="icon" :options="options" default-icon="component ele-EditPen" placeholder="请选择"/>
   </client-only>
   名称：{{icon}}
   <e-icon :icon-name="icon"/>

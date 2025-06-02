@@ -5,6 +5,6 @@ export {eIcon};
 export type IconInstance = InstanceType<typeof eIcon>;
 export default {
     install(app: App): void {
-        app.component(eIcon.name, eIcon);
+        app.component(eIcon.name!, eIcon);
     }
 };

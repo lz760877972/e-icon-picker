@@ -15,8 +15,8 @@ export function addUnit(value?: string | number, defaultUnit = 'px') {
 export const GAP = 4;
 
 export interface ScrollbarContext {
-    scrollbarElement: HTMLDivElement;
-    wrapElement: HTMLDivElement;
+    scrollbarElement?: HTMLDivElement;
+    wrapElement?: HTMLDivElement;
 }
 
 export const scrollbarContextKey: InjectionKey<ScrollbarContext> = Symbol('scrollbarContextKey');

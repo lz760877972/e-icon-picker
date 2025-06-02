@@ -1,6 +1,7 @@
-import {nextTick, onBeforeUnmount, reactive, toRefs, watch} from "vue";
-import {arrow, createPopper, flip, offset, preventOverflow} from "@popperjs/core";
-import {CLOSE_POPPER_EVENT, OPEN_POPPER_EVENT} from "../../../../constants";
+import {nextTick, onBeforeUnmount, reactive, type Ref, toRefs, watch} from "vue";
+import {arrow, createPopper, flip, offset, type Placement, preventOverflow} from "@popperjs/core";
+import type {EPopoverEmits} from "../types";
+import type {Instance} from "@popperjs/core/lib/types";
 
 const toInt = (x: string) => parseInt(x, 10);
 export default function usePopper(
@@ -13,9 +14,21 @@ export default function usePopper(
         placement,
         popperNode,
         triggerNode,
-    }: any
-): any {
-    const state = reactive<any>({
+    }: {
+        arrowPadding: Ref<string>
+        emit: EPopoverEmits
+        locked: Ref<boolean>
+        offsetDistance: Ref<string>
+        offsetSkid: Ref<string>
+        placement: Ref<Placement>
+        popperNode: Ref<HTMLElement | null>
+        triggerNode: Ref<HTMLElement | null>
+    }
+) {
+    const state = reactive<{
+        isOpen: boolean,
+        popperInstance: Instance | null
+    }>({
         isOpen: false,
         popperInstance: null,
     });
@@ -37,7 +50,7 @@ export default function usePopper(
         }
 
         state.isOpen = false;
-        emit(CLOSE_POPPER_EVENT);
+        emit("close:popper");
     };
 
     const open = () => {
@@ -46,7 +59,7 @@ export default function usePopper(
         }
 
         state.isOpen = true;
-        emit(OPEN_POPPER_EVENT);
+        emit("open:popper");
     };
 
     // When isOpen or placement change
@@ -61,7 +74,7 @@ export default function usePopper(
 
     const initializePopper = async () => {
         await nextTick();
-        state.popperInstance = createPopper(triggerNode.value, popperNode.value, {
+        state.popperInstance = createPopper(triggerNode.value!, popperNode.value!, {
             placement: placement.value,
             modifiers: [
                 preventOverflow,

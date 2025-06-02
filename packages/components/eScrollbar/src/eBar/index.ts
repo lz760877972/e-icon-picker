@@ -7,6 +7,6 @@ export {eBar};
 
 export default {
     install(app: App): void {
-        app.component(eBar.name, eBar);
+        app.component(eBar.name!, eBar);
     }
 };

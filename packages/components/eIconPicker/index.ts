@@ -5,6 +5,6 @@ export {eIconPicker};
 export type IconPickerInstance = InstanceType<typeof eIconPicker>;
 export default {
     install(app: App): void {
-        app.component(eIconPicker.name, eIconPicker);
+        app.component(eIconPicker.name!, eIconPicker);
     }
 };

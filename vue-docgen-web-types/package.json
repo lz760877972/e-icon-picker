@@ -1,0 +1,62 @@
+{
+  "name": "vue-docgen-web-types",
+  "version": "0.1.8",
+  "main": "lib/cli.js",
+  "license": "MIT",
+  "readme": "README.MD",
+  "author": "novel",
+  "module": "lib/index.mjs",
+  "repository": "https://gitee.com/free_pan/vue-docgen-web-types",
+  "type": "commonjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "node": {
+        "import": {
+          "production": "./lib/index.mjs",
+          "development": "./lib/index.mjs",
+          "default": "./lib/index.mjs"
+        },
+        "require": {
+          "production": "./lib/index.js",
+          "development": "./lib/index.js",
+          "default": "./lib/index.js"
+        }
+      }
+    },
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "vue-docgen-web-types": "lib/cli.js"
+  },
+  "scripts": {
+    "build:tsup": "tsup",
+    "build:tsdowm": "tsdowm"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "chokidar": "^3.6.0",
+    "globby": "14.0.2",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.8",
+    "mkdirp": "^3.0.1",
+    "vue-docgen-api": "^4.79.2"
+  },
+  "keywords": [
+    "web-types",
+    "vue",
+    "jsdoc",
+    "documentation"
+  ],
+  "devDependencies": {
+    "@types/lodash": "^4.17.16",
+    "@types/minimist": "^1.2.5",
+    "@types/mkdirp": "^1.0.2",
+    "@types/pug": "^2.0.10",
+    "tsup": "^8.4.0",
+    "typescript": "~5.5.4"
+  }
+}
