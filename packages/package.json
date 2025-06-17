@@ -1,0 +1,9 @@
+{
+  "name": "e-icon-picker",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "dependencies": {
+    "vue": "^3.4.19"
+  }
+}

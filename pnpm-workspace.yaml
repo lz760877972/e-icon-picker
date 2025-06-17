@@ -1,6 +1,5 @@
 packages:
   - docs
   - packages
-  - lib
   - play
   - vue-docgen-web-types
